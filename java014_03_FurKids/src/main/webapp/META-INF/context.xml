@@ -1,8 +1,8 @@
 ﻿<?xml version='1.0' encoding='utf-8'?> 
-<Context displayName="JSP Exercise" docBase="jspExercise" path="/jspExercise" reloadable="true">
+<Context displayName="Furkids" docBase="furKids" path="/java014_03_FurKids" reloadable="true">
   	<!-- MySQL(範例程式會用到的DataSource) -->
-	<Resource name="jdbc/FurKids" type="javax.sql.DataSource" 
-		username="root" password="XXXXXX"
+	<Resource name="jdbc/Furkids" type="javax.sql.DataSource" 
+		username="root" password="XXXXX"
 		driverClassName="com.mysql.cj.jdbc.Driver" 
 		url="jdbc:mysql:///furkids"
 		connectionProperties=
