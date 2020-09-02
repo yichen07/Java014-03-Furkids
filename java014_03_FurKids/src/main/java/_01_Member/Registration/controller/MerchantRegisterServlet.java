@@ -31,8 +31,8 @@ import _01_Member.Registration.service.Impl.MerchantServiceImpl;
 @MultipartConfig(location = "", fileSizeThreshold = 5 * 1024 * 1024, maxFileSize = 1024 * 1024
 		* 500, maxRequestSize = 1024 * 1024 * 500 * 5)
 
-@WebServlet("/_01_Member/Registration/Member")
-public class MemberRegisterServlet extends HttpServlet {
+@WebServlet("/_01_Member/Registration/Merchant")
+public class MerchantRegisterServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
