@@ -3,10 +3,15 @@ package _01_Member.Registration.model;
 import java.io.Serializable;
 import java.sql.Blob;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="merchantregistration")
 public class MerchantBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+	@Id
 	private String busAccount;
 	private String busPassword;
 	private String busName;
