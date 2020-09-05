@@ -33,9 +33,9 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 	@Override
 	public int saveMember(MemberBean mb) {
 		String sql = "INSERT INTO MembraneRegistration "
-				+ " (cusAccount, cusPassword, cusName, cusGender, cusBirthday, "
+				+ " (cusAccount, cusPassword, cusName, cusNickName, cusGender, cusBirthday, "
 				+ " cusEmail, cusTel, cusAddress, cusPhoto, cusFileName) "
-				+ " VALUES (?,?,?,?,?,?,?,?,?,?)";
+				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 		int n = 0;
 		try (
 				Connection con = ds.getConnection();
@@ -44,13 +44,14 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 			ps.setString(1, mb.getCusAccount());
 			ps.setString(2, mb.getCusPassword());
 			ps.setString(3, mb.getCusName());
-			ps.setString(4, mb.getCusGender());
-			ps.setDate(5, mb.getCusBirthday());
-			ps.setString(6, mb.getCusEmail());
-			ps.setString(7, mb.getCusTel());
-			ps.setString(8, mb.getCusAddress());
-			ps.setBlob(9, mb.getCusPhoto());
-			ps.setString(10, mb.getCusFileName());
+			ps.setString(4, mb.getCusNickName());
+			ps.setString(5, mb.getCusGender());
+			ps.setDate(6, mb.getCusBirthday());
+			ps.setString(7, mb.getCusEmail());
+			ps.setString(8, mb.getCusTel());
+			ps.setString(9, mb.getCusAddress());
+			ps.setBlob(10, mb.getCusPhoto());
+			ps.setString(11, mb.getCusFileName());
 			
 			n = ps.executeUpdate();
 		} catch (Exception e) {
@@ -62,7 +63,7 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 	}
 
 	
-	// 判斷參數CusAccount(會員帳號)是否已經被現有會員使用，
+	// 判斷參數CusAccount(會員帳號)是否已經被現有會員或商家使用，
 	// 如果是，傳回true，表示此CusAccount(會員帳號)不能使用，
 	// 否則傳回false，表示此CusAccount(會員帳號)可使用。
 	@Override
@@ -105,6 +106,7 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 					mb.setCusAccount(rs.getString("cusAccount"));
 					mb.setCusPassword(rs.getString("cusPassword"));
 					mb.setCusName(rs.getString("cusName"));
+					mb.setCusNickName(rs.getString("cusNickName"));
 					mb.setCusGender(rs.getString("cusGender"));
 					mb.setCusBirthday(rs.getDate("cusBirthday"));
 					mb.setCusEmail(rs.getString("cusEmail"));
@@ -141,6 +143,7 @@ public class MemberDaoImpl_Jdbc implements MemberDao {
 					mb.setCusAccount(rs.getString("cusAccount"));
 					mb.setCusPassword(rs.getString("cusPassword"));
 					mb.setCusName(rs.getString("cusName"));
+					mb.setCusNickName(rs.getString("cusNickName"));
 					mb.setCusGender(rs.getString("cusGender"));
 					mb.setCusBirthday(rs.getDate("cusBirthday"));
 					mb.setCusEmail(rs.getString("cusEmail"));

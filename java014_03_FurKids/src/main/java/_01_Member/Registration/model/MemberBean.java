@@ -11,6 +11,7 @@ public class MemberBean implements Serializable {
 	private String cusAccount;
 	private String cusPassword;
 	private String cusName;
+	private String cusNickName;
 	private String cusGender;
 	private Date cusBirthday;
 	private String cusEmail;
@@ -23,12 +24,13 @@ public class MemberBean implements Serializable {
 	public MemberBean() {
 	}
 
-	public MemberBean(String cusAccount, String cusPassword, String cusName, String cusGender, Date cusBirthday,
-			String cusEmail, String cusTel, String cusAddress, Blob cusPhoto, String cusFileName) {
+	public MemberBean(String cusAccount, String cusPassword, String cusName, String cusNickName, String cusGender,
+			Date cusBirthday, String cusEmail, String cusTel, String cusAddress, Blob cusPhoto, String cusFileName) {
 		super();
 		this.cusAccount = cusAccount;
 		this.cusPassword = cusPassword;
 		this.cusName = cusName;
+		this.cusNickName = cusNickName;
 		this.cusGender = cusGender;
 		this.cusBirthday = cusBirthday;
 		this.cusEmail = cusEmail;
@@ -60,6 +62,14 @@ public class MemberBean implements Serializable {
 
 	public void setCusName(String cusName) {
 		this.cusName = cusName;
+	}
+	
+	public String getCusNickName() {
+		return cusNickName;
+	}
+
+	public void setCusNickName(String cusNickName) {
+		this.cusNickName = cusNickName;
 	}
 
 	public String getCusGender() {

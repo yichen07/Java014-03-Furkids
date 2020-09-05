@@ -1,32 +1,35 @@
 package _01_Member.Registration.model;
 
 import java.io.Serializable;
+import java.sql.Blob;
 
 public class MerchantChildBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	private String busAccount;
-	private Integer busChildNo;
-	private String busName;
+	private Integer busChildNo;		// Auto_Increment 自增欄位。
+	private String busChildName;
 	private String busTel;
 	private String busAddress;
 	private String busDescription;
-	private String busPhoto;
+	private Blob busChildPhoto;
+	private String busChildFileName;
 
 	public MerchantChildBean() {
 	}
 
-	public MerchantChildBean(String busAccount, Integer busChildNo, String busName, String busTel, String busAddress,
-			String busDescription, String busPhoto) {
+	public MerchantChildBean(String busAccount, Integer busChildNo, String busChildName, String busTel,
+			String busAddress, String busDescription, Blob busChildPhoto, String busChildFileName) {
 		super();
 		this.busAccount = busAccount;
 		this.busChildNo = busChildNo;
-		this.busName = busName;
+		this.busChildName = busChildName;
 		this.busTel = busTel;
 		this.busAddress = busAddress;
 		this.busDescription = busDescription;
-		this.busPhoto = busPhoto;
+		this.busChildPhoto = busChildPhoto;
+		this.busChildFileName = busChildFileName;
 	}
 
 	public String getBusAccount() {
@@ -45,12 +48,12 @@ public class MerchantChildBean implements Serializable {
 		this.busChildNo = busChildNo;
 	}
 
-	public String getBusName() {
-		return busName;
+	public String getBusChildName() {
+		return busChildName;
 	}
 
-	public void setBusName(String busName) {
-		this.busName = busName;
+	public void setBusChildName(String busChildName) {
+		this.busChildName = busChildName;
 	}
 
 	public String getBusTel() {
@@ -77,16 +80,20 @@ public class MerchantChildBean implements Serializable {
 		this.busDescription = busDescription;
 	}
 
-	public String getBusPhoto() {
-		return busPhoto;
+	public Blob getBusChildPhoto() {
+		return busChildPhoto;
 	}
 
-	public void setBusPhoto(String busPhoto) {
-		this.busPhoto = busPhoto;
+	public void setBusChildPhoto(Blob busChildPhoto) {
+		this.busChildPhoto = busChildPhoto;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getBusChildFileName() {
+		return busChildFileName;
+	}
+
+	public void setBusChildFileName(String busChildFileName) {
+		this.busChildFileName = busChildFileName;
 	}
 	
 }

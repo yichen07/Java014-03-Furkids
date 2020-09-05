@@ -57,12 +57,14 @@ public class MemberRegisterServlet extends HttpServlet {
 		String cusPassword = "";
 		String confirmPassword = "";
 		String cusName = "";
+		String cusNickName = "";
 		String cusGender = "";
 		Date cusBirthday = null;
 		String bDay = "";
 		String cusEmail = "";
 		String cusTel = "";
 		String cusAddress = "";
+		Blob cusPhoto = null;
 		String cusFileName = "";
 
 		long sizeInBytes = 0;
@@ -85,6 +87,8 @@ public class MemberRegisterServlet extends HttpServlet {
 					} else if (fldName.equals("confirmPassword")) {
 						confirmPassword = value;
 					} else if (fldName.equals("cusName")) {
+						cusName = value;
+					} else if (fldName.equals("cusNickName")) {
 						cusName = value;
 					} else if (fldName.equals("cusGender")) {
 						cusGender = value;
@@ -152,9 +156,6 @@ public class MemberRegisterServlet extends HttpServlet {
 			if (cusAddress == null || cusAddress.trim().length() == 0) {
 				errorMsg.put("errorAddr", "地址欄必須輸入");
 			}
-			if (cusTel == null || cusTel.trim().length() == 0) {
-				errorMsg.put("errorTel", "電話號碼欄必須輸入");
-			}
 		} else {
 			errorMsg.put("errTitle", "此表單不是上傳檔案的表單");
 		}
@@ -176,8 +177,8 @@ public class MemberRegisterServlet extends HttpServlet {
 		}
 		
 		try {
-			// 4. 產生MemberDao物件，以便進行Business Logic運算
-			// MemberDaoImpl_Jdbc類別的功能：
+			// 4. 產生MemberDao與MerchantDao物件，以便進行Business Logic運算
+			// MemberDaoImpl_Jdbc與MerchantDaoImpl_Jdbc類別的功能：
 			// 1.檢查帳號是否已經存在，已存在的帳號不能使用，回傳相關訊息通知使用者修改
 			// 2.若無問題，儲存會員的資料
 			MemberService service = new MemberServiceImpl();
@@ -191,12 +192,12 @@ public class MemberRegisterServlet extends HttpServlet {
 				cusPassword = GlobalService.getMD5Endocing(GlobalService.encryptString(cusPassword));
 //				Timestamp ts = new java.sql.Timestamp(System.currentTimeMillis()); // 當下註冊時間。
 //				cusBirthday = java.sql.Date.valueOf(bDay);
-				Blob blob = null;
+				
 				if (is != null) {
-					blob = GlobalService.fileToBlob(is, sizeInBytes);
+					cusPhoto = GlobalService.fileToBlob(is, sizeInBytes);
 				}
 				// 將所有會員資料封裝到MemberBean(類別的)物件
-				MemberBean mem = new MemberBean(cusAccount, cusPassword, cusName, cusGender, cusBirthday, cusEmail, cusTel, cusAddress, blob, cusFileName);
+				MemberBean mem = new MemberBean(cusAccount, cusPassword, cusName, cusNickName, cusGender, cusBirthday, cusEmail, cusTel, cusAddress, cusPhoto, cusFileName);
 				// 呼叫MemberDao的saveMember方法
 				int n = service.saveMember(mem);
 				if (n == 1) {

@@ -33,8 +33,8 @@ public class MerchantDaoImpl_Jdbc implements MerchantDao {
 	@Override
 	public int saveMerchant(MerchantBean mb) {
 		String sql = "INSERT INTO MerchantRegistration "
-				+ " (busAccount, busPassword, busEmail) "
-				+ " VALUES (?,?,?)";
+				+ " (busAccount, busPassword, busName, busEmail, busPhoto, busFileName) "
+				+ " VALUES (?,?,?,?,?,?)";
 		int n = 0;
 		try (
 				Connection con = ds.getConnection();
@@ -42,7 +42,10 @@ public class MerchantDaoImpl_Jdbc implements MerchantDao {
 		){
 			ps.setString(1, mb.getBusAccount());
 			ps.setString(2, mb.getBusPassword());
-			ps.setString(3, mb.getBusEmail());
+			ps.setString(3, mb.getBusName());
+			ps.setString(4, mb.getBusEmail());
+			ps.setBlob(5, mb.getBusPhoto());
+			ps.setString(6, mb.getBusFileName());
 			
 			n = ps.executeUpdate();
 		} catch (Exception e) {
@@ -53,7 +56,7 @@ public class MerchantDaoImpl_Jdbc implements MerchantDao {
 		return n;
 	}
 
-	// 判斷參數BusAccount(商家帳號)是否已經被現有商家使用，
+	// 判斷參數BusAccount(商家帳號)是否已經被現有會員或商家使用，
 	// 如果是，傳回true，表示此BusAccount(商家帳號)不能使用，
 	// 否則傳回false，表示此BusAccount(商家帳號)可使用。
 	@Override
@@ -78,8 +81,8 @@ public class MerchantDaoImpl_Jdbc implements MerchantDao {
 		return exist;
 	}
 
-	// 由參數BusAccount(商家帳號)到MerchantRegistration表格中取得某個會員的所有資料，
-	// 傳回值為一個MerchantBean的物件；如果找不到對應的會員資料，傳回值為null。
+	// 由參數BusAccount(商家帳號)到MerchantRegistration表格中取得某個商家的所有資料，
+	// 傳回值為一個MerchantBean的物件；如果找不到對應的商家資料，傳回值為null。
 	@Override
 	public MerchantBean queryMerchant(String account) {
 		MerchantBean mb = null;
@@ -94,7 +97,10 @@ public class MerchantDaoImpl_Jdbc implements MerchantDao {
 					mb = new MerchantBean();
 					mb.setBusAccount(rs.getString("busAccount"));
 					mb.setBusPassword(rs.getString("busPassword"));
+					mb.setBusName(rs.getString("busName"));
 					mb.setBusEmail(rs.getString("busEmail"));
+					mb.setBusPhoto(rs.getBlob("busPhoto"));
+					mb.setBusFileName(rs.getString("busFileName"));
 				}
 			}
 		} catch (Exception e) {
@@ -122,7 +128,10 @@ public class MerchantDaoImpl_Jdbc implements MerchantDao {
 					mb = new MerchantBean();
 					mb.setBusAccount(rs.getString("busAccount"));
 					mb.setBusPassword(rs.getString("busPassword"));
+					mb.setBusName(rs.getString("busName"));
 					mb.setBusEmail(rs.getString("busEmail"));
+					mb.setBusPhoto(rs.getBlob("busPhoto"));
+					mb.setBusFileName(rs.getString("busFileName"));
 				}
 			}
 		} catch (Exception e) {

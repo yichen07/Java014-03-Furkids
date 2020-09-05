@@ -1,5 +1,14 @@
 package _01_Member.Registration.dao;
 
-public interface MerchantChildDao {
+import java.sql.Connection;
 
+import _01_Member.Registration.model.MerchantChildBean;
+
+public interface MerchantChildDao {
+	
+	public int saveMerchantChild(MerchantChildBean mb);
+	
+	public MerchantChildBean queryMerchantChild(String account);
+	
+	public void setConnection(Connection con);
 }
