@@ -195,9 +195,9 @@ public class PetRegisterServlet extends HttpServlet {
 				if (is != null) {
 					blob = GlobalService.fileToBlob(is, sizeInBytes);
 				}
-				String cusNickName = "";
+				
 				// 將所有會員資料封裝到MemberBean(類別的)物件
-				MemberBean mem = new MemberBean(cusAccount, cusPassword, cusName, cusNickName, cusGender, cusBirthday, cusEmail, cusTel, cusAddress, blob, cusFileName);
+				MemberBean mem = new MemberBean(cusAccount, cusPassword, cusName, cusGender, cusBirthday, cusEmail, cusTel, cusAddress, blob, cusFileName);
 				// 呼叫MemberDao的saveMember方法
 				int n = service.saveMember(mem);
 				if (n == 1) {
