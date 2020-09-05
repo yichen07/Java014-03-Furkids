@@ -10,24 +10,24 @@ public class MerchantChildBean implements Serializable {
 	private String busAccount;
 	private Integer busChildNo;		// Auto_Increment 自增欄位。
 	private String busChildName;
-	private String busTel;
-	private String busAddress;
-	private String busDescription;
+	private String busChildTel;
+	private String busChildAddress;
+	private String busChildDescription;
 	private Blob busChildPhoto;
 	private String busChildFileName;
 
 	public MerchantChildBean() {
 	}
 
-	public MerchantChildBean(String busAccount, Integer busChildNo, String busChildName, String busTel,
-			String busAddress, String busDescription, Blob busChildPhoto, String busChildFileName) {
+	public MerchantChildBean(String busAccount, Integer busChildNo, String busChildName, String busChildTel,
+			String busChildAddress, String busChildDescription, Blob busChildPhoto, String busChildFileName) {
 		super();
 		this.busAccount = busAccount;
 		this.busChildNo = busChildNo;
 		this.busChildName = busChildName;
-		this.busTel = busTel;
-		this.busAddress = busAddress;
-		this.busDescription = busDescription;
+		this.busChildTel = busChildTel;
+		this.busChildAddress = busChildAddress;
+		this.busChildDescription = busChildDescription;
 		this.busChildPhoto = busChildPhoto;
 		this.busChildFileName = busChildFileName;
 	}
@@ -56,28 +56,28 @@ public class MerchantChildBean implements Serializable {
 		this.busChildName = busChildName;
 	}
 
-	public String getBusTel() {
-		return busTel;
+	public String getBusChildTel() {
+		return busChildTel;
 	}
 
-	public void setBusTel(String busTel) {
-		this.busTel = busTel;
+	public void setBusChildTel(String busChildTel) {
+		this.busChildTel = busChildTel;
 	}
 
-	public String getBusAddress() {
-		return busAddress;
+	public String getBusChildAddress() {
+		return busChildAddress;
 	}
 
-	public void setBusAddress(String busAddress) {
-		this.busAddress = busAddress;
+	public void setBusChildAddress(String busChildAddress) {
+		this.busChildAddress = busChildAddress;
 	}
 
-	public String getBusDescription() {
-		return busDescription;
+	public String getBusChildDescription() {
+		return busChildDescription;
 	}
 
-	public void setBusDescription(String busDescription) {
-		this.busDescription = busDescription;
+	public void setBusChildDescription(String busChildDescription) {
+		this.busChildDescription = busChildDescription;
 	}
 
 	public Blob getBusChildPhoto() {

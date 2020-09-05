@@ -56,21 +56,17 @@ public class MerchantRegisterServlet extends HttpServlet {
 		session.setAttribute("MsgOK", msgOK); 		// 顯示正常訊息
 
 		String busAccount = "";
-		Integer busChildNo = null;			// Auto_Increment 自增欄位。
 		String busPassword = "";
 		String confirmPassword = "";
 		String busName = "";
 		String busEmail = "";
-		Blob busPhoto = null;
-		String busFileName = "";
-		
-		String busChildName = "";			//	在此處不需要，在"新增分店"時才需要。
 		String busTel = "";
 		String busAddress = "";
 		String busDescription = "";			
-		Blob busChildPhoto = null;			//	在此處不需要，在"新增分店"時才需要。
-		String busChildFileName = "";	//	在此處不需要，在"新增分店"時才需要。
-
+		Blob busPhoto = null;
+		String busFileName = "";
+		
+		
 		long sizeInBytes = 0;
 		InputStream is = null;
 		// 取出HTTP multipart request內所有的parts
@@ -190,12 +186,11 @@ public class MerchantRegisterServlet extends HttpServlet {
 					busPhoto = GlobalService.fileToBlob(is, sizeInBytes);
 				}
 				// 將所有會員資料封裝到MerchantBean與MerchantChildBean(類別的)與物件
-				MerchantBean mb = new MerchantBean(busAccount, busPassword, busName, busEmail, busPhoto, busFileName);
-				MerchantChildBean mcb = new MerchantChildBean(busAccount, busChildNo, busChildName, busTel, busAddress, busDescription, busChildPhoto, busChildFileName);
+				MerchantBean mb = new MerchantBean(busAccount, busPassword, busName, busEmail, busTel, busAddress, busDescription, busPhoto, busFileName);
 				// 呼叫MemberDao的saveMember方法
-				int n1 = service2.saveMerchant(mb);
-				int n2 = service2.saveMerchantChild(mcb);
-				if (n1 == 1 && n2 == 1) {
+				int n = service2.saveMerchant(mb);
+
+				if (n == 1) {
 					msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
 					response.sendRedirect("/java014_03_FurKids/_01_Member/SuccessRegistration.jsp");
 					return;

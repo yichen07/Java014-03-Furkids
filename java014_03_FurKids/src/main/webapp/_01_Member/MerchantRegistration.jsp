@@ -216,7 +216,7 @@ function setFocusToUserId(){
       		<label class="fontSize" >商家描述：</label><br>&nbsp;
       	</td>
       	<td>	
-      		<textarea name="busDescription" class="fieldWidth" style="width: 200px;height:100px"></textarea>&nbsp;
+      		<textarea name="busDescription" value="${param.busDescription}" class="fieldWidth" style="width: 200px;height:100px"></textarea>&nbsp;
       	</td>
      </tr>
      

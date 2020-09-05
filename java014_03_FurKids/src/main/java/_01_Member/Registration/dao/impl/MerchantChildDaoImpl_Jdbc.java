@@ -32,7 +32,7 @@ public class MerchantChildDaoImpl_Jdbc implements MerchantChildDao {
 	@Override
 	public int saveMerchantChild(MerchantChildBean mb) {
 		String sql = "INSERT INTO MerchantChildRegistration "
-				+ " (busAccount, busChildName, busTel, busAddress, busDescription, busChildPhoto, busChildFileName) "
+				+ " (busAccount, busChildName, busChildTel, busChildAddress, busChildDescription, busChildPhoto, busChildFileName) "
 				+ " VALUES (?,?,?,?,?,?,?)";
 		int n = 0;
 		try (
@@ -41,9 +41,9 @@ public class MerchantChildDaoImpl_Jdbc implements MerchantChildDao {
 		){
 			ps.setString(1, mb.getBusAccount());
 			ps.setString(2, mb.getBusChildName());
-			ps.setString(3, mb.getBusTel());
-			ps.setString(4, mb.getBusAddress());
-			ps.setString(5, mb.getBusDescription());
+			ps.setString(3, mb.getBusChildTel());
+			ps.setString(4, mb.getBusChildAddress());
+			ps.setString(5, mb.getBusChildDescription());
 			ps.setBlob(6, mb.getBusChildPhoto());
 			ps.setString(7, mb.getBusChildFileName());
 			
@@ -72,9 +72,9 @@ public class MerchantChildDaoImpl_Jdbc implements MerchantChildDao {
 					mb = new MerchantChildBean();
 					mb.setBusAccount(rs.getString("busAccount"));
 					mb.setBusChildName(rs.getString("busChildName"));
-					mb.setBusTel(rs.getString("busTel"));
-					mb.setBusAddress(rs.getString("busAddress"));
-					mb.setBusDescription(rs.getString("busDescription"));
+					mb.setBusChildTel(rs.getString("busChildTel"));
+					mb.setBusChildAddress(rs.getString("busChildAddress"));
+					mb.setBusChildDescription(rs.getString("busChildDescription"));
 					mb.setBusChildPhoto(rs.getBlob("busChildPhoto"));
 					mb.setBusChildFileName(rs.getString("busChildFileName"));
 				}

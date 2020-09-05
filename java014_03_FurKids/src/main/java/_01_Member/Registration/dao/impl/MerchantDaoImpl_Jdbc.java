@@ -33,8 +33,8 @@ public class MerchantDaoImpl_Jdbc implements MerchantDao {
 	@Override
 	public int saveMerchant(MerchantBean mb) {
 		String sql = "INSERT INTO MerchantRegistration "
-				+ " (busAccount, busPassword, busName, busEmail, busPhoto, busFileName) "
-				+ " VALUES (?,?,?,?,?,?)";
+				+ " (busAccount, busPassword, busName, busEmail, busTel, busAddress, busDescription, busPhoto, busFileName) "
+				+ " VALUES (?,?,?,?,?,?,?,?,?)";
 		int n = 0;
 		try (
 				Connection con = ds.getConnection();
@@ -44,8 +44,11 @@ public class MerchantDaoImpl_Jdbc implements MerchantDao {
 			ps.setString(2, mb.getBusPassword());
 			ps.setString(3, mb.getBusName());
 			ps.setString(4, mb.getBusEmail());
-			ps.setBlob(5, mb.getBusPhoto());
-			ps.setString(6, mb.getBusFileName());
+			ps.setString(5, mb.getBusTel());
+			ps.setString(6, mb.getBusAddress());
+			ps.setString(7, mb.getBusDescription());
+			ps.setBlob(8, mb.getBusPhoto());
+			ps.setString(9, mb.getBusFileName());
 			
 			n = ps.executeUpdate();
 		} catch (Exception e) {
@@ -99,6 +102,9 @@ public class MerchantDaoImpl_Jdbc implements MerchantDao {
 					mb.setBusPassword(rs.getString("busPassword"));
 					mb.setBusName(rs.getString("busName"));
 					mb.setBusEmail(rs.getString("busEmail"));
+					mb.setBusTel(rs.getString("busTel"));
+					mb.setBusAddress(rs.getString("busAddress"));
+					mb.setBusDescription(rs.getString("busDescription"));
 					mb.setBusPhoto(rs.getBlob("busPhoto"));
 					mb.setBusFileName(rs.getString("busFileName"));
 				}
@@ -130,6 +136,9 @@ public class MerchantDaoImpl_Jdbc implements MerchantDao {
 					mb.setBusPassword(rs.getString("busPassword"));
 					mb.setBusName(rs.getString("busName"));
 					mb.setBusEmail(rs.getString("busEmail"));
+					mb.setBusTel(rs.getString("busTel"));
+					mb.setBusAddress(rs.getString("busAddress"));
+					mb.setBusDescription(rs.getString("busDescription"));
 					mb.setBusPhoto(rs.getBlob("busPhoto"));
 					mb.setBusFileName(rs.getString("busFileName"));
 				}
