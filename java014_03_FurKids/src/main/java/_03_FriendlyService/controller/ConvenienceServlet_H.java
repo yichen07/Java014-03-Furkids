@@ -31,24 +31,8 @@ public class ConvenienceServlet_H extends HttpServlet {
 //		mb.getMemberId()
 		
 		String userId = "pilimou";
-//		SessionFactory factory = HibernateUtils.getSessionFactory();
-//		Session session = factory.getCurrentSession();
-//		MemRegBean memregbean;
-//		Transaction tx = null;
-//		try {
-//			tx = session.beginTransaction();
-//			memregbean = session.get(MemRegBean.class, userId);
-//			tx.commit();
-//		} catch(Exception ex) {
-//			if(ex != null) {
-//				tx.rollback();
-//			}
-//			throw new RuntimeException(ex);			
-//		}
-//		request.setAttribute("mb",memregbean);
-		
-		
-		//ConvenienceService介面定義方法，ConvenienceHibernateServiceImpl實作
+
+
 		ConvenienceService service = new ConvenienceHibernateServiceImpl();
 		List<ConvenienceBean_H> cb = service.getAllConvenience(userId);
 		List<MerchantChildBean> mb = service.getNotConvenience(userId);

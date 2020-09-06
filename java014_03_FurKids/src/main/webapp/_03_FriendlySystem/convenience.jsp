@@ -12,35 +12,33 @@
 <title>預約上架</title>
 </head>
 <body>
-	<c:forEach var="Convenience" items="${AllConvenience}">
-		<div style='width: 200px;  border: 1px solid; margin: 2px; float: left'>
-			<table style='text-align: center'>
-				<tr><td>${Convenience.busAccount}		
-				<img height='100' width='180' class="img-responsive center-block"
-     src='${pageContext.servletContext.contextPath}/_03_/FriendlyService/getBusChildImage?busChildNo=${Convenience.busChildNo}' />
-				</td></tr>
-				<tr><td>${Convenience.merchantChildBean.busChildName}</td></tr>
-				
-				<tr><td>${Convenience.conItem}</td></tr>
-				
-				<tr><td>${Convenience.conItemList}</td></tr>
-				
-				<tr><td>${Convenience.conCloseDay}</td></tr>
-				
-				<tr><td>${Convenience.conOpenTime}</td></tr>
-				
-				<tr><td>${Convenience.conCloseTime}</td></tr>
-						
-				<tr><td>${Convenience.merchantChildBean.busChildTel}</td></tr>
-				
-				<tr><td>${Convenience.merchantChildBean.busChildAddress}</td></tr>
-				
-				<tr><td>${Convenience.merchantChildBean.busChildDescription}</td></tr>
-				
-				<tr><td>${Convenience.merchantChildBean.merchantbean.busEmail}</td></tr>
-			</table>
-		</div>
-	</c:forEach>
+	
+
+<div class="card-deck w-50">
+<c:forEach var="Convenience" items="${AllConvenience}">
+	<div class="card bg-light mb-3 border-dark con" style="width: 18rem;z-index:0;">
+  		<img src="${pageContext.servletContext.contextPath}/_03_/FriendlyService/getBusChildImage?busChildNo=${Convenience.busChildNo}" style="width: 100%;
+    height: 200px;" class="card-img-top" alt="...">
+  			<h5 class="card-header text-center">${Convenience.merchantChildBean.busChildName}</h5>
+		<ul class="list-group list-group-flush text-center">
+<%--     		<li class="list-group-item">${Convenience.merchantChildBean.busChildName}</li> --%>
+    		<li class="list-group-item">${Convenience.conItem}</li>
+    		<li class="list-group-item">${Convenience.conItemList}</li>
+    		<li class="list-group-item">${Convenience.merchantChildBean.busChildAddress}</li>
+    		<li class="list-group-item" style="display:none;">${Convenience.conCloseDay}</li>
+    		<li class="list-group-item" style="display:none;">${Convenience.conOpenTime}</li>
+    		<li class="list-group-item" style="display:none;">${Convenience.conCloseTime}</li>
+    		<li class="list-group-item" style="display:none;">${Convenience.merchantChildBean.busChildTel}</li>
+    		<li class="list-group-item" style="display:none;">${Convenience.merchantChildBean.merchantbean.busEmail}</li>
+    		<li class="list-group-item" style="display:none;"><p class="card-text">${Convenience.merchantChildBean.busChildDescription}</p></li>    		
+		</ul>
+		<div class="card-body text-center">
+    		<a href="#" class="detail">詳細內容</a>
+    		<a href="#" class="card-link">刪除</a>
+  		</div>
+	</div>
+</c:forEach>
+</div>
 
 
 
@@ -96,7 +94,7 @@
 	</div>
 		
 
-
+<input type="button" onclick='show()'>
 
 
 
