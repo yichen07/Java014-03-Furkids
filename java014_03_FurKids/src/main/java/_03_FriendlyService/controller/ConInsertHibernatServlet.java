@@ -27,7 +27,7 @@ public class ConInsertHibernatServlet extends HttpServlet {
 		String convenience = request.getParameter("convenience");
 		String busChildNo = request.getParameter("busChildNo");
 		String convenienceList = request.getParameter("conveniencelist");
-		String condCloseDay = request.getParameter("condcloseday");
+		String condCloseDay = request.getParameter("concloseday");
 		String conOpenTime = request.getParameter("conopentime");
 		String conCloseTime = request.getParameter("conclosetime");
 		
