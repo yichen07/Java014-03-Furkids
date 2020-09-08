@@ -11,7 +11,9 @@ public interface ConvenienceDao {
 	void insert(ConvenienceBean_H cb);
 
 	void update(ConvenienceBean_H cb);
-
+	
+	void update(MerchantChildBean mb);
+	
 	void delete(ConvenienceBean_H cb);
 	
 	List<ConvenienceBean_H> getAllRestaurants();

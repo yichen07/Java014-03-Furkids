@@ -59,6 +59,23 @@ public class ConvenienceHibernateServiceImpl implements ConvenienceService{
 			throw new RuntimeException(ex);			
 		}
 	}
+	
+	@Override
+	public void update(MerchantChildBean mb) {
+		Session session = factory.getCurrentSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			cnDao.update(mb);
+			tx.commit();
+		} catch(Exception ex) {
+			if(ex != null) {
+				tx.rollback();
+			}
+			throw new RuntimeException(ex);			
+		}
+		
+	}
 
 	@Override
 	public void delete(ConvenienceBean_H cb) {
@@ -151,5 +168,7 @@ public class ConvenienceHibernateServiceImpl implements ConvenienceService{
 		}
 		return bean;
 	}
+
+	
 
 }

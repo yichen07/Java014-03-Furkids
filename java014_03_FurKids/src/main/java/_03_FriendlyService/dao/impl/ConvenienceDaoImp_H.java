@@ -34,6 +34,13 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 		Session session = factory.getCurrentSession();
 		session.merge(cb);
 	}
+	
+	@Override
+	public void update(MerchantChildBean mb) {
+		Session session = factory.getCurrentSession();
+		session.merge(mb);
+		
+	}
 
 	@Override
 	public void delete(ConvenienceBean_H cb) {
@@ -94,6 +101,8 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 		bean = session.get(MerchantChildBean.class, busChildNo);
 		return bean;
 	}
+
+	
 	
 	
 

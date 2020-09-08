@@ -61,6 +61,7 @@
 										</ul>
 									</div>
 									<div class="modal-footer">
+									<button type="submit" class="btn btn-danger">刪除</button>
 										<button type="button" class="btn btn-secondary"
 											data-dismiss="modal">Close</button>
 									</div>
@@ -85,16 +86,19 @@
 			aria-expanded="false">新增服務</button>
 		<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 			<c:forEach var="NoConvenience" items="${NotConvenience}">
-
 				<button name="submit1" value="${NoConvenience.busChildName}"
 					class="dropdown-item btn" type="button" data-toggle="modal"
-					data-target="#${NoConvenience.busChildName}">${NoConvenience.busChildName}</button>
+					data-target="#${NoConvenience.busChildName}1">${NoConvenience.busChildName}</button>
 			</c:forEach>
 		</div>
 	</div>
-	<!-- Modal -->
+
+
+
+
+	<!-- 	Modal -->
 	<c:forEach var="NoConvenience" items="${NotConvenience}">
-		<div class="modal fade" id="${NoConvenience.busChildName}"
+		<div class="modal fade" id="${NoConvenience.busChildName}1"
 			tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 			aria-hidden="true">
 			<div class="modal-dialog" role="document">
@@ -106,42 +110,42 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body">
-						<form>
-							<input type="text" class="form-control" id="busChildNo"
+					<FORM action="<c:url value='/_03_ConvenienceProcess/ConInsert.do' />" method="POST">
+						<div class="modal-body">
+							<input type="text" class="form-control" name="busChildNo"
 								value="${NoConvenience.busChildNo}" style="display: none;">
 							<div class="form-group">
 								<label for="recipient-name" class="col-form-label">服務種類:</label>
-								<input type="text" class="form-control" id="convenience">
+								<input type="text" class="form-control" name="convenience">
 							</div>
 							<div class="form-group">
 								<label for="recipient-name" class="col-form-label">服務項目:</label>
-								<input type="text" class="form-control" id="conveniencelist">
+								<input type="text" class="form-control" name="conveniencelist">
 							</div>
 							<div class="form-group">
 								<label for="recipient-name" class="col-form-label">公休日:</label>
-								<input type="text" class="form-control" id="concloseday">
+								<input type="text" class="form-control" name="concloseday">
 							</div>
 							<div class="form-group">
 								<label for="recipient-name" class="col-form-label">開始營業時間:</label>
-								<input type="text" class="form-control" id="conopentime">
+								<input type="text" class="form-control" name="conopentime">
 							</div>
 							<div class="form-group">
 								<label for="recipient-name" class="col-form-label">結束營業時間:</label>
-								<input type="text" class="form-control" id="conclosetime">
+								<input type="text" class="form-control" name="conclosetime">
 							</div>
 							<div class="form-group">
 								<label for="message-text" class="col-form-label">備註:</label>
-								<textarea class="form-control" id="message-text"></textarea>
+								<textarea class="form-control" name="buschilddescription"></textarea>
 							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Send
-							message</button>
-					</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Close</button>
+								<button type="submit" class="btn btn-primary">Save
+									changes</button>
+							</div>
+						</div>
+					</FORM>
 				</div>
 			</div>
 		</div>
@@ -155,13 +159,6 @@
 
 
 
-
-
-
-
-
-
-	
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
