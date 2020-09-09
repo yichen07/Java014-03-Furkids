@@ -6,7 +6,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>商家註冊</title>
+<title>商家新增分店</title>
 <style type="text/css">
 span.error {
 	color: red;
@@ -132,7 +132,7 @@ function setFocusToUserId(){
 	
 	<tr height="36" >
 		<td colspan='4' style="text-align: center; vertical-align: middle;">
-        	<Font color="#006600" size='5' face="標楷體">商家註冊</Font>
+        	<Font color="#006600" size='5' face="標楷體">商家分店新增</Font>
 		</td>
 	</tr>
 	                    

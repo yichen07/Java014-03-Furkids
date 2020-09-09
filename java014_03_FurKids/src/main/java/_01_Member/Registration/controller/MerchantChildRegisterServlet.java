@@ -23,19 +23,18 @@ import javax.servlet.http.Part;
 
 import _00_Init.util.GlobalService;
 import _01_Member.Registration.model.MemberBean;
-import _01_Member.Registration.model.PetBean;
+import _01_Member.Registration.model.MerchantBean;
+import _01_Member.Registration.model.MerchantChildBean;
 import _01_Member.Registration.service.MemberService;
 import _01_Member.Registration.service.MerchantService;
-import _01_Member.Registration.service.PetService;
 import _01_Member.Registration.service.Impl.MemberServiceImpl;
 import _01_Member.Registration.service.Impl.MerchantServiceImpl;
-import _01_Member.Registration.service.Impl.PetServiceImpl;
 
 @MultipartConfig(location = "", fileSizeThreshold = 5 * 1024 * 1024, maxFileSize = 1024 * 1024
 		* 500, maxRequestSize = 1024 * 1024 * 500 * 5)
 
-@WebServlet("/_01_Member/Registration/Pet")
-public class PetRegisterServlet extends HttpServlet {
+@WebServlet("/_01_Member/Registration/MerchantChild")
+public class MerchantChildRegisterServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -53,21 +52,21 @@ public class PetRegisterServlet extends HttpServlet {
 		// 註冊成功後將用response.sendRedirect()導向新的畫面，所以需要
 		// session物件來存放共用資料。
 		HttpSession session = request.getSession();
-		request.setAttribute("MsgMap", errorMsg); // 顯示錯誤訊息
-		session.setAttribute("MsgOK", msgOK); // 顯示正常訊息
+		request.setAttribute("MsgMap", errorMsg); 	// 顯示錯誤訊息
+		session.setAttribute("MsgOK", msgOK); 		// 顯示正常訊息
 
-		String cusAccount = "";
-		String cusPassword = "";
+		String busAccount = "";
+		String busPassword = "";
 		String confirmPassword = "";
-		String cusName = "";
-		String cusGender = "";
-		Date cusBirthday = null;
-		String bDay = "";
-		String cusEmail = "";
-		String cusTel = "";
-		String cusAddress = "";
-		String cusFileName = "";
-
+		String busName = "";
+		String busEmail = "";
+		String busTel = "";
+		String busAddress = "";
+		String busDescription = "";			
+		Blob busPhoto = null;
+		String busFileName = "";
+		
+		
 		long sizeInBytes = 0;
 		InputStream is = null;
 		// 取出HTTP multipart request內所有的parts
@@ -81,31 +80,29 @@ public class PetRegisterServlet extends HttpServlet {
 
 		// 1. 讀取使用者輸入資料
 				if (p.getContentType() == null) {
-					if (fldName.equals("cusAccount")) {
-						cusAccount = value;
-					} else if (fldName.equals("cusPassword")) {
-						cusPassword = value;
+					if (fldName.equals("busAccount")) {
+						busAccount = value;
+					} else if (fldName.equals("busPassword")) {
+						busPassword = value;
 					} else if (fldName.equals("confirmPassword")) {
 						confirmPassword = value;
-					} else if (fldName.equals("cusName")) {
-						cusName = value;
-					} else if (fldName.equals("cusGender")) {
-						cusGender = value;
-					} else if (fldName.equals("bDay")) {
-						bDay = value;
-					} else if (fldName.equals("cusEmail")) {
-						cusEmail = value;
-					} else if (fldName.equals("cusTel")) {
-						cusTel = value;
-					} else if (fldName.equals("cusAddress")) {
-						cusAddress = value;
+					} else if (fldName.equals("busName")) {
+						busName = value;
+					} else if (fldName.equals("busEmail")) {
+						busEmail = value;
+					} else if (fldName.equals("busTel")) {
+						busTel = value;
+					} else if (fldName.equals("busAddress")) {
+						busAddress = value;
+					} else if (fldName.equals("busDescription")) {
+						busDescription = value;
 					}
 				} else {
 					// 取出圖片檔的檔名
-					cusFileName = GlobalService.getFileName(p);
+					busFileName = GlobalService.getFileName(p);
 					// 調整圖片檔檔名的長度，需要檔名中的附檔名，所以調整主檔名以免檔名太長無法寫入表格
-					cusFileName = GlobalService.adjustFileName(cusFileName, GlobalService.IMAGE_FILENAME_LENGTH);
-					if (cusFileName != null && cusFileName.trim().length() > 0) {
+					busFileName = GlobalService.adjustFileName(busFileName, GlobalService.IMAGE_FILENAME_LENGTH);
+					if (busFileName != null && busFileName.trim().length() > 0) {
 						sizeInBytes = p.getSize();
 						is = p.getInputStream();
 					} else {
@@ -118,45 +115,35 @@ public class PetRegisterServlet extends HttpServlet {
 			// (無)
 			
 	// 3. 檢查使用者輸入資料
-			if (cusAccount == null || cusAccount.trim().length() == 0) {
+			if (busAccount == null || busAccount.trim().length() == 0) {
 				errorMsg.put("errorIdEmpty", "帳號欄必須輸入");
 			}
-			if (cusPassword == null || cusPassword.trim().length() == 0) {
+			if (busPassword == null || busPassword.trim().length() == 0) {
 				errorMsg.put("errorPasswordEmpty", "密碼欄必須輸入");
 			}
 			if (confirmPassword == null || confirmPassword.trim().length() == 0) {
 				errorMsg.put("errorPassword1Empty", "密碼確認欄必須輸入");
 			}
-			if (cusPassword.trim().length() > 0 && confirmPassword.trim().length() > 0) {
-				if (!cusPassword.trim().equals(confirmPassword.trim())) {
+			if (busPassword.trim().length() > 0 && confirmPassword.trim().length() > 0) {
+				if (!busPassword.trim().equals(confirmPassword.trim())) {
 					errorMsg.put("errorPassword1Empty", "密碼欄必須與確認欄一致");
 					errorMsg.put("errorPasswordEmpty", "*");
 				}
 			}
-
-			if (cusName == null || cusName.trim().length() == 0) {
-				errorMsg.put("errorName", "姓名欄必須輸入");
+			
+			if (busName == null || busName.trim().length() == 0) {
+				errorMsg.put("errorName", "商店名欄必須輸入");
 			}
 			
-			// 檢查使用者所輸入的資料(生日)
-			if (bDay != null && bDay.trim().length() > 0) {
-				try {
-					cusBirthday = java.sql.Date.valueOf(bDay);
-				} catch (IllegalArgumentException e) {
-					errorMsg.put("bDay", "生日欄格式錯誤");
-				}
+			if (busEmail == null || busEmail.trim().length() == 0) {
+					errorMsg.put("errorEmail", "電子郵件欄必須輸入");
 			}
-			if (cusEmail == null || cusEmail.trim().length() == 0) {
-				errorMsg.put("errorEmail", "電子郵件欄必須輸入");
-			}
-			if (cusTel == null || cusTel.trim().length() == 0) {
+			
+			if (busTel == null || busTel.trim().length() == 0) {
 				errorMsg.put("errorTel", "電話號碼欄必須輸入");
 			}
-			if (cusAddress == null || cusAddress.trim().length() == 0) {
+			if (busAddress == null || busAddress.trim().length() == 0) {
 				errorMsg.put("errorAddr", "地址欄必須輸入");
-			}
-			if (cusTel == null || cusTel.trim().length() == 0) {
-				errorMsg.put("errorTel", "電話號碼欄必須輸入");
 			}
 		} else {
 			errorMsg.put("errTitle", "此表單不是上傳檔案的表單");
@@ -165,7 +152,7 @@ public class PetRegisterServlet extends HttpServlet {
 		// 如果密碼輸入格式有錯誤
 		if (errorMsg.isEmpty()) {
 			pattern = Pattern.compile(PASSWORD_PATTERN);
-			matcher = pattern.matcher(cusPassword);
+			matcher = pattern.matcher(busPassword);
 			if (!matcher.matches()) {
 				errorMsg.put("passwordError", "密碼至少含有一個大寫字母、小寫字母、數字與!@#$%!^'\"等四組資料組合而成，且長度不能小於八個字元");
 			}
@@ -173,53 +160,55 @@ public class PetRegisterServlet extends HttpServlet {
 		// 如果有錯誤訊息產生
 		if (!errorMsg.isEmpty()) {
 			// 導向原來輸入資料的畫面，並顯示錯誤訊息
-			RequestDispatcher rd = request.getRequestDispatcher("/_01_Member/MemberRegistration.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/_01_Member/MerchantRegistration.jsp");
 			rd.forward(request, response);
 			return;
 		}
 		
 		try {
-			// 4. 產生MemberDao物件，以便進行Business Logic運算
-			// MemberDaoImpl_Jdbc類別的功能：
+			// 4. 產生MemberDao與MerchantDao物件，以便進行Business Logic運算
+			// MemberDaoImpl_Jdbc與MerchantDaoImpl_Jdbc類別的功能：
 			// 1.檢查帳號是否已經存在，已存在的帳號不能使用，回傳相關訊息通知使用者修改
-			// 2.若無問題，儲存會員的資料
-			PetService service = new PetServiceImpl();
+			// 2.若無問題，儲存商家的資料
+			MemberService service = new MemberServiceImpl();
+			MerchantService service2 = new MerchantServiceImpl();
 
-//			if (service.accountExists(cusAccount)) {
-//				errorMsg.put("errorAccountDup", "此帳號已存在，請換新帳號");
-//			} else {
-//				// 為了配合Hibernate的版本。
-//				// 要在此加密，不要在 dao.saveMember(mem)進行加密
-//				cusPassword = GlobalService.getMD5Endocing(GlobalService.encryptString(cusPassword));
-////				Timestamp ts = new java.sql.Timestamp(System.currentTimeMillis()); // 當下註冊時間。
-////				cusBirthday = java.sql.Date.valueOf(bDay);
-				Blob blob = null;
-				if (is != null) {
-					blob = GlobalService.fileToBlob(is, sizeInBytes);
-				}
+			if (service.accountExists(busAccount) || service2.accountExists(busAccount)) {
+				errorMsg.put("errorAccountDup", "此帳號已存在，請換新帳號");
+			} else {
+				// 為了配合Hibernate的版本。
+				// 要在此加密，不要在 dao.saveMember(mem)進行加密
+				busPassword = GlobalService.getMD5Endocing(GlobalService.encryptString(busPassword));
+//				Timestamp ts = new java.sql.Timestamp(System.currentTimeMillis()); // 當下註冊時間。
+//				cusBirthday = java.sql.Date.valueOf(bDay);
 				
-				// 將所有會員資料封裝到MemberBean(類別的)物件
-				PetBean pet = new PetBean(); 
+				if (is != null) {
+					busPhoto = GlobalService.fileToBlob(is, sizeInBytes);
+				}
+				// 將所有會員資料封裝到MerchantBean與MerchantChildBean(類別的)與物件
+				MerchantBean mb = new MerchantBean(busAccount, busPassword, busName, busEmail, busTel, busAddress, busDescription, busPhoto, busFileName);
 				// 呼叫MemberDao的saveMember方法
-				int n = service.savePet(pet);
+				int n = service2.saveMerchant(mb);
+
 				if (n == 1) {
 					msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
 					response.sendRedirect("/java014_03_FurKids/_01_Member/SuccessRegistration.jsp");
 					return;
 				} else {
-					errorMsg.put("errorIdDup", "新增此筆資料有誤(MemberRegisterServlet)");
+					errorMsg.put("errorIdDup", "新增此筆資料有誤(MerchantRegisterServlet)");
 				}
+			}
 			// 5.依照 Business Logic 運算結果來挑選適當的畫面
 			if (!errorMsg.isEmpty()) {
 				// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
-				RequestDispatcher rd = request.getRequestDispatcher("/_01_Member/MemberRegistration.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/_01_Member/MerchantRegistration.jsp");
 				rd.forward(request, response);
 				return;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			errorMsg.put("errorIdDup", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher("/java014_03_FurKids/_01_Member/MemberRegistration.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/java014_03_FurKids/_01_Member/MerchantRegistration.jsp");
 			rd.forward(request, response);
 		}
 
