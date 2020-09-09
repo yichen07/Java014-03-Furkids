@@ -6,7 +6,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>加入會員</title>
+<title>會員註冊</title>
 <style type="text/css">
 span.error {
 	color: red;

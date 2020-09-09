@@ -32,20 +32,21 @@ public class MerchantChildDaoImpl_Jdbc implements MerchantChildDao {
 	@Override
 	public int saveMerchantChild(MerchantChildBean mb) {
 		String sql = "INSERT INTO MerchantChildRegistration "
-				+ " (busAccount, busChildName, busChildTel, busChildAddress, busChildDescription, busChildPhoto, busChildFileName) "
-				+ " VALUES (?,?,?,?,?,?,?)";
+				+ " (busAccount, busChildNo, busChildName, busChildTel, busChildAddress, busChildDescription, busChildPhoto, busChildFileName) "
+				+ " VALUES (?,?,?,?,?,?,?,?)";
 		int n = 0;
 		try (
 				Connection con = ds.getConnection();
 				PreparedStatement ps = con.prepareStatement(sql);
 		){
 			ps.setString(1, mb.getBusAccount());
-			ps.setString(2, mb.getBusChildName());
-			ps.setString(3, mb.getBusChildTel());
-			ps.setString(4, mb.getBusChildAddress());
-			ps.setString(5, mb.getBusChildDescription());
-			ps.setBlob(6, mb.getBusChildPhoto());
-			ps.setString(7, mb.getBusChildFileName());
+			ps.setInt(2, mb.getBusChildNo());
+			ps.setString(3, mb.getBusChildName());
+			ps.setString(4, mb.getBusChildTel());
+			ps.setString(5, mb.getBusChildAddress());
+			ps.setString(6, mb.getBusChildDescription());
+			ps.setBlob(7, mb.getBusChildPhoto());
+			ps.setString(8, mb.getBusChildFileName());
 			
 			n = ps.executeUpdate();
 		} catch (Exception e) {
@@ -71,6 +72,7 @@ public class MerchantChildDaoImpl_Jdbc implements MerchantChildDao {
 				if (rs.next()) {
 					mb = new MerchantChildBean();
 					mb.setBusAccount(rs.getString("busAccount"));
+					mb.setBusChildNo(rs.getInt("busChildNo"));
 					mb.setBusChildName(rs.getString("busChildName"));
 					mb.setBusChildTel(rs.getString("busChildTel"));
 					mb.setBusChildAddress(rs.getString("busChildAddress"));

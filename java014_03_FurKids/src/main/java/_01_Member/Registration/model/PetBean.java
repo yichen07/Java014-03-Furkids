@@ -16,12 +16,13 @@ public class PetBean implements Serializable {
 	private String petBread;
 	private String petVariety;
 	private Blob petPhoto;
+	private String petFileName;
 	
 	public PetBean() {
 	}
 
 	public PetBean(Integer petID, String cusAccount, String petName, String petGender, Date petBirthday,
-			String petBread, String petVariety, Blob petPhoto) {
+			String petBread, String petVariety, Blob petPhoto, String petFileName) {
 		super();
 		this.petID = petID;
 		this.cusAccount = cusAccount;
@@ -31,6 +32,7 @@ public class PetBean implements Serializable {
 		this.petBread = petBread;
 		this.petVariety = petVariety;
 		this.petPhoto = petPhoto;
+		this.petFileName = petFileName;
 	}
 
 	public Integer getPetID() {
@@ -97,8 +99,12 @@ public class PetBean implements Serializable {
 		this.petPhoto = petPhoto;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getPetFileName() {
+		return petFileName;
 	}
-	
+
+	public void setPetFileName(String petFileName) {
+		this.petFileName = petFileName;
+	}
+
 }

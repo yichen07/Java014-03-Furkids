@@ -4381,6 +4381,16 @@ input[type="button"].btn-block {
   align-items: center;
 }
 
+.navbar-center {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar-collapse-center {
+  text-align: center;
+}
+
 .navbar-toggler {
   padding: 0.25rem 0.75rem;
   font-size: 1.25rem;

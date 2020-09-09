@@ -6,7 +6,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>商家註冊</title>
+<title>會員新增寵物</title>
 <style type="text/css">
 span.error {
 	color: red;
@@ -121,7 +121,7 @@ function setFocusToUserId(){
 
   <div align='center' id="content"> 
   
-  <form method="POST" action="<c:url value='/_01_Member/Registration/Merchant' />" enctype='multipart/form-data'>
+  <form method="POST" action="<c:url value='/_01_Member/Registration/Member' />" enctype='multipart/form-data'>
   
   <Table  style="width:900px ;background-color: #E7CDFF; cellspacing:0; border:2px solid black; " >
 	<tr height="40" >
@@ -132,7 +132,7 @@ function setFocusToUserId(){
 	
 	<tr height="36" >
 		<td colspan='4' style="text-align: center; vertical-align: middle;">
-        	<Font color="#006600" size='5' face="標楷體">商家註冊</Font>
+        	<Font color="#006600" size='5' face="標楷體">會員寵物新增</Font>
 		</td>
 	</tr>
 	                    
@@ -148,7 +148,7 @@ function setFocusToUserId(){
         	<label class="fontSize" >帳號：</label><br>&nbsp;
         </td>
         <td style="width: 290px;">
-      		<input type='text' name='busAccount' value="${param.busAccount}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<input type='text' name='cusAccount' value="${param.cusAccount}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
       		<font color="red" size="-1">${MsgMap.errorIdEmpty}${MsgMap.errorIdDup}${MsgMap.errorAccountDup}</font> 
       	</td>
       	
@@ -156,7 +156,7 @@ function setFocusToUserId(){
       	 	<label class="fontSize" >姓名：</label><br>&nbsp;
       	</td>
       	<td>
-      		<input type='text' name='busName'  value="${param.busName}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<input type='text' name='cusName'  value="${param.cusName}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
       		<font color="red" size="-1">${MsgMap.errorName}</font>      
       	</td>
       </tr>
@@ -166,7 +166,7 @@ function setFocusToUserId(){
       		<label class="fontSize" >密碼：</label><br>&nbsp;
       	</td>
       	<td>
-      		<input type="password" name='busPassword' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<input type="password" name='cusPassword' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
       		<font color="red" size="-1">${MsgMap.errorPasswordEmpty}${MsgMap.passwordError}</font> 
       	</td>
         <td>
@@ -183,14 +183,14 @@ function setFocusToUserId(){
       		<label class="fontSize" >地址：</label><br>&nbsp;
       	</td>
       	<td>	
-      		<input type='text' name='busAddress' value="${param.busAddress}"  class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<input type='text' name='cusAddress' value="${param.cusAddress}"  class="fieldWidth" style="width: 200px;"/><br>&nbsp;
       		<font color="red" size="-1">${MsgMap.errorAddr}</font> 
         </td>
       	<td>
       		<label class="fontSize" >電話：</label><br>&nbsp;
       	</td>
       	<td>	
-      		<input type='text' name='busTel' value="${param.busTel}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<input type='text' name='cusTel' value="${param.cusTel}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
       		<font color="red" size="-1">${MsgMap.errorTel}</font> 
 		</td>
       </tr>
@@ -200,7 +200,7 @@ function setFocusToUserId(){
       		<label class="fontSize" >電子郵件：</label><br>&nbsp;
       	</td>
       	<td>	
-      		<input type='text' name='busEmail' value="${param.busEmail}"  class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<input type='text' name='cusEmail' value="${param.cusEmail}"  class="fieldWidth" style="width: 200px;"/><br>&nbsp;
       		<font color="red" size="-1">${MsgMap.errorEmail}</font> 
       	</td>
       	<td>
@@ -209,15 +209,6 @@ function setFocusToUserId(){
       	<td>	
       		<input name='memberMultipartFile' type='file' /><br>&nbsp;
         </td>
-     </tr>
-     
-     <tr height="52">
-      	<td>
-      		<label class="fontSize" >商家描述：</label><br>&nbsp;
-      	</td>
-      	<td>	
-      		<textarea name="busDescription" value="${param.busDescription}" class="fieldWidth" style="width: 200px;height:100px"></textarea>&nbsp;
-      	</td>
      </tr>
      
      <tr height="42">
