@@ -40,7 +40,12 @@
    
 ${ logoutBean.logout }
 
-<c:redirect url="/index.jsp"/>
+<%-- <c:redirect url="/index.jsp"/> --%>
+<%-- 
+有上述敘述登出時會發生以下例外：
+Stacktrace:] with root cause
+java.lang.IllegalStateException: Cannot call sendRedirect() after the response has been committed
+--%>
 
 </body> 
 </html>
