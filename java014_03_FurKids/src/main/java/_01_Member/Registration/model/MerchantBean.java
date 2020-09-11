@@ -23,9 +23,9 @@ public class MerchantBean implements Serializable {
 	private String busDescription;
 	private Blob busPhoto;
 	private String busFileName;
-	
 	@Transient
-	private Integer CHECKNO = 2;
+	final private Integer CLASSIFY = 1;
+	
 	
 	public MerchantBean() {
 	}
@@ -136,13 +136,8 @@ public class MerchantBean implements Serializable {
 	}
 
 
-	public Integer getCHECKNO() {
-		return CHECKNO;
-	}
-
-
-	public void setCHECKNO(Integer cHECKNO) {
-		CHECKNO = cHECKNO;
+	public Integer getCLASSIFY() {
+		return CLASSIFY;
 	}
 	
 	

@@ -25,9 +25,10 @@ public class MemberBean implements Serializable {
 	private String cusAddress;
 	private Blob cusPhoto;
 	private String cusFileName;
-	
 	@Transient
-	private Integer CHECKNO = 1;
+	final private Integer CLASSIFY = 0;
+	
+
 	
 	public MemberBean() {
 	}
@@ -137,12 +138,8 @@ public class MemberBean implements Serializable {
 		this.cusFileName = cusFileName;
 	}
 
-	public Integer getCHECKNO() {
-		return CHECKNO;
-	}
-
-	public void setCHECKNO(Integer cHECKNO) {
-		CHECKNO = cHECKNO;
+	public Integer getCLASSIFY() {
+		return CLASSIFY;
 	}
 
 	

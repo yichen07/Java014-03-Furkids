@@ -21,7 +21,7 @@ import _00_Init.util.GlobalService;
 // 當容器執行jsp之前會先執行本過濾器。其目的是要檢視瀏覽器送來的Cookie中是否含有帳、密等資料。
 // 如果有，取出來，將密碼解密，然後存入Request物件內，以便jsp能將其加入相關之input標籤的value屬性內。
 
-@WebFilter("/_01_Member/Login.jsp")
+@WebFilter("/fragment/navigation.jsp")
 public class FindUserPassword implements Filter {
 	String requestURI;
 	public FindUserPassword() {

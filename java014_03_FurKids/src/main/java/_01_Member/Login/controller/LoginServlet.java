@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
 
 		// 如果 errorMsgMap 不是空的，表示有錯誤，交棒給login.jsp
 		if (!errorMsgMap.isEmpty()) {
-			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/fragment/navigation.jsp");
 			rd.forward(request, response);
 			return;
 		}
@@ -138,7 +138,7 @@ public class LoginServlet extends HttpServlet {
 			}
 		} else {
 			// 如果errorMsgMap不是空的，表示有錯誤，交棒給login.jsp
-			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/fragment/navigation.jsp");
 			rd.forward(request, response);
 			return;
 		}
