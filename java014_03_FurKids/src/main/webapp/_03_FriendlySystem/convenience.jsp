@@ -5,6 +5,10 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 	crossorigin="anonymous">
+	
+<link
+	href="${pageContext.request.contextPath}/resources/css/convenience.css"
+	rel="stylesheet" type="text/css" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,8 +43,8 @@
 				</div>	
 			</c:forEach>
 			<div class="col-lg-3 col-sm-6 col-2 mb-4" >
-					<div class="card bg-light mb-3 con" style="border:dashed;">
-						<div style="height:400px;display: flex; flex-direction: column;justify-content: center;border: 1px solid #ccc;text-align: center;">		
+					<div class="card  mb-3 con" style="border:dashed;border-color:#D4D4D4">
+						<div style="height:400px;display: flex; flex-direction: column;justify-content: center;text-align: center;">		
 							<span><i style="z-index:10000;font-size:30px;">新增</i></span>
 							<div class="dropdown" style="z-index:20;">
 		<button class="btn btn-secondary-outline dropdown-toggle fa-4x" type="button"
@@ -57,6 +61,8 @@
 						</div>
 					</div>
 			</div>
+			
+<!-- 		第一層詳細內容	 -->
 			<!-- Modal -->
 			<c:forEach var="Convenience" items="${AllConvenience}">
 				<div class="modal fade"
@@ -72,21 +78,41 @@
 									alt="...">
 								<h5 class="card-header text-center">${Convenience.merchantChildBean.busChildName}</h5>
 								<ul class="list-group list-group-flush text-center">
-									<li class="list-group-item">${Convenience.conItem}</li>
-									<li class="list-group-item">${Convenience.conItemList}</li>
-									<li class="list-group-item">${Convenience.merchantChildBean.busChildAddress}</li>
-									<li class="list-group-item">公休日：${Convenience.conCloseDay}</li>
-									<li class="list-group-item">開始營業時間：${Convenience.conOpenTime}</li>
-									<li class="list-group-item">結束營業時間：${Convenience.conCloseTime}</li>
-									<li class="list-group-item">${Convenience.merchantChildBean.busChildTel}</li>
-									<li class="list-group-item">${Convenience.merchantChildBean.merchantbean.busEmail}</li>
-									<li class="list-group-item"><p class="card-text">商店介紹：${Convenience.merchantChildBean.busChildDescription}</p></li>
+									<li class="list-group-item ccc" style="display:none;"><input type="text" class="form-control" name="busChildNo"
+								value="${Convenience.conItem}" ></li>
+								<li class="list-group-item ccc" style="display:none;"><input type="text" class="form-control" name="busChildNo"
+								value="${Convenience.conItemList}" ></li>
+									<li class="list-group-item ccc" style="display:none;"><input type="text" class="form-control" name="busChildNo"
+								value="${Convenience.merchantChildBean.busChildAddress}" ></li>
+									<li class="list-group-item ccc" style="display:none;"><input type="text" class="form-control" name="busChildNo"
+								value="${Convenience.conCloseDay}" ></li>
+									<li class="list-group-item ccc" style="display:none;"><input type="text" class="form-control" name="busChildNo"
+								value="${Convenience.conOpenTime}" ></li>
+								<li class="list-group-item ccc" style="display:none;"><input type="text" class="form-control" name="busChildNo"
+								value="${Convenience.conCloseTime}" ></li>
+									<li class="list-group-item ccc" style="display:none;"><input type="text" class="form-control" name="busChildNo"
+								value="${Convenience.merchantChildBean.busChildTel}" ></li>
+									<li class="list-group-item ccc" style="display:none;"><input type="text" class="form-control" name="busChildNo"
+								value="${Convenience.merchantChildBean.merchantbean.busEmail}" ></li>
+									<li class="list-group-item ccc" style="display:none;"><input type="text" class="form-control" name="busChildNo"
+								value="${Convenience.merchantChildBean.busChildDescription}" ></li>
+									<li class="list-group-item ddd">${Convenience.conItem}</li>
+									<li class="list-group-item ddd">${Convenience.conItemList}</li>
+									<li class="list-group-item ddd">${Convenience.merchantChildBean.busChildAddress}</li>
+									<li class="list-group-item ddd">公休日：${Convenience.conCloseDay}</li>
+									<li class="list-group-item ddd">開始營業時間：${Convenience.conOpenTime}</li>
+									<li class="list-group-item ddd">結束營業時間：${Convenience.conCloseTime}</li>
+									<li class="list-group-item ddd">${Convenience.merchantChildBean.busChildTel}</li>
+									<li class="list-group-item ddd">${Convenience.merchantChildBean.merchantbean.busEmail}</li>
+									<li class="list-group-item ddd"><p class="card-text">商店介紹：${Convenience.merchantChildBean.busChildDescription}</p></li>
+									
 								</ul>
 							</div>
 							<div class="modal-footer">
+								
 								<button type="submit" class="btn btn-danger">刪除</button>
-								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal">Close</button>
+				
+								<button type="button" class="btn btn-secondary revise">修改</button>
 							</div>
 						</div>
 					</div>
@@ -96,27 +122,20 @@
 	</div>
 
 
+<!-- 第二層修改內容 -->
+									<li class="list-group-item">${Convenience.conItem}</li>
+									<li class="list-group-item">${Convenience.conItemList}</li>
+									<li class="list-group-item">${Convenience.merchantChildBean.busChildAddress}</li>
+									<li class="list-group-item">公休日：${Convenience.conCloseDay}</li>
+									<li class="list-group-item">開始營業時間：${Convenience.conOpenTime}</li>
+									<li class="list-group-item">結束營業時間：${Convenience.conCloseTime}</li>
+									<li class="list-group-item">${Convenience.merchantChildBean.busChildTel}</li>
+									<li class="list-group-item">${Convenience.merchantChildBean.merchantbean.busEmail}</li>
+									<li class="list-group-item"><p class="card-text">商店介紹：${Convenience.merchantChildBean.busChildDescription}</p></li>
 
 
 
-
-	<!-- 下拉式按鈕 -->
-	<div class="dropdown">
-		<button class="btn btn-secondary-outline dropdown-toggle  fa-5x" type="button"
-			id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
-			aria-expanded="false"></button>
-		<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-			<c:forEach var="NoConvenience" items="${NotConvenience}">
-				<button name="submit1" value="${NoConvenience.busChildName}"
-					class="dropdown-item btn" type="button" data-toggle="modal"
-					data-target="#${NoConvenience.busChildName}1">${NoConvenience.busChildName}</button>
-			</c:forEach>
-		</div>
-	</div>
-
-
-
-
+<!-- 新增 -->
 	<!-- 	Modal -->
 	<c:forEach var="NoConvenience" items="${NotConvenience}">
 		<div class="modal fade" id="${NoConvenience.busChildName}1"
@@ -164,8 +183,7 @@
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">Close</button>
-								<button type="submit" class="btn btn-primary">Save
-									changes</button>
+								<button type="submit" class="btn btn-primary">新增</button>
 							</div>
 						</div>
 					</FORM>
@@ -192,5 +210,6 @@
 		crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/8e822d04fb.js" crossorigin="anonymous"></script>
 	<script src="../resources/javascript/Convenience.js"></script>
+	
 </body>
 </html>

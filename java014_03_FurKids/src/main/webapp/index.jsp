@@ -12,8 +12,6 @@
 <!-- 引入共同的頁首 -->
 <jsp:include page="/fragment/navigation.jsp" />
 
-	<a href="<c:url value='/_03_ConvenienceProcess/Convenience.do' />">商家服務上架</a><br>
-	<a href="<c:url value='/_03_ConvenienceProcess/Convenience_H.do' />">商家服務上架(Hibernate)</a>
 
 </body>
 </html>

@@ -1,11 +1,13 @@
 package _01_Member.Registration.model;
 
+
 import java.io.Serializable;
 import java.sql.Blob;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 @Entity
 @Table(name="merchantregistration")
 public class MerchantBean implements Serializable {
@@ -22,6 +24,8 @@ public class MerchantBean implements Serializable {
 	private Blob busPhoto;
 	private String busFileName;
 	
+	@Transient
+	private Integer CHECKNO = 2;
 	
 	public MerchantBean() {
 	}
@@ -130,5 +134,16 @@ public class MerchantBean implements Serializable {
 	public void setBusFileName(String busFileName) {
 		this.busFileName = busFileName;
 	}
+
+
+	public Integer getCHECKNO() {
+		return CHECKNO;
+	}
+
+
+	public void setCHECKNO(Integer cHECKNO) {
+		CHECKNO = cHECKNO;
+	}
+	
 	
 }

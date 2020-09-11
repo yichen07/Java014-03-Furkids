@@ -74,19 +74,30 @@
 					</div></li>
 			</ul>
 
-        </div>
+		</div>
 
-        <div>
+		<div>
 			<ul class="navbar-nav my-2 my-lg-0">
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">管理 </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<c:set value="1" var="check" /> 
+					<c:if test="${check == 2}"  >
+						<a class="dropdown-item" href="#">會員管理</a>
+					</c:if>	
+					<c:if test="${check == 1}"  >
+						<a class="dropdown-item" href="<c:url value='/_03_ConvenienceProcess/Convenience_H.do' />">商家管理</a>
+					</c:if>
+					</div></li>
 				<li class="nav-item"><a class="nav-link" href="#"
-					data-toggle="modal" data-target="#login"><p1>登入</p1>
-						<p2>
+					data-toggle="modal" data-target="#login"><p1>登入</p1> <p2>
 						<img
 							src="${pageContext.request.contextPath}/resources/images/member.svg"
 							width="34px" height="auto" alt="" /></p2></a></li>
 				<li class="nav-item"><a class="nav-link" href="#"><p1>購物車</p1>
-						<p2>
-						<img
+						<p2> <img
 							src="${pageContext.request.contextPath}/resources/images/cart.svg"
 							width="34px" height="auto" alt="" /></p2></a></li>
 			</ul>
@@ -114,29 +125,34 @@
 
 
 
-                <form role="form">
+				<form role="form">
 					<div class="form-group">
-					
-							<span class="input input--juro">
-					<input class="input__field input__field--juro" type="text" id="input-28" />
-					<label class="input__label input__label--juro" for="input-28">
-						<span class="input__label-content input__label-content--juro">First Name</span>
-					</label>
-				</span>
-					</div> <!-- /.form-group -->
+
+						<span class="input input--juro"> <input
+							class="input__field input__field--juro" type="text" id="input-28" />
+							<label class="input__label input__label--juro" for="input-28">
+								<span class="input__label-content input__label-content--juro">First
+									Name</span>
+						</label>
+						</span>
+					</div>
+					<!-- /.form-group -->
 
 					<div class="form-group">
 						<div class="input-group">
-							<input type="password" class="form-control" id="uPassword" placeholder="Password">
-							<label for="uPassword" class="input-group-addon glyphicon glyphicon-lock"></label>
-						</div> <!-- /.input-group -->
-					</div> <!-- /.form-group -->
+							<input type="password" class="form-control" id="uPassword"
+								placeholder="Password"> <label for="uPassword"
+								class="input-group-addon glyphicon glyphicon-lock"></label>
+						</div>
+						<!-- /.input-group -->
+					</div>
+					<!-- /.form-group -->
 
 					<div class="checkbox">
-						<label>
-							<input type="checkbox"> Remember me
+						<label> <input type="checkbox"> Remember me
 						</label>
-					</div> <!-- /.checkbox -->
+					</div>
+					<!-- /.checkbox -->
 				</form>
 
 
@@ -149,7 +165,7 @@
 
 
 
-            </div>
+			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				<button type="button" class="btn btn-primary">Save changes</button>

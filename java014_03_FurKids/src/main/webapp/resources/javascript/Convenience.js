@@ -1,6 +1,34 @@
 $(document).ready(function(){
-	$('#exampleModalCenter').on('hidden.bs.modal', function (e) {
- 		$('#exampleModalCenter').modal('show');
-	})
+
+	
+		$('.revise').click(function(){
+		
+			
+			display = $('.ccc').css('display');
+			
+			alert(display);
+			
+			if(display == 'none'){
+		
+			$('.ccc').css('display','block');
+			$('.ddd').css('display','none');
+			
+			}
+			
+			
+			if(display == 'block'){
+	
+				$('.ccc').css('display','none');
+				$('.ddd').css('display','block');
+			} 
+			
+		});	
+			
+						
+			
+		
+
+		
+	
 	
 });
