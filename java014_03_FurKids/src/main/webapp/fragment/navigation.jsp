@@ -110,7 +110,7 @@
 											<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 													<a class="dropdown-item" href="#">分店新增</a> 
 													<a class="dropdown-item" href="#">商家管理</a> 
-													<a class="dropdown-item" href="#">商家功能_三</a> 
+													<a class="dropdown-item" href="<c:url value='/_03_ConvenienceProcess/Convenience_H.do' />">服務上架</a> 
 													<a class="dropdown-item" href="#">商家功能_四</a>
 											</div>
 									</div>
