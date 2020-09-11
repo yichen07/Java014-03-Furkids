@@ -8,7 +8,8 @@
 	src="${pageContext.request.contextPath}/javascript/jquery-1.9.1.js"></script>
 <script src="${pageContext.request.contextPath}/javascript/eDM.js"></script>
 
-<c:set var='debug' value='true' scope='application' />
+<%-- <c:set var='debug' value='true' scope='application' /> --%>
+
 <table class='menuOuter'>
   <tr height="48px">
     <td width="60px" rowspan='2'>

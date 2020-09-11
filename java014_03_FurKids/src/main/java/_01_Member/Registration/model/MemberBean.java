@@ -19,6 +19,7 @@ public class MemberBean implements Serializable {
 	private String cusAddress;
 	private Blob cusPhoto;
 	private String cusFileName;
+	final private Integer CLASSIFY = 0;
 	
 	
 	public MemberBean() {
@@ -127,6 +128,10 @@ public class MemberBean implements Serializable {
 
 	public void setCusFileName(String cusFileName) {
 		this.cusFileName = cusFileName;
+	}
+
+	public Integer getCLASSIFY() {
+		return CLASSIFY;
 	}
 
 	

@@ -24,10 +24,10 @@ import _01_Member.Registration.model.MemberBean;
 @WebFilter(
 		urlPatterns = { "/*" }, 
 		initParams = { 
-				@WebInitParam(name = "mustLogin1", value = "/_03_listBooks/*"), 
-				@WebInitParam(name = "mustLogin2", value = "/_04_ShoppingCart/*"), 
-				@WebInitParam(name = "mustLogin3", value = "/_05_orderProcess/*"),
-				@WebInitParam(name = "mustLogin4", value = "/_20_productMaintain/*")				
+				@WebInitParam(name = "mustLogin1", value = "/AAAAA/*"), 
+				@WebInitParam(name = "mustLogin2", value = "/BBBBB/*"), 
+				@WebInitParam(name = "mustLogin3", value = "/CCCCC/*"),
+				@WebInitParam(name = "mustLogin4", value = "/DDDDD/*")				
 		})
 public class LoginCheckingFilter implements Filter {
 	List<String> url = new ArrayList<String>();

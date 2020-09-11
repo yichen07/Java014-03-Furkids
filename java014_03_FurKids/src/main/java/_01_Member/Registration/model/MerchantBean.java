@@ -21,6 +21,7 @@ public class MerchantBean implements Serializable {
 	private String busDescription;
 	private Blob busPhoto;
 	private String busFileName;
+	final private Integer CLASSIFY = 1;
 	
 	
 	public MerchantBean() {
@@ -129,6 +130,11 @@ public class MerchantBean implements Serializable {
 
 	public void setBusFileName(String busFileName) {
 		this.busFileName = busFileName;
+	}
+
+
+	public Integer getCLASSIFY() {
+		return CLASSIFY;
 	}
 	
 }
