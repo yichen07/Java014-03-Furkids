@@ -29,7 +29,7 @@ public class ConInsertHibernatServlet extends HttpServlet {
 		String accountId = mb.getBusAccount();
 		
 		
-//		String accountId = "pilimou";			  
+			  
 		String busChildNo = request.getParameter("busChildNo");
 		String convenience = request.getParameter("convenience");
 		String convenienceList = request.getParameter("conveniencelist");

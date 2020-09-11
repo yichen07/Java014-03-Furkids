@@ -75,7 +75,7 @@
 							<div class="modal-body">
 								<img
 									src="${pageContext.servletContext.contextPath}/_03_/FriendlyService/getBusChildImage?busChildNo=${Convenience.busChildNo}"
-									style="width: 100%; height: 200px;" class="card-img-top"
+									style="width: 100%; height: 250px;" class="card-img-top"
 									alt="...">
 								<h5 class="card-header text-center">${Convenience.merchantChildBean.busChildName}</h5>
 								<ul class="list-group list-group-flush text-center">
