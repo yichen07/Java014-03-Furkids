@@ -16,8 +16,9 @@
 <title>預約上架</title>
 </head>
 <body>
+<jsp:include page="/fragment/navigation.jsp" />
 
-
+<div style="height:100px"></div>
 
 
 	<div class="container p-1g-5 p-3 wow bounceIn">
@@ -122,16 +123,7 @@
 	</div>
 
 
-<!-- 第二層修改內容 -->
-									<li class="list-group-item">${Convenience.conItem}</li>
-									<li class="list-group-item">${Convenience.conItemList}</li>
-									<li class="list-group-item">${Convenience.merchantChildBean.busChildAddress}</li>
-									<li class="list-group-item">公休日：${Convenience.conCloseDay}</li>
-									<li class="list-group-item">開始營業時間：${Convenience.conOpenTime}</li>
-									<li class="list-group-item">結束營業時間：${Convenience.conCloseTime}</li>
-									<li class="list-group-item">${Convenience.merchantChildBean.busChildTel}</li>
-									<li class="list-group-item">${Convenience.merchantChildBean.merchantbean.busEmail}</li>
-									<li class="list-group-item"><p class="card-text">商店介紹：${Convenience.merchantChildBean.busChildDescription}</p></li>
+
 
 
 

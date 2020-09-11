@@ -7,6 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import _01_Member.Registration.model.MerchantBean;
 import _01_Member.Registration.model.MerchantChildBean;
 import _03_FriendlyService.model.ConvenienceBean_H;
 import _03_FriendlyService.service.ConvenienceService;
@@ -20,7 +23,13 @@ public class ConInsertHibernatServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String accountId = "pilimou";			  
+		HttpSession session = request.getSession(false);
+		MerchantBean mb = (MerchantBean)session.getAttribute("LoginOK");			
+		
+		String accountId = mb.getBusAccount();
+		
+		
+//		String accountId = "pilimou";			  
 		String busChildNo = request.getParameter("busChildNo");
 		String convenience = request.getParameter("convenience");
 		String convenienceList = request.getParameter("conveniencelist");
