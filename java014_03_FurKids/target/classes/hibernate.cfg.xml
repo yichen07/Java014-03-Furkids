@@ -32,8 +32,8 @@
 		<mapping class="_03_FriendlyService.model.ConvenienceBean_H"></mapping>
 		<mapping class="_01_Member.Registration.model.MerchantChildBean"></mapping>
 		<mapping class="_01_Member.Registration.model.MerchantBean"></mapping>
-	
-	
+		<mapping class="_01_Member.Registration.model.MemberBean"></mapping>
+
 
 	</session-factory>
 </hibernate-configuration>

@@ -9,12 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-
-import _00_Init.util.utils.HibernateUtils;
+import _01_Member.Registration.model.MerchantBean;
 import _01_Member.Registration.model.MerchantChildBean;
 import _03_FriendlyService.model.ConvenienceBean_H;
 import _03_FriendlyService.service.ConvenienceService;
@@ -26,19 +23,18 @@ public class ConvenienceServlet_H extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		HttpSession session = request.getSession(false);
-//		MemberBean mb = (MemberBean)session.getAttribute("LoginOK");
-//		mb.getMemberId()
+		HttpSession session = request.getSession(false);
+		MerchantBean mb = (MerchantBean)session.getAttribute("LoginOK");			
 		
-		String userId = "pilimou";
+		String userId = mb.getBusAccount();
 
 
 		ConvenienceService service = new ConvenienceHibernateServiceImpl();
 		List<ConvenienceBean_H> cb = service.getAllConvenience(userId);
-		List<MerchantChildBean> mb = service.getNotConvenience(userId);
+		List<MerchantChildBean> mcb = service.getNotConvenience(userId);
 		
 		request.setAttribute("AllConvenience", cb);
-		request.setAttribute("NotConvenience", mb);
+		request.setAttribute("NotConvenience", mcb);
 		RequestDispatcher rd = request.getRequestDispatcher("/_03_FriendlySystem/convenience.jsp");
 		rd.forward(request, response);
 		return;

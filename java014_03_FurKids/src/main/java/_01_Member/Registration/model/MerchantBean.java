@@ -1,11 +1,13 @@
 package _01_Member.Registration.model;
 
+
 import java.io.Serializable;
 import java.sql.Blob;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 @Entity
 @Table(name="merchantregistration")
 public class MerchantBean implements Serializable {
@@ -21,6 +23,7 @@ public class MerchantBean implements Serializable {
 	private String busDescription;
 	private Blob busPhoto;
 	private String busFileName;
+	@Transient
 	final private Integer CLASSIFY = 1;
 	
 	
@@ -136,5 +139,6 @@ public class MerchantBean implements Serializable {
 	public Integer getCLASSIFY() {
 		return CLASSIFY;
 	}
+	
 	
 }

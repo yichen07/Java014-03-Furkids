@@ -12,5 +12,6 @@
 <!-- 引入共同的頁首 -->
 <jsp:include page="/fragment/navigation.jsp" />
 
+
 </body>
 </html>
