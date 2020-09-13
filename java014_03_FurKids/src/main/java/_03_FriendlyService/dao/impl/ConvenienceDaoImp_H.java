@@ -8,19 +8,21 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import _00_Init.util.utils.HibernateUtils;
 import _01_Member.Registration.model.MerchantChildBean;
 import _03_FriendlyService.dao.ConvenienceDao;
 import _03_FriendlyService.model.ConvenienceBean_H;
 
-
+@Repository
 public class ConvenienceDaoImp_H implements ConvenienceDao{
-	 
+	 @Autowired
 	SessionFactory factory;
 	
 	public ConvenienceDaoImp_H() {
-		factory = HibernateUtils.getSessionFactory();
+//		factory = HibernateUtils.getSessionFactory();
 	}
 
 	@Override

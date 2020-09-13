@@ -2,12 +2,16 @@ package _03_FriendlyService.controller;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import _01_Member.Registration.model.MerchantBean;
 import _01_Member.Registration.model.MerchantChildBean;
@@ -45,7 +49,10 @@ public class ConInsertHibernatServlet extends HttpServlet {
 		
 		 
 		
-		ConvenienceService server = new ConvenienceHibernateServiceImpl();
+//		ConvenienceService server = new ConvenienceHibernateServiceImpl();
+		ServletContext sc = getServletContext();
+		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(sc);
+		ConvenienceService server = ctx.getBean(ConvenienceService.class);
 		server.insert(cbh);
 		//用傳回來的分店編號(主鍵)去抓該筆分店資料
 		MerchantChildBean bean = server.getBusChild(busNo);

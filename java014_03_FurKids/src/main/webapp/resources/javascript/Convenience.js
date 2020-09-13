@@ -32,5 +32,9 @@ $(document).ready(function(){
 			
 			
 		});	
-					
+		
+		if(!($('.insertcon').length == 0 || $('.insertcon').length == 8)){
+			$('#insert').css('display','block');
+		}
+	
 });

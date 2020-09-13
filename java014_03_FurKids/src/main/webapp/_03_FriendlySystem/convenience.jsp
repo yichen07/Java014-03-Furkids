@@ -44,7 +44,7 @@
 				</div>
 			</c:forEach>
 			<!-- 新增框 -->
-			<div class="col-lg-3 col-sm-6 col-2 mb-4">
+			<div id="insert" class="col-lg-3 col-sm-6 col-2 mb-4" style="display:none">
 				<div class="card  mb-3 con"
 					style="border: dashed; border-color: #D4D4D4">
 					<div
@@ -59,7 +59,7 @@
 							<!-- 未上架的分店 -->
 								<c:forEach var="NoConvenience" items="${NotConvenience}">
 									<button name="submit1" value="${NoConvenience.busChildName}"
-										class="dropdown-item btn" type="button" data-toggle="modal"
+										class="dropdown-item btn insertcon" type="button" data-toggle="modal"
 										data-target="#${NoConvenience.busChildName}1">${NoConvenience.busChildName}</button>
 								</c:forEach>
 							</div>

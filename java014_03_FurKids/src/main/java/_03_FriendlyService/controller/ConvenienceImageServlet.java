@@ -6,11 +6,15 @@ import java.io.OutputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import _01_Member.Registration.model.MerchantChildBean;
 import _03_FriendlyService.service.ConvenienceService;
@@ -32,7 +36,11 @@ public class ConvenienceImageServlet extends HttpServlet {
 			// 讀取瀏覽器傳送來的主鍵
 			String busChildNo = request.getParameter("busChildNo");
 			// 讀取瀏覽器傳送來的type，以分辨要處理哪個表格
-			ConvenienceService cs = new ConvenienceHibernateServiceImpl();
+//			ConvenienceService cs = new ConvenienceHibernateServiceImpl();
+			ServletContext sc = getServletContext();
+			WebApplicationContext ctx = 
+					WebApplicationContextUtils.getWebApplicationContext(sc);
+			ConvenienceService cs = ctx.getBean(ConvenienceService.class);
 			int nNo = 0;
 			try {
 				nNo = Integer.parseInt(busChildNo);				
