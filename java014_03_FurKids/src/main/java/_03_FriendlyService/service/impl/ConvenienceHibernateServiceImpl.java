@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import _01_Member.Registration.model.MerchantBean;
 import _01_Member.Registration.model.MerchantChildBean;
 import _03_FriendlyService.dao.ConvenienceDao;
 import _03_FriendlyService.model.ConvenienceBean_H;
@@ -174,6 +175,37 @@ public class ConvenienceHibernateServiceImpl implements ConvenienceService{
 //		}
 		return bean;
 	}
+	//新增服務和修改分店描述
+	@Transactional
+	@Override
+	public void insertAndUpdate(ConvenienceBean_H cb, MerchantChildBean mcb) {
+		cnDao.insert(cb);
+		cnDao.update(mcb);
+	}
+	//依分店編號撈出該筆資料
+	@Transactional
+	@Override
+	public ConvenienceBean_H getConvenience(int busChildNo) {
+		ConvenienceBean_H bean = null;
+		bean = cnDao.getConvenience(busChildNo);
+		return bean;
+	}
+	//依商家帳號撈出該筆資料
+	@Transactional
+	@Override
+	public MerchantBean getBus(String id) {
+		MerchantBean bean = null;
+		bean = cnDao.getBus(id);
+		return bean;
+	}
+	@Transactional
+	@Override
+	public void Update(ConvenienceBean_H cb, MerchantChildBean mcb, MerchantBean mb) {
+		cnDao.update(cb);
+		cnDao.update(mcb);
+		cnDao.update(mb);
+	}
+
 
 	
 

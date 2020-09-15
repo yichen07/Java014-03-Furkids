@@ -15,17 +15,16 @@
 <meta charset="UTF-8">
 <title>預約上架</title>
 </head>
-<body>
+<body style="background-color:#F5F5F5;">
 	<jsp:include page="/fragment/navigation.jsp" />
 
-	<div style="height: 100px"></div>
 
 	<!-- 已上架的分店 -->
 	<div class="container p-1g-5 p-3 wow bounceIn">
 		<div class="row">
 			<c:forEach var="Convenience" items="${AllConvenience}">
 				<div class="col-lg-3 col-sm-6 col-2 mb-4">
-					<div class="card bg-light mb-3 border-dark con">
+					<div class="card bg-light mb-3 border-dark con shadow-lg rounded">
 						<img
 							src="${pageContext.servletContext.contextPath}/_03_/FriendlyService/getBusChildImage?busChildNo=${Convenience.busChildNo}"
 							style="width: 100%; height: 140px;" class="card-img-top"
@@ -46,7 +45,7 @@
 			<!-- 新增框 -->
 			<div id="insert" class="col-lg-3 col-sm-6 col-2 mb-4" style="display:none">
 				<div class="card  mb-3 con"
-					style="border: dashed; border-color: #D4D4D4">
+					style="border: dashed; border-color: #AFA9A9;background-color:#F5F5F5;">
 					<div
 						style="height: 400px; display: flex; flex-direction: column; justify-content: center; text-align: center;">
 						<span><i style="z-index: 10000; font-size: 30px;">新增</i></span>
@@ -60,7 +59,7 @@
 								<c:forEach var="NoConvenience" items="${NotConvenience}">
 									<button name="submit1" value="${NoConvenience.busChildName}"
 										class="dropdown-item btn insertcon" type="button" data-toggle="modal"
-										data-target="#${NoConvenience.busChildName}1">${NoConvenience.busChildName}</button>
+										data-target="#${NoConvenience.busChildName}">${NoConvenience.busChildName}</button>
 								</c:forEach>
 							</div>
 						</div>
@@ -85,8 +84,11 @@
 								<h5 class="card-header text-center">${Convenience.merchantChildBean.busChildName}</h5>
 
 								<FORM
-									action="<c:url value='/_03_ConvenienceProcess/ConInsert.do' />"
+									action="<c:url value='/_03_ConvenienceProcess/ConRevise.do' />"
 									method="POST" class="ccc" style="display:none">
+									
+										<input type="text" name="reviseno" value="${Convenience.busChildNo}" style="display:none">
+		
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">服務種類:</label>
 										<input type="text" class="form-control" name="convenience"
@@ -149,9 +151,10 @@
 								</ul>
 							</div>
 							<div class="modal-footer">
-
+								<FORM action="<c:url value='/_03_ConvenienceProcess/Delete.do' />" method="POST">
+									<input type="text" name="deleteNo" value="${Convenience.busChildNo}" style="display:none">
 								<button type="submit" class="btn btn-danger delete">刪除</button>
-
+								</FORM>
 								<button type="button" class="btn btn-secondary revise">修改</button>
 								
 							</div>
@@ -169,8 +172,9 @@
 
 	<!-- 新增的Modal-->
 	<!-- 	Modal -->
+<%-- 	${NoConvenience.busChildName}1 --%>
 	<c:forEach var="NoConvenience" items="${NotConvenience}">
-		<div class="modal fade" id="${NoConvenience.busChildName}1"
+		<div class="modal fade ppp" id="${NoConvenience.busChildName}"
 			tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 			aria-hidden="true" >
 			<div class="modal-dialog" role="document">
@@ -191,6 +195,7 @@
 							<div class="form-group">
 								<label for="recipient-name" class="col-form-label">服務種類:</label>
 								<input type="text" class="form-control" name="convenience">
+								<font class="errmsg" color="red" size="-1">${ErrorMsg.ConvenienceError}</font> 
 							</div>
 							<div class="form-group">
 								<label for="recipient-name" class="col-form-label">服務項目:</label>
@@ -243,6 +248,13 @@
 	<script src="https://kit.fontawesome.com/8e822d04fb.js"
 		crossorigin="anonymous"></script>
 	<script src="../resources/javascript/Convenience.js"></script>
+<c:if test="${!empty ErrorMsg}">
 
+ <button id="pipimou" class="dropdown-item btn insertcon" type="button" data-toggle="modal"
+										data-target="#${pilimou}" style="display:none">${test}</button>
+	<script type="text/javascript">
+		$('#pipimou').trigger('click');
+	</script>
+</c:if>
 </body>
 </html>

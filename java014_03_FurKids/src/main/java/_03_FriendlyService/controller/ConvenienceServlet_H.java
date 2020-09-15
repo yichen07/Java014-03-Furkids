@@ -26,6 +26,7 @@ public class ConvenienceServlet_H extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
 		if (session == null) {
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+ "/index.jsp"));
@@ -51,6 +52,7 @@ public class ConvenienceServlet_H extends HttpServlet {
 		
 		request.setAttribute("AllConvenience", cb);
 		request.setAttribute("NotConvenience", mcb);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/_03_FriendlySystem/convenience.jsp");
 		rd.forward(request, response);
 		return;
