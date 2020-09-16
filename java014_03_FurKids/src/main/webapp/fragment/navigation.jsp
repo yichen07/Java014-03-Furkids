@@ -157,7 +157,7 @@
 	</c:if>
 
 
-<!-- 登入畫面 -->
+<!-- 登入畫面_Modal -->
 <div class="modal fade" id="login" tabindex="-1" role="dialog"
 	aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
@@ -209,7 +209,7 @@
 </div>
 
 
-<!-- 註冊前導畫面 -->
+<!-- 註冊前導畫面_Modal -->
 <div class="modal fade" id="regis" tabindex="-1" role="dialog"
 	aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-dialog modal-xl"
@@ -243,6 +243,33 @@
 		</div>
 	</div>
 </div>
+
+
+<!-- 訊息畫面_Modal -->
+<div class="modal fade" id="messages" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">訊息提示</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+			<div class="text-center">
+				<font class="errhide" color="red">${ErrorMsgKey.LoginError} ${MsgMap.errorNotLogin}</font>
+			</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 <%-- Javascript --%>
