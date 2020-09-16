@@ -13,8 +13,12 @@ public interface MerchantService {
 	
 	MerchantBean checkAccountPassword(String account, String password);
 	
+	
+	
 	int saveMerchantChild(MerchantChildBean mb);
 	
 	MerchantChildBean queryMerchantChild(String account);
+	
+	boolean merchantChildExists(String account, String address);
 	
 }
