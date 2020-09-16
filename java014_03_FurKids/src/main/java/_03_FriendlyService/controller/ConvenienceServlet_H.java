@@ -28,18 +28,17 @@ public class ConvenienceServlet_H extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
-		if (session == null) {
+		MerchantBean mb = null;
+		String userId;
+		if(session == null || (MerchantBean)session.getAttribute("LoginOK") == null) {		
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+ "/index.jsp"));
-			return;
+			return;		
+		} else {
+			 mb = (MerchantBean)session.getAttribute("LoginOK");			
+			userId = mb.getBusAccount();			
 		}
+	
 		
-		
-		
-		MerchantBean mb = (MerchantBean)session.getAttribute("LoginOK");			
-		
-		
-		
-		String userId = mb.getBusAccount();
 
 
 //		ConvenienceService service = new ConvenienceHibernateServiceImpl();
