@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.omg.CORBA.RepositoryIdHelper;
+
 import _00_Init.util.GlobalService;
 import _01_Member.Registration.model.MemberBean;
 import _01_Member.Registration.model.MerchantBean;
@@ -142,5 +144,7 @@ public class LoginServlet extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		}
+		
+		
 	}
 }

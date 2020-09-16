@@ -36,43 +36,43 @@
 				<ul class="navbar-nav mr-auto">
 	
 					<li class="nav-item dropdown">
-					<a class="nav-link" style="font-size: 24px; padding: 8px;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 商城 </a>
+					<a class="nav-link" style="font-size: 24px; padding: 8px;" href="<c:url value='' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 商城 </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<!--<a class="dropdown-item" href="#">預留欄位</a>-->
+							<!--<a class="dropdown-item" href="<c:url value='' />">預留欄位</a>-->
 						</div>
 					</li>
 	
 					<li class="nav-item dropdown">
-					<a class="nav-link text_size" style="font-size: 24px; padding: 8px;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">交流專區</a>
+					<a class="nav-link text_size" style="font-size: 24px; padding: 8px;" href="<c:url value='' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">交流專區</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">寵物專欄</a> 
-							<a class="dropdown-item" href="#">寵物失蹤協尋</a> 
-							<a class="dropdown-item" href="#">二手市集</a> 
-							<a class="dropdown-item" href="#">活動建立</a> 
-							<a class="dropdown-item" href="#">寵物交友</a> 
-							<a class="dropdown-item" href="#">留言板</a>
+							<a class="dropdown-item" href="<c:url value='' />">寵物專欄</a> 
+							<a class="dropdown-item" href="<c:url value='' />">寵物失蹤協尋</a> 
+							<a class="dropdown-item" href="<c:url value='' />">二手市集</a> 
+							<a class="dropdown-item" href="<c:url value='' />">活動建立</a> 
+							<a class="dropdown-item" href="<c:url value='' />">寵物交友</a> 
+							<a class="dropdown-item" href="<c:url value='' />">留言板</a>
 						</div>
 					</li>
 	
 					<li class="nav-item dropdown">
-					<a class="nav-link" style="font-size: 24px; padding: 8px;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 友善專區 </a>
+					<a class="nav-link" style="font-size: 24px; padding: 8px;" href="<c:url value='' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 友善專區 </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">景點</a> 
-							<a class="dropdown-item" href="#">餐廳</a> 
-							<a class="dropdown-item" href="#">寵物美容</a> 
-							<a class="dropdown-item" href="#">旅館</a> 
-							<a class="dropdown-item" href="#">寵物寄放</a> 
-							<a class="dropdown-item" href="#">租屋</a>
+							<a class="dropdown-item" href="<c:url value='' />">景點</a> 
+							<a class="dropdown-item" href="<c:url value='' />">餐廳</a> 
+							<a class="dropdown-item" href="<c:url value='' />">寵物美容</a> 
+							<a class="dropdown-item" href="<c:url value='' />">旅館</a> 
+							<a class="dropdown-item" href="<c:url value='' />">寵物寄放</a> 
+							<a class="dropdown-item" href="<c:url value='' />">租屋</a>
 						</div>
 					</li>
 	
 					<li class="nav-item dropdown">
-					<a class="nav-link" style="font-size: 24px; padding: 8px;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 健康管理 </a>
+					<a class="nav-link" style="font-size: 24px; padding: 8px;" href="<c:url value='' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 健康管理 </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">寵物熱量計算</a> 
-							<a class="dropdown-item" href="#">寵物健康管理</a> 
-							<a class="dropdown-item" href="#">寵物疫苗資訊</a> 
-							<a class="dropdown-item" href="#">寵物食譜</a>
+							<a class="dropdown-item" href="<c:url value='' />">寵物熱量計算</a> 
+							<a class="dropdown-item" href="<c:url value='' />">寵物健康管理</a> 
+							<a class="dropdown-item" href="<c:url value='' />">寵物疫苗資訊</a> 
+							<a class="dropdown-item" href="<c:url value='' />">寵物食譜</a>
 						</div>
 					</li>
 				</ul>
@@ -81,7 +81,7 @@
 					<li class="nav-item">
 						<c:choose>
 								<c:when test="${empty LoginOK}">
-									<a class="nav-link" href="#" data-toggle="modal"
+									<a class="nav-link" href="<c:url value='' />" data-toggle="modal"
 										data-target="#login"> <p1 style="font-size: 24px; padding: 8px;">會員登入</p1> <p2> <img
 											src="${pageContext.request.contextPath}/resources/images/member.svg"
 											width="40px" height="auto" alt="" /> </p2>
@@ -89,29 +89,29 @@
 								</c:when>
 								<c:when test="${LoginOK.CLASSIFY == 0}">
 									<div class="dropdown">
-										<a class="nav-link nav-item dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <p1 style="font-size: 24px; padding: 8px;">會員中心</p1> <p2> <img
+										<a class="nav-link nav-item dropdown-toggle" href="<c:url value='' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <p1 style="font-size: 24px; padding: 8px;">會員中心</p1> <p2> <img
 												src="${pageContext.request.contextPath}/_00_init/getHeadshot?account=${LoginOK.cusAccount}"
 												width="40px" height="auto" alt="" /> </p2>
 										</a>
 											<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-												<a class="dropdown-item" href="#">寵物新增</a> 
-												<a class="dropdown-item" href="#">會員管理</a> 
-												<a class="dropdown-item" href="#">會員功能_三</a> 
-												<a class="dropdown-item" href="#">會員功能_四</a>
+												<a class="dropdown-item" href="<c:url value='' />">寵物新增</a> 
+												<a class="dropdown-item" href="<c:url value='' />">會員管理</a> 
+												<a class="dropdown-item" href="<c:url value='' />">會員功能_三</a> 
+												<a class="dropdown-item" href="<c:url value='' />">會員功能_四</a>
 											</div>
 									</div>
 								</c:when>
 								<c:when test="${LoginOK.CLASSIFY == 1}">
 									<div class="dropdown">
-										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <p1 style="font-size: 24px; padding: 8px;">商家中心</p1> <p2> <img
+										<a class="nav-link dropdown-toggle" href="<c:url value='' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <p1 style="font-size: 24px; padding: 8px;">商家中心</p1> <p2> <img
 												src="${pageContext.request.contextPath}/_00_init/getHeadshot?account=${LoginOK.busAccount}"
 												width="40px" height="auto" alt="" /> </p2>
 										</a>
 											<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-													<a class="dropdown-item" href="#">分店新增</a> 
-													<a class="dropdown-item" href="#">商家管理</a> 
+													<a class="dropdown-item" href="<c:url value='/_01_Member/MerchantChildRegistration.jsp' />">分店新增</a> 
+													<a class="dropdown-item" href="<c:url value='' />">商家管理</a> 
 													<a class="dropdown-item" href="<c:url value='/_03_ConvenienceProcess/Convenience_H.do' />">服務上架</a> 
-													<a class="dropdown-item" href="#">商家功能_四</a>
+													<a class="dropdown-item" href="<c:url value='' />">商家功能_四</a>
 											</div>
 									</div>
 								</c:when>
@@ -119,7 +119,7 @@
 						</li>
 	
 					<li class="nav-item">
-						<a class="nav-link" href="#"><p1 style="font-size: 24px; padding: 8px;">購物車</p1>
+						<a class="nav-link" href="<c:url value='' />"><p1 style="font-size: 24px; padding: 8px;">購物車</p1>
 							<p2>
 								<img
 									src="${pageContext.request.contextPath}/resources/images/cart.svg"
@@ -157,7 +157,6 @@
 	</c:if>
 
 
-
 <!-- 登入畫面 -->
 <div class="modal fade" id="login" tabindex="-1" role="dialog"
 	aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -178,12 +177,12 @@
 					<div class="form-group">
 					    <label for="exampleInputAccount">帳號</label>
 					    <input type="text" class="form-control" name="userId" id="exampleInputAccount" aria-describedby="emailHelp" placeholder="Account" value="${requestScope.user}${param.userId}">
-					    <small class="form-text text-muted"><font color="red">${ErrorMsgKey.AccountEmptyError}</font></small> 
+					    <small class="form-text text-muted"><font class="errhide" color="red">${ErrorMsgKey.AccountEmptyError}</font></small> 
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputPassword1">密碼</label>
 					    <input type="password" class="form-control" name="pswd" id="exampleInputPassword1" placeholder="Password" value="${requestScope.password}${param.pswd}">
-					    <small class="form-text text-muted"><font color="red">${ErrorMsgKey.PasswordEmptyError}</font></small>	
+					    <small class="form-text text-muted"><font class="errhide" color="red">${ErrorMsgKey.PasswordEmptyError}</font></small>	
 					</div> 
 					<div class="form-group form-check">	
 					    <input type="checkbox" class="form-check-input" name="rememberMe" id="exampleCheck1"
@@ -194,22 +193,20 @@
 					    <label class="form-check-label" for="exampleCheck1">記住我</label>
 					</div>
 					<div class="text-center">
-						<small class="form-text text-muted"><font color="red">${ErrorMsgKey.LoginError}</font></small>
+						<small class="form-text text-muted"><font class="errhide" color="red">${ErrorMsgKey.LoginError} ${MsgMap.errorNotLogin}</font></small>
 					</div>
 					<div class="modal-footer justify-content-center">
 						<button type="submit" class="btn btn-outline-primary">登入</button>
 					</div>
 					<div class="col-md-12">
               			<p class="font-small white-text d-flex justify-content-center">尚未創建帳號
-              			<a href="#" class="green-text ml-1 font-weight-bold" data-toggle="modal" data-target="#regis" onclick="changeModal()">立即註冊</a></p>
+              			<a href="<c:url value='' />" class="green-text ml-1 font-weight-bold" data-toggle="modal" data-target="#regis" onclick="changeModal()">立即註冊</a></p>
               		</div>
 				</form>
             </div>
 		</div>
 	</div>
 </div>
-
-
 
 
 <!-- 註冊前導畫面 -->
@@ -228,15 +225,17 @@
 			<div class="modal-body">
 				<div class="container-fluid">
 					<div class="row justify-content-center">
-						<div class="col-6 text-center">會員註冊</div>
-						<div class="col-6 text-center">商家註冊</div>
+<%-- 						<a href="${pageContext.request.contextPath}/_01_Member/MemberRegistration.jsp"><div class="col-6 text-center">會員註冊</div></a> --%>
+<%-- 						<a href="${pageContext.request.contextPath}/_01_Member/MerchantRegistration.jsp"><div class="col-6 text-center">商家註冊</div></a> --%>
+						<div class="col-6 text-center"><a href="<c:url value='/_01_Member/MemberRegistration.jsp' />">會員註冊</a></div>
+						<div class="col-6 text-center"><a href="<c:url value='/_01_Member/MerchantRegistration.jsp' />">商家註冊</a></div>
 					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
 				<div class="col-md-12">
 					<p class="font-small white-text d-flex justify-content-center">
-						已完成註冊 <a href="#" class="green-text ml-1 font-weight-bold"
+						已完成註冊 <a href="<c:url value='' />" class="green-text ml-1 font-weight-bold"
 							data-toggle="modal" data-target="#login" onclick="changeModal()">立即登入</a>
 					</p>
 				</div>
@@ -244,15 +243,6 @@
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
-
-
-
 
 
 <%-- Javascript --%>
@@ -264,8 +254,16 @@
 <%-- 登入時，如有錯誤，重新導回登入畫面 --%>
 <c:if test="${!empty ErrorMsgKey}">
 	<script>
-	$('#login').modal('show')
+		$('#login').modal('show')
 	</script>
+</c:if>
+
+<%-- 未登入，執行登入後功能時，重新導回登入畫面 --%>
+<c:if test="${!empty MsgMap.errorNotLogin}">
+	<script>
+		$('#login').modal('show')
+	</script>
+	<% session.removeAttribute("MsgMap"); %>
 </c:if>
 
 <%-- 登出時，跳出詢問視窗 --%>
@@ -277,6 +275,7 @@
 	} 
 </script>
 
+<%-- 登入與註冊畫面切換 --%>
 <script language="javascript"> 
 	function changeModal(){
 		if ($('#regis').modal('show')){
@@ -286,4 +285,27 @@
 			$('#regis').modal('hide')
 		}
 	}
+</script>
+
+<%-- 關閉Modal隱藏錯誤訊息 --%>
+<script type="text/javascript">
+	$("#login").on("hidden.bs.modal",function(e){
+	  $('.errhide').css('display', 'none');
+	});
+</script>
+
+<%-- 禁用鍵盤F5功能 --%>
+<script type="text/javascript">
+// document.onkeydown = function(e){
+//     e = window.event || e;
+//     var keycode = e.keyCode || e.which;
+//     if(keycode == 116){
+// 		     if(window.event){
+// 		     try{e.keyCode = 0;}catch(e){}
+// 		     e.returnValue = false;
+// 		 }else{
+// 		     e.preventDefault();
+// 		 }
+//     }
+// } 
 </script>

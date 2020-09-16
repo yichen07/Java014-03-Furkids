@@ -6,7 +6,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>商家新增分店</title>
+<title>商家分店新增</title>
 <style type="text/css">
 span.error {
 	color: red;
@@ -115,13 +115,15 @@ function setFocusToUserId(){
 
 
 <body onLoad="setFocusToUserId()" >
+
 <c:set var="funcName" value="REG" scope="session"/>
+
 <!-- 引入共同的頁首 -->
-<%-- <jsp:include page="/fragment/topMVC.jsp" /> --%>
+<jsp:include page="/fragment/navigation.jsp" />
 
   <div align='center' id="content"> 
   
-  <form method="POST" action="<c:url value='/_01_Member/Registration/Merchant' />" enctype='multipart/form-data'>
+  <form method="POST" action="<c:url value='/_01_Member/Registration/MerchantChild' />" enctype='multipart/form-data'>
   
   <Table  style="width:900px ;background-color: #E7CDFF; cellspacing:0; border:2px solid black; " >
 	<tr height="40" >
@@ -145,80 +147,47 @@ function setFocusToUserId(){
        
      <tr height="52">
      	<td style="width: 90px;">
-        	<label class="fontSize" >帳號：</label><br>&nbsp;
+        	<label class="fontSize" >分店名稱：</label><br>&nbsp;
         </td>
         <td style="width: 290px;">
-      		<input type='text' name='busAccount' value="${param.busAccount}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<font color="red" size="-1">${MsgMap.errorIdEmpty}${MsgMap.errorIdDup}${MsgMap.errorAccountDup}</font> 
+      		<input type='text' name='busChildName' value="${param.busChildName}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<font color="red" size="-1">${MsgMap.errorName}${MsgMap.errorIdDup}</font> 
       	</td>
       	
       	<td>
-      	 	<label class="fontSize" >姓名：</label><br>&nbsp;
+      	 	<label class="fontSize" >電話：</label><br>&nbsp;
       	</td>
       	<td>
-      		<input type='text' name='busName'  value="${param.busName}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<font color="red" size="-1">${MsgMap.errorName}</font>      
+      		<input type='text' name='busChildTel'  value="${param.busChildTel}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<font color="red" size="-1">${MsgMap.errorTel}</font>      
       	</td>
-      </tr>
-      	
-      <tr height="52">
-        <td> 
-      		<label class="fontSize" >密碼：</label><br>&nbsp;
-      	</td>
-      	<td>
-      		<input type="password" name='busPassword' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<font color="red" size="-1">${MsgMap.errorPasswordEmpty}${MsgMap.passwordError}</font> 
-      	</td>
-        <td>
-      		<label class="fontSize" >密碼確認：</label><br>&nbsp;
-      	</td>
-      	<td>	
-      		<input type="password" name='confirmPassword' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
- 			<font color="red" size="-1">${MsgMap.errorPassword1Empty}</font>       		      
-      	</td>
-     </tr>
-     
-     <tr height="52">
-     	<td>
-      		<label class="fontSize" >地址：</label><br>&nbsp;
-      	</td>
-      	<td>	
-      		<input type='text' name='busAddress' value="${param.busAddress}"  class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<font color="red" size="-1">${MsgMap.errorAddr}</font> 
-        </td>
-      	<td>
-      		<label class="fontSize" >電話：</label><br>&nbsp;
-      	</td>
-      	<td>	
-      		<input type='text' name='busTel' value="${param.busTel}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<font color="red" size="-1">${MsgMap.errorTel}</font> 
-		</td>
       </tr>
       
-      <tr height="52">
-      	<td>
-      		<label class="fontSize" >電子郵件：</label><br>&nbsp;
+     <tr height="52">
+     	<td style="width: 90px;">
+        	<label class="fontSize" >地址：</label><br>&nbsp;
+        </td>
+        <td style="width: 290px;">
+      		<input type='text' name='busChildAddress' value="${param.busChildAddress}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<font color="red" size="-1">${MsgMap.errorAddr}${MsgMap.errorMerchantChildDup}</font> 
       	</td>
-      	<td>	
-      		<input type='text' name='busEmail' value="${param.busEmail}"  class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<font color="red" size="-1">${MsgMap.errorEmail}</font> 
-      	</td>
+      	
       	<td>
       		<label class="fontSize" >照片：</label><br>&nbsp;
       	</td>
       	<td>	
       		<input name='memberMultipartFile' type='file' /><br>&nbsp;
         </td>
-     </tr>
+      </tr>
      
      <tr height="52">
-      	<td>
+        <td>
       		<label class="fontSize" >商家描述：</label><br>&nbsp;
       	</td>
       	<td>	
-      		<textarea name="busDescription" value="${param.busDescription}" class="fieldWidth" style="width: 200px;height:100px"></textarea>&nbsp;
+      		<textarea name="busChildDescription" value="${param.busChildDescription}" class="fieldWidth" style="width: 200px;height:100px"></textarea>&nbsp;
       	</td>
-     </tr>
+      </tr>
      
      <tr height="42">
         <td colspan='4'>
@@ -232,6 +201,15 @@ function setFocusToUserId(){
 </Table>
 </form>
 </div>
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>

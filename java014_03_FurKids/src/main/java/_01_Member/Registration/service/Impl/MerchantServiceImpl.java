@@ -47,4 +47,9 @@ public class MerchantServiceImpl implements MerchantService {
 		MerchantBean mb = mdao.checkAccountPassword(account, password);
 		return mb;
 	}
+
+	@Override
+	public boolean merchantChildExists(String account, String address) {
+		return mcdao.merchantChildExists(account, address);
+	}
 }
