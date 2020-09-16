@@ -58,11 +58,11 @@ public class MerchantChildRegisterServlet extends HttpServlet {
 		MerchantBean mb = (MerchantBean)session.getAttribute("LoginOK");
 		if (mb == null) {
 			// 請使用者(商家)登入
+			errorMsg.put("errorNotLogin", "請先登入商家帳號");
 //			response.sendRedirect(response.encodeRedirectURL(
-//					request.getContextPath() + "/_02_login/login.jsp"));  // "/_02_login/login.jsp"需更改
-			errorMsg.put("errorNotLogin", "請先登入帳號");
-//			RequestDispatcher rd = request.getRequestDispatcher("/_01_Member/MerchantChildRegistration.jsp"); // 導向位址需更改
-			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp"); // 導向位址需更改
+//					request.getContextPath() + "/index.jsp"));  // "/_02_login/login.jsp"需更改
+			RequestDispatcher rd = request.getRequestDispatcher("/_01_Member/MerchantChildRegistration.jsp"); // 導向位址需更改
+//			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp"); // 導向位址需更改
 			rd.forward(request, response);
 			return;
 		} else {

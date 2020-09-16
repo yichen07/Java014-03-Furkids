@@ -115,13 +115,15 @@ function setFocusToUserId(){
 
 
 <body onLoad="setFocusToUserId()" >
+
 <c:set var="funcName" value="REG" scope="session"/>
+
 <!-- 引入共同的頁首 -->
-<%-- <jsp:include page="/fragment/topMVC.jsp" /> --%>
+<jsp:include page="/fragment/navigation.jsp" />
 
   <div align='center' id="content"> 
   
-  <form method="POST" action="<c:url value='/_01_Member/Registration/Member' />" enctype='multipart/form-data'>
+  <form method="POST" action="<c:url value='/_01_Member/Registration/Pet' />" enctype='multipart/form-data'>
   
   <Table  style="width:900px ;background-color: #E7CDFF; cellspacing:0; border:2px solid black; " >
 	<tr height="40" >
@@ -145,71 +147,61 @@ function setFocusToUserId(){
        
      <tr height="52">
      	<td style="width: 90px;">
-        	<label class="fontSize" >帳號：</label><br>&nbsp;
+        	<label class="fontSize" >寵物暱稱：</label><br>&nbsp;
         </td>
         <td style="width: 290px;">
-      		<input type='text' name='cusAccount' value="${param.cusAccount}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<font color="red" size="-1">${MsgMap.errorIdEmpty}${MsgMap.errorIdDup}${MsgMap.errorAccountDup}</font> 
+      		<input type='text' name='petName' value="${param.petName}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<font color="red" size="-1">${MsgMap.errorNameEmpty}${MsgMap.errorIdDup}</font> 
       	</td>
       	
       	<td>
-      	 	<label class="fontSize" >姓名：</label><br>&nbsp;
+      	 	<label class="fontSize" >寵物性別：</label><br>&nbsp;
       	</td>
       	<td>
-      		<input type='text' name='cusName'  value="${param.cusName}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<input type="radio" name="petGender" value="Male" /> 男
+			<input type="radio" name="petGender" value="Female" /> 女 <br>&nbsp;
+			
+<%--       		<input type='text' name='cusName'  value="${param.cusName}" class="fieldWidth" style="width: 200px;"/><br>&nbsp; --%>
       		<font color="red" size="-1">${MsgMap.errorName}</font>      
       	</td>
       </tr>
+      
+     <tr height="52">
+     	<td style="width: 90px;">
+        	<label class="fontSize" >寵物生日：</label><br>&nbsp;
+        </td>
+        <td style="width: 290px;">
+      		<input type='date' name='bDay' value="${param.bDay}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<font color="red" size="-1">${MsgMap.errorDayFormat}</font> 
+      	</td>
       	
-      <tr height="52">
-        <td> 
-      		<label class="fontSize" >密碼：</label><br>&nbsp;
+      	<td>
+      	 	<label class="fontSize" >寵物種類：</label><br>&nbsp;
       	</td>
       	<td>
-      		<input type="password" name='cusPassword' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<font color="red" size="-1">${MsgMap.errorPasswordEmpty}${MsgMap.passwordError}</font> 
+      		<input type="radio" name="petVariety" value="Dog" /> 狗
+			<input type="radio" name="petVariety" value="Cat" /> 貓 <br>&nbsp;
+<%--       		<input type='text' name='cusName'  value="${param.cusName}" class="fieldWidth" style="width: 200px;"/><br>&nbsp; --%>
+      		<font color="red" size="-1">${MsgMap.errorVarietyEmpty}</font>      
       	</td>
-        <td>
-      		<label class="fontSize" >密碼確認：</label><br>&nbsp;
-      	</td>
-      	<td>	
-      		<input type="password" name='confirmPassword' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
- 			<font color="red" size="-1">${MsgMap.errorPassword1Empty}</font>       		      
-      	</td>
-     </tr>
-     
+      </tr>
+      	
      <tr height="52">
      	<td>
-      		<label class="fontSize" >地址：</label><br>&nbsp;
+      		<label class="fontSize" >寵物品種：</label><br>&nbsp;
       	</td>
       	<td>	
-      		<input type='text' name='cusAddress' value="${param.cusAddress}"  class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<font color="red" size="-1">${MsgMap.errorAddr}</font> 
+      		<input type='text' name='petBreed' value="${param.petBreed}"  class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+<!--       		<input type='text' name='petBreed' value=""  class="fieldWidth" style="width: 200px;"/><br>&nbsp; -->
+      		<font color="red" size="-1">${MsgMap.errorBreedEmpty}</font> 
         </td>
-      	<td>
-      		<label class="fontSize" >電話：</label><br>&nbsp;
-      	</td>
-      	<td>	
-      		<input type='text' name='cusTel' value="${param.cusTel}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<font color="red" size="-1">${MsgMap.errorTel}</font> 
-		</td>
-      </tr>
-      
-      <tr height="52">
-      	<td>
-      		<label class="fontSize" >電子郵件：</label><br>&nbsp;
-      	</td>
-      	<td>	
-      		<input type='text' name='cusEmail' value="${param.cusEmail}"  class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<font color="red" size="-1">${MsgMap.errorEmail}</font> 
-      	</td>
       	<td>
       		<label class="fontSize" >照片：</label><br>&nbsp;
       	</td>
       	<td>	
       		<input name='memberMultipartFile' type='file' /><br>&nbsp;
         </td>
-     </tr>
+      </tr>
      
      <tr height="42">
         <td colspan='4'>

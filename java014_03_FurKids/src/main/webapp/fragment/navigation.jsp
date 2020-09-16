@@ -94,7 +94,7 @@
 												width="40px" height="auto" alt="" /> </p2>
 										</a>
 											<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-												<a class="dropdown-item" href="<c:url value='' />">寵物新增</a> 
+												<a class="dropdown-item" href="<c:url value='/_01_Member/PetRegistration.jsp' />">寵物新增</a> 
 												<a class="dropdown-item" href="<c:url value='' />">會員管理</a> 
 												<a class="dropdown-item" href="<c:url value='' />">會員功能_三</a> 
 												<a class="dropdown-item" href="<c:url value='' />">會員功能_四</a>
@@ -257,7 +257,7 @@
       </div>
       <div class="modal-body">
 			<div class="text-center">
-				<font class="errhide" color="red">${ErrorMsgKey.LoginError} ${MsgMap.errorNotLogin}</font>
+				<font color="red">${MsgOK.InsertOK}</font>
 			</div>
       </div>
       <div class="modal-footer">
@@ -292,6 +292,15 @@
 	</script>
 	<% session.removeAttribute("MsgMap"); %>
 </c:if>
+
+<%-- 新增(含註冊、分店與寵物新增)成功時，顯示提示視窗 --%>
+<c:if test="${!empty MsgOK.InsertOK}">
+	<script>
+		$('#messages').modal('show')
+	</script>
+	<% session.removeAttribute("MsgOK"); %>
+</c:if>
+
 
 <%-- 登出時，跳出詢問視窗 --%>
 <script language="javascript"> 

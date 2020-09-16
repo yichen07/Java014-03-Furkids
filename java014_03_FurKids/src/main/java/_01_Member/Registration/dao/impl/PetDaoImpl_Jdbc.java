@@ -32,22 +32,21 @@ public class PetDaoImpl_Jdbc implements PetDao {
 	@Override
 	public int savePet(PetBean pet) {
 		String sql = "INSERT INTO PetRegistration "
-				+ " (petID, cusAccount, petName, petGender, petBirthday, petBread, petVariety, petPhoto, petFileName) "
-				+ " VALUES (?,?,?,?,?,?,?,?,?)";
+				+ " (cusAccount, petName, petGender, petBirthday, petBreed, petVariety, petPhoto, petFileName) "
+				+ " VALUES (?,?,?,?,?,?,?,?)";
 		int n = 0;
 		try (
 				Connection con = ds.getConnection();
 				PreparedStatement ps = con.prepareStatement(sql);
 		){
-			ps.setInt(1, pet.getPetID());
-			ps.setString(2, pet.getCusAccount());
-			ps.setString(3, pet.getPetName());
-			ps.setString(4, pet.getPetGender());
-			ps.setDate(5, pet.getPetBirthday());
-			ps.setString(6, pet.getPetBread());
-			ps.setString(7, pet.getPetVariety());
-			ps.setBlob(8, pet.getPetPhoto());
-			ps.setString(9, pet.getPetFileName());
+			ps.setString(1, pet.getCusAccount());
+			ps.setString(2, pet.getPetName());
+			ps.setString(3, pet.getPetGender());
+			ps.setDate(4, pet.getPetBirthday());
+			ps.setString(5, pet.getPetBreed());
+			ps.setString(6, pet.getPetVariety());
+			ps.setBlob(7, pet.getPetPhoto());
+			ps.setString(8, pet.getPetFileName());
 			
 			n = ps.executeUpdate();
 		} catch (Exception e) {
@@ -77,7 +76,7 @@ public class PetDaoImpl_Jdbc implements PetDao {
 					pet.setPetName(rs.getString("petName"));
 					pet.setPetGender(rs.getString("petGender"));
 					pet.setPetBirthday(rs.getDate("petBirthday"));
-					pet.setPetBread(rs.getString("petBread"));
+					pet.setPetBreed(rs.getString("petBreed"));
 					pet.setPetVariety(rs.getString("petVariety"));
 					pet.setPetPhoto(rs.getBlob("petPhoto"));
 					pet.setPetFileName(rs.getString("petFileName"));

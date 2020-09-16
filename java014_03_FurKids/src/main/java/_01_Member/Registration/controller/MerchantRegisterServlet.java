@@ -192,7 +192,7 @@ public class MerchantRegisterServlet extends HttpServlet {
 
 				if (n == 1) {
 					msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-					response.sendRedirect("/java014_03_FurKids/_01_Member/SuccessRegistration.jsp");
+					response.sendRedirect("/java014_03_FurKids/index.jsp");
 					return;
 				} else {
 					errorMsg.put("errorIdDup", "新增此筆資料有誤(MerchantRegisterServlet)");
