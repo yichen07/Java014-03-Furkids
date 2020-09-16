@@ -20,6 +20,7 @@ $(document).ready(function(){
 			} else if ($('.delete').css('display') == 'none'){
 				$('.delete').css('display','block');
 			}
+		
 					
 			//關閉modal前呼叫
 			$(".mmm").on("hidden.bs.modal",function(e){
@@ -28,9 +29,17 @@ $(document).ready(function(){
 				$('.delete').css('display','block');
 				$('.revise').html('修改');				
 			});
-			
-			
+		
 			
 		});	
-					
+		
+			$(".ppp").on("hidden.bs.modal",function(e){
+				$('.errmsg').css('display','none');
+			});	
+			
+		
+		if(!($('.insertcon').length == 0 || $('.insertcon').length == 8)){
+			$('#insert').css('display','block');
+		}
+	
 });

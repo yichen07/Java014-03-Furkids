@@ -151,7 +151,7 @@ function setFocusToUserId(){
         </td>
         <td style="width: 290px;">
       		<input type='text' name='cusAccount' value="${param.cusAccount}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<font color="red" size="-1">${MsgMap.errorIdEmpty}${MsgMap.errorIdDup}${MsgMap.errorAccountDup}</font> 
+      		.error<font color="red" size="-1">${MsgMap.errorIdEmpty}${MsgMapIdDup}${MsgMap.errorAccountDup}</font> 
       	</td>
       	
       	<td>

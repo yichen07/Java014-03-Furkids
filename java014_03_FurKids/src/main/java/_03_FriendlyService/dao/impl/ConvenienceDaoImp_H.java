@@ -8,19 +8,22 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import _00_Init.util.utils.HibernateUtils;
+import _01_Member.Registration.model.MerchantBean;
 import _01_Member.Registration.model.MerchantChildBean;
 import _03_FriendlyService.dao.ConvenienceDao;
 import _03_FriendlyService.model.ConvenienceBean_H;
 
-
+@Repository
 public class ConvenienceDaoImp_H implements ConvenienceDao{
-	 
+	 @Autowired
 	SessionFactory factory;
 	
 	public ConvenienceDaoImp_H() {
-		factory = HibernateUtils.getSessionFactory();
+//		factory = HibernateUtils.getSessionFactory();
 	}
 
 	@Override
@@ -36,7 +39,14 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 	}
 	
 	@Override
-	public void update(MerchantChildBean mb) {
+	public void update(MerchantChildBean mcb) {
+		Session session = factory.getCurrentSession();
+		session.merge(mcb);
+		
+	}
+	
+	@Override
+	public void update(MerchantBean mb) {
 		Session session = factory.getCurrentSession();
 		session.merge(mb);
 		
@@ -93,7 +103,7 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 		System.out.println("======================");
 		return list2;
 	}
-
+	// 依busChildNo來查詢單筆分店記錄
 	@Override
 	public MerchantChildBean getBusChild(int busChildNo) {
 		MerchantChildBean bean = null;
@@ -101,6 +111,24 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 		bean = session.get(MerchantChildBean.class, busChildNo);
 		return bean;
 	}
+	// 依busChildNo來查詢單筆上架記錄
+	@Override
+	public ConvenienceBean_H getConvenience(int busChildNo) {
+		ConvenienceBean_H bean = null;
+		Session session = factory.getCurrentSession();
+		bean = session.get(ConvenienceBean_H.class, busChildNo);
+		return bean;
+	}
+
+	@Override
+	public MerchantBean getBus(String id) {
+		MerchantBean bean = null;
+		Session session = factory.getCurrentSession();
+		bean = session.get(MerchantBean.class, id);
+		return bean;
+	}
+
+	
 
 	
 	

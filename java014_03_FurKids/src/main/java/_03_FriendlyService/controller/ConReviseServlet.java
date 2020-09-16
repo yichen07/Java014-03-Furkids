@@ -1,10 +1,7 @@
 package _03_FriendlyService.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,71 +19,61 @@ import _03_FriendlyService.model.ConvenienceBean_H;
 import _03_FriendlyService.service.ConvenienceService;
 
 
-@WebServlet("/_03_ConvenienceProcess/ConInsert.do")
-public class ConInsertHibernatServlet extends HttpServlet {
+@WebServlet("/_03_ConvenienceProcess/ConRevise.do")
+public class ConReviseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-
+       
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
 		HttpSession session = request.getSession(false);
 		if (session == null) {
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+ "/index.jsp"));
 			return;
 		}
-		
-		Map<String, String> errorMsgMap = new HashMap<String, String>();
-		
-		MerchantBean mb = (MerchantBean)session.getAttribute("LoginOK");	
-		session.setAttribute("ErrorMsg", errorMsgMap);
+		MerchantBean mb = (MerchantBean)session.getAttribute("LoginOK");
 		
 		
-		
-		String accountId = mb.getBusAccount();
-		
-		
-			  
-		String busChildNo = request.getParameter("busChildNo");
+		String reviseno = request.getParameter("reviseno");
 		String convenience = request.getParameter("convenience");
 		String convenienceList = request.getParameter("conveniencelist");
+		
+		String busChildAddress = request.getParameter("busChildAddress");
+		
 		String condCloseDay = request.getParameter("concloseday");
 		String conOpenTime = request.getParameter("conopentime");
 		String conCloseTime = request.getParameter("conclosetime");
+		
+		String busEmail = request.getParameter("busEmail");
+		
+		String busChildTel = request.getParameter("busChildTel");
+		
 		String busChildDescription = request.getParameter("buschilddescription");
-
-		if (convenience == null || convenience.trim().length() == 0) {
-			errorMsgMap.put("ConvenienceError", "服務種類必須輸入");
-		}
+		
+		int no = Integer.parseInt(reviseno);
+		
 		ServletContext sc = getServletContext();
 		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(sc);
-		ConvenienceService server = ctx.getBean(ConvenienceService.class);
+		ConvenienceService service = ctx.getBean(ConvenienceService.class);
 		
-		Integer errorNo = Integer.parseInt(busChildNo);
-		MerchantChildBean errorMcb = server.getBusChild(errorNo);
-		String pilimou = errorMcb.getBusChildName();
-		session.setAttribute("pilimou", pilimou);
-		System.out.println(pilimou);
-		if (!errorMsgMap.isEmpty()) {
-			response.sendRedirect(response.encodeRedirectURL("Convenience_H.do"));
-			return;
-		}
+		ConvenienceBean_H cbh = service.getConvenience(no);
+		cbh.setConItem(convenience);
+		cbh.setConItemList(convenienceList);
+		cbh.setConCloseDay(condCloseDay);
+		cbh.setConOpenTime(conOpenTime);
+		cbh.setConCloseTime(conCloseTime);
 		
-		
-		Integer busNo = Integer.parseInt(busChildNo); 
-//		System.out.println(convenience + "," + busNo + "," + convenienceList + "," + condCloseDay + "," + conOpenTime + "," + conCloseTime);
-		
-//		ConvenienceService server = new ConvenienceHibernateServiceImpl();
-		
-		//把傳進來要新增的資料放進去
-		ConvenienceBean_H cbh = new ConvenienceBean_H(busNo, accountId,convenience,convenienceList,condCloseDay,conOpenTime,conCloseTime);
-		//用傳回來的分店編號(主鍵)去抓該筆分店資料
-		MerchantChildBean mcb = server.getBusChild(busNo);
+		MerchantChildBean mcb = service.getBusChild(no);
+		mcb.setBusChildTel(busChildTel);
+		mcb.setBusChildAddress(busChildAddress);
 		mcb.setBusChildDescription(busChildDescription);
-		server.insertAndUpdate(cbh, mcb);
-		 
+		
+		
+		
+		mb.setBusEmail(busEmail);
+		
+		service.Update(cbh, mcb, mb);
+		
 		response.sendRedirect(response.encodeRedirectURL("Convenience_H.do"));
-	
 	}
 
 }
