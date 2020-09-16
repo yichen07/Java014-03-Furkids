@@ -163,7 +163,7 @@ public class MerchantChildRegisterServlet extends HttpServlet {
 
 				if (n == 1) {
 					msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-					response.sendRedirect("/java014_03_FurKids/_01_Member/SuccessRegistration.jsp");
+					response.sendRedirect("/java014_03_FurKids/_01_Member/MerchantChildRegistration.jsp");
 					return;
 				} else {
 					errorMsg.put("errorIdDup", "新增此筆資料有誤(MerchantChildRegisterServlet)");
@@ -172,7 +172,7 @@ public class MerchantChildRegisterServlet extends HttpServlet {
 			// 5.依照 Business Logic 運算結果來挑選適當的畫面
 			if (!errorMsg.isEmpty()) {
 				// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
-				RequestDispatcher rd = request.getRequestDispatcher("/_01_Member/MerchanChildtRegistration.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/_01_Member/MerchantChildRegistration.jsp");
 				rd.forward(request, response);
 				return;
 			}
