@@ -197,19 +197,11 @@ function setFocusToUserId(){
       		</div>
 		</td>
 	</tr>
+
 	
 </Table>
 </form>
 </div>
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>

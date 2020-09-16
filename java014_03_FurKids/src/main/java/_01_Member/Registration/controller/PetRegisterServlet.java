@@ -4,12 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,11 +22,8 @@ import _00_Init.util.GlobalService;
 import _01_Member.Registration.model.MemberBean;
 import _01_Member.Registration.model.PetBean;
 import _01_Member.Registration.service.MemberService;
-import _01_Member.Registration.service.MerchantService;
-import _01_Member.Registration.service.PetService;
 import _01_Member.Registration.service.Impl.MemberServiceImpl;
-import _01_Member.Registration.service.Impl.MerchantServiceImpl;
-import _01_Member.Registration.service.Impl.PetServiceImpl;
+
 
 @MultipartConfig(location = "", fileSizeThreshold = 5 * 1024 * 1024, maxFileSize = 1024 * 1024
 		* 500, maxRequestSize = 1024 * 1024 * 500 * 5)
@@ -39,34 +33,54 @@ public class PetRegisterServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	// 設定密碼欄位必須由大寫字母、小寫字母、數字與 !@#$%!^'" 等四組資料組合而成，且長度不能小於八個字元
-	private static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%!^'\"]).{8,})";
-	private Pattern pattern = null;
-	private Matcher matcher = null;
-
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
+		
+		// 只要舊的Session物件，如果找不到，不要建立新的Session物件，直接傳回 null
+		HttpSession session = request.getSession(false); 
+		
 		// 準備存放錯誤訊息的Map物件
 		Map<String, String> errorMsg = new HashMap<String, String>();
+		request.setAttribute("MsgMap", errorMsg); 		// 顯示錯誤訊息
 		// 準備存放註冊成功之訊息的Map物件
 		Map<String, String> msgOK = new HashMap<String, String>();
-		// 註冊成功後將用response.sendRedirect()導向新的畫面，所以需要
-		// session物件來存放共用資料。
-		HttpSession session = request.getSession();
-		request.setAttribute("MsgMap", errorMsg); // 顯示錯誤訊息
-		session.setAttribute("MsgOK", msgOK); // 顯示正常訊息
-
+		session.setAttribute("MsgOK", msgOK); 			// 顯示正常訊息
+		
 		String cusAccount = "";
-		String cusPassword = "";
-		String confirmPassword = "";
-		String cusName = "";
-		String cusGender = "";
-		Date cusBirthday = null;
+		
+		// Session為null表示使用者尚未登入
+//		if (session == null) {
+		MemberBean mb = (MemberBean)session.getAttribute("LoginOK");
+		if (mb == null) {
+			// 請使用者(會員)登入
+//			response.sendRedirect(response.encodeRedirectURL(
+//					request.getContextPath() + "/_02_login/login.jsp"));  // "/_02_login/login.jsp"需更改
+			errorMsg.put("errorNotLogin", "請先登入會員帳號");
+			RequestDispatcher rd = request.getRequestDispatcher("/_01_Member/PetRegistration.jsp"); // 導向位址需更改
+//			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp"); // 導向位址需更改
+			rd.forward(request, response);
+			return;
+		} else {
+			// 取得登入資訊
+//			MerchantBean mb = (MerchantBean)session.getAttribute("LoginOK");
+			cusAccount = mb.getCusAccount();
+		}
+		
+		Integer petID;
+		
+		String petName = "";
+		
+		String petGender = "";
+		
 		String bDay = "";
-		String cusEmail = "";
-		String cusTel = "";
-		String cusAddress = "";
-		String cusFileName = "";
+		Date petBirthday = null;
+		
+		String petBreed = "";
+		
+		String petVariety = "";
+		
+		Blob petPhoto = null;
+		String petFileName = "";
 
 		long sizeInBytes = 0;
 		InputStream is = null;
@@ -81,31 +95,23 @@ public class PetRegisterServlet extends HttpServlet {
 
 		// 1. 讀取使用者輸入資料
 				if (p.getContentType() == null) {
-					if (fldName.equals("cusAccount")) {
-						cusAccount = value;
-					} else if (fldName.equals("cusPassword")) {
-						cusPassword = value;
-					} else if (fldName.equals("confirmPassword")) {
-						confirmPassword = value;
-					} else if (fldName.equals("cusName")) {
-						cusName = value;
-					} else if (fldName.equals("cusGender")) {
-						cusGender = value;
+					if (fldName.equals("petName")) {
+						petName = value;
+					} else if (fldName.equals("petGender")) {
+						petGender = value;
 					} else if (fldName.equals("bDay")) {
 						bDay = value;
-					} else if (fldName.equals("cusEmail")) {
-						cusEmail = value;
-					} else if (fldName.equals("cusTel")) {
-						cusTel = value;
-					} else if (fldName.equals("cusAddress")) {
-						cusAddress = value;
-					}
+					} else if (fldName.equals("petBreed")) {
+						petBreed = value;
+					} else if (fldName.equals("petVariety")) {
+						petVariety = value;
+					} 
 				} else {
 					// 取出圖片檔的檔名
-					cusFileName = GlobalService.getFileName(p);
+					petFileName = GlobalService.getFileName(p);
 					// 調整圖片檔檔名的長度，需要檔名中的附檔名，所以調整主檔名以免檔名太長無法寫入表格
-					cusFileName = GlobalService.adjustFileName(cusFileName, GlobalService.IMAGE_FILENAME_LENGTH);
-					if (cusFileName != null && cusFileName.trim().length() > 0) {
+					petFileName = GlobalService.adjustFileName(petFileName, GlobalService.IMAGE_FILENAME_LENGTH);
+					if (petFileName != null && petFileName.trim().length() > 0) {
 						sizeInBytes = p.getSize();
 						is = p.getInputStream();
 					} else {
@@ -118,62 +124,33 @@ public class PetRegisterServlet extends HttpServlet {
 			// (無)
 			
 	// 3. 檢查使用者輸入資料
-			if (cusAccount == null || cusAccount.trim().length() == 0) {
-				errorMsg.put("errorIdEmpty", "帳號欄必須輸入");
+			if (petName == null || petName.trim().length() == 0) {
+				errorMsg.put("errorNameEmpty", "寵物暱稱必須輸入");
 			}
-			if (cusPassword == null || cusPassword.trim().length() == 0) {
-				errorMsg.put("errorPasswordEmpty", "密碼欄必須輸入");
+			if (petBreed == null || petBreed.trim().length() == 0) {
+				errorMsg.put("errorBreedEmpty", "寵物品種必須輸入");
 			}
-			if (confirmPassword == null || confirmPassword.trim().length() == 0) {
-				errorMsg.put("errorPassword1Empty", "密碼確認欄必須輸入");
-			}
-			if (cusPassword.trim().length() > 0 && confirmPassword.trim().length() > 0) {
-				if (!cusPassword.trim().equals(confirmPassword.trim())) {
-					errorMsg.put("errorPassword1Empty", "密碼欄必須與確認欄一致");
-					errorMsg.put("errorPasswordEmpty", "*");
-				}
-			}
-
-			if (cusName == null || cusName.trim().length() == 0) {
-				errorMsg.put("errorName", "姓名欄必須輸入");
+			if (petVariety == null || petVariety.trim().length() == 0) {
+				errorMsg.put("errorVarietyEmpty", "寵物種類必須輸入");
 			}
 			
 			// 檢查使用者所輸入的資料(生日)
 			if (bDay != null && bDay.trim().length() > 0) {
 				try {
-					cusBirthday = java.sql.Date.valueOf(bDay);
+					petBirthday = java.sql.Date.valueOf(bDay);
 				} catch (IllegalArgumentException e) {
-					errorMsg.put("bDay", "生日欄格式錯誤");
+					errorMsg.put("errorDayFormat", "寵物生日欄格式錯誤");
 				}
-			}
-			if (cusEmail == null || cusEmail.trim().length() == 0) {
-				errorMsg.put("errorEmail", "電子郵件欄必須輸入");
-			}
-			if (cusTel == null || cusTel.trim().length() == 0) {
-				errorMsg.put("errorTel", "電話號碼欄必須輸入");
-			}
-			if (cusAddress == null || cusAddress.trim().length() == 0) {
-				errorMsg.put("errorAddr", "地址欄必須輸入");
-			}
-			if (cusTel == null || cusTel.trim().length() == 0) {
-				errorMsg.put("errorTel", "電話號碼欄必須輸入");
 			}
 		} else {
 			errorMsg.put("errTitle", "此表單不是上傳檔案的表單");
 		}
 		
-		// 如果密碼輸入格式有錯誤
-		if (errorMsg.isEmpty()) {
-			pattern = Pattern.compile(PASSWORD_PATTERN);
-			matcher = pattern.matcher(cusPassword);
-			if (!matcher.matches()) {
-				errorMsg.put("passwordError", "密碼至少含有一個大寫字母、小寫字母、數字與!@#$%!^'\"等四組資料組合而成，且長度不能小於八個字元");
-			}
-		}
+		
 		// 如果有錯誤訊息產生
 		if (!errorMsg.isEmpty()) {
 			// 導向原來輸入資料的畫面，並顯示錯誤訊息
-			RequestDispatcher rd = request.getRequestDispatcher("/_01_Member/MemberRegistration.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/_01_Member/PetRegistration.jsp");
 			rd.forward(request, response);
 			return;
 		}
@@ -183,7 +160,7 @@ public class PetRegisterServlet extends HttpServlet {
 			// MemberDaoImpl_Jdbc類別的功能：
 			// 1.檢查帳號是否已經存在，已存在的帳號不能使用，回傳相關訊息通知使用者修改
 			// 2.若無問題，儲存會員的資料
-			PetService service = new PetServiceImpl();
+			MemberService service = new MemberServiceImpl();
 
 //			if (service.accountExists(cusAccount)) {
 //				errorMsg.put("errorAccountDup", "此帳號已存在，請換新帳號");
@@ -192,34 +169,35 @@ public class PetRegisterServlet extends HttpServlet {
 //				// 要在此加密，不要在 dao.saveMember(mem)進行加密
 //				cusPassword = GlobalService.getMD5Endocing(GlobalService.encryptString(cusPassword));
 ////				Timestamp ts = new java.sql.Timestamp(System.currentTimeMillis()); // 當下註冊時間。
-////				cusBirthday = java.sql.Date.valueOf(bDay);
-				Blob blob = null;
-				if (is != null) {
-					blob = GlobalService.fileToBlob(is, sizeInBytes);
-				}
 				
-				// 將所有會員資料封裝到MemberBean(類別的)物件
-				PetBean pet = new PetBean(); 
-				// 呼叫MemberDao的saveMember方法
-				int n = service.savePet(pet);
-				if (n == 1) {
-					msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-					response.sendRedirect("/java014_03_FurKids/_01_Member/SuccessRegistration.jsp");
-					return;
-				} else {
-					errorMsg.put("errorIdDup", "新增此筆資料有誤(MemberRegisterServlet)");
-				}
+			petBirthday = java.sql.Date.valueOf(bDay);
+			
+			if (is != null) {
+				petPhoto = GlobalService.fileToBlob(is, sizeInBytes);
+			}
+				
+			// 將所有寵物資料封裝到PetMemberBean(類別的)物件
+			PetBean pet = new PetBean(cusAccount, petName, petGender, petBirthday, petBreed, petVariety, petPhoto, petFileName);
+			// 呼叫MemberDao的saveMember方法
+			int n = service.savePet(pet);
+			if (n == 1) {
+				msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
+				response.sendRedirect("/java014_03_FurKids/_01_Member/PetRegistration.jsp");
+				return;
+			} else {
+				errorMsg.put("errorIdDup", "新增此筆資料有誤(PetRegisterServlet)");
+			}
 			// 5.依照 Business Logic 運算結果來挑選適當的畫面
 			if (!errorMsg.isEmpty()) {
 				// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
-				RequestDispatcher rd = request.getRequestDispatcher("/_01_Member/MemberRegistration.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/_01_Member/PetRegistration.jsp");
 				rd.forward(request, response);
 				return;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			errorMsg.put("errorIdDup", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher("/java014_03_FurKids/_01_Member/MemberRegistration.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/_01_Member/PetRegistration.jsp");
 			rd.forward(request, response);
 		}
 
