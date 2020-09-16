@@ -3,11 +3,11 @@ package _03_FriendlyService.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +19,9 @@ import _03_FriendlyService.model.ConvenienceBean_H;
 
 @Repository
 public class ConvenienceDaoImp_H implements ConvenienceDao{
+	
+	public int totalPages = -1;
+	
 	 @Autowired
 	SessionFactory factory;
 	
@@ -126,6 +129,37 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 		Session session = factory.getCurrentSession();
 		bean = session.get(MerchantBean.class, id);
 		return bean;
+	}
+	//撈出該商家已上架的服務(一次撈8筆)
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ConvenienceBean_H> getPageConvenience(String id,int pageNo) {
+		List<ConvenienceBean_H> list = new ArrayList<>();
+		String hql = "FROM ConvenienceBean_H m where m.busAccount = :mid";
+		Session session = factory.getCurrentSession();
+		int startRecordNo = (pageNo - 1) * 8;
+		list = session.createQuery(hql).setParameter("mid", id)
+									   .setFirstResult(startRecordNo)
+									   .setMaxResults(8)
+									   .getResultList();
+		return list;
+	}
+	
+	//查詢總筆數
+	@Override
+	public long getRecordCounts() {
+		long count = 0; // 必須使用 long 型態
+		String hql = "SELECT count(*) FROM ConvenienceBean_H";
+		Session session = factory.getCurrentSession();
+		count = (Long)session.createQuery(hql).getSingleResult();
+		return count;
+	}
+	
+	//計算總共幾頁
+	@Override
+	public int getTotalPages() {
+		totalPages = (int) (Math.ceil(getRecordCounts() / 8.0));
+		return totalPages;
 	}
 
 	

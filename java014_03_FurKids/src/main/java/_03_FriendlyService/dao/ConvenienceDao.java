@@ -1,6 +1,7 @@
 package _03_FriendlyService.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import _01_Member.Registration.model.MerchantBean;
 import _01_Member.Registration.model.MerchantChildBean;
@@ -30,4 +31,11 @@ public interface ConvenienceDao {
 	MerchantChildBean getBusChild(int busChildNo);
 	
 	ConvenienceBean_H getConvenience(int busChildNo);
+	
+	long getRecordCounts();
+	
+	List<ConvenienceBean_H> getPageConvenience(String id,int pageNo);
+	
+	int getTotalPages();
+	
 }

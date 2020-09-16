@@ -205,6 +205,23 @@ public class ConvenienceHibernateServiceImpl implements ConvenienceService{
 		cnDao.update(mcb);
 		cnDao.update(mb);
 	}
+	
+	//撈出計算過後的總頁數
+	@Transactional
+	@Override
+	public int getTotalPages() {
+		int n = 0;
+		n = cnDao.getTotalPages();
+		return n;
+	}
+	
+	@Transactional
+	@Override
+	public List<ConvenienceBean_H> getPageConvenience(String id, int pageNo) {
+		List<ConvenienceBean_H> bean = null;
+		bean = cnDao.getPageConvenience(id, pageNo);
+		return bean;
+	}
 
 
 	

@@ -34,4 +34,8 @@ public interface ConvenienceService {
 	MerchantChildBean getBusChild(int busChildNo);
 	
 	ConvenienceBean_H getConvenience(int busChildNo);
+	
+	List<ConvenienceBean_H> getPageConvenience(String id,int pageNo);
+	
+	int getTotalPages();
 }
