@@ -222,6 +222,14 @@ public class ConvenienceHibernateServiceImpl implements ConvenienceService{
 		bean = cnDao.getPageConvenience(id, pageNo);
 		return bean;
 	}
+	//撈所有分店
+	@Transactional
+	@Override
+	public List<MerchantChildBean> getBusChild(String id) {
+		List<MerchantChildBean> bean = null;
+		bean = cnDao.getBusChild(id);
+		return bean;
+	}
 
 
 	

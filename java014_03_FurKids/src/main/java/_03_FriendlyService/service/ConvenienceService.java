@@ -29,6 +29,8 @@ public interface ConvenienceService {
 	
 	List<MerchantChildBean> getNotConvenience(String id);
 	
+	List<MerchantChildBean> getBusChild(String id);
+	
 	MerchantBean getBus(String id);
 
 	MerchantChildBean getBusChild(int busChildNo);

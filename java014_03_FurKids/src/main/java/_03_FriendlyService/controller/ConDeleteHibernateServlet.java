@@ -33,16 +33,6 @@ public class ConDeleteHibernateServlet extends HttpServlet {
 			return;
 		}
 		
-		String pageNoStr = request.getParameter("pageNo");
-		if (pageNoStr == null || pageNoStr.trim().length() == 0){
-			pageNoStr = (String) session.getAttribute("pageNo") ;
-			if (pageNoStr == null){
-			   pageNoStr = "1";
-			} 
-		} 
-		
-		int pageNo = Integer.parseInt(pageNoStr);
-		session.setAttribute("nowPage", pageNo);
 		
 		String deleteNo = request.getParameter("deleteNo");
 		

@@ -112,7 +112,7 @@
 						<h5 class="card-header text-center">${Convenience.merchantChildBean.busChildName}</h5>
 
 						<FORM
-							action="<c:url value='/_03_ConvenienceProcess/ConRevise.do?pageNo=${nowPage}' />"
+							action="<c:url value='/_03_ConvenienceProcess/ConRevise.do' />"
 							method="POST" class="ccc" style="display: none">
 
 							<input type="text" name="reviseno"
@@ -180,7 +180,7 @@
 						</ul>
 					</div>
 					<div class="modal-footer">
-						<FORM action="<c:url value='/_03_ConvenienceProcess/Delete.do?pageNo=${nowPage}' />"
+						<FORM action="<c:url value='/_03_ConvenienceProcess/Delete.do' />"
 							method="POST">
 							<input type="text" name="deleteNo"
 								value="${Convenience.busChildNo}" style="display: none">
@@ -217,7 +217,7 @@
 						</button>
 					</div>
 					<FORM
-						action="<c:url value='/_03_ConvenienceProcess/ConInsert.do?pageNo=${nowPage}' />"
+						action="<c:url value='/_03_ConvenienceProcess/ConInsert.do' />"
 						method="POST">
 						<div class="modal-body">
 							<input type="text" class="form-control" name="busChildNo"

@@ -96,14 +96,12 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 		List<MerchantChildBean> list2 = new ArrayList<>();
 		list = session.createQuery(hql).setParameter("mid", id).getResultList();
 		MerchantChildBean abc;
-		System.out.println("======================");
 		for(MerchantChildBean o : list) {
 			if(o.getConvenienceBean_H() == null) {
 				abc = session.get(o.getClass(), o.getBusChildNo());
 				list2.add(abc);
 			}
 		}
-		System.out.println("======================");
 		return list2;
 	}
 	// 依busChildNo來查詢單筆分店記錄
@@ -160,6 +158,17 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 	public int getTotalPages(String id) {
 		totalPages = (int) (Math.ceil(getRecordCounts(id) / 8.0));
 		return totalPages;
+	}
+	
+	//找所有分店
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MerchantChildBean> getBusChild(String id) {
+		Session session = factory.getCurrentSession();
+		String hql = "FROM MerchantChildBean m where m.busAccount = :mid";
+		List<MerchantChildBean> list = new ArrayList<>();
+		list = session.createQuery(hql).setParameter("mid", id).getResultList();
+		return list;
 	}
 
 	

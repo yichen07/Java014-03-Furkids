@@ -73,21 +73,9 @@ public class ConInsertHibernatServlet extends HttpServlet {
 			response.sendRedirect(response.encodeRedirectURL("Convenience_H.do"));
 			return;
 		}
-		String pageNoStr = request.getParameter("pageNo");
-		if (pageNoStr == null || pageNoStr.trim().length() == 0){
-			pageNoStr = (String) session.getAttribute("pageNo") ;
-			if (pageNoStr == null){
-			   pageNoStr = "1";
-			} 
-		} 
 		
-		int pageNo = Integer.parseInt(pageNoStr);
-		session.setAttribute("nowPage", pageNo);
 		
 		Integer busNo = Integer.parseInt(busChildNo); 
-//		System.out.println(convenience + "," + busNo + "," + convenienceList + "," + condCloseDay + "," + conOpenTime + "," + conCloseTime);
-		
-//		ConvenienceService server = new ConvenienceHibernateServiceImpl();
 		
 		//把傳進來要新增的資料放進去
 		ConvenienceBean_H cbh = new ConvenienceBean_H(busNo, accountId,convenience,convenienceList,condCloseDay,conOpenTime,conCloseTime);

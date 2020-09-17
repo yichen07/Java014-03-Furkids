@@ -26,6 +26,8 @@ public interface ConvenienceDao {
 	
 	List<MerchantChildBean> getNotRestaurants(String id);
 	
+	List<MerchantChildBean> getBusChild(String id);
+	
 	MerchantBean getBus(String id);
 	
 	MerchantChildBean getBusChild(int busChildNo);
