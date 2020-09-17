@@ -52,6 +52,7 @@ public class MerchantRegisterServlet extends HttpServlet {
 		// 註冊成功後將用response.sendRedirect()導向新的畫面，所以需要
 		// session物件來存放共用資料。
 		HttpSession session = request.getSession();
+		String contextPath = request.getContextPath();
 		request.setAttribute("MsgMap", errorMsg); 	// 顯示錯誤訊息
 		session.setAttribute("MsgOK", msgOK); 		// 顯示正常訊息
 
@@ -192,7 +193,7 @@ public class MerchantRegisterServlet extends HttpServlet {
 
 				if (n == 1) {
 					msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-					response.sendRedirect("/java014_03_FurKids/index.jsp");
+					response.sendRedirect(contextPath + "/index.jsp");
 					return;
 				} else {
 					errorMsg.put("errorIdDup", "新增此筆資料有誤(MerchantRegisterServlet)");
@@ -208,7 +209,7 @@ public class MerchantRegisterServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			errorMsg.put("errorIdDup", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher("/java014_03_FurKids/_01_Member/MerchantRegistration.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/_01_Member/MerchantRegistration.jsp");
 			rd.forward(request, response);
 		}
 

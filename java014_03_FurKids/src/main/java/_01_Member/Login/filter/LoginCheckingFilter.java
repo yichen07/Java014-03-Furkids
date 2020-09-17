@@ -71,7 +71,7 @@ public class LoginCheckingFilter implements Filter {
 						// 原本要執行的程式。
 						session.setAttribute("requestURI", requestURI);	
 					}
-					resp.sendRedirect(contextPath + "/_01_Member/Login.jsp");
+					resp.sendRedirect(contextPath + "/index.jsp");
 					return;
 				}
 			} else {   //不需要登入，直接去執行他要執行的程式

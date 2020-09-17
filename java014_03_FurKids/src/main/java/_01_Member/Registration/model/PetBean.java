@@ -21,9 +21,10 @@ public class PetBean implements Serializable {
 	public PetBean() {
 	}
 
-	public PetBean(String cusAccount, String petName, String petGender, Date petBirthday,
+	public PetBean(Integer petID, String cusAccount, String petName, String petGender, Date petBirthday,
 			String petBreed, String petVariety, Blob petPhoto, String petFileName) {
 		super();
+		this.petID = petID;
 		this.cusAccount = cusAccount;
 		this.petName = petName;
 		this.petGender = petGender;

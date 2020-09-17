@@ -150,6 +150,8 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 		String hql = "SELECT count(*) FROM ConvenienceBean_H WHERE busAccount = :mid";
 		Session session = factory.getCurrentSession();
 		count = (Long)session.createQuery(hql).setParameter("mid", id).getSingleResult();
+		System.out.println("count = " + count);
+
 		return count;
 	}
 	

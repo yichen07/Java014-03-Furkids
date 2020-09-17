@@ -42,7 +42,8 @@ public class MerchantChildRegisterServlet extends HttpServlet {
 		
 		// 只要舊的Session物件，如果找不到，不要建立新的Session物件，直接傳回 null
 		HttpSession session = request.getSession(false); 
-
+		String contextPath = request.getContextPath();
+		
 		// 準備存放錯誤訊息的Map物件
 		Map<String, String> errorMsg = new HashMap<String, String>();
 		request.setAttribute("MsgMap", errorMsg); 	// 顯示錯誤訊息
@@ -163,7 +164,7 @@ public class MerchantChildRegisterServlet extends HttpServlet {
 
 				if (n == 1) {
 					msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-					response.sendRedirect("/java014_03_FurKids/_01_Member/MerchantChildRegistration.jsp");
+					response.sendRedirect(contextPath + "/_01_Member/MerchantChildRegistration.jsp");
 					return;
 				} else {
 					errorMsg.put("errorIdDup", "新增此筆資料有誤(MerchantChildRegisterServlet)");

@@ -38,6 +38,7 @@ public class PetRegisterServlet extends HttpServlet {
 		
 		// 只要舊的Session物件，如果找不到，不要建立新的Session物件，直接傳回 null
 		HttpSession session = request.getSession(false); 
+		String contextPath = request.getContextPath();
 		
 		// 準備存放錯誤訊息的Map物件
 		Map<String, String> errorMsg = new HashMap<String, String>();
@@ -66,7 +67,7 @@ public class PetRegisterServlet extends HttpServlet {
 			cusAccount = mb.getCusAccount();
 		}
 		
-		Integer petID;
+		Integer petID = null;
 		
 		String petName = "";
 		
@@ -177,12 +178,12 @@ public class PetRegisterServlet extends HttpServlet {
 			}
 				
 			// 將所有寵物資料封裝到PetMemberBean(類別的)物件
-			PetBean pet = new PetBean(cusAccount, petName, petGender, petBirthday, petBreed, petVariety, petPhoto, petFileName);
+			PetBean pet = new PetBean(petID, cusAccount, petName, petGender, petBirthday, petBreed, petVariety, petPhoto, petFileName);
 			// 呼叫MemberDao的saveMember方法
 			int n = service.savePet(pet);
 			if (n == 1) {
 				msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-				response.sendRedirect("/java014_03_FurKids/_01_Member/PetRegistration.jsp");
+				response.sendRedirect(contextPath + "/_01_Member/PetRegistration.jsp");
 				return;
 			} else {
 				errorMsg.put("errorIdDup", "新增此筆資料有誤(PetRegisterServlet)");
