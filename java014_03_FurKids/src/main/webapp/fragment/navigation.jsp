@@ -36,43 +36,43 @@
 				<ul class="navbar-nav mr-auto">
 	
 					<li class="nav-item dropdown">
-					<a class="nav-link" style="font-size: 24px; padding: 8px;" href="<c:url value='' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 商城 </a>
+					<a class="nav-link" style="font-size: 24px; padding: 8px;" href="<c:url value='#' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 商城 </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<!--<a class="dropdown-item" href="<c:url value='' />">預留欄位</a>-->
+							<!--<a class="dropdown-item" href="<c:url value='#' />">預留欄位</a>-->
 						</div>
 					</li>
 	
 					<li class="nav-item dropdown">
-					<a class="nav-link text_size" style="font-size: 24px; padding: 8px;" href="<c:url value='' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">交流專區</a>
+					<a class="nav-link text_size" style="font-size: 24px; padding: 8px;" href="<c:url value='#' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">交流專區</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="<c:url value='' />">寵物專欄</a> 
-							<a class="dropdown-item" href="<c:url value='' />">寵物失蹤協尋</a> 
-							<a class="dropdown-item" href="<c:url value='' />">二手市集</a> 
-							<a class="dropdown-item" href="<c:url value='' />">活動建立</a> 
-							<a class="dropdown-item" href="<c:url value='' />">寵物交友</a> 
-							<a class="dropdown-item" href="<c:url value='' />">留言板</a>
+							<a class="dropdown-item" href="<c:url value='#' />">寵物專欄</a> 
+							<a class="dropdown-item" href="<c:url value='#' />">寵物失蹤協尋</a> 
+							<a class="dropdown-item" href="<c:url value='#' />">二手市集</a> 
+							<a class="dropdown-item" href="<c:url value='#' />">活動建立</a> 
+							<a class="dropdown-item" href="<c:url value='#' />">寵物交友</a> 
+							<a class="dropdown-item" href="<c:url value='#' />">留言板</a>
 						</div>
 					</li>
 	
 					<li class="nav-item dropdown">
 					<a class="nav-link" style="font-size: 24px; padding: 8px;" href="<c:url value='' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 友善專區 </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="<c:url value='' />">景點</a> 
-							<a class="dropdown-item" href="<c:url value='' />">餐廳</a> 
-							<a class="dropdown-item" href="<c:url value='' />">寵物美容</a> 
-							<a class="dropdown-item" href="<c:url value='' />">旅館</a> 
-							<a class="dropdown-item" href="<c:url value='' />">寵物寄放</a> 
-							<a class="dropdown-item" href="<c:url value='' />">租屋</a>
+							<a class="dropdown-item" href="<c:url value='#' />">景點</a> 
+							<a class="dropdown-item" href="<c:url value='#' />">餐廳</a> 
+							<a class="dropdown-item" href="<c:url value='#' />">寵物美容</a> 
+							<a class="dropdown-item" href="<c:url value='#' />">旅館</a> 
+							<a class="dropdown-item" href="<c:url value='#' />">寵物寄放</a> 
+							<a class="dropdown-item" href="<c:url value='#' />">租屋</a>
 						</div>
 					</li>
 	
 					<li class="nav-item dropdown">
-					<a class="nav-link" style="font-size: 24px; padding: 8px;" href="<c:url value='' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 健康管理 </a>
+					<a class="nav-link" style="font-size: 24px; padding: 8px;" href="<c:url value='#' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 健康管理 </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="<c:url value='' />">寵物熱量計算</a> 
-							<a class="dropdown-item" href="<c:url value='' />">寵物健康管理</a> 
-							<a class="dropdown-item" href="<c:url value='' />">寵物疫苗資訊</a> 
-							<a class="dropdown-item" href="<c:url value='' />">寵物食譜</a>
+							<a class="dropdown-item" href="<c:url value='#' />">寵物熱量計算</a> 
+							<a class="dropdown-item" href="<c:url value='#' />">寵物健康管理</a> 
+							<a class="dropdown-item" href="<c:url value='#' />">寵物疫苗資訊</a> 
+							<a class="dropdown-item" href="<c:url value='#' />">寵物食譜</a>
 						</div>
 					</li>
 				</ul>
@@ -81,7 +81,7 @@
 					<li class="nav-item">
 						<c:choose>
 								<c:when test="${empty LoginOK}">
-									<a class="nav-link" href="<c:url value='' />" data-toggle="modal"
+									<a class="nav-link" href="<c:url value='#' />" data-toggle="modal"
 										data-target="#login"> <p1 style="font-size: 24px; padding: 8px;">會員登入</p1> <p2> <img
 											src="${pageContext.request.contextPath}/resources/images/member.svg"
 											width="40px" height="auto" alt="" /> </p2>
@@ -89,29 +89,29 @@
 								</c:when>
 								<c:when test="${LoginOK.CLASSIFY == 0}">
 									<div class="dropdown">
-										<a class="nav-link nav-item dropdown-toggle" href="<c:url value='' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <p1 style="font-size: 24px; padding: 8px;">會員中心</p1> <p2> <img
+										<a class="nav-link nav-item dropdown-toggle" href="<c:url value='#' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <p1 style="font-size: 24px; padding: 8px;">會員中心</p1> <p2> <img
 												src="${pageContext.request.contextPath}/_00_init/getHeadshot?account=${LoginOK.cusAccount}"
 												width="40px" height="auto" alt="" /> </p2>
 										</a>
 											<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 												<a class="dropdown-item" href="<c:url value='/_01_Member/PetRegistration.jsp' />">寵物新增</a> 
-												<a class="dropdown-item" href="<c:url value='' />">會員管理</a> 
-												<a class="dropdown-item" href="<c:url value='' />">會員功能_三</a> 
-												<a class="dropdown-item" href="<c:url value='' />">會員功能_四</a>
+												<a class="dropdown-item" href="<c:url value='#' />">會員管理</a> 
+												<a class="dropdown-item" href="<c:url value='#' />">會員功能_三</a> 
+												<a class="dropdown-item" href="<c:url value='#' />">會員功能_四</a>
 											</div>
 									</div>
 								</c:when>
 								<c:when test="${LoginOK.CLASSIFY == 1}">
 									<div class="dropdown">
-										<a class="nav-link dropdown-toggle" href="<c:url value='' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <p1 style="font-size: 24px; padding: 8px;">商家中心</p1> <p2> <img
+										<a class="nav-link dropdown-toggle" href="<c:url value='#' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <p1 style="font-size: 24px; padding: 8px;">商家中心</p1> <p2> <img
 												src="${pageContext.request.contextPath}/_00_init/getHeadshot?account=${LoginOK.busAccount}"
 												width="40px" height="auto" alt="" /> </p2>
 										</a>
 											<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 													<a class="dropdown-item" href="<c:url value='/_01_Member/MerchantChildRegistration.jsp' />">分店新增</a> 
-													<a class="dropdown-item" href="<c:url value='' />">商家管理</a> 
+													<a class="dropdown-item" href="<c:url value='#' />">商家管理</a> 
 													<a class="dropdown-item" href="<c:url value='/_03_ConvenienceProcess/Convenience_H.do' />">服務上架</a> 
-													<a class="dropdown-item" href="<c:url value='' />">商家功能_四</a>
+													<a class="dropdown-item" href="<c:url value='#' />">商家功能_四</a>
 											</div>
 									</div>
 								</c:when>
@@ -119,7 +119,7 @@
 						</li>
 	
 					<li class="nav-item">
-						<a class="nav-link" href="<c:url value='' />"><p1 style="font-size: 24px; padding: 8px;">購物車</p1>
+						<a class="nav-link" href="<c:url value='#' />"><p1 style="font-size: 24px; padding: 8px;">購物車</p1>
 							<p2>
 								<img
 									src="${pageContext.request.contextPath}/resources/images/cart.svg"
@@ -152,9 +152,9 @@
 	<c:set var="msg" value="登入" />
 	
 <!-- 表示使用逾時，重新登入 -->
-	<c:if test="${ ! empty sessionScope.timeOut }" > 
-	   <c:set var="msg" value="<font color='red'>${sessionScope.timeOut}</font>" />
-	</c:if>
+<%-- 	<c:if test="${ ! empty sessionScope.timeOut }" >  --%>
+<%-- 	   <c:set var="msg" value="<font color='red'>${sessionScope.timeOut}</font>" /> --%>
+<%-- 	</c:if> --%>
 
 
 <!-- 登入畫面_Modal -->
@@ -200,7 +200,7 @@
 					</div>
 					<div class="col-md-12">
               			<p class="font-small white-text d-flex justify-content-center">尚未創建帳號
-              			<a href="<c:url value='' />" class="green-text ml-1 font-weight-bold" data-toggle="modal" data-target="#regis" onclick="changeModal()">立即註冊</a></p>
+              			<a href="<c:url value='#' />" class="green-text ml-1 font-weight-bold" data-toggle="modal" data-target="#regis" onclick="changeModal()">立即註冊</a></p>
               		</div>
 				</form>
             </div>
@@ -235,7 +235,7 @@
 			<div class="modal-footer">
 				<div class="col-md-12">
 					<p class="font-small white-text d-flex justify-content-center">
-						已完成註冊 <a href="<c:url value='' />" class="green-text ml-1 font-weight-bold"
+						已完成註冊 <a href="<c:url value='#' />" class="green-text ml-1 font-weight-bold"
 							data-toggle="modal" data-target="#login" onclick="changeModal()">立即登入</a>
 					</p>
 				</div>
@@ -257,12 +257,12 @@
       </div>
       <div class="modal-body">
 			<div class="text-center">
-				<font color="red">${MsgOK.InsertOK}</font>
+				<font color="red">${MsgOK.InsertOK} ${sessionScope.timeOut}</font>
 			</div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+        <a href="<c:url value='/index.jsp' />"><button type="button" class="btn btn-primary">回首頁</button></a>
       </div>
     </div>
   </div>
@@ -293,12 +293,25 @@
 	<% session.removeAttribute("MsgMap"); %>
 </c:if>
 
-<%-- 新增(含註冊、分店與寵物新增)成功時，顯示提示視窗 --%>
+<%-- 新增(含註冊、分店與寵物新增)成功與使用逾時時，顯示提示視窗 --%>
 <c:if test="${!empty MsgOK.InsertOK}">
 	<script>
-		$('#messages').modal('show')
+		$('#messages').modal('show');
+		setTimeout(function() {
+            $('#messages').modal('hide') // 3秒後，modal消失。
+        }, 3000);
 	</script>
 	<% session.removeAttribute("MsgOK"); %>
+</c:if>
+
+<c:if test="${!empty sessionScope.timeOut}">
+	<script>
+		$('#messages').modal('show');
+		setTimeout(function() {
+            $('#messages').modal('hide') // 3秒後，modal消失。
+        }, 3000);
+	</script>
+	<% session.removeAttribute("timeOut"); %>
 </c:if>
 
 
