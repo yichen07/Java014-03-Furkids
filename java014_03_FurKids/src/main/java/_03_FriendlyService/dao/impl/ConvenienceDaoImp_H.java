@@ -147,18 +147,18 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 	
 	//查詢總筆數
 	@Override
-	public long getRecordCounts() {
+	public long getRecordCounts(String id) {
 		long count = 0; // 必須使用 long 型態
-		String hql = "SELECT count(*) FROM ConvenienceBean_H";
+		String hql = "SELECT count(*) FROM ConvenienceBean_H WHERE busAccount = :mid";
 		Session session = factory.getCurrentSession();
-		count = (Long)session.createQuery(hql).getSingleResult();
+		count = (Long)session.createQuery(hql).setParameter("mid", id).getSingleResult();
 		return count;
 	}
 	
 	//計算總共幾頁
 	@Override
-	public int getTotalPages() {
-		totalPages = (int) (Math.ceil(getRecordCounts() / 8.0));
+	public int getTotalPages(String id) {
+		totalPages = (int) (Math.ceil(getRecordCounts(id) / 8.0));
 		return totalPages;
 	}
 

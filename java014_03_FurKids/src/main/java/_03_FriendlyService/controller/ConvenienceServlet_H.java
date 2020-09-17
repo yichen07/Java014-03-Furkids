@@ -65,7 +65,7 @@ public class ConvenienceServlet_H extends HttpServlet {
 		//未上架的分店
 		request.setAttribute("NotConvenience", mcb);
 		//總頁數
-		int n = service.getTotalPages();
+		int n = service.getTotalPages(userId);
 		System.out.println("**********************");
 		System.out.println("n="+n);
 		//如果總上架的分店數是八的倍數且還有未上架的分店

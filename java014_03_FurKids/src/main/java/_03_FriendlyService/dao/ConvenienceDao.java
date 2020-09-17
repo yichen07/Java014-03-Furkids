@@ -32,10 +32,10 @@ public interface ConvenienceDao {
 	
 	ConvenienceBean_H getConvenience(int busChildNo);
 	
-	long getRecordCounts();
+	long getRecordCounts(String id);
 	
 	List<ConvenienceBean_H> getPageConvenience(String id,int pageNo);
 	
-	int getTotalPages();
+	int getTotalPages(String id);
 	
 }
