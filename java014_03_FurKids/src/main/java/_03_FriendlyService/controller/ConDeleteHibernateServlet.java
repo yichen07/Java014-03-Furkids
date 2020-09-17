@@ -21,7 +21,10 @@ import _03_FriendlyService.service.ConvenienceService;
 @WebServlet("/_03_ConvenienceProcess/Delete.do")
 public class ConDeleteHibernateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	       doPost(request, response);
+		}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
@@ -30,7 +33,16 @@ public class ConDeleteHibernateServlet extends HttpServlet {
 			return;
 		}
 		
+		String pageNoStr = request.getParameter("pageNo");
+		if (pageNoStr == null || pageNoStr.trim().length() == 0){
+			pageNoStr = (String) session.getAttribute("pageNo") ;
+			if (pageNoStr == null){
+			   pageNoStr = "1";
+			} 
+		} 
 		
+		int pageNo = Integer.parseInt(pageNoStr);
+		session.setAttribute("nowPage", pageNo);
 		
 		String deleteNo = request.getParameter("deleteNo");
 		

@@ -57,7 +57,7 @@ public class ConvenienceServlet_H extends HttpServlet {
 		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(sc);
 		ConvenienceService service = ctx.getBean(ConvenienceService.class);
 		
-//		List<ConvenienceBean_H> cb = service.getAllConvenience(userId);
+		List<ConvenienceBean_H> allcb = service.getAllConvenience(userId);
 		List<ConvenienceBean_H> cb = service.getPageConvenience(userId, pageNo);
 		List<MerchantChildBean> mcb = service.getNotConvenience(userId);
 		
@@ -66,13 +66,18 @@ public class ConvenienceServlet_H extends HttpServlet {
 		request.setAttribute("NotConvenience", mcb);
 		//總頁數
 		int n = service.getTotalPages();
-		//如果已上架分店是八的倍數且還有未上架的分店
-		if(cb.size() % 8 == 0 && mcb.size() > 0) {
-			n++;
+		System.out.println("**********************");
+		System.out.println("n="+n);
+		//如果總上架的分店數是八的倍數且還有未上架的分店
+		if(allcb.size() % 8 == 0 && mcb.size() > 0) {
+			n=n+1;
 		}
+		System.out.println("n="+n);
+		System.out.println("****************************************");
+		System.out.println(cb.size() % 8 + " , "+mcb.size());
 		request.setAttribute("TotalPages", n);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/_03_FriendlySystem/convenience.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/_03_FriendlySystem/convenience.jsp?pageNo="+pageNo);
 		rd.forward(request, response);
 		return;
 	}
