@@ -38,7 +38,7 @@
 					<li class="nav-item dropdown">
 					<a class="nav-link" style="font-size: 24px; padding: 8px;" href="<c:url value='#' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 商城 </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<!--<a class="dropdown-item" href="<c:url value='#' />">預留欄位</a>-->
+							<a class="dropdown-item" href="<c:url value='/_02_ShoppingSystem/DisplayPageProducts' />">寵物商城</a>
 						</div>
 					</li>
 	
