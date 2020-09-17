@@ -25,7 +25,9 @@ import _03_FriendlyService.service.ConvenienceService;
 @WebServlet("/_03_ConvenienceProcess/ConInsert.do")
 public class ConInsertHibernatServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	       doPost(request, response);
+		}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -71,7 +73,16 @@ public class ConInsertHibernatServlet extends HttpServlet {
 			response.sendRedirect(response.encodeRedirectURL("Convenience_H.do"));
 			return;
 		}
+		String pageNoStr = request.getParameter("pageNo");
+		if (pageNoStr == null || pageNoStr.trim().length() == 0){
+			pageNoStr = (String) session.getAttribute("pageNo") ;
+			if (pageNoStr == null){
+			   pageNoStr = "1";
+			} 
+		} 
 		
+		int pageNo = Integer.parseInt(pageNoStr);
+		session.setAttribute("nowPage", pageNo);
 		
 		Integer busNo = Integer.parseInt(busChildNo); 
 //		System.out.println(convenience + "," + busNo + "," + convenienceList + "," + condCloseDay + "," + conOpenTime + "," + conCloseTime);
@@ -83,9 +94,9 @@ public class ConInsertHibernatServlet extends HttpServlet {
 		//用傳回來的分店編號(主鍵)去抓該筆分店資料
 		MerchantChildBean mcb = server.getBusChild(busNo);
 		mcb.setBusChildDescription(busChildDescription);
-		server.insertAndUpdate(cbh, mcb);
-		 
+		server.insertAndUpdate(cbh, mcb);	
 		response.sendRedirect(response.encodeRedirectURL("Convenience_H.do"));
+		return;
 	
 	}
 
