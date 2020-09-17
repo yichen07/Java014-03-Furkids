@@ -152,6 +152,7 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 		String hql = "SELECT count(*) FROM ConvenienceBean_H";
 		Session session = factory.getCurrentSession();
 		count = (Long)session.createQuery(hql).getSingleResult();
+		System.out.println("count = " + count);
 		return count;
 	}
 	
