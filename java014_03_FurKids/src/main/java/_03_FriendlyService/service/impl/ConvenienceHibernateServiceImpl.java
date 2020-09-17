@@ -209,9 +209,9 @@ public class ConvenienceHibernateServiceImpl implements ConvenienceService{
 	//撈出計算過後的總頁數
 	@Transactional
 	@Override
-	public int getTotalPages() {
+	public int getTotalPages(String id) {
 		int n = 0;
-		n = cnDao.getTotalPages();
+		n = cnDao.getTotalPages(id);
 		return n;
 	}
 	
