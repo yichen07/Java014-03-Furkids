@@ -151,12 +151,9 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 		long count = 0; // 必須使用 long 型態
 		String hql = "SELECT count(*) FROM ConvenienceBean_H WHERE busAccount = :mid";
 		Session session = factory.getCurrentSession();
-<<<<<<< HEAD
-		count = (Long)session.createQuery(hql).getSingleResult();
-		System.out.println("count = " + count);
-=======
 		count = (Long)session.createQuery(hql).setParameter("mid", id).getSingleResult();
->>>>>>> 558627ff0cf90a760b8ba639c08f2b5d46275c22
+		System.out.println("count = " + count);
+
 		return count;
 	}
 	
