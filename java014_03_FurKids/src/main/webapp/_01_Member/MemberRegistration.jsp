@@ -6,7 +6,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>加入會員</title>
+<title>會員註冊</title>
 <style type="text/css">
 span.error {
 	color: red;
@@ -115,9 +115,11 @@ function setFocusToUserId(){
 
 
 <body onLoad="setFocusToUserId()" >
+
 <c:set var="funcName" value="REG" scope="session"/>
+
 <!-- 引入共同的頁首 -->
-<%-- <jsp:include page="/fragment/topMVC.jsp" /> --%>
+<jsp:include page="/fragment/navigation.jsp" />
 
   <div align='center' id="content"> 
   
@@ -149,7 +151,7 @@ function setFocusToUserId(){
         </td>
         <td style="width: 290px;">
       		<input type='text' name='cusAccount' value="${param.cusAccount}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<font color="red" size="-1">${MsgMap.errorIdEmpty}${MsgMap.errorIdDup}${MsgMap.errorAccountDup}</font> 
+      		<font color="red" size="-1">${MsgMap.errorIdEmpty}${MsgMapIdDup}${MsgMap.errorAccountDup}</font> 
       	</td>
       	
       	<td>

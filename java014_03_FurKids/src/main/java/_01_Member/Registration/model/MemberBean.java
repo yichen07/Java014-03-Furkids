@@ -4,10 +4,16 @@ import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+@Entity
+@Table(name="membraneregistration")
 public class MemberBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+	@Id
 	private String cusAccount;
 	private String cusPassword;
 	private String cusName;
@@ -19,7 +25,10 @@ public class MemberBean implements Serializable {
 	private String cusAddress;
 	private Blob cusPhoto;
 	private String cusFileName;
+	@Transient
+	final private Integer CLASSIFY = 0;
 	
+
 	
 	public MemberBean() {
 	}
@@ -127,6 +136,10 @@ public class MemberBean implements Serializable {
 
 	public void setCusFileName(String cusFileName) {
 		this.cusFileName = cusFileName;
+	}
+
+	public Integer getCLASSIFY() {
+		return CLASSIFY;
 	}
 
 	

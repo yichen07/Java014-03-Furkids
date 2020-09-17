@@ -3,24 +3,30 @@ package _03_FriendlyService.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import _00_Init.util.utils.HibernateUtils;
+import _01_Member.Registration.model.MerchantBean;
 import _01_Member.Registration.model.MerchantChildBean;
 import _03_FriendlyService.dao.ConvenienceDao;
 import _03_FriendlyService.model.ConvenienceBean_H;
 
-
+@Repository
 public class ConvenienceDaoImp_H implements ConvenienceDao{
-	 
+	
+	public int totalPages = -1;
+	
+	 @Autowired
 	SessionFactory factory;
 	
 	public ConvenienceDaoImp_H() {
-		factory = HibernateUtils.getSessionFactory();
+//		factory = HibernateUtils.getSessionFactory();
 	}
 
 	@Override
@@ -33,6 +39,20 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 	public void update(ConvenienceBean_H cb) {
 		Session session = factory.getCurrentSession();
 		session.merge(cb);
+	}
+	
+	@Override
+	public void update(MerchantChildBean mcb) {
+		Session session = factory.getCurrentSession();
+		session.merge(mcb);
+		
+	}
+	
+	@Override
+	public void update(MerchantBean mb) {
+		Session session = factory.getCurrentSession();
+		session.merge(mb);
+		
 	}
 
 	@Override
@@ -76,17 +96,15 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 		List<MerchantChildBean> list2 = new ArrayList<>();
 		list = session.createQuery(hql).setParameter("mid", id).getResultList();
 		MerchantChildBean abc;
-		System.out.println("======================");
 		for(MerchantChildBean o : list) {
 			if(o.getConvenienceBean_H() == null) {
 				abc = session.get(o.getClass(), o.getBusChildNo());
 				list2.add(abc);
 			}
 		}
-		System.out.println("======================");
 		return list2;
 	}
-
+	// 依busChildNo來查詢單筆分店記錄
 	@Override
 	public MerchantChildBean getBusChild(int busChildNo) {
 		MerchantChildBean bean = null;
@@ -94,6 +112,70 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 		bean = session.get(MerchantChildBean.class, busChildNo);
 		return bean;
 	}
+	// 依busChildNo來查詢單筆上架記錄
+	@Override
+	public ConvenienceBean_H getConvenience(int busChildNo) {
+		ConvenienceBean_H bean = null;
+		Session session = factory.getCurrentSession();
+		bean = session.get(ConvenienceBean_H.class, busChildNo);
+		return bean;
+	}
+
+	@Override
+	public MerchantBean getBus(String id) {
+		MerchantBean bean = null;
+		Session session = factory.getCurrentSession();
+		bean = session.get(MerchantBean.class, id);
+		return bean;
+	}
+	//撈出該商家已上架的服務(一次撈8筆)
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ConvenienceBean_H> getPageConvenience(String id,int pageNo) {
+		List<ConvenienceBean_H> list = new ArrayList<>();
+		String hql = "FROM ConvenienceBean_H m where m.busAccount = :mid";
+		Session session = factory.getCurrentSession();
+		int startRecordNo = (pageNo - 1) * 8;
+		list = session.createQuery(hql).setParameter("mid", id)
+									   .setFirstResult(startRecordNo)
+									   .setMaxResults(8)
+									   .getResultList();
+		return list;
+	}
+	
+	//查詢總筆數
+	@Override
+	public long getRecordCounts(String id) {
+		long count = 0; // 必須使用 long 型態
+		String hql = "SELECT count(*) FROM ConvenienceBean_H WHERE busAccount = :mid";
+		Session session = factory.getCurrentSession();
+		count = (Long)session.createQuery(hql).setParameter("mid", id).getSingleResult();
+		System.out.println("count = " + count);
+
+		return count;
+	}
+	
+	//計算總共幾頁
+	@Override
+	public int getTotalPages(String id) {
+		totalPages = (int) (Math.ceil(getRecordCounts(id) / 8.0));
+		return totalPages;
+	}
+	
+	//找所有分店
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MerchantChildBean> getBusChild(String id) {
+		Session session = factory.getCurrentSession();
+		String hql = "FROM MerchantChildBean m where m.busAccount = :mid";
+		List<MerchantChildBean> list = new ArrayList<>();
+		list = session.createQuery(hql).setParameter("mid", id).getResultList();
+		return list;
+	}
+
+	
+
+	
 	
 	
 

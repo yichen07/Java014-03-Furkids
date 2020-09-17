@@ -10,5 +10,7 @@ public interface MerchantChildDao {
 	
 	public MerchantChildBean queryMerchantChild(String account);
 	
+	public boolean merchantChildExists(String account, String address);
+	
 	public void setConnection(Connection con);
 }

@@ -8,7 +8,7 @@ import _00_Init.util.utils.HibernateUtils;
 
 
 
-@WebListener
+//@WebListener
 public class CreateSessionFactoryListener implements ServletContextListener {
 
     public void contextDestroyed(ServletContextEvent sce)  { 
