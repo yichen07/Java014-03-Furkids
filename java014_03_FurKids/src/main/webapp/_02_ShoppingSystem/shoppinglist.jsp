@@ -114,7 +114,7 @@
   
  	<jsp:include page="/fragment/navigation.jsp" />
    
-    
+    ${session.LoginOK}
     
      <div class="container-fluid" id="imageStellar">
          <div class="row">
@@ -128,6 +128,7 @@
      <!-- Main  Item-->
 
      <!-- sidebar -->
+     
         <div class="container-fluid p-0 mt-5 pl-5 ">
   
             <!-- Bootstrap row -->

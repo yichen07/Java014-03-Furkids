@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: Wind
-=======
 Built-By: NTUT
->>>>>>> 498661b03a10aaa5c5310b61974f2056c8d4b638
 Build-Jdk: 1.8.0_252
 Created-By: Maven Integration for Eclipse
 
