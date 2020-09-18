@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import _01_Member.Registration.model.MemberBean;
+import _01_Member.Registration.model.MerchantBean;
 import _02_ShoppingSystem.CommodityList.model.CommodityBean;
 import _02_ShoppingSystem.CommodityList.service.CommodityService;
 import _02_ShoppingSystem.CommodityList.service.Impl.CommodityServiceImpl;
@@ -26,6 +29,7 @@ public class RetrievePageProducts extends HttpServlet {
 		doPost(request, response);
 	}
 
+	@SuppressWarnings("unused")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 先取出session物件
@@ -40,12 +44,21 @@ public class RetrievePageProducts extends HttpServlet {
 //		}
 //		// 登入成功後，Session範圍內才會有LoginOK對應的MemberBean物件
 //		MemberBean mb = (MemberBean) session.getAttribute("LoginOK");
+//		MerchantBean mcb = (MerchantBean) session.getAttribute("LoginOK");
+		Object obj = session.getAttribute("LoginOK");
 //		// 取出使用者的memberId，後面的Cookie會用到
 		String memberId = null;
-//		memberId = mb.getMemberId();
-		if(memberId == null) {
-		   memberId = "admin";
+
+		if(obj == null) {
+		   memberId = "guest";
+		}else if(obj instanceof MemberBean) {
+			MemberBean mb = (MemberBean) session.getAttribute("LoginOK");
+			memberId = mb.getCusAccount();
+		}else {
+			MerchantBean mcb = (MerchantBean) session.getAttribute("LoginOK");
+			memberId = mcb.getBusAccount();
 		}
+		
 //		// BookService介面負責讀取資料庫內Book表格內某一頁的書籍資料，並能新增、修改、刪除
 //		// 書籍資料等。
 		
