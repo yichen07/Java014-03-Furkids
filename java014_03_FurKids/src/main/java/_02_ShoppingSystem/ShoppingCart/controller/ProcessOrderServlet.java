@@ -85,7 +85,7 @@ public class ProcessOrderServlet extends HttpServlet {
 			shortMsg =  message.substring(message.indexOf(":") + 1);
 			System.out.println(shortMsg);
 			session.setAttribute("OrderErrorMessage", "處理訂單時發生異常: " + shortMsg  + "，請調正訂單內容" );
-			response.sendRedirect(response.encodeRedirectURL ("../_04_ShoppingCart/ShowCartContent.jsp"));
+			response.sendRedirect(response.encodeRedirectURL ("/_02_ShoppingSystem/ShowCartContent.jsp"));
 			return;
 		}
 	}
