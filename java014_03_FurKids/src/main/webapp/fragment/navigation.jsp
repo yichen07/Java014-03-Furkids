@@ -292,7 +292,7 @@
       </div>
       <div class="modal-body">
 			<div class="text-center">
-				<font color="red">${MsgOK.InsertOK} ${sessionScope.timeOut}</font>
+				<font color="red">${MsgOK.InsertOK} ${LoginOKMsg} ${sessionScope.timeOut}</font>
 			</div>
       </div>
       <div class="modal-footer">
@@ -339,7 +339,7 @@
 	<% session.removeAttribute("MsgMap"); %>
 </c:if>
 
-<%-- 新增(含註冊、分店與寵物新增)成功與使用逾時時，顯示提示視窗 --%>
+<%-- 新增(含註冊、分店與寵物新增)、登入成功與使用逾時時，顯示提示視窗 --%>
 <c:if test="${!empty MsgOK.InsertOK}">
 	<script>
 		$('#messages').modal('show');
@@ -350,7 +350,18 @@
 	<% session.removeAttribute("MsgOK"); %>
 </c:if>
 
-<c:if test="${!empty sessionScope.timeOut}">
+<c:if test="${!empty LoginOKMsg}">
+	<script>
+		$('#messages').modal('show');
+		setTimeout(function() {
+            $('#messages').modal('hide') // 3秒後，modal消失。
+        }, 3000);
+	</script>
+	<% session.removeAttribute("LoginOKMsg"); %>
+</c:if>
+
+
+<c:if test="${!empty timeOut}">
 	<script>
 		$('#messages').modal('show');
 		setTimeout(function() {
