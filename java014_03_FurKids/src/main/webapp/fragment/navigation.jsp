@@ -68,7 +68,7 @@
 						 <i class="fas fa-store-alt"></i>&nbsp;寵物商城 
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
+						<a class="dropdown-item" href="<c:url value='/_02_ShoppingSystem/DisplayPageProducts' />">寵物商城</a>
 						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
 						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
 					</div>
@@ -164,7 +164,7 @@
 				</c:choose>
 				
 				<%-- 購物車 --%>
-				<a href="<c:url value='#' />" class="m-2">
+				<a href="<c:url value='/_02_ShoppingSystem/ShowCartContent.jsp' />" class="m-2">
 					<i class="fas fa-shopping-cart navbar-cart fa-lg"></i>
 				</a>
 				

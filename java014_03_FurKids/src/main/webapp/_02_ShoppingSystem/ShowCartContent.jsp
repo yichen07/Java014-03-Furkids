@@ -114,11 +114,11 @@ function Abort() {
 <tr>
    <td>
      <table border='1'>
-     <tr><th width="320">書籍名稱</th><th width="70">作者</th><th width="60">出版社</th><th width="60">單價</th><th width="40">數量</th><th width="110">小計</th><th width="110">修改</th></tr>
+     <tr><th width="320">商品名稱</th><th width="70">作者</th><th width="60">廠商</th><th width="60">單價</th><th width="40">數量</th><th width="110">小計</th><th width="110">修改</th></tr>
      <c:forEach varStatus="vs" var="anEntry" items="${ShoppingCart.content}">
         <tr height='16'>
           <td >${anEntry.value.title}</td>
-          <td style="text-align:center;">${fn:substring(anEntry.value.author, 0, 3)}</td>
+          <td style="text-align:center;">${fn:substring(anEntry.value.companyName, 0, 3)}</td>
           <td style="text-align:center;">${fn:substring(anEntry.value.companyName, 0, 2)}</td>
           <td style="text-align:right;"><fmt:formatNumber value="${anEntry.value.unitPrice * anEntry.value.discount }" pattern="#,###" />元</td>
           <td style="text-align:right;">
@@ -154,7 +154,7 @@ function Abort() {
      <table border='1'>
         <tr >
           <td width="265" align='center'>
-              <a href="<c:url value='../_03_listBooks/DisplayPageProducts?pageNo=${param.pageNo}' />">繼續購物</a>
+              <a href="<c:url value='../_02_ShoppingSystem/DisplayPageProducts?pageNo=${param.pageNo}' />">繼續購物</a>
           </td>
           <td width="265" align='center'>
               <a href="<c:url value='checkout.do' />" onClick="return Checkout(${subtotal});">再次確認</a>

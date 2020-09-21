@@ -89,7 +89,7 @@ top:2px;
             
             <TR height='2'>
                 <TD width="270">
-	               <A href="<c:url value='../_04_ShoppingCart/ShowCartContent.jsp?pageNo=${pageNo}' />" >
+	               <A href="<c:url value='ShowCartContent.jsp?pageNo=${pageNo}' />" >
 	                                               購物清單
 	               </A>
 	            </TD>
@@ -127,12 +127,12 @@ top:2px;
              </TABLE>
          </TD>
          <TD rowspan='3' width='180'align='center'>
-       <FORM  action='BuyBook.do' method="POST">  
+<!--        <FORM  action='BuyBook.do' method="POST">   -->
        <!-- 
           FORM表單的資料會送後端的 _03_listBooks.controller.BuyBookServlet.java
                          來處理 
        -->
-       <FORM  action="<c:url value='BuyCommodity.do' />" method="POST">
+       <FORM  action="<c:url value='/_02_ShoppingSystem/BuyCommodity.do' />" method="POST">
                                 購買數量:
                <select name='qty'>
                     <option value="1">1</option>
