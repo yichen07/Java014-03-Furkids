@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import _03_FriendlyService.model.ConvenienceBean_H;
 
@@ -23,7 +24,9 @@ public class MerchantChildBean implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer busChildNo;		// Auto_Increment 自增欄位。
+	
 	private String busAccount;
+	
 	private String busChildName;
 	private String busChildTel;
 	private String busChildAddress;

@@ -3,9 +3,14 @@ package _01_Member.Registration.model;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 @Entity
@@ -28,6 +33,10 @@ public class MemberBean implements Serializable {
 	@Transient
 	final private Integer CLASSIFY = 0;
 	
+	// 雙向一對多
+	@OneToMany
+	@JoinColumn(name = "cusAccount")
+	Set<PetBean> pet = new LinkedHashSet<>();
 
 	
 	public MemberBean() {
@@ -140,6 +149,14 @@ public class MemberBean implements Serializable {
 
 	public Integer getCLASSIFY() {
 		return CLASSIFY;
+	}
+
+	public Set<PetBean> getPet() {
+		return pet;
+	}
+
+	public void setPet(Set<PetBean> pet) {
+		this.pet = pet;
 	}
 
 	

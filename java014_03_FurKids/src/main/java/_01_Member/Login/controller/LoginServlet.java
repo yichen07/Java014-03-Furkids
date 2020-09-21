@@ -34,9 +34,9 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		// 定義存放錯誤訊息的Map物件
 		Map<String, String> errorMsgMap = new HashMap<String, String>();
-
 		// 將errorMsgMap放入request物件內，識別字串為 "ErrorMsgKey"
 		request.setAttribute("ErrorMsgKey", errorMsgMap);
+		
 		// 1. 讀取使用者輸入資料
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("pswd");
@@ -107,17 +107,26 @@ public class LoginServlet extends HttpServlet {
 
 		// 將密碼加密兩次，以便與存放在表格內的密碼比對
 		password = GlobalService.getMD5Endocing(GlobalService.encryptString(password));
+		
 		MemberBean mb = null;
 		MerchantBean mcb = null;
+//		Object mb = null;
+//		Object mcb = null;
 		try {
-			// 呼叫 loginService物件的 checkIDPassword()，傳入userid與password兩個參數
-			mb = memberService.checkAccountPassword(userId, password);
-			mcb = merchantService.checkAccountPassword(userId, password);
+			// 呼叫 loginService物件的 checkAccountPassword()，傳入userid與password兩個參數
+//			if (memberService.accountExists(userId)) {
+				mb = memberService.checkAccountPassword(userId, password);				
+//			} else if (merchantService.accountExists(userId)) {
+				mcb = merchantService.checkAccountPassword(userId, password);				
+//			}
+			
 			if (mb != null) {
 				// OK, 登入成功, 將mb物件放入Session範圍內，識別字串為"LoginOK"
+				session.setAttribute("LoginOKMsg", "登入成功");
 				session.setAttribute("LoginOK", mb);
 			} else if (mcb != null) {
 				// OK, 登入成功, 將mcb物件放入Session範圍內，識別字串為"LoginOK"
+				session.setAttribute("LoginOKMsg", "登入成功");
 				session.setAttribute("LoginOK", mcb);
 			} else {
 				// NG, 登入失敗, userid與密碼的組合錯誤，放相關的錯誤訊息到 errorMsgMap 之內

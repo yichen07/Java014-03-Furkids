@@ -2,149 +2,184 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%-- CSS --%>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/myTemplate.css">
-<link rel="stylesheet" 
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<%-- 適用不同裝置畫面呈現 --%>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-<%-- Body --%>
-<div style="height: 73px; max-height: 73px">
-	<header class="fixed-top">
-		<nav class="navbar navbar-expand-lg navbar-dark container-fluid"
-			style="background-color: #4d4d4d00;">
+<%-- CSS --%>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
 	
-			<%-- logo --%>
-			<a class="navbar-brand" href="<c:url value='/index.jsp' />"><img
-				src="${pageContext.request.contextPath}/resources/images/Logo-02.png"
-				width="200px" height="auto" alt="logo" /></a>
+	<%-- Nav外觀與特效 --%>
+<link rel="stylesheet" 
+	href="<c:url value='/resources/css/index.css' />"/>
 	
-			<%-- 漢堡選單 --%>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+	<%-- Icon --%>
+<link rel="stylesheet" 
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	
-			<%-- 功能列表 --%>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
+	<%-- 導覽列下拉滑動特效 --%>
+	<style>
+ 		.dropdown:hover .dropdown-menu { 
+ 			display: block; 
+ 			transition: opacity .10s ease-out;
+ 	    }
+ 	     
+	    /* 下面特效僅限網頁版有用 */
+	    @media all and (min-width: 992px) {
+			.navbar .nav-item .dropdown-menu{  display:block; opacity: 0;  visibility: hidden; transition:.5s; margin-top:0;  }
+			.navbar .nav-item:hover .nav-link{ color: #fff;  }
+			.navbar .dropdown-menu.fade-down{ top:80%; transform: rotateX(-75deg); transform-origin: 0% 0%; }
+			.navbar .dropdown-menu.fade-up{ top:180%;  }
+			.navbar .nav-item:hover .dropdown-menu{ transition: .3s; opacity:1; visibility:visible; top:100%; transform: rotateX(0deg); }
+		}
+	</style>
+
+<%-- Navbar --%>
+<nav class="navbar navbar-light navbar-expand-lg bg-white sticky-top shadow animate__animated animate__fadeInDown"
+	id="navBar">
+	<div class="container">
 	
-					<li class="nav-item dropdown">
-					<a class="nav-link" style="font-size: 24px; padding: 8px;" href="<c:url value='#' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 商城 </a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="<c:url value='/_02_ShoppingSystem/DisplayPageProducts' />">寵物商城</a>
-						</div>
-					</li>
-	
-					<li class="nav-item dropdown">
-					<a class="nav-link text_size" style="font-size: 24px; padding: 8px;" href="<c:url value='#' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">交流專區</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="<c:url value='#' />">寵物專欄</a> 
-							<a class="dropdown-item" href="<c:url value='#' />">寵物失蹤協尋</a> 
-							<a class="dropdown-item" href="<c:url value='#' />">二手市集</a> 
-							<a class="dropdown-item" href="<c:url value='#' />">活動建立</a> 
-							<a class="dropdown-item" href="<c:url value='#' />">寵物交友</a> 
-							<a class="dropdown-item" href="<c:url value='#' />">留言板</a>
-						</div>
-					</li>
-	
-					<li class="nav-item dropdown">
-					<a class="nav-link" style="font-size: 24px; padding: 8px;" href="<c:url value='' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 友善專區 </a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="<c:url value='#' />">景點</a> 
-							<a class="dropdown-item" href="<c:url value='#' />">餐廳</a> 
-							<a class="dropdown-item" href="<c:url value='#' />">寵物美容</a> 
-							<a class="dropdown-item" href="<c:url value='#' />">旅館</a> 
-							<a class="dropdown-item" href="<c:url value='#' />">寵物寄放</a> 
-							<a class="dropdown-item" href="<c:url value='#' />">租屋</a>
-						</div>
-					</li>
-	
-					<li class="nav-item dropdown">
-					<a class="nav-link" style="font-size: 24px; padding: 8px;" href="<c:url value='#' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 健康管理 </a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="<c:url value='#' />">寵物熱量計算</a> 
-							<a class="dropdown-item" href="<c:url value='#' />">寵物健康管理</a> 
-							<a class="dropdown-item" href="<c:url value='#' />">寵物疫苗資訊</a> 
-							<a class="dropdown-item" href="<c:url value='#' />">寵物食譜</a>
-						</div>
-					</li>
-				</ul>
-	
-				<ul class="navbar-nav my-2 my-lg-0">
-					<li class="nav-item">
-						<c:choose>
-								<c:when test="${empty LoginOK}">
-									<a class="nav-link" href="<c:url value='#' />" data-toggle="modal"
-										data-target="#login"> <p1 style="font-size: 24px; padding: 8px;">會員登入</p1> <p2> <img
-											src="${pageContext.request.contextPath}/resources/images/member.svg"
-											width="40px" height="auto" alt="" /> </p2>
-									</a>
-								</c:when>
-								<c:when test="${LoginOK.CLASSIFY == 0}">
-									<div class="dropdown">
-										<a class="nav-link nav-item dropdown-toggle" href="<c:url value='#' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <p1 style="font-size: 24px; padding: 8px;">會員中心</p1> <p2> <img
-												src="${pageContext.request.contextPath}/_00_init/getHeadshot?account=${LoginOK.cusAccount}"
-												width="40px" height="auto" alt="" /> </p2>
-										</a>
-											<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-												<a class="dropdown-item" href="<c:url value='/_01_Member/PetRegistration.jsp' />">寵物新增</a> 
-												<a class="dropdown-item" href="<c:url value='#' />">會員管理</a> 
-												<a class="dropdown-item" href="<c:url value='#' />">會員功能_三</a> 
-												<a class="dropdown-item" href="<c:url value='#' />">會員功能_四</a>
-											</div>
-									</div>
-								</c:when>
-								<c:when test="${LoginOK.CLASSIFY == 1}">
-									<div class="dropdown">
-										<a class="nav-link dropdown-toggle" href="<c:url value='#' />" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <p1 style="font-size: 24px; padding: 8px;">商家中心</p1> <p2> <img
-												src="${pageContext.request.contextPath}/_00_init/getHeadshot?account=${LoginOK.busAccount}"
-												width="40px" height="auto" alt="" /> </p2>
-										</a>
-											<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-													<a class="dropdown-item" href="<c:url value='/_01_Member/MerchantChildRegistration.jsp' />">分店新增</a> 
-													<a class="dropdown-item" href="<c:url value='#' />">商家管理</a> 
-													<a class="dropdown-item" href="<c:url value='/_03_ConvenienceProcess/Convenience_H.do' />">服務上架</a> 
-													<a class="dropdown-item" href="<c:url value='#' />">商家功能_四</a>
-											</div>
-									</div>
-								</c:when>
-							</c:choose>
-						</li>
-	
-					<li class="nav-item">
-						<a class="nav-link" href="<c:url value='#' />"><p1 style="font-size: 24px; padding: 8px;">購物車</p1>
-							<p2>
-								<img
-									src="${pageContext.request.contextPath}/resources/images/cart.svg"
-									width="40px" height="auto" alt="" />
-							</p2>
+	<%-- Logo --%>
+		<a class="navbar-brand mb-1" href="<c:url value='/index.jsp' />"><img
+			src="<c:url value='/resources/images/Logo_07.png' />" alt="Logo" height="26" /></a>
+			
+	<%-- 漢堡選單 --%>		
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		
+	<%-- 功能導覽列 --%>
+		<div class="collapse navbar-collapse justify-content-between"
+			id="navbarNavDropdown">
+			<%-- 功能導覽列置中 --%>
+			<div></div>
+			<%-- 功能導覽列內容 --%>
+			<ul class="navbar-nav">
+				<%-- 商城 --%>
+				<li class="nav-item dropdown mx-2">
+					<a class="nav-link dropdown-toggle nav-font" href="<c:url value='#' />" 
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						 <i class="fas fa-store-alt"></i>&nbsp;寵物商城 
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
+						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
+						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
+					</div>
+				</li>
+				<%-- 寵物交流版 --%>
+				<li class="nav-item dropdown mx-2">
+					<a class="nav-link dropdown-toggle nav-font" href="<c:url value='#' />"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-handshake"></i>&nbsp;寵物交流版
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
+						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
+						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
+					</div>
+				</li>
+				<%-- 寵物友善系統 --%>
+				<li class="nav-item dropdown mx-2">
+					<a class="nav-link dropdown-toggle nav-font" href="<c:url value='#' />"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-hand-holding-heart"></i>&nbsp;寵物友善系統
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
+						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
+						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
+					</div>
+				</li>
+				<%-- 寵物健康管理 --%>
+				<li class="nav-item dropdown ml-2 mr-5">
+					<a class="nav-link dropdown-toggle nav-font" href="<c:url value='#' />"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-user-md"></i>&nbsp;寵物健康管理 
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
+						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
+						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
+					</div>
+				</li>
+				
+			</ul>
+			
+			<%-- 登入、購物車、登出功能列 --%>
+			<div class="form-inline my-2 my-lg-0">
+				<c:choose>
+					<%-- 訪客登入 --%>
+					<c:when test="${empty LoginOK}">
+						<a href="<c:url value='#' />" class="ml-4 m-2" data-toggle="modal" data-target="#login"> 
+							<i class="fas fa-user navbar-user fa-lg"></i>
 						</a>
-					</li>
-					
-					<li class="nav-item">
-						<c:if test="${ ! empty LoginOK }">
-							<a class="nav-link" type="button" onclick="logout()"><p1 style="font-size: 24px; padding: 8px;">登出</p1>
-								<p2>
-									<img
-										src="${pageContext.request.contextPath}/resources/images/logout_2.png"
-										width="40px" height="auto" alt="" />
-								</p2>
+					</c:when>
+					<%-- 會員(已登入) --%>
+					<c:when test="${LoginOK.CLASSIFY == 0}">
+						<div class="dropdown nav-item">
+							<a class="nav-link" href="<c:url value='#' />" id="navbarDropdown" role="button"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  
+								<img src="<c:url value='/_00_init/getHeadshot?account=${LoginOK.cusAccount}' />"
+									style="width:30px; height:auto; border-radius:50%; border: 1px solid gray" />
 							</a>
-						</c:if>
-					</li>
-				</ul>
-	
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item"
+									href="<c:url value='/_01_Member/PetRegistration.jsp' />">寵物新增</a>
+								<a class="dropdown-item" 
+									href="<c:url value='#' />">會員管理</a> 
+								<a class="dropdown-item" 
+									href="<c:url value='#' />">會員功能_三</a>
+								<a class="dropdown-item" 
+									href="<c:url value='#' />">會員功能_四</a>
+							</div>
+						</div>
+					</c:when>
+					<%-- 商家(已登入) --%>
+					<c:when test="${LoginOK.CLASSIFY == 1}">
+						<div class="dropdown nav-item">
+							<a class="nav-link" href="<c:url value='#' />" id="navbarDropdown" role="button" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false"> 
+								<img src="<c:url value='/_00_init/getHeadshot?account=${LoginOK.busAccount}' />"
+									style="width:30px; height:auto; border-radius:50%; border: 1px solid gray" />
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item"
+									href="<c:url value='/_01_Member/MerchantChildRegistration.jsp' />">分店新增</a>
+								<a class="dropdown-item" 
+									href="<c:url value='#' />">商家管理</a> 
+								<a class="dropdown-item"
+									href="<c:url value='/_03_ConvenienceProcess/Convenience_H.do' />">服務上架</a>
+								<a class="dropdown-item" 
+									href="<c:url value='#' />">商家功能_四</a>
+							</div>
+						</div>
+					</c:when>
+				</c:choose>
+				
+				<%-- 購物車 --%>
+				<a href="<c:url value='#' />" class="m-2">
+					<i class="fas fa-shopping-cart navbar-cart fa-lg"></i>
+				</a>
+				
+				<%-- 登出 --%>
+				<c:if test="${ ! empty LoginOK }">
+					<a href="<c:url value='#' />" class="m-2" onclick="logout()">
+						<i class="fas fa-sign-out-alt fa-lg" style="color: grey"></i>
+					</a>
+				</c:if>
+					
 			</div>
-		</nav>
-	</header>
-</div>
+			
+		</div>
+	</div>
+</nav>
 
 
 <!-- 下列敘述設定變數funcName的值為LOG，top.jsp 會用到此變數 -->
@@ -257,7 +292,7 @@
       </div>
       <div class="modal-body">
 			<div class="text-center">
-				<font color="red">${MsgOK.InsertOK} ${sessionScope.timeOut}</font>
+				<font color="red">${MsgOK.InsertOK} ${LoginOKMsg} ${sessionScope.timeOut}</font>
 			</div>
       </div>
       <div class="modal-footer">
@@ -273,10 +308,21 @@
 
 
 <%-- Javascript --%>
+	
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
+	integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" 
+	integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+	<%-- Icon --%>
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    src="https://kit.fontawesome.com/8e822d04fb.js" crossorigin="anonymous"></script>
+
+	<%-- Nav特效 --%>
+<!-- <script  -->
+<!-- 	src="../resources/javascript/blogIndex.js"></script> -->
 
 <%-- 登入時，如有錯誤，重新導回登入畫面 --%>
 <c:if test="${!empty ErrorMsgKey}">
@@ -293,7 +339,7 @@
 	<% session.removeAttribute("MsgMap"); %>
 </c:if>
 
-<%-- 新增(含註冊、分店與寵物新增)成功與使用逾時時，顯示提示視窗 --%>
+<%-- 新增(含註冊、分店與寵物新增)、登入成功與使用逾時時，顯示提示視窗 --%>
 <c:if test="${!empty MsgOK.InsertOK}">
 	<script>
 		$('#messages').modal('show');
@@ -304,7 +350,18 @@
 	<% session.removeAttribute("MsgOK"); %>
 </c:if>
 
-<c:if test="${!empty sessionScope.timeOut}">
+<c:if test="${!empty LoginOKMsg}">
+	<script>
+		$('#messages').modal('show');
+		setTimeout(function() {
+            $('#messages').modal('hide') // 3秒後，modal消失。
+        }, 3000);
+	</script>
+	<% session.removeAttribute("LoginOKMsg"); %>
+</c:if>
+
+
+<c:if test="${!empty timeOut}">
 	<script>
 		$('#messages').modal('show');
 		setTimeout(function() {
