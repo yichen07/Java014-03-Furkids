@@ -40,8 +40,8 @@ public class MemberDaoImpl_Hibernate implements MemberDao {
 		Session session = factory.getCurrentSession();
 		String hql = "FROM MemberBean m WHERE m.cusAccount = :account";
 		try {
-//			MemberBean mb = (MemberBean) session.createQuery(hql).setParameter("account", account).getSingleResult();
-			Object mb = session.createQuery(hql).setParameter("account", account).getSingleResult();
+			MemberBean mb = (MemberBean) session.createQuery(hql).setParameter("account", account).getSingleResult();
+//			Object mb = session.createQuery(hql).setParameter("account", account).getSingleResult();
 			if (mb != null) {
 				exist = true;
 			}

@@ -55,8 +55,8 @@ public class MerchantChildDaoImpl_Hibernate implements MerchantChildDao {
 			Session session = factory.getCurrentSession();
 			String hql = "FROM MerchantChildBean m WHERE m.busAccount = :account AND m.busChildAddress = :address ";
 			try {
-//				MerchantChildBean mcb = (MerchantChildBean) session.createQuery(hql).setParameter("account", account).setParameter("address", address).getResultList();
-				Object mcb = session.createQuery(hql).setParameter("account", account).setParameter("address", address).getSingleResult();
+				MerchantChildBean mcb = (MerchantChildBean) session.createQuery(hql).setParameter("account", account).setParameter("address", address).getSingleResult();
+//				Object mcb = session.createQuery(hql).setParameter("account", account).setParameter("address", address).getSingleResult();
 				if (mcb != null) {
 					exist = true;
 				}
