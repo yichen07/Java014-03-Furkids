@@ -16,7 +16,7 @@ import _02_ShoppingSystem.ShoppingCart.model.OrderListBean;
 import _02_ShoppingSystem.ShoppingCart.model.ShoppingCart;
 
 // 當使用者按下『加入購物車』時，瀏覽器會送出請求到本程式
-@WebServlet("/_02_ShoppingSystem/BuyItem.do")
+@WebServlet("/_02_ShoppingSystem/BuyCommodity.do")
 public class BuyItemServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -71,7 +71,7 @@ public class BuyItemServlet extends HttpServlet {
 				qty, bean.getComPrice(),bean.getComValidity(), bean.getBusName());
 //		// 將OrderItem物件內加入ShoppingCart的物件內
 		cart.addToCart(ComId, oib);
-		RequestDispatcher rd = request.getRequestDispatcher("/_03_listBooks/DisplayPageProducts?pageNo=" + pageNo);
+		RequestDispatcher rd = request.getRequestDispatcher("/_02_ShoppingSystem/DisplayPageProducts?pageNo=" + pageNo);
 		rd.forward(request, response);
 	}
 }

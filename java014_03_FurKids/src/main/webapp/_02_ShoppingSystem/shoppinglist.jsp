@@ -217,7 +217,7 @@
               class="card-img-top"
               alt="..."
             />
-           <FORM  action="<c:url value='BuyBook.do' />" method="POST">
+           <FORM  action="<c:url value='/_02_ShoppingSystem/BuyCommodity.do' />" method="POST">
             
             <div class="card-body">
               <h5 class="card-title">${entry.value.comName}</h5>
@@ -237,9 +237,10 @@
                     <option value="9">9</option>
                     <option value="10">10</option>
                </select>
+               <Input type='hidden' name='ComId' value='${entry.value.comId}'>           
+              <Input type='submit' value='加入購物車'>        
               <a href="#" class="btn btn-primary">加入購物車</a>
             </div>
-            <Input type='hidden' name='ComId' value='${entry.value.comId}'>           
             </FORM>
           </div>
         </div>
