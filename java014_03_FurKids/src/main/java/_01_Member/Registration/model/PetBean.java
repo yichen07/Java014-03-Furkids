@@ -4,12 +4,31 @@ import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+@Entity
+@Table(name="petregistration")
 public class PetBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer petID;
+	
+	
 	private String cusAccount;
+	// 雙向多對一
+	@ManyToOne
+	@JoinColumn(name = "cusAccount", insertable=false ,updatable=false)
+	private MemberBean memberBean;
+	
 	private String petName;
 	private String petGender;
 	private Date petBirthday;
@@ -17,6 +36,7 @@ public class PetBean implements Serializable {
 	private String petVariety;
 	private Blob petPhoto;
 	private String petFileName;
+	
 	
 	public PetBean() {
 	}
@@ -107,4 +127,13 @@ public class PetBean implements Serializable {
 		this.petFileName = petFileName;
 	}
 
+	public MemberBean getMemberBean() {
+		return memberBean;
+	}
+
+	public void setMemberBean(MemberBean memberBean) {
+		this.memberBean = memberBean;
+	}
+
+	
 }

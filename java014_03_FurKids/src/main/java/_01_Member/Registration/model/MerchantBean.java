@@ -3,9 +3,13 @@ package _01_Member.Registration.model;
 
 import java.io.Serializable;
 import java.sql.Blob;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 @Entity
@@ -25,6 +29,9 @@ public class MerchantBean implements Serializable {
 	private String busFileName;
 	@Transient
 	final private Integer CLASSIFY = 1;
+	
+	@OneToMany(mappedBy = "merchantbean", cascade = CascadeType.ALL)
+	private Set<MerchantChildBean> merchantChild = new LinkedHashSet<>();
 	
 	
 	public MerchantBean() {
@@ -138,6 +145,16 @@ public class MerchantBean implements Serializable {
 
 	public Integer getCLASSIFY() {
 		return CLASSIFY;
+	}
+
+
+	public Set<MerchantChildBean> getMerchantChild() {
+		return merchantChild;
+	}
+
+
+	public void setMerchantChild(Set<MerchantChildBean> merchantChild) {
+		this.merchantChild = merchantChild;
 	}
 	
 	
