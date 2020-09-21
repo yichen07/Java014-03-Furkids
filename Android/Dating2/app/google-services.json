@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "103227089451",
+    "firebase_url": "https://datingfunctionapp.firebaseio.com",
+    "project_id": "datingfunctionapp",
+    "storage_bucket": "datingfunctionapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:103227089451:android:2be9d25f0f99e3d59bc06e",
+        "android_client_info": {
+          "package_name": "com.example.dating"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "103227089451-s2p9l2bmhatk7ce5m10jdnq21h78fces.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCauZrMH-w4Sqfx9n1lAbsndYverZyo02o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "103227089451-s2p9l2bmhatk7ce5m10jdnq21h78fces.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

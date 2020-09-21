@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/resultAFragment">
+
+    <fragment
+        android:id="@+id/resultAFragment"
+        android:name="com.example.furkidsapplication.home.ResultAFragment"
+        android:label="fragment_result_a"
+        tools:layout="@layout/fragment_result_a" />
+    <fragment
+        android:id="@+id/resultBFragment"
+        android:name="com.example.furkidsapplication.home.ResultBFragment"
+        android:label="fragment_result_b"
+        tools:layout="@layout/fragment_result_b" />
+    <fragment
+        android:id="@+id/resultCFragment"
+        android:name="com.example.furkidsapplication.home.ResultCFragment"
+        android:label="fragment_result_c"
+        tools:layout="@layout/fragment_result_c" />
+    <fragment
+        android:id="@+id/resultDFragment"
+        android:name="com.example.furkidsapplication.home.ShoppingFragment"
+        android:label="fragment_result_d"
+        tools:layout="@layout/fragment_shopping" />
+</navigation>
