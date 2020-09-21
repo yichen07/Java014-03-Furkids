@@ -50,7 +50,7 @@
             transform: translateX(295px);
         }
     
-        .asideMenu .btn {
+        .asideMenu .extensionbtn {
             position: absolute;
             top: 50%;
             left: -13%;
@@ -60,13 +60,13 @@
             box-shadow: 0 0 5px rgba(23, 23, 54, 0.6);
         }
     
-        .asideMenu .btn .fa-chevron-right {
+        .asideMenu .extensionbtn .fa-chevron-right {
             color: #474747;
             transform: rotate(0);
             transition: all 0.5s;
         }
     
-        .asideMenu .btn .fa-chevron-right.rotate {
+        .asideMenu .extensionbtn .fa-chevron-right.rotate {
             transform: rotate(180deg);
         }
     
@@ -110,8 +110,8 @@
 <!-- 引入共同的頁首 -->
 <jsp:include page="/fragment/navigation.jsp" />
 
-<div class="asideMenu">
-        <button class="btn"><i class="fas fa-chevron-right fa-2x"></i></button>
+<div class="asideMenu sticky-right">
+        <button class="extensionbtn"><i class="fas fa-chevron-right fa-2x"></i></button>
         <div class="title">Aside Menu</div>
         <div class="list">
           <ul class="optionTitle">
@@ -138,15 +138,14 @@
       </div>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script>
-        $(function () {
-            $(".btn").click(function () {
+            $(".extensionbtn").click(function () {
                 $(".asideMenu").toggleClass("active");
                 $(".fa-chevron-right").toggleClass("rotate");
             });
-        });
     </script>
+    
 
 
 </body>

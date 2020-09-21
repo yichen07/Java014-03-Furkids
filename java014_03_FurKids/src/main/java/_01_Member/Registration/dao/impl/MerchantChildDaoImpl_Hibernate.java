@@ -7,17 +7,25 @@ import javax.persistence.NoResultException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.NoUniqueBeanDefinitionException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import _01_Member.Registration.dao.MerchantChildDao;
 import _01_Member.Registration.model.MerchantChildBean;
 import _01_Member.util.HibernateUtils;
 
+@Repository
 public class MerchantChildDaoImpl_Hibernate implements MerchantChildDao {
 	
 	SessionFactory factory;
 	
+	@Autowired
+	public void setFactory(SessionFactory factory) {
+		this.factory = factory;
+	}
+	
 	public MerchantChildDaoImpl_Hibernate() {
-		this.factory = HibernateUtils.getSessionFactory();
+//		this.factory = HibernateUtils.getSessionFactory();
 	}
 
 	// 儲存MerchantChildBean物件，將商家分店註冊資料mb新增到資料庫MerchantChildRegistration表格中。
