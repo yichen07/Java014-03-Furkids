@@ -1,0 +1,38 @@
+<resources>
+    <!--the moniker of the app-->
+    <string name="app_name">FurKids Application</string>
+
+    <!--String for the on Boarding screen-->
+    <!--title-->
+    <string name="first_slide_title">寵物交友</string>
+    <string name="second_slide_title">寵物營養管理</string>
+    <string name="third_slide_title">交流諮詢</string>
+    <string name="fourth_slide_title">購物平台</string>
+
+    <!--Description-->
+    <string name="first_slide_desc">以寶貝動物為主的交友功能</string>
+    <string name="second_slide_desc">提供寵物與飼主最好的照顧平台管理功能</string>
+    <string name="third_slide_desc">所有寵物寶貝飼主的資訊交流平台</string>
+    <string name="fourth_slide_desc">讓飼主省去大量時間的寵物商品購物交流</string>
+    <!--button-->
+    <string name="skip_btn">略過</string>
+    <string name="next_btn">下頁</string>
+    <string name="let_get_started">開始使用</string>
+
+    <!--String for the on fragments home activity-->
+
+    <string name="textResultA">交友</string>
+    <string name="textResultB">健康諮詢</string>
+    <string name="textResultC">資訊交流</string>
+    <string name="textResultD">購物平台</string>
+    <string name="title_activity_result">ResultActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="textDating">交友</string>
+    <string name="textNur">營養諮詢</string>
+    <string name="textNews">資訊交流</string>
+    <string name="textShop">購物平台</string>
+
+
+</resources>

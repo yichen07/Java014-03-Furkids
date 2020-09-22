@@ -36,14 +36,14 @@ public class UpdateBookServlet extends HttpServlet {
 		int bookId = Integer.parseInt(bookIdStr.trim());		
 		if (cmd.equalsIgnoreCase("DEL")) {
 	        sc.deleteBook(bookId); // 刪除購物車內的某項商品
-	        RequestDispatcher rd = request.getRequestDispatcher("/_04_ShoppingCart/ShowCartContent.jsp");
+	        RequestDispatcher rd = request.getRequestDispatcher("/_02_ShoppingSystem/ShowCartContent.jsp");
 		    rd.forward(request, response);
 		    return;
 		} else if (cmd.equalsIgnoreCase("MOD")) {
 			String newQtyStr = request.getParameter("newQty");
 			int newQty = Integer.parseInt(newQtyStr.trim());
 			sc.modifyQty(bookId, newQty);   // 修改某項商品的數項
-	        RequestDispatcher rd = request.getRequestDispatcher("/_04_ShoppingCart/ShowCartContent.jsp");
+	        RequestDispatcher rd = request.getRequestDispatcher("/_02_ShoppingSystem/ShowCartContent.jsp");
 		    rd.forward(request, response);
 		    return;
 		}

@@ -8,7 +8,7 @@ import org.hibernate.SessionFactory;
 
 import _01_Member.util.HibernateUtils;
 
-@WebListener
+//@WebListener
 public class CreateSessionFactoryListener implements ServletContextListener {
 	SessionFactory factory;
 	// 靜態區塊在程式被載入時，即會被啟動。
