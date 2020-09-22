@@ -17,9 +17,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import _01_Member.Registration.model.MerchantBean;
 import _01_Member.Registration.model.MerchantChildBean;
@@ -28,15 +32,18 @@ import _03_FriendlyService.service.ConvenienceService;
 
 @Controller
 @RequestMapping("/_03_FriendlySystem")
+@SessionAttributes({ "emptyCb" , "emptyMcb"})
 public class ConvenienceController {
 	@Autowired
 	ServletContext servletContext;
-
+	
 	@Autowired
-	ConvenienceService convenienceService;
+	ConvenienceService service;
 
-	@RequestMapping("/convenience")
-	public String list(Model model, HttpServletRequest request) {
+	@GetMapping("/convenience")
+	public String list(Model model, 
+			HttpServletRequest request
+			) {
 		HttpSession session = request.getSession(false);
 		MerchantBean mb = null;
 		String userId;
@@ -61,32 +68,65 @@ public class ConvenienceController {
 		int pageNo = Integer.parseInt(pageNoStr);
 
 		// 總上架分店
-		List<ConvenienceBean_H> allcb = convenienceService.getAllConvenience(userId);
+		List<ConvenienceBean_H> allcb = service.getAllConvenience(userId);
 		// 限制一次只抓8筆，從頁數去選擇要從哪筆開始抓
-		List<ConvenienceBean_H> cb = convenienceService.getPageConvenience(userId, pageNo);
+		List<ConvenienceBean_H> cb = service.getPageConvenience(userId, pageNo);
 		// 尚未上架的商家分店
-		List<MerchantChildBean> mcb = convenienceService.getNotConvenience(userId);
+		List<MerchantChildBean> mcb = service.getNotConvenience(userId);
 
 		// 總頁數
-		int n = convenienceService.getTotalPages(userId);
+		int n = service.getTotalPages(userId);
 
 		// 如果總上架的分店數是八的倍數且還有未上架的分店
 		if (allcb.size() % 8 == 0 && mcb.size() > 0) {
 			n = n + 1;
 		}
+		//新增用表單
+		MerchantChildBean emptyMcb = (MerchantChildBean) model.getAttribute("emptyMcb");
+		//修改用表單
+		ConvenienceBean_H emptyCb = (ConvenienceBean_H) model.getAttribute("emptyCb");
+		model.addAttribute("emptyMcb", emptyMcb);
+		model.addAttribute("emptyCb", emptyCb);
 		model.addAttribute("AllConvenience", cb);
 		model.addAttribute("NotConvenience", mcb);
 		model.addAttribute("TotalPages", n);
 		return "/_03_FriendlySystem/convenience";
 	}
-
+	
+	@PostMapping("/convenience")
+	public String addAndUpdateForm(
+			@ModelAttribute("emptyMcb") MerchantChildBean mcb
+			) {		
+		MerchantChildBean newMcb = service.getBusChild(mcb.getBusChildNo());
+		newMcb.setBusChildDescription(mcb.getBusChildDescription());
+		ConvenienceBean_H cb = mcb.getConvenienceBean_H();
+		cb.setBusAccount(newMcb.getBusAccount());
+		cb.setBusChildNo(mcb.getBusChildNo());
+		service.insertAndUpdate(cb, newMcb);	
+		return "redirect:/_03_FriendlySystem/SessionStatus_setComplete";
+	}
+	
+	@PostMapping("/convenience/alter")
+	public String alterForm(
+			@ModelAttribute("EmptyCb") ConvenienceBean_H cb,
+			BindingResult result) {		
+		
+		return "redirect:/_03_FriendlySystem/SessionStatus_setComplete";
+	}
+	
+	@GetMapping("/deleteConvenience/{no}")
+	public String deleteConvenience(@PathVariable Integer no) {
+		service.delete(service.getConvenience(no));
+		return "redirect:/_03_FriendlySystem/convenience";
+	}
+	
 	@GetMapping("/getPicture/{id}")
 	public ResponseEntity<byte[]> getPicture(HttpServletResponse resp, @PathVariable Integer id) {
 		InputStream is = null;
 		ResponseEntity<byte[]> re = null;
 		HttpHeaders headers = new HttpHeaders();
 		String fileName = "";
-		MerchantChildBean mcb = convenienceService.getBusChild(id);
+		MerchantChildBean mcb = service.getBusChild(id);
 		try {
 			if (mcb != null) {
 				Blob busChildPhoto = mcb.getBusChildPhoto();
@@ -116,4 +156,51 @@ public class ConvenienceController {
 
 		return re;
 	}
+	
+	@GetMapping("/alter/{conNo}")
+	public String showUpdateForm(Model model,@PathVariable(value="conNo", required = false) Integer conNo) {	
+		ConvenienceBean_H bean = service.getConvenience(conNo);
+		model.addAttribute("emptyCb",bean);
+		return "redirect:/_03_FriendlySystem/convenience";
+	}
+	
+	@GetMapping("/insert/{conNo}")
+	public String showInsertForm(Model model,@PathVariable(value="conNo", required = false) Integer conNo) {	
+		MerchantChildBean bean = new MerchantChildBean();
+		bean.setBusChildNo(conNo);
+		bean.setBusChildName(service.getBusChild(conNo).getBusChildName());
+		model.addAttribute("emptyMcb",bean);
+		return "redirect:/_03_FriendlySystem/convenience";
+	}
+
+	@ModelAttribute("emptyCb")
+	public ConvenienceBean_H getConvenienceBean_H(
+			@PathVariable(value="conNo", required = false) Integer conNo
+			) {
+		
+		ConvenienceBean_H bean = null;
+		if (conNo == null) {
+			bean = new ConvenienceBean_H();
+		} else {
+			System.out.println("conNo=" + conNo);
+			bean = service.getConvenience(conNo);
+		}
+		return bean;
+	}
+	
+	@ModelAttribute("emptyMcb")
+	public MerchantChildBean getMerchantChildBean(
+			@PathVariable(value="conNo", required = false) Integer conNo
+			) {
+		
+		MerchantChildBean bean = null;
+		if (conNo == null) {
+			bean = new MerchantChildBean();
+		} else {
+			System.out.println("conNo=" + conNo);
+			bean = service.getBusChild(conNo);
+		}
+		return bean;
+	}
+	
 }
