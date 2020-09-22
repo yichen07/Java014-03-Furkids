@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <menu xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+        <item
+            android:id="@+id/dateFragment"
+            android:icon="@drawable/dating"
+            android:title="@string/textDating" />
+
+        <item
+            android:id="@+id/nurFragment"
+            android:icon="@drawable/diet"
+            android:title="@string/textNur" />
+
+        <item
+            android:id="@+id/homeFragment"
+            android:icon="@drawable/internet"
+            tools:ignore="MenuTitle" />
+
+        <item
+            android:id="@+id/newFragment"
+            android:icon="@drawable/ic_news"
+            android:title="@string/textNews" />
+
+        <item
+            android:id="@+id/settingsFragment"
+            android:icon="@drawable/shop"
+            android:title="@string/textShop" />
+
+</menu>

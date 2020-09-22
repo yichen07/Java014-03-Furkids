@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import _00_Init.util.GlobalService;
 import _01_Member.Registration.model.MemberBean;
@@ -161,7 +165,10 @@ public class PetRegisterServlet extends HttpServlet {
 			// MemberDaoImpl_Jdbc類別的功能：
 			// 1.檢查帳號是否已經存在，已存在的帳號不能使用，回傳相關訊息通知使用者修改
 			// 2.若無問題，儲存會員的資料
-			MemberService service = new MemberServiceImpl();
+			ServletContext sc = getServletContext();
+			WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(sc);
+//			MemberService service = new MemberServiceImpl();
+			MemberService service = ctx.getBean(MemberService.class);
 
 //			if (service.accountExists(cusAccount)) {
 //				errorMsg.put("errorAccountDup", "此帳號已存在，請換新帳號");

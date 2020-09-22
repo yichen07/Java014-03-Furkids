@@ -12,6 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import _00_Init.util.GlobalService;
 import _01_Member.Registration.model.MemberBean;
@@ -171,10 +175,15 @@ public class MerchantRegisterServlet extends HttpServlet {
 			// MemberDaoImpl_Jdbc與MerchantDaoImpl_Jdbc類別的功能：
 			// 1.檢查帳號是否已經存在，已存在的帳號不能使用，回傳相關訊息通知使用者修改
 			// 2.若無問題，儲存商家的資料
-			MemberService service = new MemberServiceImpl();
-			MerchantService service2 = new MerchantServiceImpl();
+			
+			ServletContext sc = getServletContext();
+			WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(sc);
+//			MemberService service = new MemberServiceImpl();
+			MemberService memberService = ctx.getBean(MemberService.class);
+//			MerchantService service2 = new MerchantServiceImpl();
+			MerchantService merchantService = ctx.getBean(MerchantService.class);
 
-			if (service.accountExists(busAccount) || service2.accountExists(busAccount)) {
+			if (memberService.accountExists(busAccount) || merchantService.accountExists(busAccount)) {
 				errorMsg.put("errorAccountDup", "此帳號已存在，請換新帳號");
 			} else {
 				// 為了配合Hibernate的版本。
@@ -189,7 +198,7 @@ public class MerchantRegisterServlet extends HttpServlet {
 				// 將所有會員資料封裝到MerchantBean與MerchantChildBean(類別的)與物件
 				MerchantBean mb = new MerchantBean(busAccount, busPassword, busName, busEmail, busTel, busAddress, busDescription, busPhoto, busFileName);
 				// 呼叫MemberDao的saveMember方法
-				int n = service2.saveMerchant(mb);
+				int n = merchantService.saveMerchant(mb);
 
 				if (n == 1) {
 					msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
