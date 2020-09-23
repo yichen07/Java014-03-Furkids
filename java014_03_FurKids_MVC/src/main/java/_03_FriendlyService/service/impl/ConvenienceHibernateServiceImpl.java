@@ -230,6 +230,7 @@ public class ConvenienceHibernateServiceImpl implements ConvenienceService{
 		bean = cnDao.getBusChild(id);
 		return bean;
 	}
+	
 
 
 	
