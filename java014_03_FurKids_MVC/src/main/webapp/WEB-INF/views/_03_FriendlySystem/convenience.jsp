@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
@@ -78,16 +79,16 @@
 				<ul class="pagination justify-content-center">
 					<li class="page-item"><c:if test="${nowPage != 1}">
 							<a class="page-link"
-								href="<c:url value='Convenience_H.do?pageNo=1' />" tabindex="-1"
+								href="<c:url value='/_03_FriendlySystem/convenience/1' />" tabindex="-1"
 								aria-disabled="true">Previous</a>
 						</c:if></li>
 					<c:forEach var="n" begin="1" end="${TotalPages}">
 						<li class="page-item"><a class="page-link"
-							href="<c:url value='Convenience_H.do?pageNo=${n}' />">${n}</a></li>
+							href="<c:url value='/_03_FriendlySystem/convenience/${n}' />">${n}</a></li>
 					</c:forEach>
 					<li class="page-item"><c:if test="${nowPage != TotalPages}">
 							<a class="page-link"
-								href="<c:url value='Convenience_H.do?pageNo=${nowPage + 1}' />">Next</a>
+								href="<c:url value='/_03_FriendlySystem/convenience/${nowPage + 1}' />">Next</a>
 						</c:if></li>
 				</ul>
 			</nav>
@@ -169,26 +170,26 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
+				<c:if test="${!empty emptyCb.busChildNo}">
 					<img
 						src="<c:url value='/_03_FriendlySystem/getPicture/${emptyCb.busChildNo}' />"
 						style="width: 100%; height: 250px;" class="card-img-top">
+				</c:if>
 					<h5 class="card-header text-center">${emptyCb.merchantChildBean.busChildName}</h5>
 
-					<form:form method="POST" modelAttribute="emptyCb"
-						action="<c:url value='/_03_FriendlySystem/convenience/alter' />"
+					<form:form method="POST" modelAttribute="emptyCb" action="alter"
 						class="ccc">
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">服務種類:</label>
-							<form:input type="text" class="form-control" path="conItem" />
+							<form:select class="form-control"
+									path="conItem" >
+									<form:option value="${emptyCb.conItem}" item="${emptyCb.conItem}" />
+									<form:options items="${cvsAlterOption}" />
+								</form:select>
 						</div>
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">服務項目:</label>
 							<form:input type="text" class="form-control" path="conItemList" />
-						</div>
-						<div class="form-group">
-							<label for="recipient-name" class="col-form-label">地址:</label>
-							<form:input type="text" class="form-control"
-								path="merchantChildBean.busChildAddress" />
 						</div>
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">公休日:</label>
@@ -222,9 +223,6 @@
 						</div>
 					</form:form>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary revise">修改</button>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -239,20 +237,25 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
+				<c:if test="${!empty emptyMcb.busChildNo}">
 					<img
 						src="<c:url value='/_03_FriendlySystem/getPicture/${emptyMcb.busChildNo}' />"
 						style="width: 100%; height: 250px;" class="card-img-top">
+				</c:if>		
 					<h5 class="card-header text-center">${emptyMcb.busChildName}</h5>
 
-					<form:form method="POST" modelAttribute="emptyMcb" 
+					<form:form method="POST" modelAttribute="emptyMcb" action="insert"
 						>
 						<div class="modal-body">
 							<form:input type="text" class="form-control" path="busChildNo"
 								style="display: none;" />
 							<div class="form-group">
 								<label for="recipient-name" class="col-form-label">服務種類:</label>
-								<form:input type="text" class="form-control"
-									path="convenienceBean_H.conItem" />
+								<form:select class="form-control"
+									path="convenienceBean_H.conItem" >
+									<form:options items="${cvsOption}" />
+								</form:select>
+									
 							</div>
 							<div class="form-group">
 								<label for="recipient-name" class="col-form-label">服務項目:</label>
@@ -312,16 +315,16 @@
 	<script src="https://kit.fontawesome.com/8e822d04fb.js"
 		crossorigin="anonymous"></script>
 
-	<c:if test="${!empty emptyCb.busChildNo}">
-		<button id="aCb" class="dropdown-item btn insertcon" type="button"
+	<c:if test="${!empty aaalert}">
+		<button id="aCb" class="dropdown-item btn" type="button"
 			data-toggle="modal" data-target="#alertCb" style="display: none"></button>
 		<script type="text/javascript">
 			$('#aCb').trigger('click');
 		</script>
 	</c:if>
 
-	<c:if test="${!empty emptyMcb.busChildNo}">
-		<button id="iCb" class="dropdown-item btn insertcon" type="button"
+	<c:if test="${!empty iiinsert}">
+		<button id="iCb" class="dropdown-item btn" type="button"
 			data-toggle="modal" data-target="#insertCb" style="display: none"></button>
 		<script type="text/javascript">
 			$('#iCb').trigger('click');
@@ -329,6 +332,7 @@
 	</c:if>
 
 	<script type="text/javascript">
+	
 		//如果已上架服務<8並且還有未上架分店 就顯示新增框	
 		if ($('.insertcon').length < 8 && $('.notInsertCon').length != 0) {
 			$('#insert').css('display', 'block');
