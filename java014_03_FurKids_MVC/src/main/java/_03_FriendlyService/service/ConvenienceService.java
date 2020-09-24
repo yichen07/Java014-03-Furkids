@@ -17,6 +17,8 @@ public interface ConvenienceService {
 	
 	void delete(ConvenienceBean_H cb);
 	
+	void Update(ConvenienceBean_H cb, MerchantChildBean mcb);
+	
 	void insertAndUpdate(ConvenienceBean_H cb, MerchantChildBean mcb);
 	
 	void Update(ConvenienceBean_H cb, MerchantChildBean mcb, MerchantBean mb);
