@@ -6,7 +6,7 @@ import javax.servlet.http.*;
 
 import _02_ShoppingSystem.ShoppingCart.model.ShoppingCart;
 // 本類別可修改購物車內的商品資料，包括刪除某項商品，修改某項商品的數量
-@WebServlet("/_04_ShoppingCart/UpdateItem.do")
+@WebServlet("/_02_ShoppingCart/UpdateItem.do")
 public class UpdateBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	HttpSession session = null;
@@ -32,17 +32,17 @@ public class UpdateBookServlet extends HttpServlet {
         }
 		// cmd可能是DEL或是MOD
 		String cmd = request.getParameter("cmd");
-		String bookIdStr = request.getParameter("bookId");
-		int bookId = Integer.parseInt(bookIdStr.trim());		
+		String comIDStr = request.getParameter("comID");
+		int comId = Integer.parseInt(comIDStr.trim());		
 		if (cmd.equalsIgnoreCase("DEL")) {
-	        sc.deleteBook(bookId); // 刪除購物車內的某項商品
+	        sc.deleteBook(comId); // 刪除購物車內的某項商品
 	        RequestDispatcher rd = request.getRequestDispatcher("/_02_ShoppingSystem/ShowCartContent.jsp");
 		    rd.forward(request, response);
 		    return;
 		} else if (cmd.equalsIgnoreCase("MOD")) {
 			String newQtyStr = request.getParameter("newQty");
 			int newQty = Integer.parseInt(newQtyStr.trim());
-			sc.modifyQty(bookId, newQty);   // 修改某項商品的數項
+			sc.modifyQty(comId, newQty);   // 修改某項商品的數項
 	        RequestDispatcher rd = request.getRequestDispatcher("/_02_ShoppingSystem/ShowCartContent.jsp");
 		    rd.forward(request, response);
 		    return;

@@ -6,7 +6,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Furkids 寵物商城</title>
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -114,8 +114,19 @@
   
  	<jsp:include page="/fragment/navigation.jsp" />
    
-    ${session.LoginOK}
+    <c:if test = ${LoginOK. }>
+       ${LoginOK.cusName} 您好
+    </c:if>
     
+    <c:choose>
+
+        <c:when test="${Session.LoginOK}">   
+        </c:when>
+   
+        <c:otherwise> 
+        </c:otherwise>
+  
+     </c:choose>
      <div class="container-fluid" id="imageStellar">
          <div class="row">
              <div class="col imgBox" style="background-image: url(../img/cat-3266675.jpg);" data-stellar-background-ratio="0.5">   <span class="headtext d-flex justify-content-center align-items-center mt-auto"><h1>寵物商城</h1></span>
