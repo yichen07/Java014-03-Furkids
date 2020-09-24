@@ -15,7 +15,7 @@ response.setHeader("Pragma", "no-cache"); //HTTP 1.0 backward compatibility
 <script type="text/javascript">
 function confirmDelete(n) {
 	if (confirm("確定刪除此項商品 ? ") ) {
-		document.forms[0].action="<c:url value='UpdateItem.do?cmd=DEL&bookId=" + n +"' />" ;
+		document.forms[0].action="<c:url value='/_02_ShoppingCart/UpdateItem.do?cmd=DEL&comID=" + n +"' />" ;
 		document.forms[0].method="POST";
 		document.forms[0].submit();
 	} else {
@@ -39,7 +39,7 @@ function modify(key, qty, index) {
 		return ; 
 	}
 	if (confirm("確定將此商品的數量由" + qty + " 改為 " + newQty + " ? ") ) {
-		document.forms[0].action="<c:url value='UpdateItem.do?cmd=MOD&bookId=" + key + "&newQty=" + newQty +"' />" ;
+		document.forms[0].action="<c:url value='/_02_ShoppingCart/UpdateItem.do?cmd=MOD&comID=" + key + "&newQty=" + newQty +"' />" ;
 		document.forms[0].method="POST";
 		document.forms[0].submit();
 	} else {
@@ -77,7 +77,7 @@ function Abort() {
 <meta charset="UTF-8">
 <title>購物清單</title>
 </head>
-<body style="background:#EBFFEB;">
+<body style="background:#FFFFFF;">
 
 <c:set var="funcName" value="CHE" scope="session"/>
 <jsp:include page="/fragment/navigation.jsp" />
@@ -114,36 +114,36 @@ function Abort() {
 <tr>
    <td>
      <table border='1'>
-     <tr><th width="320">商品名稱</th><th width="70">作者</th><th width="60">廠商</th><th width="60">單價</th><th width="40">數量</th><th width="110">小計</th><th width="110">修改</th></tr>
+     <tr><th width="320">商品名稱</th>
+<!--      <th width="70">作者</th> -->
+     <th width="100">廠商</th><th width="60">單價</th><th width="40">數量</th><th width="110">小計</th><th width="110">修改</th></tr>
      <c:forEach varStatus="vs" var="anEntry" items="${ShoppingCart.content}">
         <tr height='16'>
-          <td >${anEntry.value.title}</td>
-          <td style="text-align:center;">${fn:substring(anEntry.value.companyName, 0, 3)}</td>
-          <td style="text-align:center;">${fn:substring(anEntry.value.companyName, 0, 2)}</td>
-          <td style="text-align:right;"><fmt:formatNumber value="${anEntry.value.unitPrice * anEntry.value.discount }" pattern="#,###" />元</td>
+          <td >${anEntry.value.comName}</td>
+<%--           <td style="text-align:center;">${fn:substring(anEntry.value.busName, 0, 3)}</td> --%>
+          <td style="text-align:center;">${anEntry.value.busName}</td>
+          <td style="text-align:right;"><fmt:formatNumber value="${anEntry.value.ordUnitPrice}" pattern="#,###" />元</td>
           <td style="text-align:right;">
-                <Input id="newQty${vs.index}" style="width:28px;text-align:right" name="newQty" type="text" value="<fmt:formatNumber value="${anEntry.value.quantity}" />" name="qty" onkeypress="return isNumberKey(event)"  />
+                <Input id="newQty${vs.index}" style="width:28px;text-align:right" name="newQty" type="text" value="<fmt:formatNumber value="${anEntry.value.ordQuantity}" />" name="qty" onkeypress="return isNumberKey(event)"  />
           </td>
-          <td style="text-align:right;"><fmt:formatNumber value="${anEntry.value.unitPrice * anEntry.value.discount * anEntry.value.quantity}" pattern="#,###,###" />元</td>
-          <td ><Input type="button" name="update" value="修改" onclick="modify(${anEntry.key}, ${anEntry.value.quantity}, ${vs.index})">
+          <td style="text-align:right;"><fmt:formatNumber value="${anEntry.value.ordUnitPrice * anEntry.value.ordQuantity}" pattern="#,###,###" />元</td>
+          <td ><Input type="button" name="update" value="修改" onclick="modify(${anEntry.key}, ${anEntry.value.ordQuantity}, ${vs.index})">
                <Input type="button" name="delete" value="刪除" onclick="confirmDelete(${anEntry.key})"></td>
         </tr>
      </c:forEach>
         <tr height='16'>
           <td colspan='5' align='right'>合計金額：</td>
           <td align='right'><fmt:formatNumber value="${subtotal}" pattern="#,###,###" />元</td>
-          <td align='right'>&nbsp;</td>          
         </tr>
-        <tr>
-          <td colspan='5' align='right'>營業稅：</td>
-          <c:set var="VAT" value="${subtotal*0.05 + 0.0001}"/>
-          <td align='right'><fmt:formatNumber value="${VAT}" pattern="#,###,###" />元</td>
-          <td align='right'>&nbsp;</td>          
-        </tr>
+<!--         <tr> -->
+<!--           <td colspan='5' align='right'>營業稅：</td> -->
+<%--           <c:set var="VAT" value="${subtotal*0.05 + 0.0001}"/> --%>
+<%--           <td align='right'><fmt:formatNumber value="${VAT}" pattern="#,###,###" />元</td> --%>
+<!--           <td align='right'>&nbsp;</td>           -->
+<!--         </tr> -->
         <tr>
           <td colspan='5' align='right'>總計金額：</td>
           <td align='right'><fmt:formatNumber value="${subtotal + VAT }" pattern="#,###,###" />元</td>
-          <td align='right'>&nbsp;</td>          
         </tr>
    </table>
    
@@ -154,13 +154,13 @@ function Abort() {
      <table border='1'>
         <tr >
           <td width="265" align='center'>
-              <a href="<c:url value='../_02_ShoppingSystem/DisplayPageProducts?pageNo=${param.pageNo}' />">繼續購物</a>
+              <a href="<c:url value='/_02_ShoppingSystem/DisplayPageProducts?pageNo=${param.pageNo}' />">繼續購物</a>
           </td>
           <td width="265" align='center'>
-              <a href="<c:url value='checkout.do' />" onClick="return Checkout(${subtotal});">再次確認</a>
+              <a href="<c:url value='/_04_ShoppingCart/checkout.do' />" onClick="return Checkout(${subtotal});">再次確認</a>
           </td>
           <td width="265" align='center'>
-              <a href="<c:url value='abort.do' />" onClick="return Abort();">放棄購物</a>
+              <a href="<c:url value='/_04_ShoppingCart/abort.do' />" onClick="return Abort();">放棄購物</a>
           </td>
         </tr>
      </table>

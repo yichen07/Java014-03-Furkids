@@ -36,7 +36,7 @@ public class CheckoutServlet extends HttpServlet {
 			return;
 		}
 		// 結帳
-		RequestDispatcher rd = request.getRequestDispatcher("OrderConfirm.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/_02_ShoppingSystem/OrderConfirm.jsp");
 		rd.forward(request, response);
 		return;
 	}
