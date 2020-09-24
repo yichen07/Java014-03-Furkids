@@ -48,7 +48,11 @@ function reconfirmOrder() {
 <div style="text-align:center">
 <h3>請確認下列訊息：</h3>
 <FORM style="margin: 0 auto; width:750px;" action="<c:url value='/_02_ShoppingCart/ProcessOrder.do' />" method="POST" >
+  
    <TABLE border='1' style="background:#F5EBFF; border-color:rgb( 100, 100, 255); border-style: outset; width:810;">
+   
+<!--    此處判斷是會員還是商家 -->
+   <c:if test="${LoginOK.CLASSIFY == 0}">
       <TR >
          <TD style="text-align:left; border-color: #FFBD32; border-style: ridge;">
          	會員編號：${LoginOK.cusAccount}
@@ -72,7 +76,33 @@ function reconfirmOrder() {
                    <font color='red'>${errorMsg.ShippingAddress}</font>
          </TD>
       </TR>
-      
+      </c:if>
+       <c:if test="${LoginOK.CLASSIFY == 1}">
+      <TR >
+         <TD style="text-align:left; border-color: #FFBD32; border-style: ridge;">
+         	會員編號：${LoginOK.busAccount}
+         </TD>
+         <TD style="text-align:left; border-color: #FFBD32; border-style: ridge;">
+         	客戶姓名：${LoginOK.busName}
+         </TD>
+         <TD style="text-align:left; border-color: #FFBD32; border-style: ridge;">
+         	訂單日期：<fmt:formatDate value="${today}" pattern="yyyy-MM-dd"/>
+         </TD>
+      </TR>
+      <TR>
+         <TD colspan='3' style="text-align:left; border-color: #FFBD32; border-style: ridge;">
+         	會員地址：${LoginOK.busAddress}
+         </TD>
+      </TR>
+      <TR>
+         <TD colspan='3' style="text-align:left; border-color: #FFBD32; border-style: ridge;">
+                             出貨地址：<Input style="background:#ECFFCD;" size="60" type="text" id='ShippingAddress' 
+                   name="ShippingAddress" value="">
+                   <font color='red'>${errorMsg.ShippingAddress}</font>
+         </TD>
+      </TR>
+      </c:if>
+<!--    此處判斷是會員還是商家 -->
     
       <TR>
          <TD colspan='3'>
