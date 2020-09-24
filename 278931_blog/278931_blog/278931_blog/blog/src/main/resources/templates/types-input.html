@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>分類新增</title>
+  <link href="css/main.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+  <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
+  <link rel="stylesheet" href="../../static/css/me.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<header class="fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark container" style="background-color: rgba(77,77,77,0.0);">
+    <a class="navbar-brand" href="/"><img src="images/Logo-02.png" width="100px" height="auto" alt="logo"/></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            商城
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <!--<a class="dropdown-item" href="#">預留欄位</a>-->
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            交流專區
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">寵物專欄</a>
+            <a class="dropdown-item" href="#">寵物失蹤協尋</a>
+            <a class="dropdown-item" href="#">二手市集</a>
+            <a class="dropdown-item" href="#">活動建立</a>
+            <a class="dropdown-item" href="#">寵物交友</a>
+            <a class="dropdown-item" href="#">留言板</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            友善專區
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">景點</a>
+            <a class="dropdown-item" href="#">餐廳</a>
+            <a class="dropdown-item" href="#">寵物美容</a>
+            <a class="dropdown-item" href="#">旅館</a>
+            <a class="dropdown-item" href="#">寵物寄放</a>
+            <a class="dropdown-item" href="#">租屋</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            健康管理
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">寵物熱量計算</a>
+            <a class="dropdown-item" href="#">寵物健康管理</a>
+            <a class="dropdown-item" href="#">寵物疫苗資訊</a>
+            <a class="dropdown-item" href="#">寵物食譜</a>
+          </div>
+        </li>
+      </ul>
+      <form class="navbar-nav my-2 my-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/login"><p1>會員中心</p1><p2><img src="images/member.svg" width="34px" height="auto" alt=""/></p2></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><p1>購物車</p1><p2><img src="images/cart.svg" width="34px" height="auto" alt=""/></p2></a>
+        </li>
+      </form>
+    </div>
+  </nav>
+</header>
+<main>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="ui attached pointing menu">
+    <div class="ui container">
+      <div class="right menu">
+        <a href="#" th:href="@{/login/types/input}" class="active item">發布</a>
+        <a href="#" th:href="@{/login/types}" class="teal  item">列表</a>
+      </div>
+    </div>
+  </div>
+  <div  class="m-container-small m-padded-tb-big">
+    <div class="ui container">
+      <form action="#" method="post"  th:object="${type}" th:action="*{id}==null ? @{/login/types} : @{/login/types/{id}(id=*{id})} "  class="ui form">
+        <input type="hidden" name="id" th:value="*{id}">
+        <div class=" field">
+          <div class="ui left labeled input">
+            <label class="ui teal basic label">名稱</label>
+            <input type="text" name="name" placeholder="分類名稱" th:value="*{name}" >
+          </div>
+        </div>
+
+        <div class="ui error message"></div>
+        <!--/*/
+        <div class="ui negative message" th:if="${#fields.hasErrors('name')}"  >
+          <i class="close icon"></i>
+          <div class="header">驗證失敗</div>
+          <p th:errors="*{name}">提交信息不符合</p>
+        </div>
+         /*/-->
+        <div class="ui right aligned container">
+          <button type="button" class="ui button" onclick="window.history.go(-1)" >返回</button>
+          <button class="ui teal submit button">提交</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</main>
+<footer class="fixed-bottom">
+  <h4>© 2020 FurKids 著作權所有</h4>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<!--/*/</th:block>/*/-->
+
+<script>
+
+  $('.menu.toggle').click(function () {
+    $('.m-item').toggleClass('m-mobile-hide');
+  });
+
+  $('.ui.dropdown').dropdown({
+    on : 'hover'
+  });
+
+  $('.ui.form').form({
+    fields : {
+      title : {
+        identifier: 'name',
+        rules: [{
+          type : 'empty',
+          prompt: '請輸入分類名稱'
+        }]
+      }
+    }
+  });
+
+</script>
+</body>
+</html>
