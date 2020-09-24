@@ -31,6 +31,7 @@ public class MerchantChildBean implements Serializable {
 	private Blob busChildPhoto;
 	private String busChildFileName;
 	
+	
 	//雙向一對一
 	@OneToOne
 	@JoinColumn(name="busChildNo")
@@ -55,6 +56,7 @@ public class MerchantChildBean implements Serializable {
 		this.busChildDescription = busChildDescription;
 		this.busChildPhoto = busChildPhoto;
 		this.busChildFileName = busChildFileName;
+	
 	}
 	
 	public ConvenienceBean_H getConvenienceBean_H() {
@@ -136,5 +138,6 @@ public class MerchantChildBean implements Serializable {
 	public void setBusChildFileName(String busChildFileName) {
 		this.busChildFileName = busChildFileName;
 	}
+
 	
 }

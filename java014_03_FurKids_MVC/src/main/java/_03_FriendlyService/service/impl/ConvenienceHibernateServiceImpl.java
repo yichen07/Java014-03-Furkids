@@ -230,6 +230,14 @@ public class ConvenienceHibernateServiceImpl implements ConvenienceService{
 		bean = cnDao.getBusChild(id);
 		return bean;
 	}
+	@Transactional
+	@Override
+	public void Update(ConvenienceBean_H cb, MerchantChildBean mcb) {
+		cnDao.update(mcb);
+		cnDao.update(cb);
+		
+	}
+	
 
 
 	

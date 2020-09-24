@@ -12,6 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import _00_Init.util.GlobalService;
 import _01_Member.Registration.model.MemberBean;
@@ -182,10 +186,14 @@ public class MemberRegisterServlet extends HttpServlet {
 			// MemberDaoImpl_Jdbc與MerchantDaoImpl_Jdbc類別的功能：
 			// 1.檢查帳號是否已經存在，已存在的帳號不能使用，回傳相關訊息通知使用者修改
 			// 2.若無問題，儲存會員的資料
-			MemberService service = new MemberServiceImpl();
-			MerchantService service2 = new MerchantServiceImpl();
+			ServletContext sc = getServletContext();
+			WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(sc);
+//			MemberService service = new MemberServiceImpl();
+			MemberService memberService = ctx.getBean(MemberService.class);
+//			MerchantService service2 = new MerchantServiceImpl();
+			MerchantService merchantService = ctx.getBean(MerchantService.class);
 
-			if (service.accountExists(cusAccount) || service2.accountExists(cusAccount)) {
+			if (memberService.accountExists(cusAccount) || merchantService.accountExists(cusAccount)) {
 				errorMsg.put("errorAccountDup", "此帳號已存在，請換新帳號");
 			} else {
 				// 為了配合Hibernate的版本。
@@ -200,7 +208,7 @@ public class MemberRegisterServlet extends HttpServlet {
 				// 將所有會員資料封裝到MemberBean(類別的)物件
 				MemberBean mem = new MemberBean(cusAccount, cusPassword, cusName, cusNickName, cusGender, cusBirthday, cusEmail, cusTel, cusAddress, cusPhoto, cusFileName);
 				// 呼叫MemberDao的saveMember方法
-				int n = service.saveMember(mem);
+				int n = memberService.saveMember(mem);
 				if (n == 1) {
 					msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
 					response.sendRedirect(contextPath + "/index.jsp");

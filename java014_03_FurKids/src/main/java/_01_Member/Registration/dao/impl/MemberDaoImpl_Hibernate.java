@@ -7,17 +7,25 @@ import javax.persistence.NoResultException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.NoUniqueBeanDefinitionException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import _01_Member.Registration.dao.MemberDao;
 import _01_Member.Registration.model.MemberBean;
 import _01_Member.util.HibernateUtils;
 
+@Repository
 public class MemberDaoImpl_Hibernate implements MemberDao {
 	
 	SessionFactory factory;
 	
+	@Autowired
+	public void setFactory(SessionFactory factory) {
+		this.factory = factory;
+	}
+	
 	public MemberDaoImpl_Hibernate() {
-		this.factory = HibernateUtils.getSessionFactory();
+//		this.factory = HibernateUtils.getSessionFactory();
 	}
 	
 	// 儲存MemberBean物件，將會員註冊資料mb新增到資料庫MembraneRegistration表格中。
@@ -40,8 +48,8 @@ public class MemberDaoImpl_Hibernate implements MemberDao {
 		Session session = factory.getCurrentSession();
 		String hql = "FROM MemberBean m WHERE m.cusAccount = :account";
 		try {
-//			MemberBean mb = (MemberBean) session.createQuery(hql).setParameter("account", account).getSingleResult();
-			Object mb = session.createQuery(hql).setParameter("account", account).getSingleResult();
+			MemberBean mb = (MemberBean) session.createQuery(hql).setParameter("account", account).getSingleResult();
+//			Object mb = session.createQuery(hql).setParameter("account", account).getSingleResult();
 			if (mb != null) {
 				exist = true;
 			}
