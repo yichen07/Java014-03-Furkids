@@ -1,6 +1,9 @@
 package _02_ShoppingSystem.ShoppingCart.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,11 +24,25 @@ public class CheckoutServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 
+		
+		
 		if (session == null) {      // 使用逾時
 			response.sendRedirect(getServletContext().getContextPath() + "/index.jsp");
 			return;
 		}
 		
+		Map<String, String> errorMsg = new HashMap<String, String>();
+		request.setAttribute("MsgMap", errorMsg); 	// 顯示錯誤訊息
+		
+		Object obj = session.getAttribute("LoginOK");
+		
+		if (obj == null) {
+			// 請使用者登入
+			errorMsg.put("errorNotLogin", "請先登入帳號");
+			RequestDispatcher rd = request.getRequestDispatcher("/_02_ShoppingSystem/ShowCartContent.jsp"); // 導向位址需更改
+			rd.forward(request, response);
+			return;
+		}
 		
 		ShoppingCart sc = (ShoppingCart) session.getAttribute("ShoppingCart");
 		if (sc == null) {
@@ -36,7 +53,7 @@ public class CheckoutServlet extends HttpServlet {
 			return;
 		}
 		// 結帳
-		RequestDispatcher rd = request.getRequestDispatcher("OrderConfirm.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/_02_ShoppingSystem/OrderConfirm.jsp");
 		rd.forward(request, response);
 		return;
 	}

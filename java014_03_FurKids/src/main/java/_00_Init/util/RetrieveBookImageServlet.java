@@ -53,9 +53,9 @@ public class RetrieveBookImageServlet extends HttpServlet {
 			}
 			// 如果圖片的來源有問題，就送回預設圖片(/images/NoImage.png)	
 			if (is == null) {
-				fileName = "NoImage.png" ; 
+				fileName = "no_image.png" ;   
 				is = getServletContext().getResourceAsStream(
-						"/images/" + fileName);
+						"/resources/images/" + fileName);
 			}
 			
 			// 由圖片檔的檔名來得到檔案的MIME型態

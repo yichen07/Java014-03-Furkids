@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head >
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>標籤</title>
+  <link href="css/main_template.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+  <link rel="stylesheet" href="../../static/css/me.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<header class="fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark container" style="background-color: rgba(77,77,77,0.0);">
+    <a class="navbar-brand" href="/"><img src="images/Logo-02.png" width="100px" height="auto"  alt="logo"/></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            商城
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <!--<a class="dropdown-item" href="#">預留欄位</a>-->
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            交流專區
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">寵物專欄</a>
+            <a class="dropdown-item" href="#">寵物失蹤協尋</a>
+            <a class="dropdown-item" href="#">二手市集</a>
+            <a class="dropdown-item" href="#">活動建立</a>
+            <a class="dropdown-item" href="#">寵物交友</a>
+            <a class="dropdown-item" href="#">留言板</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            友善專區
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">景點</a>
+            <a class="dropdown-item" href="#">餐廳</a>
+            <a class="dropdown-item" href="#">寵物美容</a>
+            <a class="dropdown-item" href="#">旅館</a>
+            <a class="dropdown-item" href="#">寵物寄放</a>
+            <a class="dropdown-item" href="#">租屋</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            健康管理
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">寵物熱量計算</a>
+            <a class="dropdown-item" href="#">寵物健康管理</a>
+            <a class="dropdown-item" href="#">寵物疫苗資訊</a>
+            <a class="dropdown-item" href="#">寵物食譜</a>
+          </div>
+        </li>
+      </ul>
+      <form class="navbar-nav my-2 my-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href=login><p1>會員中心</p1><p2><img src="images/member.svg" width="34px" height="auto" alt=""/></p2></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><p1>購物車</p1><p2><img src="images/cart.svg" width="34px" height="auto" alt=""/></p2></a>
+        </li>
+      </form>
+    </div>
+  </nav>
+</header>
+<!--中間內容-->
+<main>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="ui attached pointing menu">
+    <div class="ui container">
+      <div class="right menu">
+        <a href="#" th:href="@{/login/types/input}" class="active item">新增</a>
+        <a href="#" th:href="@{/login/types}" class="teal  item">列表</a>
+      </div>
+    </div>
+  </div>
+  <div  class="m-container-small m-padded-tb-big">
+    <div class="ui container">
+      <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+        <i class="close icon"></i>
+        <div class="header">提示：</div>
+        <p th:text="${message}">恭喜，新增成功！</p>
+      </div>
+      <table class="ui compact teal table">
+        <thead>
+        <tr>
+          <th></th>
+          <th>名稱</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="type,iterStat : ${page.content}">
+          <td th:text="${iterStat.count}">1</td>
+          <td th:text="${type.name}">練習清單</td>
+          <td>
+            <a href="#" th:href="@{/login/types/{id}/input(id=${type.id})}" class="ui mini teal basic button">编辑</a>
+            <a href="#" th:href="@{/login/types/{id}/delete(id=${type.id})}" class="ui mini red basic button">删除</a>
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <th colspan="6" >
+            <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
+              <a th:href="@{/login/types(page=${page.number}-1)}" class="  item" th:unless="${page.first}">上一頁</a>
+              <a th:href="@{/login/types(page=${page.number}+1)}" class=" item" th:unless="${page.last}">下一頁</a>
+            </div>
+            <a href="#" th:href="@{/login/types/input}"  class="ui mini right floated teal basic button">新增</a>
+          </th>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</main>
+<footer class="fixed-bottom">
+  <h4>© 2020 FurKids 著作權所有</h4>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+  $('.menu.toggle').click(function () {
+    $('.m-item').toggleClass('m-mobile-hide');
+  });
+
+  $('.ui.dropdown').dropdown({
+    on : 'hover'
+  });
+
+  //消息提是關閉的初始化
+  $('.message .close')
+          .on('click', function () {
+            $(this)
+                    .closest('.message')
+                    .transition('fade');
+          });
+</script>
+</body>
+</html>

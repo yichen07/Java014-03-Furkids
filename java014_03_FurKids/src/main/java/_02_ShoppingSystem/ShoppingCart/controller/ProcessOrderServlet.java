@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import _01_Member.Registration.model.MemberBean;
+import _01_Member.Registration.model.MerchantBean;
 //import _01_register.model.MemberBean;
 import _02_ShoppingSystem.ShoppingCart.model.OrderBean;
 import _02_ShoppingSystem.ShoppingCart.model.OrderListBean;
@@ -20,7 +22,7 @@ import _02_ShoppingSystem.ShoppingCart.service.OrderService;
 import _02_ShoppingSystem.ShoppingCart.service.Impl.OrderServiceImpl;
 
 // OrderConfirm.jsp 呼叫本程式。
-@WebServlet("/_04_ShoppingCart/ProcessOrder.do")
+@WebServlet("/_02_ShoppingCart/ProcessOrder.do")
 public class ProcessOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,11 +37,23 @@ public class ProcessOrderServlet extends HttpServlet {
 			response.sendRedirect(getServletContext().getContextPath() + "/index.jsp"  );
 			return;
 		}
+		Object obj = session.getAttribute("LoginOK");
+		String memberId = null;
 //		MemberBean mb = (MemberBean) session.getAttribute("LoginOK");
-//		if (mb == null) {
-//			response.sendRedirect(getServletContext().getContextPath() + "/index.jsp"  );
-//			return;
-//		}
+		
+		if (obj == null) {
+			response.sendRedirect(getServletContext().getContextPath() + "/index.jsp"  );
+			return;
+		}else if(obj instanceof MemberBean) {
+			MemberBean mb = (MemberBean) session.getAttribute("LoginOK");
+			memberId = mb.getCusAccount();
+		}else {
+			MerchantBean mcb = (MerchantBean) session.getAttribute("LoginOK");
+			memberId = mcb.getBusAccount();
+		}
+		
+		
+		
 		ShoppingCart sc = (ShoppingCart) session.getAttribute("ShoppingCart");
 		if (sc == null) {
 			// 處理訂單時如果找不到購物車(通常是Session逾時)，沒有必要往下執行
@@ -53,13 +67,12 @@ public class ProcessOrderServlet extends HttpServlet {
 			response.sendRedirect(response.encodeRedirectURL (request.getContextPath()));
 			return;  			// 一定要記得 return 
 		}
-//		String memberId = mb.getMemberId();     #200916 by wan // 取出會員代號
-		String memberId = "admin";
+//		String memberId = mb.getCusAccount();     // 取出會員代號
 		double totalAmount = Math.round(sc.getSubtotal() * 1.0);  	// 計算訂單總金額 
 		String shippingAddress = request.getParameter("ShippingAddress");  // 出貨地址
 		Date today = new Date();   									// 新增訂單的時間
 		// 新建訂單物件。OrderBean:封裝一筆訂單資料的容器，包含訂單主檔與訂單明細檔的資料。目前只存放訂單主檔的資料。
-		OrderBean ob = new OrderBean(null, memberId, today, totalAmount, shippingAddress, null);
+		OrderBean ob = new OrderBean(null, memberId , today, totalAmount, shippingAddress, null);
 		
 		// 取出存放在購物車內的商品，放入Map型態的變數cart，準備將其內的商品一個一個轉換為OrderItemBean，
 		

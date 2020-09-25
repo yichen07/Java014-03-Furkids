@@ -5,7 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="<c:url value='/resources/images/logo_08_iP6_6.ico' />" type="image/x-icon" />
 <title>Furkids Main Page</title>
+
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
     

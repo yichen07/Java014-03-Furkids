@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>專欄</title>
+    <link href="css/main_template.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css" >
+    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<header class="fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark container" style="background-color: rgba(77,77,77,0.0);">
+        <a class="navbar-brand" href="/"><img src="images/Logo-02.png" width="100px" height="auto" alt="logo"/></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        商城
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <!--<a class="dropdown-item" href="#">預留欄位</a>-->
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        交流專區
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">寵物專欄</a>
+                        <a class="dropdown-item" href="#">寵物失蹤協尋</a>
+                        <a class="dropdown-item" href="#">二手市集</a>
+                        <a class="dropdown-item" href="#">活動建立</a>
+                        <a class="dropdown-item" href="#">寵物交友</a>
+                        <a class="dropdown-item" href="#">留言板</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        友善專區
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">景點</a>
+                        <a class="dropdown-item" href="#">餐廳</a>
+                        <a class="dropdown-item" href="#">寵物美容</a>
+                        <a class="dropdown-item" href="#">旅館</a>
+                        <a class="dropdown-item" href="#">寵物寄放</a>
+                        <a class="dropdown-item" href="#">租屋</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        健康管理
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">寵物熱量計算</a>
+                        <a class="dropdown-item" href="#">寵物健康管理</a>
+                        <a class="dropdown-item" href="#">寵物疫苗資訊</a>
+                        <a class="dropdown-item" href="#">寵物食譜</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="navbar-nav my-2 my-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href=login><p1>會員中心</p1><p2><img src="images/member.svg" width="34px" height="auto" alt=""/></p2></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><p1>購物車</p1><p2><img src="images/cart.svg" width="34px" height="auto" alt=""/></p2></a>
+                </li>
+            </form>
+        </div>
+    </nav>
+</header>
+<main>
+    <div  class="m-container m-padded-tb-big animated fadeIn">
+        <div class="ui container">
+            <div class="ui stackable grid">
+                <!--左邊專欄列表-->
+                <div class="eleven wide column">
+                    <!--header-->
+                    <div class="ui top attached segment">
+                        <div class="ui middle aligned two column grid">
+                            <div class="column">
+                                <h3 class="ui teal header">專欄</h3>
+                            </div>
+                            <div class="right aligned column">
+                                共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${page.totalElements}"> 14 </h2> 篇
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--content-->
+                    <div class="ui attached  segment">
+
+                        <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${page.content}">
+                            <div class="ui middle aligned mobile reversed stackable grid" >
+                                <div class="eleven wide column">
+                                    <h3 class="ui header" ><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}">家有7隻柴犬</a></h3>
+                                    <p class="m-text" th:text="|${blog.description}......|">狗毛滿天飛 吃飯吃到一半會看到筷子莫名的有狗毛 養10年不知道吃了多少狗毛了 最討厭幫牠們洗澡 我都不知道是狗在洗澡還是我 爸媽寵牠們吃的比我好 每隻肥嘟嘟....</p>
+                                    <div class="ui grid">
+                                        <div class="eleven wide column">
+                                            <div class="ui mini horizontal link list">
+                                                <div class="item">
+                                                    <img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1597036638548.jpg" th:src="@{${blog.user.avatar}}"  alt="" class="ui avatar image">
+                                                    <div class="content"><a href="#" class="header" th:text="${blog.user.nickname}" >胖虎</a></div>
+                                                </div>
+                                                <div class="item">
+                                                    <i class="calendar icon"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2020-10-01</span>
+                                                </div>
+                                                <div class="item">
+                                                    <i class="eye icon"></i> <span th:text="${blog.views}">2342</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right aligned five wide column">
+                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin" th:text="${blog.type.name}">分享</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="five wide column">
+                                    <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+                                        <img src="https://img.ltn.com.tw/Upload/partner/page/2019/09/14/190914-4886-01-WvNZA.jpg" th:src="@{${blog.firstPicture}}"  alt="" class="ui rounded image">
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--/*-->
+                        <div class="ui padded vertical segment m-padded-tb-large">
+                            <div class="ui mobile reversed stackable grid">
+                                <div class="eleven wide column">
+                                    <h3 class="ui header">家有7隻柴犬</h3>
+                                    <p class="m-text">狗毛滿天飛 吃飯吃到一半會看到筷子莫名的有狗毛 養10年不知道吃了多少狗毛了 最討厭幫牠們洗澡 我都不知道是狗在洗澡還是我 爸媽寵牠們吃的比我好 每隻肥嘟嘟</p>
+                                    <div class="ui grid">
+                                        <div class="eleven wide column">
+                                            <div class="ui mini horizontal link list">
+                                                <div class="item">
+                                                    <img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1597036638548.jpg" alt="" class="ui avatar image">
+                                                    <div class="content"><a href="#" class="header">胖虎</a></div>
+                                                </div>
+                                                <div class="item">
+                                                    <i class="calendar icon"></i> 2020-10-01
+                                                </div>
+                                                <div class="item">
+                                                    <i class="eye icon"></i> 2342
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right aligned five wide column">
+                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">分享</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="five wide column">
+                                    <a href="#" target="_blank">
+                                        <img src="https://img.ltn.com.tw/Upload/partner/page/2019/09/14/190914-4886-01-WvNZA.jpg" alt="" class="ui rounded image">
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="ui padded vertical segment m-padded-tb-large">
+                            <div class="ui mobile reversed stackable grid">
+                                <div class="eleven wide column">
+                                    <h3 class="ui header">家有7隻柴犬</h3>
+                                    <p class="m-text">狗毛滿天飛 吃飯吃到一半會看到筷子莫名的有狗毛 養10年不知道吃了多少狗毛了 最討厭幫牠們洗澡 我都不知道是狗在洗澡還是我 爸媽寵牠們吃的比我好 每隻肥嘟嘟</p>
+                                    <div class="ui grid">
+                                        <div class="eleven wide column">
+                                            <div class="ui mini horizontal link list">
+                                                <div class="item">
+                                                    <img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1597036638548.jpg" alt="" class="ui avatar image">
+                                                    <div class="content"><a href="#" class="header">胖虎</a></div>
+                                                </div>
+                                                <div class="item">
+                                                    <i class="calendar icon"></i> 2020-10-01
+                                                </div>
+                                                <div class="item">
+                                                    <i class="eye icon"></i> 2342
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right aligned five wide column">
+                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">分享</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="five wide column">
+                                    <a href="#" target="_blank">
+                                        <img src="https://img.ltn.com.tw/Upload/partner/page/2019/09/14/190914-4886-01-WvNZA.jpg" alt="" class="ui rounded image">
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="ui padded vertical segment m-padded-tb-large">
+                            <div class="ui mobile reversed stackable grid">
+                                <div class="eleven wide column">
+                                    <h3 class="ui header">家有7隻柴犬</h3>
+                                    <p class="m-text">狗毛滿天飛 吃飯吃到一半會看到筷子莫名的有狗毛 養10年不知道吃了多少狗毛了 最討厭幫牠們洗澡 我都不知道是狗在洗澡還是我 爸媽寵牠們吃的比我好 每隻肥嘟嘟</p>
+                                    <div class="ui grid">
+                                        <div class="eleven wide column">
+                                            <div class="ui mini horizontal link list">
+                                                <div class="item">
+                                                    <img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1597036638548.jpg" alt="" class="ui avatar image">
+                                                    <div class="content"><a href="#" class="header">胖虎</a></div>
+                                                </div>
+                                                <div class="item">
+                                                    <i class="calendar icon"></i> 2020-10-01
+                                                </div>
+                                                <div class="item">
+                                                    <i class="eye icon"></i> 2342
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right aligned five wide column">
+                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">分享</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="five wide column">
+                                    <a href="#" target="_blank">
+                                        <img src="https://img.ltn.com.tw/Upload/partner/page/2019/09/14/190914-4886-01-WvNZA.jpg" alt="" class="ui rounded image">
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="ui padded vertical segment m-padded-tb-large">
+                            <div class="ui mobile reversed stackable grid">
+                                <div class="eleven wide column">
+                                    <h3 class="ui header">家有7隻柴犬</h3>
+                                    <p class="m-text">狗毛滿天飛 吃飯吃到一半會看到筷子莫名的有狗毛 養10年不知道吃了多少狗毛了 最討厭幫牠們洗澡 我都不知道是狗在洗澡還是我 爸媽寵牠們吃的比我好 每隻肥嘟嘟</p>
+                                    <div class="ui grid">
+                                        <div class="eleven wide column">
+                                            <div class="ui mini horizontal link list">
+                                                <div class="item">
+                                                    <img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1597036638548.jpg" alt="" class="ui avatar image">
+                                                    <div class="content"><a href="#" class="header">胖虎</a></div>
+                                                </div>
+                                                <div class="item">
+                                                    <i class="calendar icon"></i> 2020-10-01
+                                                </div>
+                                                <div class="item">
+                                                    <i class="eye icon"></i> 2342
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right aligned five wide column">
+                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">分享</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="five wide column">
+                                    <a href="#" target="_blank">
+                                        <img src="https://img.ltn.com.tw/Upload/partner/page/2019/09/14/190914-4886-01-WvNZA.jpg" alt="" class="ui rounded image">
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="ui padded vertical segment m-padded-tb-large">
+                            <div class="ui mobile reversed stackable grid">
+                                <div class="eleven wide column">
+                                    <h3 class="ui header">家有7隻柴犬</h3>
+                                    <p class="m-text">狗毛滿天飛 吃飯吃到一半會看到筷子莫名的有狗毛 養10年不知道吃了多少狗毛了 最討厭幫牠們洗澡 我都不知道是狗在洗澡還是我 爸媽寵牠們吃的比我好 每隻肥嘟嘟</p>
+                                    <div class="ui grid">
+                                        <div class="eleven wide column">
+                                            <div class="ui mini horizontal link list">
+                                                <div class="item">
+                                                    <img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1597036638548.jpg" alt="" class="ui avatar image">
+                                                    <div class="content"><a href="#" class="header">胖虎</a></div>
+                                                </div>
+                                                <div class="item">
+                                                    <i class="calendar icon"></i> 2020-10-01
+                                                </div>
+                                                <div class="item">
+                                                    <i class="eye icon"></i> 2342
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right aligned five wide column">
+                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">分享</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="five wide column">
+                                    <a href="#" target="_blank">
+                                        <img src="https://img.ltn.com.tw/Upload/partner/page/2019/09/14/190914-4886-01-WvNZA.jpg" alt="" class="ui rounded image">
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="ui padded vertical segment m-padded-tb-large">
+                            <div class="ui mobile reversed stackable grid">
+                                <div class="eleven wide column">
+                                    <h3 class="ui header">家有7隻柴犬</h3>
+                                    <p class="m-text">狗毛滿天飛 吃飯吃到一半會看到筷子莫名的有狗毛 養10年不知道吃了多少狗毛了 最討厭幫牠們洗澡 我都不知道是狗在洗澡還是我 爸媽寵牠們吃的比我好 每隻肥嘟嘟</p>
+                                    <div class="ui grid">
+                                        <div class="eleven wide column">
+                                            <div class="ui mini horizontal link list">
+                                                <div class="item">
+                                                    <img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1597036638548.jpg" alt="" class="ui avatar image">
+                                                    <div class="content"><a href="#" class="header">胖虎</a></div>
+                                                </div>
+                                                <div class="item">
+                                                    <i class="calendar icon"></i> 2020-10-01
+                                                </div>
+                                                <div class="item">
+                                                    <i class="eye icon"></i> 2342
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right aligned five wide column">
+                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">分享</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="five wide column">
+                                    <a href="#" target="_blank">
+                                        <img src="https://img.ltn.com.tw/Upload/partner/page/2019/09/14/190914-4886-01-WvNZA.jpg" alt="" class="ui rounded image">
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="ui padded vertical segment m-padded-tb-large">
+                            <div class="ui mobile reversed stackable grid">
+                                <div class="eleven wide column">
+                                    <h3 class="ui header">家有7隻柴犬</h3>
+                                    <p class="m-text">狗毛滿天飛 吃飯吃到一半會看到筷子莫名的有狗毛 養10年不知道吃了多少狗毛了 最討厭幫牠們洗澡 我都不知道是狗在洗澡還是我 爸媽寵牠們吃的比我好 每隻肥嘟嘟</p>
+                                    <div class="ui grid">
+                                        <div class="eleven wide column">
+                                            <div class="ui mini horizontal link list">
+                                                <div class="item">
+                                                    <img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1597036638548.jpg" alt="" class="ui avatar image">
+                                                    <div class="content"><a href="#" class="header">胖虎</a></div>
+                                                </div>
+                                                <div class="item">
+                                                    <i class="calendar icon"></i> 2020-10-01
+                                                </div>
+                                                <div class="item">
+                                                    <i class="eye icon"></i> 2342
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right aligned five wide column">
+                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">分享</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="five wide column">
+                                    <a href="#" target="_blank">
+                                        <img src="https://img.ltn.com.tw/Upload/partner/page/2019/09/14/190914-4886-01-WvNZA.jpg" alt="" class="ui rounded image">
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="ui padded vertical segment m-padded-tb-large">
+                            <div class="ui mobile reversed stackable grid">
+                                <div class="eleven wide column">
+                                    <h3 class="ui header">家有7隻柴犬</h3>
+                                    <p class="m-text">狗毛滿天飛 吃飯吃到一半會看到筷子莫名的有狗毛 養10年不知道吃了多少狗毛了 最討厭幫牠們洗澡 我都不知道是狗在洗澡還是我 爸媽寵牠們吃的比我好 每隻肥嘟嘟</p>
+                                    <div class="ui grid">
+                                        <div class="eleven wide column">
+                                            <div class="ui mini horizontal link list">
+                                                <div class="item">
+                                                    <img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1597036638548.jpg" alt="" class="ui avatar image">
+                                                    <div class="content"><a href="#" class="header">胖虎</a></div>
+                                                </div>
+                                                <div class="item">
+                                                    <i class="calendar icon"></i> 2020-10-01
+                                                </div>
+                                                <div class="item">
+                                                    <i class="eye icon"></i> 2342
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right aligned five wide column">
+                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">分享</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="five wide column">
+                                    <a href="#" target="_blank">
+                                        <img src="https://img.ltn.com.tw/Upload/partner/page/2019/09/14/190914-4886-01-WvNZA.jpg" alt="" class="ui rounded image">
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="ui padded vertical segment m-padded-tb-large">
+                            <div class="ui mobile reversed stackable grid">
+                                <div class="eleven wide column">
+                                    <h3 class="ui header">家有7隻柴犬</h3>
+                                    <p class="m-text">狗毛滿天飛 吃飯吃到一半會看到筷子莫名的有狗毛 養10年不知道吃了多少狗毛了 最討厭幫牠們洗澡 我都不知道是狗在洗澡還是我 爸媽寵牠們吃的比我好 每隻肥嘟嘟</p>
+                                    <div class="ui grid">
+                                        <div class="eleven wide column">
+                                            <div class="ui mini horizontal link list">
+                                                <div class="item">
+                                                    <img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1597036638548.jpg" alt="" class="ui avatar image">
+                                                    <div class="content"><a href="#" class="header">胖虎</a></div>
+                                                </div>
+                                                <div class="item">
+                                                    <i class="calendar icon"></i> 2020-10-01
+                                                </div>
+                                                <div class="item">
+                                                    <i class="eye icon"></i> 2342
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right aligned five wide column">
+                                            <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">分享</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="five wide column">
+                                    <a href="#" target="_blank">
+                                        <img src="https://img.ltn.com.tw/Upload/partner/page/2019/09/14/190914-4886-01-WvNZA.jpg"  alt="" class="ui rounded image">
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--*/-->
+                    </div>
+                    <!--footer-->
+                    <div class="ui bottom attached segment" th:if="${page.totalPages}>1">
+                        <div class="ui middle aligned two column grid">
+                            <div class="column">
+                                <a href="#" th:href="@{/(page=${page.number}-1)}"  th:unless="${page.first}" class="ui mini teal basic button">上一頁</a>
+                            </div>
+                            <div class="right aligned column">
+                                <a href="#" th:href="@{/(page=${page.number}+1)}"  th:unless="${page.last}" class="ui mini teal basic button">下一頁</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                    <!--右邊的top-->
+                    <div class="five wide column">
+
+                        <!--分類-->
+                        <div class="ui segments">
+                            <div class="ui secondary segment">
+                                <div class="ui two column grid">
+                                    <div class="column">
+                                        <i class="idea icon"></i>分類
+                                    </div>
+                                    <div class="right aligned column">
+                                        <a href="#" th:href="@{types/-1}" target="_blank">more <i class="angle double right icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui teal segment">
+                                <div class="ui fluid vertical menu" >
+                                    <a href="#" th:href="@{/types/{id}(id=${type.id})}" target="_blank" class="item"  th:each="type : ${types}">
+                                        <span th:text="${type.name}">二手市集</span>
+                                        <div class="ui teal basic left pointing label" th:text="${#arrays.length(type.blogs)}">13</div>
+                                    </a>
+                                    <!--/*-->
+                                    <a href="#" class="item">
+                                        失蹤專區
+                                        <div class="ui teal basic left pointing label">13</div>
+                                    </a>
+                                    <a href="#" class="item">
+                                        交流
+                                        <div class="ui teal basic left pointing label">13</div>
+                                    </a>
+                                    <a href="#" class="item">
+                                        分享
+                                        <div class="ui teal basic left pointing label">13</div>
+                                    </a>
+                                    <a href="#" class="item">
+                                        活動
+                                        <div class="ui teal basic left pointing label">13</div>
+                                    </a>
+                                    <a href="#" class="item">
+                                        其他吧
+                                        <div class="ui teal basic left pointing label">13</div>
+                                    </a>
+                                    <!--*/-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--標籤-->
+                        <div class="ui segments m-margin-top-large">
+                            <div class="ui secondary segment">
+                                <div class="ui two column grid">
+                                    <div class="column">
+                                        <i class="tags icon"></i>標籤
+                                    </div>
+                                    <div class="right aligned column">
+                                        <a href="#" th:href="@{tags/-1}" target="_blank">more <i class="angle double right icon"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui teal segment">
+                                <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny" th:each="tag : ${tags}">
+                                    <span th:text="${tag.name}">小雞</span> <div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
+                                </a>
+                                <!--/*-->
+                                <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                                    小豬 <div class="detail">23</div>
+                                </a>
+                                <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                                    小狗 <div class="detail">23</div>
+                                </a>
+                                <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                                    小貓 <div class="detail">23</div>
+                                </a>
+                                <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                                    小狗 <div class="detail">23</div>
+                                </a>
+                                <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                                    柴柴 <div class="detail">23</div>
+                                </a>
+                                <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                                    二哈 <div class="detail">23</div>
+                                </a>
+                                <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                                    折耳 <div class="detail">23</div>
+                                </a>
+                                <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                                    虎斑 <div class="detail">23</div>
+                                </a>
+                                <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                                    柯基 <div class="detail">23</div>
+                                </a>
+                                <!--*/-->
+                            </div>
+                        </div>
+
+                        <!--最新推薦-->
+                        <div class="ui segments m-margin-top-large">
+                            <div class="ui secondary segment ">
+                                <i class="bookmark icon"></i>最新推薦
+                            </div>
+                            <div class="ui segment" th:each="blog : ${recommendBlogs}">
+                                <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black m-text-thin" th:text="${blog.title}">柴柴的故事</a>
+                            </div>
+                            <!--/*-->
+                            <div class="ui segment" >
+                                <a href="#" target="_blank" class="m-black m-text-thin">柴柴的故事</a>
+                            </div>
+                            <div class="ui segment">
+                                <a href="#" target="_blank" class="m-black m-text-thin">柴柴的故事</a>
+                            </div>
+                            <div class="ui segment">
+                                <a href="#" target="_blank" class="m-black m-text-thin">柴柴的故事</a>
+                            </div>
+                            <div class="ui segment">
+                                <a href="#" target="_blank" class="m-black m-text-thin">柴柴的故事</a>
+                            </div>
+                            <div class="ui segment">
+                                <a href="#" target="_blank" class="m-black m-text-thin">柴柴的故事</a>
+                            </div>
+                            <div class="ui segment">
+                                <a href="#" target="_blank" class="m-black m-text-thin">柴柴的故事</a>
+                            </div>
+                            <div class="ui segment">
+                                <a href="#" target="_blank" class="m-black m-text-thin">柴柴的故事</a>
+                            </div>
+                            <!--*/-->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script src="../../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
+
+
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+</script>
+</body>
+</html>

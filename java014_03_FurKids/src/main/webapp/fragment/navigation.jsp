@@ -2,6 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+
+<link rel="icon" href="<c:url value='/resources/images/logo_08_iP6_6.ico' />" type="image/x-icon" />
+
+<%-- <link rel="shortcut icon" href="<c:url value='/resources/images/favicon.ico' />" type="image/x-icon" /> --%>
+<%-- <link rel="icon" type="image/gif" href="<c:url value='/resources/images/animated_favicon1.gif' />" /> --%>
+
 <%-- 適用不同裝置畫面呈現 --%>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
