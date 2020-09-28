@@ -13,15 +13,15 @@ public interface ConvenienceService {
 
 	void update(ConvenienceBean_H cb);
 
-	void update(MerchantChildBean mb);
+	void update(MerchantChildBean mcb);
 	
 	void delete(ConvenienceBean_H cb);
+	
+	void Update(ConvenienceBean_H cb, MerchantChildBean mcb);
 	
 	void insertAndUpdate(ConvenienceBean_H cb, MerchantChildBean mcb);
 	
 	void Update(ConvenienceBean_H cb, MerchantChildBean mcb, MerchantBean mb);
-	
-	
 	
 	List<ConvenienceBean_H> getAllConvenience();
 	
@@ -38,6 +38,8 @@ public interface ConvenienceService {
 	ConvenienceBean_H getConvenience(int busChildNo);
 	
 	List<ConvenienceBean_H> getPageConvenience(String id,int pageNo);
+	
+	List<ConvenienceBean_H> getPageViewConvenience(String item,int pageNo);
 	
 	int getTotalPages(String id);
 }

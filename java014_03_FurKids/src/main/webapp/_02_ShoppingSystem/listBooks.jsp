@@ -89,7 +89,7 @@ top:2px;
             
             <TR height='2'>
                 <TD width="270">
-	               <A href="<c:url value='ShowCartContent.jsp?pageNo=${pageNo}' />" >
+	               <A href="<c:url value='/_02_ShoppingSystem/ShowCartContent.jsp.jsp?pageNo=${pageNo}' />" >
 	                                               購物清單
 	               </A>
 	            </TD>

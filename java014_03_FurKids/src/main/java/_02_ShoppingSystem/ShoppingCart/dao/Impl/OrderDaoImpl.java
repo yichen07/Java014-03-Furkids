@@ -118,12 +118,12 @@ public class OrderDaoImpl implements OrderDao {
 				ResultSet rs = ps.executeQuery();
 			) {
 				if (rs.next()) {
-					Integer ordId = rs.getInt("OrdID");
+					Integer ordId = rs.getInt("ordID");
 					//String cancel = rs.getString("cancelTag");
-					String cusAccount = rs.getString("CusAccount");
+					String cusAccount = rs.getString("cusAccount");
 					Date ordDateTime = rs.getDate("ordDateTime");
-					String ordAddress = rs.getString("OrdAddress");
-					double ordPrice = rs.getDouble("OrdPrice");
+					String ordAddress = rs.getString("ordAddress");
+					double ordPrice = rs.getDouble("ordPrice");
 					ob = new OrderBean(ordId, cusAccount, ordDateTime, ordPrice, ordAddress, null);
 				}
 			}

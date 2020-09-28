@@ -286,10 +286,10 @@ li {
     display: none;
 }
 
-.wrapper.active .userName {
+.wrapper .active .userName {
     display: none;
 }
-.wrapper.active .userMail {
+.wrapper .active .userMail {
     display: none;
 }
 
