@@ -33,11 +33,11 @@ public class OrderDaoImpl implements OrderDao {
 	
 	@Override
 	public void insertOrder(OrderBean ob) {
-        String sqlOrder = "Insert Into order "
-        		+ " (CusAccount, OrdDateTime, OrdPrice, OrdAddress ) "
-        		+ " values(? , ? , ? ) ";
+        String sqlOrder = "Insert Into `order` "
+        		+ " (CusAccount, OrdPrice, OrdAddress , OrdDateTime) "
+        		+ " values(? , ? , ? , ?) ";
 		
-        String sqlItem = "Insert Into OrderList (OrdNo, "
+        String sqlItem = "Insert Into OrderList (OrdID, "
         		+ " ComID, ComName, OrdQuantity, OrdUnitPrice, "
         		+ " OrdValidity) "
         		+ " values(?, ?, ?, ?, ?, ?) ";
@@ -52,7 +52,7 @@ public class OrderDaoImpl implements OrderDao {
     			ps.setDouble(2, ob.getOrdPrice());
     			ps.setString(3, ob.getOrdAddress());
     			Timestamp ts = new Timestamp(ob.getOrdDateTime().getTime());
-    			ps.setTimestamp(6, ts);
+    			ps.setTimestamp(4, ts);
     			ps.executeUpdate();
     			int id = 0;
     			// 取回剛才新增之訂單的主鍵值
@@ -68,8 +68,10 @@ public class OrderDaoImpl implements OrderDao {
     				for (OrderListBean oib : items) {
     					ps2.setInt(1, id);
     					ps2.setInt(2, oib.getComID());
+    					ps2.setString(3, oib.getComName());
     					ps2.setInt(4, oib.getOrdQuantity());
     					ps2.setDouble(5, oib.getOrdUnitPrice());
+    					ps2.setDate(6, oib.getOrdValidity());
     					ps2.executeUpdate();
     					ps2.clearParameters();
     				}
