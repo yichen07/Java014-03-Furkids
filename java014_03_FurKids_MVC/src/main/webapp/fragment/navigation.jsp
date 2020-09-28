@@ -93,7 +93,7 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
-						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
+						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/hotel' />">旅館</a>
 						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
 					</div>
 				</li>

@@ -32,10 +32,13 @@ import _01_Member.Registration.model.MerchantBean;
 import _01_Member.Registration.model.MerchantChildBean;
 import _03_FriendlyService.model.ConvenienceBean_H;
 import _03_FriendlyService.service.ConvenienceService;
+import _03_FriendlyService.validate.ConvenienceAlterValidator;
+import _03_FriendlyService.validate.ConvenienceInsertValidator;
+
 
 @Controller
 @RequestMapping("/_03_FriendlySystem")
-@SessionAttributes({ "emptyCb" , "emptyMcb","nowPage"})
+@SessionAttributes({ "emptyCb" , "emptyMcb","nowPage","AllConvenience","NotConvenience","TotalPages" })
 public class ConvenienceController {
 	@Autowired
 	ServletContext servletContext;
@@ -83,30 +86,15 @@ public class ConvenienceController {
 		if (allcb.size() % 8 == 0 && mcb.size() > 0) {
 			n = n + 1;
 		}
+		
+		
 		//新增用表單
 		MerchantChildBean emptyMcb = (MerchantChildBean) model.getAttribute("emptyMcb");
 		//修改用表單
 		ConvenienceBean_H emptyCb = (ConvenienceBean_H) model.getAttribute("emptyCb");	
-		String[] cvs = {"餐廳","寵物美容","旅館","寵物寄放"};
-		List<String> cvsInsertOption = Arrays.asList(cvs);
-		ArrayList<String> cvsAlterOption = new ArrayList<>();
-		cvsAlterOption.add("餐廳");
-		cvsAlterOption.add("寵物美容");
-		cvsAlterOption.add("旅館");
-		cvsAlterOption.add("寵物寄放");
 
-		if(emptyCb.getBusChildNo() != null) {
-			for(int i = 0; i < 4; i++) {
-				if((cvsAlterOption.get(i)).equals(emptyCb.getConItem())) {
-					cvsAlterOption.remove(i);
-					break;
-				}
-			}		
-		}
-		model.addAttribute("cvsAlterOption", cvsAlterOption);	// 修改頁的服務類型
-		model.addAttribute("cvsOption", cvsInsertOption);  		// 新增頁的服務類型
 		model.addAttribute("emptyMcb", emptyMcb);				// 新增用表單
-		model.addAttribute("emptyCb", emptyCb);					// 修改用表單
+		model.addAttribute("emptyCb", emptyCb);					// 修改用表單		
 		model.addAttribute("AllConvenience", cb);				// 最多一次只抓8筆上架資料
 		model.addAttribute("NotConvenience", mcb);				// 尚未上架的商家分店
 		model.addAttribute("TotalPages", n);					// 總頁數
@@ -121,11 +109,20 @@ public class ConvenienceController {
 		} 
 		return "redirect:/_03_FriendlySystem/convenience/" + page;
 	}
-	
-	@PostMapping("/convenience/insert")
+	//確定新增
+	@PostMapping("/convenience/insert") 
 	public String addAndUpdateForm(
-			@ModelAttribute("emptyMcb") MerchantChildBean mcb
+			@ModelAttribute("emptyMcb") MerchantChildBean mcb,
+			BindingResult result,
+			Model model,
+			RedirectAttributes redirectAttributes
 			) {		
+		ConvenienceInsertValidator validator = new ConvenienceInsertValidator();
+		validator.validate(mcb,result);
+		if (result.hasErrors()) {  //如果有錯
+			model.addAttribute("inputError","inputError");				
+			return "/_03_FriendlySystem/convenience";			
+		}
 		MerchantChildBean newMcb = service.getBusChild(mcb.getBusChildNo());
 		newMcb.setBusChildDescription(mcb.getBusChildDescription());
 		ConvenienceBean_H cb = mcb.getConvenienceBean_H();
@@ -134,24 +131,30 @@ public class ConvenienceController {
 		service.insertAndUpdate(cb, newMcb);	
 		return "redirect:/_03_FriendlySystem/SessionStatus_setComplete";
 	}
-	
+	//確定修改
 	@PostMapping("/convenience/alter")
 	public String alterForm(
 			@ModelAttribute("emptyCb") ConvenienceBean_H cb,
-			BindingResult result) {			
+			Model model,
+			BindingResult result) {	
+		ConvenienceAlterValidator validator = new ConvenienceAlterValidator();
+		validator.validate(cb, result);
+		if (result.hasErrors()) {  //如果有錯
+			model.addAttribute("alterError","alterError");				
+			return "/_03_FriendlySystem/convenience";			
+		}
 		service.Update(cb, cb.getMerchantChildBean());	
 		return "redirect:/_03_FriendlySystem/SessionStatus_setComplete";
 	}
-	
+	//刪除
 	@GetMapping("/deleteConvenience/{no}")
 	public String deleteConvenience(Model model,
 			@PathVariable Integer no) {
 		service.delete(service.getConvenience(no));
-		String pageNo = (String) model.getAttribute("nowPage");
-		return "redirect:/_03_FriendlySystem/convenience/" + pageNo;
+		return "redirect:/_03_FriendlySystem/convenience";
 	}
 	
-	
+	//顯示修改Modal
 	@GetMapping("/alter/{conNo}")
 	public String showUpdateForm(Model model,
 			@PathVariable(value="conNo", required = false) Integer conNo,
@@ -162,20 +165,54 @@ public class ConvenienceController {
 		redirectAttributes.addFlashAttribute("aaalert", "8888");
 		return "redirect:/_03_FriendlySystem/convenience/" + pageNo;
 	}
-	
+	//顯示上架Modal
 	@GetMapping("/insert/{conNo}")
 	public String showInsertForm(Model model,
 			@PathVariable(value="conNo", required = false) Integer conNo,
 			RedirectAttributes redirectAttributes) {	
+		
+		redirectAttributes.addFlashAttribute("iiinsert", "8888");
+		String pageNo = (String) model.getAttribute("nowPage");
+		
 		MerchantChildBean bean = new MerchantChildBean();
 		bean.setBusChildNo(conNo);
 		bean.setBusChildName(service.getBusChild(conNo).getBusChildName());
 		model.addAttribute("emptyMcb",bean);
-		redirectAttributes.addFlashAttribute("iiinsert", "8888");
-		String pageNo = (String) model.getAttribute("nowPage");
 		return "redirect:/_03_FriendlySystem/convenience/" + pageNo;
 	}
-
+	
+	@ModelAttribute("cvsOption")
+	public List<String> cvsOption(){
+		String[] cvs = {"餐廳","寵物美容","旅館","寵物寄放"};
+		List<String> cvsInsertOption = Arrays.asList(cvs);
+		return cvsInsertOption;
+	}
+	
+	@ModelAttribute("cvsAlterOption")
+	public List<String> cvsAlterOption(Model model){
+		ConvenienceBean_H emptyCb = null;
+		ArrayList<String> cvsAlterOption = null;
+		if(model.getAttribute("emptyCb") != null) {
+			 emptyCb = (ConvenienceBean_H) model.getAttribute("emptyCb");			
+		
+			cvsAlterOption = new ArrayList<>();
+			cvsAlterOption.add("餐廳");
+			cvsAlterOption.add("寵物美容");
+			cvsAlterOption.add("旅館");
+			cvsAlterOption.add("寵物寄放");
+			if(emptyCb.getBusChildNo() != null) {
+				for(int i = 0; i < 4; i++) {
+					if((cvsAlterOption.get(i)).equals(emptyCb.getConItem())) {
+						cvsAlterOption.remove(i);
+						break;
+					}
+				}		
+			}
+		}
+		return cvsAlterOption;
+	}
+	
+	//修改空白表單
 	@ModelAttribute("emptyCb")
 	public ConvenienceBean_H getConvenienceBean_H(
 			@PathVariable(value="conNo", required = false) Integer conNo
@@ -190,7 +227,7 @@ public class ConvenienceController {
 		}
 		return bean;
 	}
-	
+	//上架空白表單
 	@ModelAttribute("emptyMcb")
 	public MerchantChildBean getMerchantChildBean(
 			@PathVariable(value="conNo", required = false) Integer conNo
@@ -205,7 +242,7 @@ public class ConvenienceController {
 		}
 		return bean;
 	}
-	
+	//撈該分店圖片
 	@GetMapping("/getPicture/{id}")
 	public ResponseEntity<byte[]> getPicture(HttpServletResponse resp, 
 			@PathVariable(value="id" ,required = false) Integer id) {
@@ -224,8 +261,8 @@ public class ConvenienceController {
 				}
 			}
 			if (is == null) {
-				is = servletContext.getResourceAsStream("/images/NoImage.png");
-				fileName = "/images/NoImage.png";
+				is = servletContext.getResourceAsStream("\\resources\\images\\no_image.png");
+				fileName = "no_image.png";
 			}
 			byte[] b = new byte[81920];
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
