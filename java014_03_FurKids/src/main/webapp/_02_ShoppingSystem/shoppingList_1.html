@@ -27,12 +27,12 @@
 
     <link
       rel="stylesheet"
-      href="../resources/css/_01_Member/memberManagement.css"
+      href="../resources/css/_02_ShoppingSystem/shoppingList_1.css"
     />
 
     <!-- Input CSS End---------------------------------------------------------------------->
 
-    <title>FurKids會員管理</title>
+    <title>FurKids確認訂單</title>
   </head>
 
   <body>
@@ -170,12 +170,14 @@
       <div class="row">
         <div class="col-md-12 text-center">
           <h1 class="mt-3 bannerTitle animate__animated animate__fadeInDown">
-            會員管理
+            確認訂單
           </h1>
           <div
             class="align-items-center banner-text animate__animated animate__fadeInUp"
           >
-            <h5 class="text-center">專心專注，只為寵物</h5>
+            <h5 class="text-center">
+              超多特惠商品，週週下殺便宜精選，讓你愛寵物愛得輕鬆又溫馨
+            </h5>
           </div>
         </div>
       </div>
@@ -185,94 +187,220 @@
 
     <!-- Main Start------------------------------------------------------------------------->
 
-    <div class="container-fluid mainContent">
-      <!-- Slide Bar Start -->
-      <div class="float-left">
-        <div class="wrapper row">
-          <div class="main_body">
-            <div class="sidebar_menu">
-              <div class="inner__sidebar_menu">
-                <div class="d-flex mb-3 userImg">
-                  <div class="mr-3">
-                    <img
-                      class="userImgConer"
-                      src="https://randomuser.me/api/portraits/women/60.jpg"
-                      height="60px"
-                      width="60px"
-                    />
-                  </div>
-                  <div>
-                    <span class="userName mt-3">Adora</span><br />
-                    <small class="mt-0 userMail"
-                      ><i class="far fa-envelope"></i> adora@gmail.com</small
-                    >
-                  </div>
-                </div>
-                <ul>
-                  <li>
-                    <a href="#">
-                      <span class="icon">
-                        <i class="fas fa-store fa-fw"></i
-                      ></span>
-                      <span class="list">寵物商城</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <span class="icon"
-                        ><i class="fas fa-comments fa-fw"></i
-                      ></span>
-                      <span class="list">寵物交流版</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <span class="icon"
-                        ><i class="fas fa-user-md fa-fw"></i
-                      ></span>
-                      <span class="list">寵物健康管理</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <span class="icon"
-                        ><i class="fas fa-users fa-fw"></i
-                      ></span>
-                      <span class="list" data-text="寵物友善系統"
-                        >寵物友善系統</span
-                      >
-                    </a>
-                  </li>
-                </ul>
+    <div class="container mt-5 mb-3 productList">
+      <!-- 免運資格 Start-->
+      <div class="row">
+        <div
+          class="d-flex col-md-12 justify-content-between align-items-center shippingTitle"
+        >
+          <div><i class="fas fa-truck"></i> 免運資格</div>
+          <div class="pr-1">
+            未達本島免運標準，還差 <span class="shippingMoney">$800</span>
+          </div>
+        </div>
+      </div>
+      <!-- 免運資格 End-->
+      <!-- 確認訂單 Start-->
+      <div class="row">
+        <div
+          class="d-flex col-md-12 justify-content-center align-items-center shoppingListTitleTop py-3 pt-5"
+        >
+          <h2>確認訂單</h2>
+        </div>
+      </div>
+      <!-- 欄位名稱 Start-->
+      <div class="row px-3 shoppingListName">
+        <div
+          class="d-flex col-md-1 col-sm-12 justify-content-center align-items-center shoppingListNameText"
+        ></div>
+        <div
+          class="d-flex col-md-5 col-sm-12 justify-content-center align-items-center shoppingListNameText"
+        >
+          商品
+        </div>
 
-                <div class="hamburger">
-                  <div class="inner_hamburger">
-                    <span class="arrow">
-                      <i class="fas fa-long-arrow-alt-left"></i>
-                      <i class="fas fa-long-arrow-alt-right"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
+        <div
+          class="d-flex col-md-2 col-sm-4 justify-content-center align-items-center shoppingListNameText"
+        >
+          刪除
+        </div>
+        <div
+          class="d-flex col-md-2 col-sm-4 justify-content-center align-items-center shoppingListNameText"
+        >
+          數量
+        </div>
+        <div
+          class="d-flex col-md-2 col-sm-4 justify-content-end align-items-center shoppingListNameText pr-5"
+        >
+          價格
+        </div>
+      </div>
+      <!-- 商品細項欄位 no1 Start-->
+      <div class="row p-3 shoppingListItemAll">
+        <div
+          class="col-lg-1 col-4 d-flex justify-content-center align-items-center colImage shoppingListItem"
+        >
+          <img
+            class="productImg"
+            src="../../webapp/resources/images/_02_ShoppingSystem/shoppingList_cat_food_01.jpg"
+          />
+        </div>
+        <div
+          class="col-lg-5 col-8 d-flex justify-content-center align-items-center colProductName shoppingListItem"
+        >
+          愛喜雅 AIXIA 妙喵肉泥 (15克*4入)【8號鮪魚化毛】(1包) (貓零食)
+        </div>
+        <div
+          class="d-flex col-lg-2 col-4 justify-content-center align-items-center colTrash shoppingListItem"
+        >
+          <button class="btn trashButton">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </div>
+        <div
+          class="d-flex col-lg-2 col-4 justify-content-center align-items-center colQuantity shoppingListItem"
+        >
+          <!-- 第一種寫法   -->
+          <!-- <div class="input-group">
+            <div class="input-group-btn">
+              <button type="button" class="btn minus">
+                <i class="fa fa-minus"></i>
+              </button>
+            </div>
+            <input class="form-control qty text-center" id="qty1" type="text" value="1" />
+            <div class="input-group-btn">
+              <button type="button" class="btn add">
+                <i class="fa fa-plus"></i>
+              </button>
+            </div>
+          </div> -->
+          <!-- 第二種寫法   -->
+          <input type="button" id="subs" value="-" />
+
+          <input
+            type="text"
+            name="noOfRoom"
+            class="onlyNumber form-control text-center p-0"
+            id="noOfRoom"
+            value="1"
+          />
+
+          <input type="button" id="adds" value="+" />
+        </div>
+
+        <div
+          class="d-flex col-lg-2 col-4 justify-content-end align-items-center colPrice shoppingListItem pr-5"
+        >
+          $10000
+        </div>
+      </div>
+      <!-- 商品細項欄位 no1 End -->
+      <!-- 商品細項欄位 no2 Start-->
+      <div class="row p-3 shoppingListItemAll">
+        <div
+          class="col-lg-1 col-4 d-flex justify-content-center align-items-center colImage shoppingListItem"
+        >
+          <img
+            class="productImg"
+            src="../../webapp/resources/images/_02_ShoppingSystem/shoppingList_cat_food_01.jpg"
+          />
+        </div>
+        <div
+          class="col-lg-5 col-8 d-flex justify-content-center align-items-center colProductName shoppingListItem"
+        >
+          愛喜雅 AIXIA 妙喵肉泥 (15克*4入)【8號鮪魚化毛】(1包) (貓零食)
+        </div>
+        <div
+          class="d-flex col-lg-2 col-4 justify-content-center align-items-center colTrash shoppingListItem"
+        >
+          <button class="btn trashButton">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </div>
+        <div
+          class="d-flex col-lg-2 col-4 justify-content-center align-items-center colQuantity shoppingListItem"
+        >
+          <!-- 商品細項欄位 no2 End-->
+          <!--  +-按鈕  Start -->
+          <input type="button" id="subs" value="-" />
+
+          <input
+            type="text"
+            name="noOfRoom"
+            class="onlyNumber form-control text-center p-0"
+            id="noOfRoom"
+            value="1"
+          />
+
+          <input type="button" id="adds" value="+" />
+        </div>
+
+        <div
+          class="d-flex col-lg-2 col-4 justify-content-end align-items-center colPrice shoppingListItem pr-5"
+        >
+          $10000
+        </div>
+      </div>
+      <!--  +-按鈕  End -->
+      <!-- 總價格欄位 Start-->
+      <div class="row p-3 priceListAll justify-content-end">
+        <div class="col-md-3 mx-5">
+          <div class="row d-flex justify-content-between text-right">
+            <div class="d-flex-inline align-self-end">
+              <div class="priceAll mb-2">小計</div>
+              <div class="shippingPrice mb-2">運費</div>
+              <div class="discountPrice mb-2">活動現折</div>
+              <div class="totalPrice mb-0">總金額</div>
+            </div>
+            <div class="text-right priceAll">
+              <div class="priceAll mb-2">$10000</div>
+              <div class="shippingPrice mb-2">$800</div>
+              <div class="discountPrice discountPriceColor mb-2">-$2800</div>
+              <div class="totalPrice">$18000</div>
             </div>
           </div>
         </div>
       </div>
-      <!-- Slide Bar End-->
-      <!-- Right Content Start-->
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="rightContent bg-info" style="height: 100vh"></div>
+      <!-- 總價格欄位 End -->
+      <!-- 按鈕 Start-->
+      <div class="row p-3 shoppingListBtn">
+        <div
+          class="d-flex col-md-12 col-sm-12 justify-content-end align-items-center border-top"
+        >
+          <div class="shoppingBtn col-lg-2 col-md-3 col-sm-6 col-xs-6 mt-3">
+            <a href="#" class="btn btnEffect effect01"><span>繼續購物</span></a>
+          </div>
+          <div class="shoppingBtn col-lg-2 col-md-3 col-sm-6 col-xs-6 mt-3">
+            <a href="#" class="btn btnEffect02 effect02"><span>結帳</span></a>
+          </div>
         </div>
       </div>
-      <!-- Right Content End-->
     </div>
-
-    <!-- MAIN End--------------------------------------------------------------------------->
-
-    <!-- CardView Start--------------------------------------------------------------------->
-
-    <!-- CardView End----------------------------------------------------------------------->
+    <!-- 按鈕 End-->
+    <div class="container mb-3 shoppingInfo py-4">
+      <div class="row">
+        <div class="col-lg-12 d-flex align-items-center justify-content-center">
+          <div class="">
+            【預購型商品
+            須知!】當訂單內包含預購商品時，整筆訂單將依照「預購商品的實際出貨日」合併出貨!
+            (恕無法拆單出貨)
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container mb-5 shoppingInfo py-4">
+      <div class="row">
+        <div class="col-lg-12 d-flex align-items-center justify-content-center">
+          <div class="">
+            <i class="fas fa-shipping-fast fa-fw"></i>
+            購物享7天鑑賞期，24小時快速出貨!
+            <i class="fas fa-heart fa-fw"></i
+            >【贈品】依【購物車】顯示資訊為準，訂單會依購物車內品項出貨!
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main End--------------------------------------------------------------------------->
 
     <!-- Footer Start----------------------------------------------------------------------->
 
@@ -355,8 +483,7 @@
 
     <!-- banner effect -->
     <script src="../resources/javascript/jquery.stellar.js"></script>
-
     <!-- JavaScript Plug-in End------------------------------------------------------------->
-    <script src="../resources/javascript/memberManagement.js"></script>
+    <script src="../resources/javascript/shoppingList_1.js"></script>
   </body>
 </html>
