@@ -34,22 +34,23 @@ public class ConvenienceViewController {
 	@Autowired
 	ConvenienceService service;
 	
-	@GetMapping("/hotel")
-	public String getPage(Model model) {
+	@GetMapping("/Reservation/{item}")
+	public String getPage(Model model,
+			@PathVariable(value="item" ,required = false) String item) {
 		String page = "1";
 		if(model.getAttribute("nowPage") != null) {
 			 page = (String) model.getAttribute("nowPage");
 		} 
-		return "redirect:/_03_FriendlySystem/hotel/" + page;
+		return "redirect:/_03_FriendlySystem/Reservation/" + item + "/" + page;
 	}
 	
 	
-	@GetMapping("/hotel/{pageNo}")
+	@GetMapping("/Reservation/{item}/{page}")
 	public String list(Model model,
-			@PathVariable(value="pageNo" ,required = false) String pageNo) {
-		String item = "旅館";
-		model.addAttribute("nowPage", pageNo);
-		Integer intPageNo =  Integer.parseInt(pageNo);
+			@PathVariable(value="page" ,required = false) String page,
+			@PathVariable(value="item" ,required = false) String item) {
+		model.addAttribute("nowPage", page);
+		Integer intPageNo =  Integer.parseInt(page);
 		List<ConvenienceBean_H> cb = service.getPageViewConvenience(item, intPageNo);
 		model.addAttribute("AllConvenience",cb);
 		return "/_03_FriendlySystem/tourList_hotel";

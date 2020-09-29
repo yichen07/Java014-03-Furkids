@@ -1,7 +1,6 @@
 package _03_FriendlyService.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import _01_Member.Registration.model.MerchantBean;
 import _01_Member.Registration.model.MerchantChildBean;
