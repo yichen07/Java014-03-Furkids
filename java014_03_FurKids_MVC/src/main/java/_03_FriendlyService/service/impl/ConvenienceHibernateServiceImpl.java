@@ -214,7 +214,7 @@ public class ConvenienceHibernateServiceImpl implements ConvenienceService{
 		n = cnDao.getTotalPages(id);
 		return n;
 	}
-	
+	//依帳號撈出該商家已上架的所有服務(一次撈8筆)
 	@Transactional
 	@Override
 	public List<ConvenienceBean_H> getPageConvenience(String id, int pageNo) {
@@ -222,6 +222,7 @@ public class ConvenienceHibernateServiceImpl implements ConvenienceService{
 		bean = cnDao.getPageConvenience(id, pageNo);
 		return bean;
 	}
+	
 	//撈所有分店
 	@Transactional
 	@Override
@@ -230,6 +231,7 @@ public class ConvenienceHibernateServiceImpl implements ConvenienceService{
 		bean = cnDao.getBusChild(id);
 		return bean;
 	}
+	
 	@Transactional
 	@Override
 	public void Update(ConvenienceBean_H cb, MerchantChildBean mcb) {

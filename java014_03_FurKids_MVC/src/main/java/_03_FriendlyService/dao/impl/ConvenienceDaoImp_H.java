@@ -128,7 +128,7 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 		bean = session.get(MerchantBean.class, id);
 		return bean;
 	}
-	//撈出該商家已上架的服務(一次撈8筆)
+	//依帳號撈出該商家已上架的所有服務(一次撈8筆)
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ConvenienceBean_H> getPageConvenience(String id,int pageNo) {
@@ -142,6 +142,7 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 									   .getResultList();
 		return list;
 	}
+	
 	
 	//查詢總筆數
 	@Override
@@ -172,6 +173,8 @@ public class ConvenienceDaoImp_H implements ConvenienceDao{
 		list = session.createQuery(hql).setParameter("mid", id).getResultList();
 		return list;
 	}
+
+
 
 	
 

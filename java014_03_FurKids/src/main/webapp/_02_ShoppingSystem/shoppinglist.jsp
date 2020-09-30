@@ -114,9 +114,9 @@
   
  	<jsp:include page="/fragment/navigation.jsp" />
    
-    <c:if test = ${LoginOK. }>
-       ${LoginOK.cusName} 您好
-    </c:if>
+<%--     <c:if test = ${LoginOK.}> --%>
+<%--        ${LoginOK.cusName} 您好 --%>
+<%--     </c:if> --%>
     
     <c:choose>
 
