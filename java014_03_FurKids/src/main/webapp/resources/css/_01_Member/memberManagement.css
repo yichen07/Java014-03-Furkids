@@ -126,7 +126,7 @@ li {
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 
     width: 250px;
-    height: 100vh;
+    height: auto;
     transition: all 0.3s linear;
     box-shadow: 0px 0px 0px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
@@ -171,7 +171,7 @@ li {
     top: 150px;
     right: -25px;
     width: 50px;
-    height: 50px;
+    height: 50xp;
 
     box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
     border-radius: 50%;
@@ -278,7 +278,7 @@ li {
     display: block;
 }
 
-.wrapper.active .hamburger .fa-long-arrow-alt-left {
+.wrapper.active .hamburger .fa-long-arrow-alt-left  {
     display: none;
 }
 
@@ -286,10 +286,10 @@ li {
     display: none;
 }
 
-.wrapper .active .userName {
+.wrapper.active .userName {
     display: none;
 }
-.wrapper .active .userMail {
+.wrapper.active .userMail {
     display: none;
 }
 

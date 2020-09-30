@@ -9,5 +9,5 @@ public interface PetDao {
 	
 	public PetBean queryPet(String account);
 	
-	public void setConnection(Connection con);
+	public void setConnection(Connection con); // 在Hibernate中不需要此方法。
 }

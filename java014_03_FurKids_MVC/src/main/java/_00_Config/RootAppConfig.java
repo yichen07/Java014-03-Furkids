@@ -60,8 +60,10 @@ public class RootAppConfig {
         LocalSessionFactoryBean factory = new LocalSessionFactoryBean();
         factory.setDataSource(dataSource());
         factory.setPackagesToScan(new String[] {
-                    "_01_Member","_03_FriendlyService"
-                });
+//        		"_00_Init","_00_Config",
+        		"_01_Member","_03_FriendlyService"
+        });
+        factory.setDataSource(dataSource());
         factory.setHibernateProperties(additionalProperties());
         return factory;
     }

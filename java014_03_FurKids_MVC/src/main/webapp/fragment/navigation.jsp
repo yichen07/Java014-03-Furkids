@@ -44,7 +44,7 @@
 	<div class="container">
 	
 	<%-- Logo --%>
-		<a class="navbar-brand mb-1" href="<c:url value='/index.jsp' />"><img
+		<a class="navbar-brand mb-1" href="<c:url value='/' />"><img
 			src="<c:url value='/resources/images/Logo_07.png' />" alt="Logo" height="26" /></a>
 			
 	<%-- 漢堡選單 --%>		
@@ -131,7 +131,7 @@
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item"
-									href="<c:url value='/_01_Member/PetRegistration.jsp' />">寵物新增</a>
+									href="<c:url value='/_01_Member/PetRegistration' />">寵物新增</a>
 								<a class="dropdown-item" 
 									href="<c:url value='#' />">會員管理</a> 
 								<a class="dropdown-item" 
@@ -151,7 +151,7 @@
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item"
-									href="<c:url value='/_01_Member/MerchantChildRegistration.jsp' />">分店新增</a>
+									href="<c:url value='/_01_Member/MerchantChildRegistration' />">分店新增</a>
 								<a class="dropdown-item" 
 									href="<c:url value='#' />">商家管理</a> 
 								<a class="dropdown-item"
@@ -262,8 +262,8 @@
 					<div class="row justify-content-center">
 <%-- 						<a href="${pageContext.request.contextPath}/_01_Member/MemberRegistration.jsp"><div class="col-6 text-center">會員註冊</div></a> --%>
 <%-- 						<a href="${pageContext.request.contextPath}/_01_Member/MerchantRegistration.jsp"><div class="col-6 text-center">商家註冊</div></a> --%>
-						<div class="col-6 text-center"><a href="<c:url value='/_01_Member/MemberRegistration.jsp' />">會員註冊</a></div>
-						<div class="col-6 text-center"><a href="<c:url value='/_01_Member/MerchantRegistration.jsp' />">商家註冊</a></div>
+						<div class="col-6 text-center"><a href="<c:url value='/_01_Member/MemberRegistration' />">會員註冊</a></div>
+						<div class="col-6 text-center"><a href="<c:url value='/_01_Member/MerchantRegistration' />">商家註冊</a></div>
 					</div>
 				</div>
 			</div>
@@ -292,7 +292,7 @@
       </div>
       <div class="modal-body">
 			<div class="text-center">
-				<font color="red">${MsgOK.InsertOK} ${sessionScope.timeOut}</font>
+				<font color="red">${InsertOK} ${sessionScope.timeOut}</font>
 			</div>
       </div>
       <div class="modal-footer">
@@ -340,14 +340,14 @@
 </c:if>
 
 <%-- 新增(含註冊、分店與寵物新增)成功與使用逾時時，顯示提示視窗 --%>
-<c:if test="${!empty MsgOK.InsertOK}">
+<c:if test="${!empty InsertOK}">
 	<script>
 		$('#messages').modal('show');
 		setTimeout(function() {
             $('#messages').modal('hide') // 3秒後，modal消失。
         }, 3000);
 	</script>
-	<% session.removeAttribute("MsgOK"); %>
+<%-- 	<% session.removeAttribute("MsgOK"); %> --%>
 </c:if>
 
 <c:if test="${!empty sessionScope.timeOut}">
