@@ -23,10 +23,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import _01_Member.Registration.model.MerchantBean;
 import _03_FriendlyService.model.ConvenienceBean_H;
 import _03_FriendlyService.service.ConvenienceService;
+import _03_FriendlyService.service.ReservationService;
 
 @Controller
 @RequestMapping("/_03_FriendlySystem")
-@SessionAttributes({"nowPage","AllConvenience","NotConvenience","TotalPages" })
+@SessionAttributes({"nowPage","AllConvenience","item","TotalPages" })
 public class ConvenienceViewController {
 	@Autowired
 	ServletContext servletContext;
@@ -34,26 +35,40 @@ public class ConvenienceViewController {
 	@Autowired
 	ConvenienceService service;
 	
-	@GetMapping("/Reservation/{item}")
-	public String getPage(Model model,
-			@PathVariable(value="item" ,required = false) String item) {
-		String page = "1";
-		if(model.getAttribute("nowPage") != null) {
-			 page = (String) model.getAttribute("nowPage");
-		} 
-		return "redirect:/_03_FriendlySystem/Reservation/" + item + "/" + page;
-	}
+	@Autowired
+	ReservationService resService;
 	
+//	@GetMapping("/Reservation/{item}")
+//	public String getPage(Model model,
+//			@PathVariable(value="item" ,required = false) String item) {
+//		String page = "1";
+//		if(model.getAttribute("nowPage") != null) {
+//			 page = (String) model.getAttribute("nowPage");
+//		} 
+//		return "redirect:/_03_FriendlySystem/Reservation/" + item + "/" + page;
+//	}
 	
+	//直接分類
 	@GetMapping("/Reservation/{item}/{page}")
 	public String list(Model model,
 			@PathVariable(value="page" ,required = false) String page,
 			@PathVariable(value="item" ,required = false) String item) {
 		model.addAttribute("nowPage", page);
 		Integer intPageNo =  Integer.parseInt(page);
-		List<ConvenienceBean_H> cb = service.getPageViewConvenience(item, intPageNo);
+		// 總頁數
+		int n = resService.getTotalPages(item);
+		model.addAttribute("TotalPages",n);
+		List<ConvenienceBean_H> cb = resService.getPageViewConvenience(item, intPageNo);
 		model.addAttribute("AllConvenience",cb);
-		return "/_03_FriendlySystem/tourList_hotel";
+		model.addAttribute("item",item);
+		return "/_03_FriendlySystem/tourList";
+	}
+	
+	//詳細內容&預約畫面
+	@GetMapping("/ViewReservation/{no}")
+	public String detailAndReservation(){
+		
+		return "/_03_FriendlySystem/detailAndReservation";
 	}
 	
 	//撈該分店圖片

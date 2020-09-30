@@ -104,11 +104,31 @@
 						</div>
 						<div class="border-top py-1 camaraBackground"></div>
 					</figcaption>
-					<a href="#"></a>
+					<a href="<c:url value='/_03_FriendlySystem/ViewReservation/${Convenience.busChildNo}' />"></a>
 				</figure>
 			</div>
 			<!-- cardView No.1 End -->
 		</c:forEach>
+		</div>
+		<!-- pagination =============================== -->
+		<div class="pagination justify-content-center">
+			<nav aria-label="Page navigation example">
+				<ul class="pagination justify-content-center">
+					<li class="page-item"><c:if test="${nowPage != 1}">
+							<a class="page-link"
+								href="<c:url value='/_03_FriendlySystem/Reservation/${item}/1' />" tabindex="-1"
+								aria-disabled="true">Previous</a>
+						</c:if></li>
+					<c:forEach var="n" begin="1" end="${TotalPages}">
+						<li class="page-item"><a class="page-link"
+							href="<c:url value='/_03_FriendlySystem/Reservation/${item}/${n}' />">${n}</a></li>
+					</c:forEach>
+					<li class="page-item"><c:if test="${nowPage != TotalPages}">
+							<a class="page-link"
+								href="<c:url value='/_03_FriendlySystem/Reservation/${item}/${nowPage + 1}' />">Next</a>
+						</c:if></li>
+				</ul>
+			</nav>
 		</div>
 	</div>
 
