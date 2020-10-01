@@ -8,8 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import _01_Member.Registration.model.MemberBean;
-
 
 // 每個請求送達Server端時，都由本過濾器來檢查該請求所要求的資源是否需要登入才能使用。
 // 檢查的邏輯為：
@@ -75,7 +73,7 @@ public class CheckLoginInterceptor extends HandlerInterceptorAdapter  {
 	private boolean checkLogin(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		
-		MemberBean loginToken = (MemberBean) session.getAttribute("LoginOK");
+		Object loginToken = session.getAttribute("LoginOK");
 		if (loginToken == null) {
 			return false;
 		} else {

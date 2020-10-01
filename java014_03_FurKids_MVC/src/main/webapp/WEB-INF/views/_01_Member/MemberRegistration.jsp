@@ -121,6 +121,7 @@ function setFocusToUserId(){
 
 <!-- 引入共同的頁首 -->
 <jsp:include page="/fragment/navigation.jsp" />
+<%-- <jsp:include page="/WEB-INF/views/fragment/navigation.jsp" /> --%>
 
   <div align='center' id="content"> 
   

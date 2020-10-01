@@ -165,4 +165,5 @@ public class MerchantBean implements Serializable {
 		return CLASSIFY;
 	}
 
+	
 }

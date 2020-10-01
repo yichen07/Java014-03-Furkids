@@ -1,6 +1,10 @@
 package _01_Member.Login.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class LoginBean {
+
 	String userId; 
 	String password;
 	String invalidCredentials;

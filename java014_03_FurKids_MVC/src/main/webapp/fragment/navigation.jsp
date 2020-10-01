@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 
 <%-- 適用不同裝置畫面呈現 --%>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -121,7 +123,7 @@
 					<c:when test="${empty LoginOK}">
 						<a href="<c:url value='#' />" class="ml-4 m-2" data-toggle="modal" data-target="#login"> 
 							<i class="fas fa-user navbar-user fa-lg"></i>
-						</a>
+						</a>						
 					</c:when>
 					<%-- 會員(已登入) --%>
 					<c:when test="${LoginOK.CLASSIFY == 0}">
@@ -210,7 +212,37 @@
 			
 			<div class="modal-body">
 
-				<form action="<c:url value='/_01_Member/Login' />" method="POST" name="loginForm">
+				<form:form method="POST" modelAttribute="loginBean" action="${pageContext.request.contextPath}/login" enctype='multipart/form-data'>
+					<div class="form-group">
+					    <label for="exampleInputAccount">帳號</label>
+					    <form:input class="form-control" path="userId" id="exampleInputAccount" aria-describedby="emailHelp" placeholder="Account" />
+					   	<form:errors  path="userId" cssClass="error" />
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputPassword1">密碼</label>
+					    <form:password class="form-control" path="password" id="exampleInputPassword1" placeholder="Password" />
+					    <form:errors  path="password" cssClass="error" />
+					</div> 
+					<div class="form-group form-check">	
+					    <form:checkbox class="form-check-input" path="rememberMe" id="exampleCheck1" />
+					    <label class="form-check-label" for="exampleCheck1">記住我</label>
+					</div>
+					<div class="text-center">
+						<small class="form-text text-muted"><font class="errhide" color="red">${ErrorMsgKey.LoginError} ${result.invalidCredentials} ${MsgMap.errorNotLogin}</font></small>
+					</div>
+					<div class="modal-footer justify-content-center">
+						<button type="submit" class="btn btn-outline-primary">登入</button>
+					</div>
+					<div class="col-md-12">
+              			<p class="font-small white-text d-flex justify-content-center">尚未創建帳號
+              			<a href="<c:url value='#' />" class="green-text ml-1 font-weight-bold" data-toggle="modal" data-target="#regis" onclick="changeModal()">立即註冊</a></p>
+              		</div>
+				</form:form>
+				
+				
+				<%-- 
+
+				<form action="<c:url value='/login' />" method="POST" name="loginForm">
 					<div class="form-group">
 					    <label for="exampleInputAccount">帳號</label>
 					    <input type="text" class="form-control" name="userId" id="exampleInputAccount" aria-describedby="emailHelp" placeholder="Account" value="${requestScope.user}${param.userId}">
@@ -240,6 +272,10 @@
               			<a href="<c:url value='#' />" class="green-text ml-1 font-weight-bold" data-toggle="modal" data-target="#regis" onclick="changeModal()">立即註冊</a></p>
               		</div>
 				</form>
+				
+				--%>
+				
+
             </div>
 		</div>
 	</div>
@@ -262,8 +298,6 @@
 			<div class="modal-body">
 				<div class="container-fluid">
 					<div class="row justify-content-center">
-<%-- 						<a href="${pageContext.request.contextPath}/_01_Member/MemberRegistration.jsp"><div class="col-6 text-center">會員註冊</div></a> --%>
-<%-- 						<a href="${pageContext.request.contextPath}/_01_Member/MerchantRegistration.jsp"><div class="col-6 text-center">商家註冊</div></a> --%>
 						<div class="col-6 text-center"><a href="<c:url value='/_01_Member/MemberRegistration' />">會員註冊</a></div>
 						<div class="col-6 text-center"><a href="<c:url value='/_01_Member/MerchantRegistration' />">商家註冊</a></div>
 					</div>
@@ -327,7 +361,7 @@
 <!-- 	src="../resources/javascript/blogIndex.js"></script> -->
 
 <%-- 登入時，如有錯誤，重新導回登入畫面 --%>
-<c:if test="${!empty ErrorMsgKey}">
+<c:if test="${!empty ErrorMsgKey || !empty result}">
 	<script>
 		$('#login').modal('show')
 	</script>
@@ -341,7 +375,7 @@
 	<% session.removeAttribute("MsgMap"); %>
 </c:if>
 
-<%-- 新增(含註冊、分店與寵物新增)成功與使用逾時時，顯示提示視窗 --%>
+<%-- 新增(含註冊、分店與寵物新增)、登入成功與使用逾時時，顯示提示視窗 --%>
 <c:if test="${!empty InsertOK}">
 	<script>
 		$('#messages').modal('show');
@@ -349,7 +383,7 @@
             $('#messages').modal('hide') // 3秒後，modal消失。
         }, 3000);
 	</script>
-<%-- 	<% session.removeAttribute("MsgOK"); %> --%>
+	<% session.removeAttribute("MsgOK"); %>
 </c:if>
 
 <c:if test="${!empty sessionScope.timeOut}">

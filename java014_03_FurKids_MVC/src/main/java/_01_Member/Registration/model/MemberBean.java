@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
+
+
 @Entity
 @Table(name="membraneregistration")
 public class MemberBean implements Serializable {
@@ -183,6 +185,45 @@ public class MemberBean implements Serializable {
 
 	public void setPet(Set<PetBean> pet) {
 		this.pet = pet;
+	}
+
+	
+	public Integer getCLASSIFY() {
+		return CLASSIFY;
+	}
+
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("MemberBean [cusAccount=");
+		builder.append(cusAccount);
+		builder.append(", cusPassword=");
+		builder.append(cusPassword);
+		builder.append(", confirmPassword=");
+		builder.append(confirmPassword);
+		builder.append(", cusName=");
+		builder.append(cusName);
+		builder.append(", cusNickName=");
+		builder.append(cusNickName);
+		builder.append(", cusGender=");
+		builder.append(cusGender);
+		builder.append(", cusBirthday=");
+		builder.append(cusBirthday);
+		builder.append(", cusTel=");
+		builder.append(cusTel);
+		builder.append(", cusAddress=");
+		builder.append(cusAddress);
+		builder.append(", cusPhoto=");
+		builder.append(cusPhoto);
+		builder.append(", cusFileName=");
+		builder.append(cusFileName);
+		builder.append(", memberMultipartFile=");
+		builder.append(memberMultipartFile);
+		builder.append(", CLASSIFY=");
+		builder.append(CLASSIFY);
+		builder.append("]");
+		return builder.toString();
 	}
 
 
