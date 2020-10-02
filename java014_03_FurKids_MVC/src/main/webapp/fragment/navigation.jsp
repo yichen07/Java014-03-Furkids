@@ -159,7 +159,7 @@
 								<a class="dropdown-item" 
 									href="<c:url value='#' />">商家管理</a> 
 								<a class="dropdown-item"
-									href="<c:url value='/_03_FriendlySystem/convenience' />">服務上架</a>
+									href="<c:url value='/_03_FriendlySystem/ViewSessionStatus_setComplete' />">服務上架</a>
 								<a class="dropdown-item" 
 									href="<c:url value='#' />">商家功能_四</a>
 							</div>

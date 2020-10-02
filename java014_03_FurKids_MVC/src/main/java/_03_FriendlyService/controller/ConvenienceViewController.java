@@ -27,7 +27,7 @@ import _03_FriendlyService.service.ReservationService;
 
 @Controller
 @RequestMapping("/_03_FriendlySystem")
-@SessionAttributes({"nowPage","AllConvenience","item","TotalPages" })
+@SessionAttributes({"nowPage","AllViewConvenience","item","TotalPages","loginBean"})
 public class ConvenienceViewController {
 	@Autowired
 	ServletContext servletContext;
@@ -59,7 +59,7 @@ public class ConvenienceViewController {
 		int n = resService.getTotalPages(item);
 		model.addAttribute("TotalPages",n);
 		List<ConvenienceBean_H> cb = resService.getPageViewConvenience(item, intPageNo);
-		model.addAttribute("AllConvenience",cb);
+		model.addAttribute("AllViewConvenience",cb);
 		model.addAttribute("item",item);
 		return "/_03_FriendlySystem/tourList";
 	}
