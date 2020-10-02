@@ -79,7 +79,7 @@
 
 	<div class="container my-3">
 		<div class="row">
-		<c:forEach var="Convenience" items="${AllConvenience}">
+		<c:forEach var="Convenience" items="${AllViewConvenience}">
 			<!-- cardView No.1  -->
 			<div class="col-lg-3 col-md-6 col-sm-12 my-4">
 				<figure class="attractions">
