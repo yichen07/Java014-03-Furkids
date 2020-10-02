@@ -24,7 +24,7 @@ import _01_Member.Registration.service.MemberService;
 import _01_Member.Registration.service.MerchantService;
 
 @Controller
-@SessionAttributes({"LoginOK", "loginBean"}) 		// 只要有一個屬性物件(識別字串為"LoginOK")有加入model中，類別前標示此註釋@SessionAttributes({"LoginOK"})順便也將此物件抄錄至session中。
+@SessionAttributes({"LoginOK", "loginBean", "Classify"}) 		// 只要有一個屬性物件(識別字串為"LoginOK")有加入model中，類別前標示此註釋@SessionAttributes({"LoginOK"})順便也將此物件抄錄至session中。
 public class LoginController {
 	
 	@Autowired
@@ -36,34 +36,34 @@ public class LoginController {
 	
 	
 	
-	// 由Cookie取得使用者登入的資料
-//	@GetMapping("login")
-	@ModelAttribute("loginBean")
-	public LoginBean loginEmptyForm(HttpServletRequest request, Model model, 
-		@CookieValue(value="user", required = false) String user, 					// value="user"相當於是Cookie的名稱。
-		@CookieValue(value="password", required = false) String password, 
-		@CookieValue(value="rm", required = false) Boolean rm 
-			) {
-		if (user == null)
-			user = "";
-		if (password == null) {
-			password = "";
-		} else {
-			password = GlobalService.decryptString(GlobalService.KEY, password);
-		}
-		
-		if (rm != null) {
-			rm = Boolean.valueOf(rm);
-		} else {
-			rm = false;
-		}
-			
-//		LoginBean loginBean = new LoginBean(user, password, rm);
-		model.addAttribute("loginBean", loginBean);	
-		System.out.println("login");
-//		return loginForm;
-		return loginBean;
-	}
+//	// 由Cookie取得使用者登入的資料
+////	@GetMapping("login")
+//	@ModelAttribute("loginBean")
+//	public LoginBean loginEmptyForm(HttpServletRequest request, Model model, 
+//		@CookieValue(value="user", required = false) String user, 					// value="user"相當於是Cookie的名稱。
+//		@CookieValue(value="password", required = false) String password, 
+//		@CookieValue(value="rm", required = false) Boolean rm 
+//			) {
+//		if (user == null)
+//			user = "";
+//		if (password == null) {
+//			password = "";
+//		} else {
+//			password = GlobalService.decryptString(GlobalService.KEY, password);
+//		}
+//		
+//		if (rm != null) {
+//			rm = Boolean.valueOf(rm);
+//		} else {
+//			rm = false;
+//		}
+//			
+////		LoginBean loginBean = new LoginBean(user, password, rm);
+//		model.addAttribute("loginBean", loginBean);	
+//		System.out.println("login");
+////		return loginForm;
+//		return loginBean;
+//	}
 	
 	@PostMapping("login")
 	public String loginProcessForm(
@@ -100,10 +100,12 @@ public class LoginController {
 			if (mb != null) {
 				// OK, 登入成功, 將mb物件放入Session範圍內，識別字串為"LoginOK"
 				model.addAttribute("LoginOK", mb);
+				model.addAttribute("Classify", 0);
 				redirectAtt.addFlashAttribute("InsertOK", "<Font color='blue'>登入成功，請開始使用本系統</Font>");
 			} else if (mcb != null) {
 				// OK, 登入成功, 將mcb物件放入Session範圍內，識別字串為"LoginOK"
 				model.addAttribute("LoginOK", mcb);
+				model.addAttribute("Classify", 1);
 				redirectAtt.addFlashAttribute("InsertOK", "<Font color='blue'>登入成功，請開始使用本系統</Font>");
 			} else {
 				// NG, 登入失敗, userid與密碼的組合錯誤，放相關的錯誤訊息到 errorMsgMap 之內

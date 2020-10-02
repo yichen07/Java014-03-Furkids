@@ -27,7 +27,7 @@ import _03_FriendlyService.service.ReservationService;
 
 @Controller
 @RequestMapping("/_03_FriendlySystem")
-@SessionAttributes({"nowPage","AllConvenience","item","TotalPages" })
+@SessionAttributes({"nowPage","AllConvenience","item","TotalPages","loginBean" })
 public class ConvenienceViewController {
 	@Autowired
 	ServletContext servletContext;

@@ -38,7 +38,7 @@ import _03_FriendlyService.validate.ConvenienceInsertValidator;
 
 @Controller
 @RequestMapping("/_03_FriendlySystem")
-@SessionAttributes({ "emptyCb" , "emptyMcb","nowPage","AllConvenience","NotConvenience","TotalPages" })
+@SessionAttributes({ "emptyCb" , "emptyMcb","nowPage","AllConvenience","NotConvenience","TotalPages","loginBean" })
 public class ConvenienceController {
 	@Autowired
 	ServletContext servletContext;

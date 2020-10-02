@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <!DOCTYPE html>
 <html>
@@ -123,7 +124,7 @@ function setFocusToUserId(){
 
   <div align='center' id="content"> 
   
-  <form method="POST" action="<c:url value='/_01_Member/Registration/MerchantChild' />" enctype='multipart/form-data'>
+ <form:form method="POST" modelAttribute="merchantChildBean" enctype='multipart/form-data'>
   
   <Table  style="width:900px ;background-color: #E7CDFF; cellspacing:0; border:2px solid black; " >
 	<tr height="40" >
@@ -147,48 +148,52 @@ function setFocusToUserId(){
        
      <tr height="52">
      	<td style="width: 90px;">
-        	<label class="fontSize" >分店名稱：</label><br>&nbsp;
+        	<label class="fontSize" >商家分店名稱：</label><br>&nbsp;
         </td>
         <td style="width: 290px;">
-      		<input type='text' name='busChildName' value="${param.busChildName}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<font color="red" size="-1">${MsgMap.errorName}${MsgMap.errorIdDup}</font> 
-      	</td>
-      	
-      	<td>
-      	 	<label class="fontSize" >電話：</label><br>&nbsp;
+      		<form:input path='busChildName' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<form:errors path="busChildName" cssClass="error" />
       	</td>
       	<td>
-      		<input type='text' name='busChildTel'  value="${param.busChildTel}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<font color="red" size="-1">${MsgMap.errorTel}</font>      
+      	 	<label class="fontSize" >分店電子信箱：</label><br>&nbsp;
       	</td>
-      </tr>
+      	<td>
+      		<form:input type="email" path='busChildEmail'  class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<form:errors path="busChildEmail" cssClass="error" />      
+      	</td>
+      <tr height="52">
+        <td> 
+      		<label class="fontSize" >分店電話：</label><br>&nbsp;
+      	</td>
+      	<td>
+      		<form:input path='busChildTel' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<form:errors path="busChildTel" cssClass="error" /> 
+      	</td>
+        <td>
+      		<label class="fontSize" >分店地址：</label><br>&nbsp;
+      	</td>
+      	<td>	
+      		<form:input path='busChildAddress' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+ 			<form:errors path="busChildAddress" cssClass="error" />       		      
+      	</td>
       
+     </tr>
      <tr height="52">
-     	<td style="width: 90px;">
-        	<label class="fontSize" >地址：</label><br>&nbsp;
-        </td>
-        <td style="width: 290px;">
-      		<input type='text' name='busChildAddress' value="${param.busChildAddress}" class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<font color="red" size="-1">${MsgMap.errorAddr}${MsgMap.errorMerchantChildDup}</font> 
-      	</td>
-      	
       	<td>
       		<label class="fontSize" >照片：</label><br>&nbsp;
       	</td>
       	<td>	
-      		<input name='memberMultipartFile' type='file' /><br>&nbsp;
-        </td>
-      </tr>
-     
-     <tr height="52">
-        <td>
-      		<label class="fontSize" >商家描述：</label><br>&nbsp;
+      		 <form:input type='file' path="merchantChildMultipartFile" /><br>&nbsp;
+	   	  	 <form:errors path="merchantChildMultipartFile"  cssClass="error" />
+        </td>      	
+     	<td>
+      		<label class="fontSize" >分店描述：</label><br>&nbsp;
       	</td>
       	<td>	
-      		<textarea name="busChildDescription" value="${param.busChildDescription}" class="fieldWidth" style="width: 200px;height:100px"></textarea>&nbsp;
-      	</td>
+      		<form:textarea path='busChildDescription' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<form:errors path="busChildDescription" cssClass="error" /> 
+        </td>
       </tr>
-     
      <tr height="42">
         <td colspan='4'>
       		<div id="btnArea" align="center">
@@ -197,10 +202,9 @@ function setFocusToUserId(){
       		</div>
 		</td>
 	</tr>
-
 	
 </Table>
-</form>
+</form:form>
 </div>
 
 </body>

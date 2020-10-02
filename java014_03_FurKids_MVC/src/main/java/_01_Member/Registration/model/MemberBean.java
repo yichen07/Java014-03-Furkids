@@ -191,8 +191,7 @@ public class MemberBean implements Serializable {
 	public Integer getCLASSIFY() {
 		return CLASSIFY;
 	}
-
-
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -225,6 +224,5 @@ public class MemberBean implements Serializable {
 		builder.append("]");
 		return builder.toString();
 	}
-
 
 }

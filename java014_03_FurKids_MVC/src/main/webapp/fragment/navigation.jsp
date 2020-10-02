@@ -174,9 +174,10 @@
 				
 				<%-- 登出 --%>
 				<c:if test="${ ! empty LoginOK }">
-					<a href="<c:url value='#' />" class="m-2" onclick="logout()">
+					<a href="<c:url value='#' />" class="m-2 logout" onclick="logout()">
 						<i class="fas fa-sign-out-alt fa-lg" style="color: grey"></i>
 					</a>
+					
 				</c:if>
 					
 			</div>
@@ -219,16 +220,16 @@
 					   	<form:errors  path="userId" cssClass="error" />
 					</div>
 					<div class="form-group">
-					    <label for="exampleInputPassword1">密碼</label>
-					    <form:password class="form-control" path="password" id="exampleInputPassword1" placeholder="Password" />
+					    <label for="exampleInputPassword">密碼</label>
+					    <form:input type="password" class="form-control" path="password" id="exampleInputPassword" placeholder="Password" />
 					    <form:errors  path="password" cssClass="error" />
 					</div> 
 					<div class="form-group form-check">	
-					    <form:checkbox class="form-check-input" path="rememberMe" id="exampleCheck1" />
-					    <label class="form-check-label" for="exampleCheck1">記住我</label>
+					    <form:checkbox class="form-check-input" path="rememberMe" id="exampleCheck" />
+					    <label class="form-check-label" for="exampleCheck">記住我</label>
 					</div>
 					<div class="text-center">
-						<small class="form-text text-muted"><font class="errhide" color="red">${ErrorMsgKey.LoginError} ${result.invalidCredentials} ${MsgMap.errorNotLogin}</font></small>
+						<small class="form-text text-muted"><font class="errhide" color="red">${ErrorMsgKey.LoginError} ${result.invalidCredentials} ${errorNotLogin}</font></small>
 					</div>
 					<div class="modal-footer justify-content-center">
 						<button type="submit" class="btn btn-outline-primary">登入</button>
@@ -328,7 +329,7 @@
       </div>
       <div class="modal-body">
 			<div class="text-center">
-				<font color="red">${InsertOK} ${sessionScope.timeOut}</font>
+				<font color="red">${InsertOK} ${FlashMSG_farewell} ${sessionScope.timeOut}</font>
 			</div>
       </div>
       <div class="modal-footer">
@@ -368,14 +369,13 @@
 </c:if>
 
 <%-- 未登入，執行登入後功能時，重新導回登入畫面 --%>
-<c:if test="${!empty MsgMap.errorNotLogin}">
+<c:if test="${!empty errorNotLogin}">
 	<script>
 		$('#login').modal('show')
 	</script>
-	<% session.removeAttribute("MsgMap"); %>
 </c:if>
 
-<%-- 新增(含註冊、分店與寵物新增)、登入成功與使用逾時時，顯示提示視窗 --%>
+<%-- 新增(含註冊、分店與寵物新增)、登入、登出成功與使用逾時時，顯示提示視窗 --%>
 <c:if test="${!empty InsertOK}">
 	<script>
 		$('#messages').modal('show');
@@ -383,7 +383,6 @@
             $('#messages').modal('hide') // 3秒後，modal消失。
         }, 3000);
 	</script>
-	<% session.removeAttribute("MsgOK"); %>
 </c:if>
 
 <c:if test="${!empty sessionScope.timeOut}">
@@ -396,12 +395,21 @@
 	<% session.removeAttribute("timeOut"); %>
 </c:if>
 
+<c:if test="${!empty FlashMSG_farewell}">
+	<script>
+		$('#messages').modal('show');
+		setTimeout(function() {
+            $('#messages').modal('hide') // 3秒後，modal消失。
+        }, 3000);
+	</script>
+</c:if>
+
 
 <%-- 登出時，跳出詢問視窗 --%>
 <script language="javascript"> 
 	function logout(){ 
 	    if (confirm("您確定要登出嗎？")){ 
-	    	window.location.href="/java014_03_FurKids/_01_Member/logout.jsp"
+	    	$('.logout').attr('href', '${pageContext.request.contextPath}/logout')
 	    } 
 	} 
 </script>

@@ -25,7 +25,7 @@ public class PetBean implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer petID;
-	@Transient
+	
 	private String cusAccount;
 	
 	private String petName;
@@ -40,7 +40,7 @@ public class PetBean implements Serializable {
 	
 	// 雙向多對一
 	@ManyToOne
-	@JoinColumn(name = "cusAccount")
+	@JoinColumn(name = "cusAccount", insertable=false, updatable=false)
 	private MemberBean memberBean;
 
 	public PetBean() {

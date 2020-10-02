@@ -5,6 +5,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import _01_Member.Registration.model.MemberBean;
+import _01_Member.Registration.model.MerchantChildBean;
 
 
 
@@ -17,24 +18,15 @@ public class MerchantChildBeanValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		MemberBean mb = (MemberBean) target;
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusAccount", "", "帳號欄不能空白");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusName", "", "姓名欄不能空白");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusPassword", "", "密碼欄不能空白");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "", "確認密碼欄不能空白");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusAddress", "", "地址欄不能空白");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusTel", "", "電話欄不能空白");
+		MerchantChildBean mcb = (MerchantChildBean) target;
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "busChildName", "", "商家分店姓名不能空白");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "busChildEmail", "", "商家分店電子郵件不能空白");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "busChildTel", "", "商家分店電話不能空白");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "busChildAddress", "", "商家分店地址不能空白");
 		
-		if (! mb.getCusPassword().equals(mb.getConfirmPassword())) {
-			errors.rejectValue("cusPassword","", "密碼欄與確認密碼不一致");
-		}
-		
-//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "", "電子郵件欄不能空白");
+				
 //		ValidationUtils.rejectIfEmpty(errors, "memberMultipartFile", "", "必須挑選圖片");
 		
-//		if (mb.getMemberId().length()<5) {
-//			errors.rejectValue("memberId","", "帳號欄不能小於五個字元");
-//		}
 		
 //		System.out.println("mb.getMemberMultipartFile().getSize()=" + mb.getMemberMultipartFile().getSize());
 //		if (mb.getMemberMultipartFile().getSize() == 0) {
