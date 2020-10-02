@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
-@SessionAttributes({ "emptyCb" , "emptyMcb","inputError"})
+@SessionAttributes({ "emptyCb" , "emptyMcb","inputError","loginBean"})
 @RequestMapping("/_03_FriendlySystem")
 public class ConvenienceRemoveSession {
 	@GetMapping("/SessionStatus_setComplete")

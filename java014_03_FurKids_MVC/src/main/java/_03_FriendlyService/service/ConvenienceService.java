@@ -39,7 +39,5 @@ public interface ConvenienceService {
 	
 	List<ConvenienceBean_H> getPageConvenience(String id,int pageNo);
 	
-	List<ConvenienceBean_H> getPageViewConvenience(String item,int pageNo);
-	
 	int getTotalPages(String id);
 }

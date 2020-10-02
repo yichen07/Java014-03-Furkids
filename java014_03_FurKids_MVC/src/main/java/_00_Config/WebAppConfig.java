@@ -1,8 +1,6 @@
 package _00_Config;
 
 
-
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,10 +13,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration //用來提供組態資訊
 @EnableWebMvc
-@ComponentScan({"_00_Init","_00_Config","_03_FriendlyService", "_01_Member"})
+@ComponentScan({"_00_Init","_00_Config","_01_Member","_03_FriendlyService"})
 public class WebAppConfig implements WebMvcConfigurer{
-	
-
 	
 	@Bean
 	public CommonsMultipartResolver multipartResolver() {

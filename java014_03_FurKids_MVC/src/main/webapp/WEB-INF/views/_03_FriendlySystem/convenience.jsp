@@ -120,7 +120,7 @@
 							<li class="list-group-item ddd">公休日：${Convenience.conCloseDay}</li>
 							<li class="list-group-item ddd">開始營業時間：${Convenience.conOpenTime}</li>
 							<li class="list-group-item ddd">結束營業時間：${Convenience.conCloseTime}</li>
-							<li class="list-group-item ddd">${Convenience.merchantChildBean.merchantbean.busEmail}</li>
+							<li class="list-group-item ddd">${Convenience.merchantChildBean.busChildEmail}</li>
 							<li class="list-group-item ddd">${Convenience.merchantChildBean.busChildTel}</li>
 							<li class="list-group-item ddd"><p class="card-text">商店介紹：${Convenience.merchantChildBean.busChildDescription}</p></li>
 						</ul>
@@ -210,8 +210,8 @@
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">分店信箱:</label>
 							<form:input type="text" class="form-control"
-								path="merchantChildBean.merchantbean.busEmail" />
-							<form:errors path="merchantChildBean.merchantbean.busEmail"  class="text-danger"/>
+								path="merchantChildBean.busChildEmail" />
+							<form:errors path="merchantChildBean.busChildEmail"  class="text-danger"/>
 						</div>
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">分店電話:</label>

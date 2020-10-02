@@ -3,7 +3,7 @@
 //sideHamburger
 
 $(".hamburger").click(function(){
-  $(".wrapper").toggleClass("active")
+  $(".wrapper").toggleClass("active");
 })
 
 //sideHamburger

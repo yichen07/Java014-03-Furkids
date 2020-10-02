@@ -19,7 +19,7 @@ public class ConvenienceAlterValidator implements Validator{
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "conCloseDay", "", "公休日不能空白");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "conOpenTime", "", "開始營業時間不能空白");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "conCloseTime", "", "結束營業時間不能空白");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "merchantChildBean.merchantbean.busEmail", "", "分店信箱不能空白");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "merchantChildBean.busChildEmail", "", "分店信箱不能空白");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "merchantChildBean.busChildTel", "", "分店電話不能空白");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "merchantChildBean.busChildDescription", "", "商店介紹／備註不能空白");
 		
