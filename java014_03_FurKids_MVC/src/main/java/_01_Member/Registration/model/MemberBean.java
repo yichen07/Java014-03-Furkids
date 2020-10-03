@@ -3,11 +3,20 @@ package _01_Member.Registration.model;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
+
+
 @Entity
 @Table(name="membraneregistration")
 public class MemberBean implements Serializable {
@@ -16,37 +25,62 @@ public class MemberBean implements Serializable {
 	@Id
 	private String cusAccount;
 	private String cusPassword;
+	@Transient
+	private String confirmPassword;
 	private String cusName;
 	private String cusNickName;
 	private String cusGender;
 	private Date cusBirthday;
-	private String cusEmail;
 	private String cusTel;
 	private String cusAddress;
 	private Blob cusPhoto;
 	private String cusFileName;
 	@Transient
+	MultipartFile memberMultipartFile;
+	
+	@Transient
 	final private Integer CLASSIFY = 0;
 	
+	// 雙向一對多
+	@OneToMany(mappedBy = "memberBean", cascade = CascadeType.ALL)
+	Set<PetBean> pet = new LinkedHashSet<>();
 
-	
 	public MemberBean() {
+		super();
 	}
 
-	public MemberBean(String cusAccount, String cusPassword, String cusName, String cusNickName, String cusGender,
-			Date cusBirthday, String cusEmail, String cusTel, String cusAddress, Blob cusPhoto, String cusFileName) {
+	public MemberBean(String cusAccount, String cusPassword, String confirmPassword, String cusName, String cusNickName,
+			String cusGender, Date cusBirthday, String cusTel, String cusAddress, Blob cusPhoto, String cusFileName) {
 		super();
 		this.cusAccount = cusAccount;
 		this.cusPassword = cusPassword;
+		this.confirmPassword = confirmPassword;
 		this.cusName = cusName;
 		this.cusNickName = cusNickName;
 		this.cusGender = cusGender;
 		this.cusBirthday = cusBirthday;
-		this.cusEmail = cusEmail;
 		this.cusTel = cusTel;
 		this.cusAddress = cusAddress;
 		this.cusPhoto = cusPhoto;
 		this.cusFileName = cusFileName;
+	}
+
+	public MemberBean(String cusAccount, String cusPassword, String confirmPassword, String cusName, String cusNickName,
+			String cusGender, Date cusBirthday, String cusTel, String cusAddress, Blob cusPhoto, String cusFileName,
+			MultipartFile memberMultipartFile) {
+		super();
+		this.cusAccount = cusAccount;
+		this.cusPassword = cusPassword;
+		this.confirmPassword = confirmPassword;
+		this.cusName = cusName;
+		this.cusNickName = cusNickName;
+		this.cusGender = cusGender;
+		this.cusBirthday = cusBirthday;
+		this.cusTel = cusTel;
+		this.cusAddress = cusAddress;
+		this.cusPhoto = cusPhoto;
+		this.cusFileName = cusFileName;
+		this.memberMultipartFile = memberMultipartFile;
 	}
 
 	public String getCusAccount() {
@@ -65,6 +99,14 @@ public class MemberBean implements Serializable {
 		this.cusPassword = cusPassword;
 	}
 
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+
 	public String getCusName() {
 		return cusName;
 	}
@@ -72,7 +114,7 @@ public class MemberBean implements Serializable {
 	public void setCusName(String cusName) {
 		this.cusName = cusName;
 	}
-	
+
 	public String getCusNickName() {
 		return cusNickName;
 	}
@@ -95,14 +137,6 @@ public class MemberBean implements Serializable {
 
 	public void setCusBirthday(Date cusBirthday) {
 		this.cusBirthday = cusBirthday;
-	}
-
-	public String getCusEmail() {
-		return cusEmail;
-	}
-
-	public void setCusEmail(String cusEmail) {
-		this.cusEmail = cusEmail;
 	}
 
 	public String getCusTel() {
@@ -133,14 +167,62 @@ public class MemberBean implements Serializable {
 		return cusFileName;
 	}
 
-
 	public void setCusFileName(String cusFileName) {
 		this.cusFileName = cusFileName;
 	}
 
-	public Integer getCLASSIFY() {
-		return CLASSIFY;
+	public MultipartFile getMemberMultipartFile() {
+		return memberMultipartFile;
+	}
+
+	public void setMemberMultipartFile(MultipartFile memberMultipartFile) {
+		this.memberMultipartFile = memberMultipartFile;
+	}
+
+	public Set<PetBean> getPet() {
+		return pet;
+	}
+
+	public void setPet(Set<PetBean> pet) {
+		this.pet = pet;
 	}
 
 	
+	public Integer getCLASSIFY() {
+		return CLASSIFY;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("MemberBean [cusAccount=");
+		builder.append(cusAccount);
+		builder.append(", cusPassword=");
+		builder.append(cusPassword);
+		builder.append(", confirmPassword=");
+		builder.append(confirmPassword);
+		builder.append(", cusName=");
+		builder.append(cusName);
+		builder.append(", cusNickName=");
+		builder.append(cusNickName);
+		builder.append(", cusGender=");
+		builder.append(cusGender);
+		builder.append(", cusBirthday=");
+		builder.append(cusBirthday);
+		builder.append(", cusTel=");
+		builder.append(cusTel);
+		builder.append(", cusAddress=");
+		builder.append(cusAddress);
+		builder.append(", cusPhoto=");
+		builder.append(cusPhoto);
+		builder.append(", cusFileName=");
+		builder.append(cusFileName);
+		builder.append(", memberMultipartFile=");
+		builder.append(memberMultipartFile);
+		builder.append(", CLASSIFY=");
+		builder.append(CLASSIFY);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

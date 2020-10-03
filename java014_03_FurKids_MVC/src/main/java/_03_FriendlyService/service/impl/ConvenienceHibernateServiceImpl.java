@@ -222,14 +222,6 @@ public class ConvenienceHibernateServiceImpl implements ConvenienceService{
 		bean = cnDao.getPageConvenience(id, pageNo);
 		return bean;
 	}
-	//依上架類型撈出所有商家已上架的服務(一次撈8筆)
-	@Transactional
-	@Override
-	public List<ConvenienceBean_H> getPageViewConvenience(String item, int pageNo) {
-		List<ConvenienceBean_H> bean = null;
-		bean = cnDao.getPageViewConvenience(item, pageNo);
-		return bean;
-	}
 	
 	//撈所有分店
 	@Transactional

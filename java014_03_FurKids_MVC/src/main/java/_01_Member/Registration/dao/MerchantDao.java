@@ -13,6 +13,7 @@ public interface MerchantDao {
 	public MerchantBean queryMerchant(String account);
 	
 	public MerchantBean checkAccountPassword(String account, String password);
+//	public Object checkAccountPassword(String account, String password);
 
-	public void setConnection(Connection con);
+	public void setConnection(Connection con); // 在Hibernate中不需要此方法。
 }
