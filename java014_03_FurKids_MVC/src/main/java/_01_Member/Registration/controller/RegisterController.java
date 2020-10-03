@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ import _01_Member.Registration.validator.MerchantChildBeanValidator;
 import _01_Member.Registration.validator.PetBeanValidator;
 
 @Controller
-@SessionAttributes({"loginBean","LoginOK"," "})
+@SessionAttributes({"loginBean","LoginOK","RequestPath","memberBean","merchantBean","petBean","merchantChildBean"})
 public class RegisterController {
 	
 	@Autowired
@@ -51,6 +52,7 @@ public class RegisterController {
 // 會員
 	@GetMapping("/_01_Member/MemberRegistration")
 	public String memberRegisterEmptyForm (Model model) {
+//		model.addAttribute("RequestPath","/_01_Member/MemberRegistration");
 		MemberBean memberBean = new MemberBean();
 		model.addAttribute("memberBean", memberBean);
 		return "_01_Member/MemberRegistration";
@@ -125,6 +127,7 @@ public class RegisterController {
 // 商家	
 	@GetMapping("/_01_Member/MerchantRegistration")
 	public String merchantRegisterEmptyForm (Model model) {
+//		model.addAttribute("RequestPath","/_01_Member/MerchantRegistration");
 		MerchantBean merchantBean = new MerchantBean();
 		model.addAttribute("merchantBean", merchantBean);
 		return "_01_Member/MerchantRegistration";
@@ -198,6 +201,7 @@ public class RegisterController {
 // 會員寵物	
 	@GetMapping("/_01_Member/PetRegistration")
 	public String petRegisterEmptyForm (Model model) {
+//		model.addAttribute("RequestPath","/_01_Member/PetRegistration");
 		PetBean petBean = new PetBean();
 		model.addAttribute("petBean", petBean);
 		return "_01_Member/PetRegistration";
@@ -271,6 +275,7 @@ public class RegisterController {
 // 商家分店	
 	@GetMapping("/_01_Member/MerchantChildRegistration")
 	public String merchantChildRegisterEmptyForm (Model model) {
+//		model.addAttribute("RequestPath","/_01_Member/MerchantChildRegistration");
 		MerchantChildBean merchantChildBean = new MerchantChildBean();
 		model.addAttribute("merchantChildBean", merchantChildBean);
 		return "_01_Member/MerchantChildRegistration";

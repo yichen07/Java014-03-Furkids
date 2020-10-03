@@ -195,7 +195,31 @@ function setFocusToUserId(){
       		<form:errors path="cusTel" cssClass="error" /> 
 		</td>
       </tr>
+     <tr height="52">
+     	<td>
+      		<label class="fontSize" >暱稱：</label><br>&nbsp;
+      	</td>
+      	<td>	
+      		<form:input path='cusNickName' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<form:errors path="cusNickName" cssClass="error" /> 
+        </td>
+      	<td>
+      		<label class="fontSize" >性別：</label><br>&nbsp;
+      	</td>
+      	<td>	
+      		<form:radiobutton path='cusGender' value="Male"/>男&nbsp;
+      		<form:radiobutton path='cusGender' value="Female"/>女<br>&nbsp;
+      		<form:errors path="cusGender" cssClass="error" /> 
+		</td>
+      </tr>
       <tr height="52">
+      	<td>
+      		<label class="fontSize" >生日：</label><br>&nbsp;
+      	</td>
+      	<td>	
+      		 <form:input type="date" path='cusBirthday'  class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<form:errors path="cusBirthday" cssClass="error" /> 
+        </td>
       	<td>
       		<label class="fontSize" >照片：</label><br>&nbsp;
       	</td>
