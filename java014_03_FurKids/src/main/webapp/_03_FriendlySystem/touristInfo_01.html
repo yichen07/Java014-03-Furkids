@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS --------------------------------------------------------------------->
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <!-- animate.style CSS ----------------------------------------------------------------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+    />
+
+    <!-- Inport CSS End--------------------------------------------------------------------->
+
+    <link
+      rel="stylesheet"
+      href="../resources/css/_03_FriendlySystem/touristInfo_01.css"
+    />
+
+    <!-- Input CSS End---------------------------------------------------------------------->
+
+    <title>FurKids寵物旅遊</title>
+  </head>
+
+  <body>
+    <!-- NavBar Srart----------------------------------------------------------------------->
+
+    <nav
+      class="navbar navbar-light navbar-expand-lg bg-white sticky-top shadow"
+      id="navBar"
+    >
+      <div class="container">
+        <a class="navbar-brand mb-1" href="#"
+          ><img src="../resources/images/Logo_07.png" alt="Logo" height="26"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-between"
+          id="navbarNavDropdown"
+        >
+          <div></div>
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown mx-2">
+              <a
+                class="nav-link dropdown-toggle nav-font"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                寵物商城
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a class="dropdown-item" href="#">自己加</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown mx-2">
+              <a
+                class="nav-link dropdown-toggle nav-font"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                寵物交流版
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a class="dropdown-item" href="/src/main/webapp/blogIndex.html"
+                  >寵物專欄</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="/src/main/webapp/discussionBoard.html"
+                  >寵物討論區</a
+                >
+              </div>
+            </li>
+            <li class="nav-item dropdown mx-2">
+              <a
+                class="nav-link dropdown-toggle nav-font"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                寵物健康管理
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a class="dropdown-item" href="#">自己加</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown ml-2 mr-5">
+              <a
+                class="nav-link dropdown-toggle nav-font"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >寵物友善系統
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a class="dropdown-item" href="#">自己加</a>
+              </div>
+            </li>
+          </ul>
+          <div>
+            <a href="#" class="mr-3 ml-4"
+              ><i class="fas fa-shopping-cart navbar-cart"></i
+            ></a>
+            <a href="#" class="mr-2"
+              ><i class="fas fa-user navbar-user"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- NavBar End------------------------------------------------------------------------->
+
+    <!-- Banner ---------------------------------------------------------------------------->
+
+    <div
+      class="container-fluid bannerImg d-flex justify-content-center align-items-center"
+      id="imageStellar"
+      data-stellar-background-ratio="0.5"
+    >
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1 class="mt-3 bannerTitle animate__animated animate__fadeInDown">
+            寵物旅遊
+          </h1>
+          <div
+            class="align-items-center banner-text animate__animated animate__fadeInUp"
+          >
+            <h5 class="text-center">一起出遊、一起拓展毛孩生命的寬度吧！</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Banner End------------------------------------------------------------------------->
+
+    <!-- Main Start------------------------------------------------------------------------->
+    <section>
+      <div class="container">
+        <div class="row">
+          <!-- Left Content Start ----------------------->
+          <div class="col-lg-8 mt-3 mb-0 pl-4 pr-4" id="slider">
+            <div class="row">
+              <div class="col-lg-8">
+                <h2 class="d-flex align-items-end titleH2">
+                  經典大飯店<span class="star ml-3 mb-2"
+                    ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                    ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                    ><i class="fas fa-star"></i
+                  ></span>
+                </h2>
+                <div class="mt-0 mb-0 align-items-center">
+                  <i class="fas fa-map-marker-alt fa-fw mr-1"> </i
+                  ><span class="titleText mr-4">台灣南投縣魚池鄉秀水路69號</span
+                  ><br />
+                  <i class="fas fa-phone-square-alt fa-fw mr-1 mb-1"> </i
+                  ><span class="titleText">04-9289-9999 #9</span>
+                </div>
+              </div>
+              <div class="col-lg-4 d-flex justify-content-end align-items-end">
+                <h3 class="hotelPrice">
+                  <small class="hotelTWD">TWD</small> 3,163+
+                </h3>
+              </div>
+            </div>
+            <div></div>
+            <div class="titleText mb-2"></div>
+            <!-- main slider carousel items -->
+
+            <div id="myCarousel" class="carousel slide shadow " data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="active carousel-item" data-slide-number="0">
+                  <img
+                    src="../resources/images/_03_FriendlySystem/touristInfo/touristInfo_hotel_01_01.jpg"
+                    class="hotelImage"
+                  />
+                </div>
+                <div class="carousel-item" data-slide-number="1">
+                  <img
+                    src="../resources/images/_03_FriendlySystem/touristInfo/touristInfo_hotel_01_02.jpg"
+                    class="hotelImage"
+                  />
+                </div>
+                <div class="carousel-item" data-slide-number="2">
+                  <img
+                    src="../resources/images/_03_FriendlySystem/touristInfo/touristInfo_hotel_01_03.jpg"
+                    class="hotelImage"
+                  />
+                </div>
+                <div class="carousel-item" data-slide-number="3">
+                  <img
+                    src="../resources/images/_03_FriendlySystem/touristInfo/touristInfo_hotel_01_04.jpg"
+                    class="hotelImage"
+                  />
+                </div>
+                <div class="carousel-item" data-slide-number="4">
+                  <img
+                    src="../resources/images/_03_FriendlySystem/touristInfo/touristInfo_hotel_01_05.jpg"
+                    class="hotelImage"
+                  />
+                </div>
+                <a
+                  class="carousel-control-prev"
+                  href="#myCarousel"
+                  role="button"
+                  data-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a
+                  class="carousel-control-next"
+                  href="#myCarousel"
+                  role="button"
+                  data-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+              <!-- main slider carousel nav controls -->
+
+              <ul
+                class="carousel-indicators list-inline justify-content-start px-2 w-100"
+              >
+                <li class="list-inline-item active">
+                  <a
+                    id="carousel-selector-0"
+                    class="selected"
+                    data-slide-to="0"
+                    data-target="#myCarousel"
+                  >
+                    <img
+                      src="../resources/images/_03_FriendlySystem/touristInfo/touristInfo_hotel_01_01.jpg"
+                      class="hotelImageIcon"
+                    />
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    id="carousel-selector-1"
+                    data-slide-to="1"
+                    data-target="#myCarousel"
+                  >
+                    <img
+                      src="../resources/images/_03_FriendlySystem/touristInfo/touristInfo_hotel_01_02.jpg"
+                      class="hotelImageIcon"
+                    />
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    id="carousel-selector-2"
+                    data-slide-to="2"
+                    data-target="#myCarousel"
+                  >
+                    <img
+                      src="../resources/images/_03_FriendlySystem/touristInfo/touristInfo_hotel_01_03.jpg"
+                      class="hotelImageIcon"
+                    />
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    id="carousel-selector-3"
+                    data-slide-to="3"
+                    data-target="#myCarousel"
+                  >
+                    <img
+                      src="../resources/images/_03_FriendlySystem/touristInfo/touristInfo_hotel_01_04.jpg"
+                      class="hotelImageIcon"
+                    />
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    id="carousel-selector-4"
+                    data-slide-to="4"
+                    data-target="#myCarousel"
+                  >
+                    <img
+                      src="../resources/images/_03_FriendlySystem/touristInfo/touristInfo_hotel_01_05.jpg"
+                      class="hotelImageIcon"
+                    />
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-4 mb-4 border-bottom">
+              <div class="pb-0 mb-0 pt-3 IntroductionTitle border-top">
+                <i class="far fa-file-alt"></i> 簡介
+              </div>
+              <article class="articleColor">
+                <p class="mt-3">日月風華經典再現 日月潭經典大飯店</p>
+                <p>
+                  為品味而生，為旅棧而設，高水準人性化的服務，舒適豪華客房，在美味飲食中還能享受空間美學時尚。完備會議廳和親切的顧問式服務，是所有旅人商賈旅行途中美好深刻的渴望。能夠身在飯店還能感受到回家的舒適。現在日月潭景區已經誕生了這樣優質的飯店—日月潭經典大飯店，絕對能留下美好的經典回味！
+                </p>
+                <p>
+                  經典大飯店位於南投縣魚池鄉數條熱門旅遊路線的中樞點，鄰九族文化村與日月潭山水相連，加上定價十分親民，鎖定日月潭地區會議度假、家庭旅遊定點住宿族群，要往日月潭、埔里、清境、集集、水里地區都非常便利。
+                </p>
+                <p>
+                  經典大飯店分為三種型態：分別為代表邵族味道的「思麻丹館」，以背包客、帶團司機、領隊為主要服務對象的「驛棧」，和構築亞特蘭提斯奇幻風格的「范特奇堡」，三個館單日可容納850個人次，接待功能強大。
+                </p>
+                <p>
+                  驛棧及范特奇堡兩館位於魚池街東池隧道口，緊扼交通要道，是往日月潭文武廟的捷徑，也是通往九族文化村必經道路。總基地面積約2000餘坪，停車場面積占地約400坪，可容納近30輛大型遊覽車或上百輛小車。因飯店基地緊臨魚池市區與日月潭周邊各大景點，重新描繪魚池生活圈及觀光旅遊之樣貌。
+                </p>
+                <p>
+                  經典大飯店在觀光產業最不景氣的環境中，陸續成立新館，發起魚池尖社區發展協會組成愛心志工，帶頭協助、魚池鄉公所為獨居老人送餐，社區關懷訪視…等活動。設立老人關懷據點，配合縣府、公所各項社會福利服務活動，且著手規劃農村青年人力培養計畫、積極參與地方回饋，期許為地方觀光產業盡一份心力。
+                </p>
+              </article>
+            </div>
+            <div class="pb-0 mb-3 IntroductionTitle">
+              <i class="far fa-clipboard"></i> 旅客入住須知規範
+            </div>
+            <div class="remarks p-4 mb-5">
+              <article>
+                <p class="remarkPColor">
+                  一、 毛小孩一同入住請於訂房時告知 僅限 15
+                  公斤以下中型貓、狗寵物 毛小孩及導盲犬入住
+                  ，入住期間於房門上掛上「毛小孩住房中」掛牌 。
+                </p>
+                <p class="remarkPColor">
+                  二、 毛小孩可入住之房型數量有限，請配合現場客房安排。
+                </p>
+                <p class="remarkPColor">
+                  三、 毛小孩入住，酌收押金 NT$500
+                  元，待退房確認房內無毀損，將全額退還。
+                </p>
+                <p class="remarkPColor">
+                  四、 餐廳內禁止毛小孩進入，可寄放於櫃檯 需自備推車或寵物籠 。
+                </p>
+                <p class="remarkPColor">
+                  五、 毛小孩於公共區域 如客房走廊、大廳、交誼廳 等
+                  內禁止落地，需自備推車或寵物籠袋,導盲犬不在此限。
+                </p>
+                <p class="remarkPColor">
+                  六、 於寵物房內 ，毛小孩請置於 推車或寵物籠
+                  ，請勿讓毛小孩上床。
+                </p>
+                <p class="remarkPColor">
+                  七、 請勿讓毛 小孩於本飯店內大、小便 如浴室、室內公共空間
+                  ，請自行攜至 1F 大廳外，由主人自行處理
+                  ，以不破壞環境清潔為原則 。
+                </p>
+                <p class="remarkPColor">
+                  八、
+                  請勿使用本飯店內布巾擦拭毛小孩及梳洗，如有發現需加收清潔費
+                  NT$2,000 元。
+                </p>
+                <p class="remarkPColor">
+                  九、 進房前請先幫毛小孩擦拭腳，請自備布巾。
+                </p>
+                <p class="remarkPColor">
+                  十、 請勿讓毛小孩抓、咬、便尿
+                  等破壞房內布巾、棉被、傢俱、客房備品及地毯，如有發現則沒收全額
+                  押金，毀損物品依廠商報價全額賠償。
+                </p>
+                <p class="remarkPColor">
+                  十一、
+                  為了安全及其他房客住宿品質，禁止將您的寵物寶貝單獨留置房內。
+                </p>
+                <p class="remarkPColor">
+                  十二、 請自備毛小孩睡墊、推車、牽繩、餐具等用具。
+                </p>
+                <p class="remarkPColor">
+                  十三、 我們歡迎寵物住宿，但不對您的寵物寶貝負任何責任。
+                </p>
+                <p class="remarkPColor mb-0">
+                  十四、 請勿讓毛小孩大聲犬叫造成環境噪音或騷擾或攻擊侵略性
+                  行為，若因此造成其他住宿房客及本飯店工作人員之困擾，將請您退房離開，恕不退還已付之房款！！
+                </p>
+              </article>
+            </div>
+          </div>
+          <!-- Left Content End ------------------------->
+          <!-- Right Content Start ---------------------->
+          <div class="col-lg-4 col-sm-12 mt-4 wrapper mb-5">
+            <form class="mt-0">
+              <div class="px-1">
+                <!-- 基本資料 Start-->
+
+                <div class="d-flex align-items-center mt-0">
+                  <i class="fas fa-user-alt rightTitleIcon fa-fw"></i>
+                  <div class="rightTitle pl-1">基本資料</div>
+                </div>
+                <div class="input-data mt-4">
+                  <input class="form-control" type="text" required />
+                  <div class="underline"></div>
+                  <label class="labelText">姓名</label>
+                </div>
+                <div class="input-data mt-4">
+                  <input class="form-control" type="tel" required />
+                  <div class="underline"></div>
+                  <label class="labelText">電話</label>
+                </div>
+                <div class="input-data mt-4 mb-2">
+                  <input class="form-control" type="tel" required />
+                  <div class="underline"></div>
+                  <label class="labelText">E-mail</label>
+                </div>
+
+                <!-- 基本資料 End -->
+                <!-- 入住資料 Start-->
+
+                <div class="d-flex align-items-center mt-4 pt-3">
+                  <i class="fas fa-hotel rightTitleIcon fa-fw"></i>
+                  <div class="rightTitle pl-1">入住資料</div>
+                </div>
+                <div class="d-flex mt-3">
+                  <div class="input-data mt-4">
+                    <input
+                      class="dateRange form-control"
+                      type="text"
+                      required
+                    />
+                    <div class="underlineDate"></div>
+                    <label>入住時間</label>
+                  </div>
+                </div>
+                <div class="d-flex mt-3">
+                  <div class="input-data species w-30 mt-4">
+                    <input
+                      class="form-control"
+                      type="number"
+                      id="adult"
+                      name="adult"
+                      min="1"
+                      value="1"
+                    />
+                    <div class="underline"></div>
+                    <label for="adult">成人人數</label>
+                  </div>
+                  <div class="input-data species w-30 ml-3 mt-4">
+                    <input
+                      class="form-control"
+                      type="number"
+                      id="child"
+                      name="child"
+                      min="0"
+                      value="0"
+                    />
+                    <div class="underline"></div>
+                    <label for="child">兒童人數</label>
+                  </div>
+                  <div class="input-data species w-30 ml-3 mt-4 mb-2">
+                    <input
+                      class="form-control"
+                      type="number"
+                      id="child"
+                      name="child"
+                      min="1"
+                      value="1"
+                    />
+                    <div class="underline"></div>
+                    <label for="child">房間</label>
+                  </div>
+                </div>
+                <!-- 入住資料 End-->
+
+                <!-- 寵物訊息 Start-->
+                <div
+                  class="d-flex align-items-center justify-content-between mt-4 pt-2"
+                >
+                  <div>
+                    <i class="fas fa-paw rightTitleIcon"></i>
+                    <span class="rightTitle pl-1">寵物訊息</span>
+                  </div>
+                  <div class="text-right">
+                    <button class="plusButton mr-0 text-right">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="mt-3 row">
+                  <div class="d-flex col-12">
+                    <div class="input-data w-25 mt-4">
+                      <input class="form-control" type="text" required />
+                      <div class="underline"></div>
+                      <label>種類</label>
+                    </div>
+                    <div class="input-data w-50 ml-3 mt-4">
+                      <input class="form-control" type="text" required />
+                      <div class="underline"></div>
+                      <label>品種</label>
+                    </div>
+                    <div class="input-data w-25 ml-3 mt-4">
+                      <input
+                        class="form-control formStyle"
+                        type="number"
+                        id="quantity"
+                        name="quantity"
+                        min="1"
+                        value="1"
+                      />
+                      <div class="underline"></div>
+                      <label for="quantity">數量</label>
+                    </div>
+                  </div>
+                  <div class="mt-4 px-3 col-12">
+                    <h6 class="note">預約備註</h6>
+                    <textarea
+                      class="form-control noteborder"
+                      rows="4"
+                      placeholder=""
+                    ></textarea>
+                  </div>
+                </div>
+                <!-- 寵物訊息 End-->
+
+                <!-- 確認表單 Start-->
+                <div class="commitOrder row">
+                  <div class="checkbox-wrapper col-12 mt-3 d-flex">
+                    <input type="checkbox" id="checkTerms" hidden /><label
+                      for="checkTerms"
+                      class="checkStyle"
+                    ></label>
+                    <div class="checkboxText ml-2">
+                      我已詳細閱讀並同意旅客入住須知規範並願意遵守規定
+                    </div>
+                  </div>
+                </div>
+                <div class="row buybtnP mt-3 mb-0">
+                  <div class="col-12 mr-0 d-flex justify-content-end mr-0 ml-3">
+                    <button class="ripple buybtn">確認預定</button>
+                  </div>
+                </div>
+
+                <!-- 確認表單 End-->
+              </div>
+            </form>
+          </div>
+
+          <!-- Right Content End ------------------------>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main End--------------------------------------------------------------------------->
+
+    <!-- Footer Start----------------------------------------------------------------------->
+
+    <div class="footer-dark">
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 item">
+              <h3>網站導覽</h3>
+              <ul>
+                <li><a href="#">寵物商城</a></li>
+                <li><a href="#">寵物交流區</a></li>
+                <li><a href="#">寵物友善系統</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3 item">
+              <h3>購物說明</h3>
+              <ul>
+                <li><a href="#">付款相關問題</a></li>
+                <li><a href="#">運送相關問題</a></li>
+                <li><a href="#">退換貨說明</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3 item">
+              <h3>訂閱我們</h3>
+              <ul>
+                <li><a href="#">關於FurKids</a></li>
+                <li><a href="#">隱私權政策</a></li>
+                <li><a href="#">文章</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3 item text">
+              <h3>聯絡我們</h3>
+              <ul>
+                <li>地址：106台北市大安區忠孝東路三段1號</li>
+                <li>電話：02 2771 2171</li>
+              </ul>
+            </div>
+            <div class="col item social mt-5">
+              <a href="#"><i class="fa fa-facebook"></i></a
+              ><a href="#"><i class="fa fa-twitter"></i></a
+              ><a href="#"><i class="fa fa-youtube"></i></a
+              ><a href="#"><i class="fa fa-instagram"></i></a
+              ><a href="#"><i class="fa fa-google"></i></a>
+            </div>
+          </div>
+          <p class="copyright">Copyright © 2020 FurKids Inc.</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Footer End------------------------------------------------------------------------->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS ----------------------------------->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS End-------------------------------->
+
+    <!-- JavaScript Plug-in ---------------------------------------------------------------->
+
+    <!-- icon -->
+    <script
+      src="https://kit.fontawesome.com/8e822d04fb.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- banner effect -->
+    <script src="../resources/javascript/jquery.stellar.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+    ></script>
+
+    <!-- JavaScript Plug-in End------------------------------------------------------------->
+    <script src="../resources/javascript/touristInfo_01.js"></script>
+  </body>
+</html>
