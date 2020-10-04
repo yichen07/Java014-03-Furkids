@@ -85,7 +85,7 @@ li {
 /* Banner Start-----------------------------------------------------------------------> */
 
 .bannerImg {
-/*     background-image: url(../../images/_03_FriendlySystem/touristIndex/touristIndex_banner_01.jpg); */
+    background-image: url(../../images/_03_FriendlySystem/touristIndex/touristIndex_banner_01.jpg);
     height: 350px;
     width: 100%;
     background-color: rgba(41, 41, 41, 0.5);
@@ -286,7 +286,7 @@ textarea {
     min-height: 50px;
     min-width: 50px;
     position: absolute;
-/*     background-image: url(../../images/_03_FriendlySystem/touristIndex/touristIndex_photoS_01.jpg.jpg); */
+    background-image: url(../../images/_03_FriendlySystem/touristIndex/touristIndex_photoS_01.jpg.jpg);
     background-position: center center;
     background-size: cover;
     left: 20px;

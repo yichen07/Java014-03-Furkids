@@ -17,6 +17,15 @@
 <%-- <jsp:include page="/WEB-INF/views/fragment/navigation.jsp" /> --%>
 
 
+<!-- 首頁內容 -->
+<div style="height: 800px">
+
+</div>
+
+
+
+<!-- 引入詳細的頁尾 -->
+<jsp:include page="/fragment/footer_detail.jsp" />
 
 </body>
 </html>
