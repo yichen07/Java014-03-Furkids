@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: user
-=======
-Built-By: Wind
->>>>>>> 372cf92b8dc5bc748fd850f83f5bf66bcdc307dd
 Build-Jdk: 1.8.0_252
 Created-By: Maven Integration for Eclipse
 

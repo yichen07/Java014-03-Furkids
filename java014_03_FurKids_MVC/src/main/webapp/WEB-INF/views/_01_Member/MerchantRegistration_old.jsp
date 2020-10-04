@@ -7,8 +7,7 @@
 
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="<c:url value='/resources/images/logo_08_iP6_6.ico' />" type="image/x-icon" />
-<title>商家分店新增</title>
+<title>商家註冊</title>
 <style type="text/css">
 span.error {
 	color: red;
@@ -125,7 +124,7 @@ function setFocusToUserId(){
 
   <div align='center' id="content"> 
   
- <form:form method="POST" modelAttribute="merchantChildBean" enctype='multipart/form-data'>
+  <form:form method="POST" modelAttribute="merchantBean" enctype='multipart/form-data'>
   
   <Table  style="width:900px ;background-color: #E7CDFF; cellspacing:0; border:2px solid black; " >
 	<tr height="40" >
@@ -136,7 +135,7 @@ function setFocusToUserId(){
 	
 	<tr height="36" >
 		<td colspan='4' style="text-align: center; vertical-align: middle;">
-        	<Font color="#006600" size='5' face="標楷體">商家分店新增</Font>
+        	<Font color="#006600" size='5' face="標楷體">商家註冊</Font>
 		</td>
 	</tr>
 	                    
@@ -149,52 +148,70 @@ function setFocusToUserId(){
        
      <tr height="52">
      	<td style="width: 90px;">
-        	<label class="fontSize" >商家分店名稱：</label><br>&nbsp;
+        	<label class="fontSize" >帳號：</label><br>&nbsp;
         </td>
         <td style="width: 290px;">
-      		<form:input path='busChildName' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<form:errors path="busChildName" cssClass="error" />
+      		<form:input path='busAccount' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<form:errors path="busAccount" cssClass="error" />
       	</td>
       	<td>
-      	 	<label class="fontSize" >分店電子信箱：</label><br>&nbsp;
+      	 	<label class="fontSize" >姓名：</label><br>&nbsp;
       	</td>
       	<td>
-      		<form:input type="email" path='busChildEmail'  class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<form:errors path="busChildEmail" cssClass="error" />      
+      		<form:input path='busName'  class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<form:errors path="busName" cssClass="error" />      
       	</td>
       <tr height="52">
         <td> 
-      		<label class="fontSize" >分店電話：</label><br>&nbsp;
+      		<label class="fontSize" >密碼：</label><br>&nbsp;
       	</td>
       	<td>
-      		<form:input path='busChildTel' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<form:errors path="busChildTel" cssClass="error" /> 
+      		<form:password path='busPassword' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<form:errors path="busPassword" cssClass="error" /> 
       	</td>
         <td>
-      		<label class="fontSize" >分店地址：</label><br>&nbsp;
+      		<label class="fontSize" >密碼確認：</label><br>&nbsp;
       	</td>
       	<td>	
-      		<form:input path='busChildAddress' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
- 			<form:errors path="busChildAddress" cssClass="error" />       		      
+      		<form:password path='confirmPassword' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+ 			<form:errors path="confirmPassword" cssClass="error" />       		      
       	</td>
       
      </tr>
      <tr height="52">
+     	<td>
+      		<label class="fontSize" >地址：</label><br>&nbsp;
+      	</td>
+      	<td>	
+      		<form:input path='busAddress' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<form:errors path="busAddress" cssClass="error" /> 
+        </td>
+      	<td>
+      		<label class="fontSize" >電話：</label><br>&nbsp;
+      	</td>
+      	<td>	
+      		<form:input type='text' path='busTel' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
+      		<form:errors path="busTel" cssClass="error" /> 
+		</td>
+      </tr>
+      <tr height="52">
       	<td>
       		<label class="fontSize" >照片：</label><br>&nbsp;
       	</td>
       	<td>	
-      		 <form:input type='file' path="merchantChildMultipartFile" /><br>&nbsp;
-	   	  	 <form:errors path="merchantChildMultipartFile"  cssClass="error" />
-        </td>      	
-     	<td>
-      		<label class="fontSize" >分店描述：</label><br>&nbsp;
+      		 <form:input path="merchantMultipartFile" type='file'/><br>&nbsp;
+	   	  	 <form:errors path="merchantMultipartFile"  cssClass="error" />
+      		
+        </td>
+        <td>
+      		<label class="fontSize" >商家描述：</label><br>&nbsp;
       	</td>
       	<td>	
-      		<form:textarea path='busChildDescription' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<form:errors path="busChildDescription" cssClass="error" /> 
+      		 <form:textarea path="busDescription" type='file'/><br>&nbsp;
+	   	  	 <form:errors path="busDescription"  cssClass="error" />
+      		
         </td>
-      </tr>
+     </tr>
      <tr height="42">
         <td colspan='4'>
       		<div id="btnArea" align="center">
