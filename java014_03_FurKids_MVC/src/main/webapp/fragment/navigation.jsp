@@ -217,19 +217,19 @@
 					<div class="form-group">
 					    <label for="exampleInputAccount">帳號</label>
 					    <form:input class="form-control" path="userId" id="exampleInputAccount" aria-describedby="emailHelp" placeholder="Account" />
-					   	<form:errors  path="userId" cssClass="error" />
+					   	<font class="errhide" color="red"><form:errors  path="userId" cssClass="errors" /></font>
 					</div>
 					<div class="form-group">
 					    <label for="exampleInputPassword">密碼</label>
 					    <form:input type="password" class="form-control" path="password" id="exampleInputPassword" placeholder="Password" />
-					    <form:errors  path="password" cssClass="error" />
+					    <font class="errhide" color="red"><form:errors  path="password" cssClass="errors" /></font>
 					</div> 
 					<div class="form-group form-check">	
 					    <form:checkbox class="form-check-input" path="rememberMe" id="exampleCheck" />
 					    <label class="form-check-label" for="exampleCheck">記住我</label>
 					</div>
 					<div class="text-center">
-						<small class="form-text text-muted"><font class="errhide" color="red">${ErrorMsgKey.LoginError} ${result.invalidCredentials} ${errorNotLogin}</font></small>
+						<small class="form-text text-muted"><font class="errhide" color="red">${LoginError} ${errorNotLogin}</font></small>
 					</div>
 					<div class="modal-footer justify-content-center">
 						<button type="submit" class="btn btn-outline-primary">登入</button>
@@ -362,7 +362,7 @@
 <!-- 	src="../resources/javascript/blogIndex.js"></script> -->
 
 <%-- 登入時，如有錯誤，重新導回登入畫面 --%>
-<c:if test="${!empty ErrorMsgKey || !empty result}">
+<c:if test="${!empty LoginError || !empty LoginInputError}">
 	<script>
 		$('#login').modal('show')
 	</script>
