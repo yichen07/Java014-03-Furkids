@@ -38,6 +38,7 @@
       href="<c:url value='/resources/css/_01_Member/MemberRegistration.css' />"
     />
 
+	
     <!-- Input CSS End---------------------------------------------------------------------->
 </head>
 
@@ -60,7 +61,9 @@
 						<div class="row">
 							<div class="col-12 d-flex justify-content-center">
 								<div class="mb-4">
-									<h2 class="formTitle">會員註冊</h2>
+									<h2 class="formTitle">會員註冊
+										<span style="font-size: 16px">(切換至<a href="<c:url value='/MerchantRegistration' />" >商家註冊</a>)</span>
+									</h2>
 								</div>
 							</div>
 						</div>
@@ -79,14 +82,14 @@
 							</div>
 							<div class="col-9 pr-5">
 								<div class="input-group">
-									<form:input type="email" path='cusAccount' required="" class="w-80"
+									<form:input type="email" path='cusAccount' required="required" class="w-80"
 										id="inputStyle" /> <span
 										class="colTitle">帳號 / 電子信箱</span>
 									<form:errors path="cusAccount" cssClass="error" style="color: red" />
 								</div>
 								<div class="input-group">
 									<form:input type="text" path='cusName' required="" class="w-80"
-										id="inputStyle" /> <span
+ 										id="inputStyle" /> <span
 										class="colTitle">姓名</span>
 									<form:errors path="cusName" cssClass="error" style="color: red" />
 								</div>
@@ -154,9 +157,9 @@
 									<form:errors path="cusNickName" cssClass="error" style="color: red" />
 								</div>
 								<div class="input-group">
-								<label>性別</label>
-									<form:radiobutton path='cusGender' required="" value="Male" /> 男 &nbsp;
-									<form:radiobutton path='cusGender' required="" value="Female" /> 女 <br>&nbsp;
+								<label>性別:&nbsp;</label>
+									<form:radiobutton path='cusGender' class="col-1" value="Male" style="width:25px; height:25px"/> 男 &nbsp;&nbsp;&nbsp;
+									<form:radiobutton path='cusGender' class="col-1" value="Female" style="width:25px; height:25px"/> 女 <br>&nbsp;
 									<form:errors path="cusGender" cssClass="error" style="color: red" />
 								</div>
 								<div class="input-group">

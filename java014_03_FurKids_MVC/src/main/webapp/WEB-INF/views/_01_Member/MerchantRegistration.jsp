@@ -54,7 +54,9 @@
 							<div class="row">
 								<div class="col-12 d-flex justify-content-center">
 									<div class="mb-4">
-										<h2 class="formTitle">商家註冊</h2>
+										<h2 class="formTitle">商家註冊
+										<span style="font-size: 16px">(切換至<a href="<c:url value='/MemberRegistration' />" >會員註冊</a>)</span>
+										</h2>
 									</div>
 								</div>
 							</div>

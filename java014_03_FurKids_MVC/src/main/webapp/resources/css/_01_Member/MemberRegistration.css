@@ -203,8 +203,9 @@ select:-webkit-autofill {
 #eyeHideCheck {
     display: none;
 }
-.wrapper .input-group input:focus ~ .colTitle,
-.wrapper .input-group input:valid ~ .colTitle {
+
+.wrapper .input-group input:valid ~ .colTitle,
+.wrapper .input-group input:invalid ~ .colTitle {
     top: -14px;
     left: 14px;
     font-size: 17px;
@@ -212,6 +213,17 @@ select:-webkit-autofill {
     background: #f7f9ff;
     border-radius: 7px;
 }
+
+/* .wrapper .input-group input:valid ~ .colTitle, */
+/* .wrapper .input-group input:focus ~ .colTitle { */
+/*     top: -14px; */
+/*     left: 14px; */
+/*     font-size: 17px; */
+/*     padding: 0px 1px; */
+/*     background: #f7f9ff; */
+/*     border-radius: 7px; */
+/* } */
+
 @media (max-width: 767px) {
     .imgBackground {
         background: #f7f9ff;

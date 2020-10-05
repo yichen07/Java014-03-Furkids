@@ -199,7 +199,7 @@
 		<div class="modal-content">
 		
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalCenterTitle">登入系統</h5>
+				<h4 class="modal-title" id="exampleModalCenterTitle" style="color: #0090d3"><b>登入系統</b></h4>
 				<button type="button" class="close" data-dismiss="modal"
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -210,7 +210,7 @@
 
 				<form:form method="POST" modelAttribute="loginBean" action="${pageContext.request.contextPath}/login" enctype='multipart/form-data'>
 					<div class="form-group">
-					    <label for="exampleInputAccount">帳號</label>
+					    <label for="exampleInputAccount">帳號 / 電子信箱</label>
 					    <form:input class="form-control" path="userId" id="exampleInputAccount" aria-describedby="emailHelp" placeholder="Account" />
 					   	<font class="errhide" color="red"><form:errors  path="userId" cssClass="errors" /></font>
 					</div>
@@ -285,7 +285,7 @@
 		role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalCenterTitle">註冊系統</h5>
+				<h4 class="modal-title" id="exampleModalCenterTitle" style="color: #0090d3"><b>註冊系統</b></h4>
 				<button type="button" class="close" data-dismiss="modal"
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -317,7 +317,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">訊息提示</h5>
+        <h4 class="modal-title" id="exampleModalLabel" style="color: #0090d3"><b>訊息提示</b></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
