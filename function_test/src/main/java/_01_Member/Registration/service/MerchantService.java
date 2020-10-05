@@ -12,7 +12,7 @@ public interface MerchantService {
 	MerchantBean queryMerchant(String account);
 	
 	MerchantBean checkAccountPassword(String account, String password);
-//	Object checkAccountPassword(String account, String password);
+	
 	
 	
 	int saveMerchantChild(MerchantChildBean mb);

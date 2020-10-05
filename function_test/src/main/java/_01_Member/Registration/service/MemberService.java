@@ -12,11 +12,8 @@ public interface MemberService {
 	MemberBean queryMember(String account);
 	
 	MemberBean checkAccountPassword(String account, String password);
-//	Object checkAccountPassword(String account, String password);
-	
-	
+
 	int savePet(PetBean pet);
 	
 	PetBean queryPet(String account);
-	
 }
