@@ -88,7 +88,7 @@
         </div>
         <div class="row">
             <div class="col-6 mx-auto">
-                <form action="<c:url value='/_01_Member/Login' />" method="POST">
+                <form action="<c:url value='/_06_Login/Login' />" method="POST">
                     <div class="form-group">
                         <label for="account"><p1>帳號：</p1></label>
                         <input type="text" name="account" value="${requestScope.account}${param.account}">

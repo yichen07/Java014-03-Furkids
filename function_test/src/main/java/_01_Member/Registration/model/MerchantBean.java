@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 @Entity
 @Table(name="merchantregistration")
 public class MerchantBean implements Serializable {
@@ -29,10 +31,10 @@ public class MerchantBean implements Serializable {
 	private String busFileName;
 	@Transient
 	final private Integer CLASSIFY = 1;
-	
-	@OneToMany(mappedBy = "merchantbean", cascade = CascadeType.ALL)
+	@Transient
+	MultipartFile merchantMultipartFile;
+	@OneToMany(mappedBy = "merchantBean", cascade = CascadeType.ALL)
 	private Set<MerchantChildBean> merchantChild = new LinkedHashSet<>();
-	
 	
 	public MerchantBean() {
 	}
@@ -148,14 +150,20 @@ public class MerchantBean implements Serializable {
 	}
 
 
+	public MultipartFile getMerchantMultipartFile() {
+		return merchantMultipartFile;
+	}
+
+	public void setMerchantMultipartFile(MultipartFile merchantMultipartFile) {
+		this.merchantMultipartFile = merchantMultipartFile;
+	}
+
 	public Set<MerchantChildBean> getMerchantChild() {
 		return merchantChild;
 	}
 
-
 	public void setMerchantChild(Set<MerchantChildBean> merchantChild) {
 		this.merchantChild = merchantChild;
 	}
-	
 	
 }

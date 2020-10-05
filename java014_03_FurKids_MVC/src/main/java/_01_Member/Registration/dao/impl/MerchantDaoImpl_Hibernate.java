@@ -1,6 +1,7 @@
 package _01_Member.Registration.dao.impl;
 
 import java.sql.Connection;
+import java.util.List;
 
 import javax.persistence.NoResultException;
 
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Repository;
 
 import _01_Member.Registration.dao.MerchantDao;
 import _01_Member.Registration.model.MerchantBean;
-import _01_Member.util.HibernateUtils;
 
 @Repository
 public class MerchantDaoImpl_Hibernate implements MerchantDao {
@@ -35,6 +35,31 @@ public class MerchantDaoImpl_Hibernate implements MerchantDao {
 		Session session = factory.getCurrentSession();
 		session.save(mb);
 		n++;
+		return n;
+	}
+	
+	// 更新MerchantBean物件，更新資料庫MerchantRegistration表格中的商家資料。
+	@Override
+	public int updateMerchant(MerchantBean mb) {
+		int n = 0;
+		if (mb != null && mb.getBusAccount() != null) {
+			Session session = factory.getCurrentSession();
+			session.saveOrUpdate(mb);
+			n++;			
+		}
+		return n;
+	}
+		
+	// 刪除MerchantBean物件，刪除資料庫MerchantRegistration表格中的商家資料。
+	@Override
+	public int deleteMerchant(String account) {
+		int n = 0;
+		MerchantBean mb = queryMerchant(account);
+		if (mb != null) {
+			Session session = factory.getCurrentSession();
+			session.delete(mb);
+			n++;			
+		}
 		return n;
 	}
 
@@ -78,6 +103,23 @@ public class MerchantDaoImpl_Hibernate implements MerchantDao {
 		return mb;
 	}
 
+	// 由MerchantRegistration表格中取得所有商家的資料，
+	@SuppressWarnings("unchecked")
+	// 傳回值為一個MerchantBean的List物件；如果找不到對應的商家資料，傳回值為null。
+	@Override
+	public List<MerchantBean> queryAllMerchants() {
+		List<MerchantBean> mbs = null;
+		Session session = factory.getCurrentSession();
+		String hql = "FROM MerchantBean";
+		try {
+			mbs = session.createQuery(hql).getResultList();
+		} catch (Exception e) {
+//			e.printStackTrace();
+			mbs = null;
+		}
+		return mbs;
+	}
+	
 	// 檢查使用者在登入時輸入的帳號密碼是否正確。
 	// 如果正確傳回該帳號所對應的MerchantBean物件，否則傳回null。
 	@Override

@@ -12,5 +12,5 @@ public interface MerchantChildDao {
 	
 	public boolean merchantChildExists(String account, String address);
 	
-	public void setConnection(Connection con); // 在Hibernate中不需要此方法。
+	public void setConnection(Connection con);
 }

@@ -1,6 +1,7 @@
 package _01_Member.Registration.dao.impl;
 
 import java.sql.Connection;
+import java.util.List;
 
 import javax.persistence.NoResultException;
 
@@ -12,17 +13,12 @@ import org.springframework.stereotype.Repository;
 
 import _01_Member.Registration.dao.MemberDao;
 import _01_Member.Registration.model.MemberBean;
-import _01_Member.util.HibernateUtils;
 
 @Repository
 public class MemberDaoImpl_Hibernate implements MemberDao {
 	
-	SessionFactory factory;
-	
 	@Autowired
-	public void setFactory(SessionFactory factory) {
-		this.factory = factory;
-	}
+	SessionFactory factory;
 	
 	public MemberDaoImpl_Hibernate() {
 //		this.factory = HibernateUtils.getSessionFactory();
@@ -38,6 +34,30 @@ public class MemberDaoImpl_Hibernate implements MemberDao {
 		return n;
 	}
 
+	// 更新MemberBean物件，更新資料庫MembraneRegistration表格中的會員資料。
+	@Override
+	public int updateMember(MemberBean mb) {
+		int n = 0;
+		if (mb != null && mb.getCusAccount() != null) {
+			Session session = factory.getCurrentSession();
+			session.saveOrUpdate(mb);
+			n++;			
+		}
+		return n;
+	}
+	
+	// 刪除MemberBean物件，刪除資料庫MembraneRegistration表格中的會員資料。
+	@Override
+	public int deleteMember(String account) {
+		int n = 0;
+		MemberBean mb = queryMember(account);
+		if (mb != null) {
+			Session session = factory.getCurrentSession();
+			session.delete(mb);
+			n++;			
+		}
+		return n;
+	}
 	
 	// 判斷參數CusAccount(會員帳號)是否已經被現有會員或商家使用，
 	// 如果是，傳回true，表示此CusAccount(會員帳號)不能使用，
@@ -80,6 +100,22 @@ public class MemberDaoImpl_Hibernate implements MemberDao {
 		return mb;
 	}
 
+	// 由MembraneRegistration表格中取得所有會員的資料，
+	// 傳回值為一個MemberBean的List物件；如果找不到對應的會員資料，傳回值為null。
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MemberBean> queryAllMembers() {
+		List<MemberBean> mbs = null;
+		Session session = factory.getCurrentSession();
+		String hql = "FROM MemberBean";
+		try {
+			mbs = session.createQuery(hql).getResultList();
+		} catch (NoResultException e) {
+//			e.printStackTrace();
+			mbs = null;
+		}
+		return mbs;
+	}
 	
 	// 檢查使用者在登入時輸入的帳號密碼是否正確。
 	// 如果正確傳回該帳號所對應的MemberBean物件，否則傳回null。
@@ -99,7 +135,7 @@ public class MemberDaoImpl_Hibernate implements MemberDao {
 		}
 		return mb;
 	}
-
+	
 	@Override
 	public void setConnection(Connection con) {
 		throw new RuntimeException("MemberDaoImpl_Hibernate類別不支援setConnection()方法");

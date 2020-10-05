@@ -25,6 +25,7 @@
 	
 	<%-- 導覽列下拉滑動特效 --%>
 	<style>
+		
  		.dropdown:hover .dropdown-menu { 
  			display: block; 
  			transition: opacity .10s ease-out;
@@ -41,7 +42,7 @@
 	</style>
 
 <%-- Navbar --%>
-<nav class="navbar navbar-light navbar-expand-lg bg-white sticky-top shadow animate__animated animate__fadeInDown"
+<nav class="navbar navbar-light navbar-expand-lg bg-white sticky-top shadow"
 	id="navBar">
 	<div class="container">
 	
@@ -57,7 +58,7 @@
 		</button>
 		
 	<%-- 功能導覽列 --%>
-		<div class="collapse navbar-collapse justify-content-between"
+		<div class="collapse navbar-collapse justify-content-between animate__animated animate__fadeInDown"
 			id="navbarNavDropdown">
 			<%-- 功能導覽列置中 --%>
 			<div></div>
@@ -67,7 +68,7 @@
 				<li class="nav-item dropdown mx-2">
 					<a class="nav-link dropdown-toggle nav-font" href="<c:url value='#' />" 
 						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						 <i class="fas fa-store-alt"></i>&nbsp;寵物商城 
+						 <i class="fas fa-store-alt" style="color: grey"></i>&nbsp;寵物商城 
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
@@ -79,7 +80,7 @@
 				<li class="nav-item dropdown mx-2">
 					<a class="nav-link dropdown-toggle nav-font" href="<c:url value='#' />"
 						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-handshake"></i>&nbsp;寵物交流版
+						<i class="fas fa-handshake" style="color: grey"></i>&nbsp;寵物交流版
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
@@ -91,7 +92,7 @@
 				<li class="nav-item dropdown mx-2">
 					<a class="nav-link dropdown-toggle nav-font" href="<c:url value='#' />"
 						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-hand-holding-heart"></i>&nbsp;寵物友善系統
+						<i class="fas fa-hand-holding-heart" style="color: grey"></i>&nbsp;寵物友善系統
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/景點/1' />">景點</a>
@@ -105,12 +106,12 @@
 				<li class="nav-item dropdown ml-2 mr-5">
 					<a class="nav-link dropdown-toggle nav-font" href="<c:url value='#' />"
 						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-user-md"></i>&nbsp;寵物健康管理 
+						<i class="fas fa-user-md" style="color: grey"></i>&nbsp;寵物健康管理 
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
-						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
-						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
+						<a class="dropdown-item" href="<c:url value='#' />">熱量管理</a>
+						<a class="dropdown-item" href="<c:url value='#' />">寵物諮詢</a>
+						<a class="dropdown-item" href="<c:url value='#' />">疫苗資訊</a>
 					</div>
 				</li>
 				
@@ -135,13 +136,9 @@
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item"
-									href="<c:url value='/_01_Member/PetRegistration' />">寵物新增</a>
+									href="<c:url value='/PetRegistration' />">寵物新增</a>
 								<a class="dropdown-item" 
-									href="<c:url value='#' />">會員管理</a> 
-								<a class="dropdown-item" 
-									href="<c:url value='#' />">會員功能_三</a>
-								<a class="dropdown-item" 
-									href="<c:url value='#' />">會員功能_四</a>
+									href="<c:url value='/MemberManagementCenter' />">會員管理</a> 
 							</div>
 						</div>
 					</c:when>
@@ -155,13 +152,11 @@
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item"
-									href="<c:url value='/_01_Member/MerchantChildRegistration' />">分店新增</a>
+									href="<c:url value='/MerchantChildRegistration' />">分店新增</a>
 								<a class="dropdown-item" 
-									href="<c:url value='#' />">商家管理</a> 
+									href="<c:url value='/MerchantManagementCenter' />">商家管理</a> 
 								<a class="dropdown-item"
-									href="<c:url value='/_03_FriendlySystem/ViewSessionStatus_setComplete' />">服務上架</a>
-								<a class="dropdown-item" 
-									href="<c:url value='#' />">商家功能_四</a>
+									href="<c:url value='/_03_FriendlySystem/ViewSessionStatus_setComplete' />">商家服務上架</a>
 							</div>
 						</div>
 					</c:when>
@@ -175,7 +170,7 @@
 				<%-- 登出 --%>
 				<c:if test="${ ! empty LoginOK }">
 					<a href="<c:url value='#' />" class="m-2 logout" onclick="logout()">
-						<i class="fas fa-sign-out-alt fa-lg" style="color: grey"></i>
+						<i class="fas fa-sign-out-alt fa-lg" style="color: black"></i>
 					</a>
 					
 				</c:if>
@@ -299,8 +294,8 @@
 			<div class="modal-body">
 				<div class="container-fluid">
 					<div class="row justify-content-center">
-						<div class="col-6 text-center"><a href="<c:url value='/_01_Member/MemberRegistration' />">會員註冊</a></div>
-						<div class="col-6 text-center"><a href="<c:url value='/_01_Member/MerchantRegistration' />">商家註冊</a></div>
+						<div class="col-6 text-center"><a href="<c:url value='/MemberRegistration' />">會員註冊</a></div>
+						<div class="col-6 text-center"><a href="<c:url value='/MerchantRegistration' />">商家註冊</a></div>
 					</div>
 				</div>
 			</div>
@@ -345,13 +340,14 @@
 
 
 <%-- Javascript --%>
-	
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
-	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
-	integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" 
-	integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"  -->
+<!-- 	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"  -->
+<!-- 	integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script> -->
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"  -->
+<!-- 	integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> -->
+ 
 
 	<%-- Icon --%>
 <script
@@ -417,12 +413,23 @@
 <%-- 登入與註冊畫面切換 --%>
 <script language="javascript"> 
 	function changeModal(){
+
+		$("#regis").on("show.bs.modal",function(e){
+			$('#login').modal('hide');
+		});
+
+		$("#login").on("show.bs.modal",function(e){
+			$('#regis').modal('hide');
+		});
+		
+		/*
 		if ($('#regis').modal('show')){
 			$('#login').modal('hide')
-		}
+		} 
 		if ($('#login').modal('show')) {
 			$('#regis').modal('hide')
 		}
+		*/
 	}
 </script>
 

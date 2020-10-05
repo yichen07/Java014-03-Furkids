@@ -7,6 +7,7 @@
 
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="<c:url value='/resources/images/logo_08_iP6_6.ico' />" type="image/x-icon" />
 <title>會員註冊</title>
 <style type="text/css">
 span.error {

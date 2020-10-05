@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 
 <%-- 適用不同裝置畫面呈現 --%>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -44,7 +46,7 @@
 	<div class="container">
 	
 	<%-- Logo --%>
-		<a class="navbar-brand mb-1" href="<c:url value='/index.jsp' />"><img
+		<a class="navbar-brand mb-1" href="<c:url value='/' />"><img
 			src="<c:url value='/resources/images/Logo_07.png' />" alt="Logo" height="26" /></a>
 			
 	<%-- 漢堡選單 --%>		
@@ -92,9 +94,11 @@
 						<i class="fas fa-hand-holding-heart"></i>&nbsp;寵物友善系統
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
-						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
-						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
+						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/景點/1' />">景點</a>
+						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/餐廳/1' />">餐廳</a>
+						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/美容/1' />">寵物美容</a>
+						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/旅館/1' />">寵物旅館</a>
+						
 					</div>
 				</li>
 				<%-- 寵物健康管理 --%>
@@ -119,7 +123,7 @@
 					<c:when test="${empty LoginOK}">
 						<a href="<c:url value='#' />" class="ml-4 m-2" data-toggle="modal" data-target="#login"> 
 							<i class="fas fa-user navbar-user fa-lg"></i>
-						</a>
+						</a>						
 					</c:when>
 					<%-- 會員(已登入) --%>
 					<c:when test="${LoginOK.CLASSIFY == 0}">
@@ -131,7 +135,7 @@
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item"
-									href="<c:url value='/_01_Member/PetRegistration.jsp' />">寵物新增</a>
+									href="<c:url value='/_01_Member/PetRegistration' />">寵物新增</a>
 								<a class="dropdown-item" 
 									href="<c:url value='#' />">會員管理</a> 
 								<a class="dropdown-item" 
@@ -151,11 +155,11 @@
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item"
-									href="<c:url value='/_01_Member/MerchantChildRegistration.jsp' />">分店新增</a>
+									href="<c:url value='/_01_Member/MerchantChildRegistration' />">分店新增</a>
 								<a class="dropdown-item" 
 									href="<c:url value='#' />">商家管理</a> 
 								<a class="dropdown-item"
-									href="<c:url value='/_03_ConvenienceProcess/Convenience_H.do' />">服務上架</a>
+									href="<c:url value='/_03_FriendlySystem/ViewSessionStatus_setComplete' />">服務上架</a>
 								<a class="dropdown-item" 
 									href="<c:url value='#' />">商家功能_四</a>
 							</div>
@@ -170,9 +174,10 @@
 				
 				<%-- 登出 --%>
 				<c:if test="${ ! empty LoginOK }">
-					<a href="<c:url value='#' />" class="m-2" onclick="logout()">
+					<a href="<c:url value='#' />" class="m-2 logout" onclick="logout()">
 						<i class="fas fa-sign-out-alt fa-lg" style="color: grey"></i>
 					</a>
+					
 				</c:if>
 					
 			</div>
@@ -208,7 +213,37 @@
 			
 			<div class="modal-body">
 
-				<form action="<c:url value='/_01_Member/Login' />" method="POST" name="loginForm">
+				<form:form method="POST" modelAttribute="loginBean" action="${pageContext.request.contextPath}/login" enctype='multipart/form-data'>
+					<div class="form-group">
+					    <label for="exampleInputAccount">帳號</label>
+					    <form:input class="form-control" path="userId" id="exampleInputAccount" aria-describedby="emailHelp" placeholder="Account" />
+					   	<font class="errhide" color="red"><form:errors  path="userId" cssClass="errors" /></font>
+					</div>
+					<div class="form-group">
+					    <label for="exampleInputPassword">密碼</label>
+					    <form:input type="password" class="form-control" path="password" id="exampleInputPassword" placeholder="Password" />
+					    <font class="errhide" color="red"><form:errors  path="password" cssClass="errors" /></font>
+					</div> 
+					<div class="form-group form-check">	
+					    <form:checkbox class="form-check-input" path="rememberMe" id="exampleCheck" />
+					    <label class="form-check-label" for="exampleCheck">記住我</label>
+					</div>
+					<div class="text-center">
+						<small class="form-text text-muted"><font class="errhide" color="red">${LoginError} ${errorNotLogin}</font></small>
+					</div>
+					<div class="modal-footer justify-content-center">
+						<button type="submit" class="btn btn-outline-primary">登入</button>
+					</div>
+					<div class="col-md-12">
+              			<p class="font-small white-text d-flex justify-content-center">尚未創建帳號
+              			<a href="<c:url value='#' />" class="green-text ml-1 font-weight-bold" data-toggle="modal" data-target="#regis" onclick="changeModal()">立即註冊</a></p>
+              		</div>
+				</form:form>
+				
+				
+				<%-- 
+
+				<form action="<c:url value='/login' />" method="POST" name="loginForm">
 					<div class="form-group">
 					    <label for="exampleInputAccount">帳號</label>
 					    <input type="text" class="form-control" name="userId" id="exampleInputAccount" aria-describedby="emailHelp" placeholder="Account" value="${requestScope.user}${param.userId}">
@@ -238,6 +273,10 @@
               			<a href="<c:url value='#' />" class="green-text ml-1 font-weight-bold" data-toggle="modal" data-target="#regis" onclick="changeModal()">立即註冊</a></p>
               		</div>
 				</form>
+				
+				--%>
+				
+
             </div>
 		</div>
 	</div>
@@ -260,10 +299,8 @@
 			<div class="modal-body">
 				<div class="container-fluid">
 					<div class="row justify-content-center">
-<%-- 						<a href="${pageContext.request.contextPath}/_01_Member/MemberRegistration.jsp"><div class="col-6 text-center">會員註冊</div></a> --%>
-<%-- 						<a href="${pageContext.request.contextPath}/_01_Member/MerchantRegistration.jsp"><div class="col-6 text-center">商家註冊</div></a> --%>
-						<div class="col-6 text-center"><a href="<c:url value='/_01_Member/MemberRegistration.jsp' />">會員註冊</a></div>
-						<div class="col-6 text-center"><a href="<c:url value='/_01_Member/MerchantRegistration.jsp' />">商家註冊</a></div>
+						<div class="col-6 text-center"><a href="<c:url value='/_01_Member/MemberRegistration' />">會員註冊</a></div>
+						<div class="col-6 text-center"><a href="<c:url value='/_01_Member/MerchantRegistration' />">商家註冊</a></div>
 					</div>
 				</div>
 			</div>
@@ -292,12 +329,12 @@
       </div>
       <div class="modal-body">
 			<div class="text-center">
-				<font color="red">${MsgOK.InsertOK} ${LoginOKMsg} ${sessionScope.timeOut}</font>
+				<font color="red">${InsertOK} ${FlashMSG_farewell} ${sessionScope.timeOut}</font>
 			</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-        <a href="<c:url value='/index.jsp' />"><button type="button" class="btn btn-primary">回首頁</button></a>
+        <a href="<c:url value='/' />"><button type="button" class="btn btn-primary">回首頁</button></a>
       </div>
     </div>
   </div>
@@ -325,43 +362,30 @@
 <!-- 	src="../resources/javascript/blogIndex.js"></script> -->
 
 <%-- 登入時，如有錯誤，重新導回登入畫面 --%>
-<c:if test="${!empty ErrorMsgKey}">
+<c:if test="${!empty LoginError || !empty LoginInputError}">
 	<script>
 		$('#login').modal('show')
 	</script>
 </c:if>
 
 <%-- 未登入，執行登入後功能時，重新導回登入畫面 --%>
-<c:if test="${!empty MsgMap.errorNotLogin}">
+<c:if test="${!empty errorNotLogin}">
 	<script>
 		$('#login').modal('show')
 	</script>
-	<% session.removeAttribute("MsgMap"); %>
 </c:if>
 
-<%-- 新增(含註冊、分店與寵物新增)、登入成功與使用逾時時，顯示提示視窗 --%>
-<c:if test="${!empty MsgOK.InsertOK}">
+<%-- 新增(含註冊、分店與寵物新增)、登入、登出成功與使用逾時時，顯示提示視窗 --%>
+<c:if test="${!empty InsertOK}">
 	<script>
 		$('#messages').modal('show');
 		setTimeout(function() {
             $('#messages').modal('hide') // 3秒後，modal消失。
         }, 3000);
 	</script>
-	<% session.removeAttribute("MsgOK"); %>
 </c:if>
 
-<c:if test="${!empty LoginOKMsg}">
-	<script>
-		$('#messages').modal('show');
-		setTimeout(function() {
-            $('#messages').modal('hide') // 3秒後，modal消失。
-        }, 3000);
-	</script>
-	<% session.removeAttribute("LoginOKMsg"); %>
-</c:if>
-
-
-<c:if test="${!empty timeOut}">
+<c:if test="${!empty sessionScope.timeOut}">
 	<script>
 		$('#messages').modal('show');
 		setTimeout(function() {
@@ -371,12 +395,21 @@
 	<% session.removeAttribute("timeOut"); %>
 </c:if>
 
+<c:if test="${!empty FlashMSG_farewell}">
+	<script>
+		$('#messages').modal('show');
+		setTimeout(function() {
+            $('#messages').modal('hide') // 3秒後，modal消失。
+        }, 3000);
+	</script>
+</c:if>
+
 
 <%-- 登出時，跳出詢問視窗 --%>
 <script language="javascript"> 
 	function logout(){ 
 	    if (confirm("您確定要登出嗎？")){ 
-	    	window.location.href="/java014_03_FurKids/_01_Member/logout.jsp"
+	    	$('.logout').attr('href', '${pageContext.request.contextPath}/logout')
 	    } 
 	} 
 </script>

@@ -6,17 +6,25 @@ import javax.persistence.NoResultException;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import _01_Member.Registration.dao.PetDao;
 import _01_Member.Registration.model.PetBean;
 import _01_Member.util.HibernateUtils;
 
+@Repository
 public class PetDaoImpl_Hibernate implements PetDao {
 	
 	SessionFactory factory;
 	
+	@Autowired
+	public void setFactory(SessionFactory factory) {
+		this.factory = factory;
+	}
+	
 	public PetDaoImpl_Hibernate() {
-		this.factory = HibernateUtils.getSessionFactory();
+//		this.factory = HibernateUtils.getSessionFactory();
 	}
 
 	// 儲存PetBean物件，將會員新增寵物資料pet新增到資料庫PetRegistration表格中。

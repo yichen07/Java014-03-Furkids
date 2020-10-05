@@ -55,7 +55,7 @@
 <!-- Main Start--------------------------------------------------------------------------->
 	<div class="container-fluid mainContent">
 		<!-- Slide Bar Start -->
-		<div class="float-left">
+		<div class="sidebar-initial float-left sticky-top">
 			<div class="wrapper row">
 				<div class="main_body">
 					<div class="sidebar_menu">

@@ -1,6 +1,7 @@
 package _01_Member.Registration.dao.impl;
 
 import java.sql.Connection;
+import java.util.List;
 
 import javax.persistence.NoResultException;
 
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Repository;
 
 import _01_Member.Registration.dao.MerchantChildDao;
 import _01_Member.Registration.model.MerchantChildBean;
-import _01_Member.util.HibernateUtils;
 
 @Repository
 public class MerchantChildDaoImpl_Hibernate implements MerchantChildDao {
@@ -39,19 +39,14 @@ public class MerchantChildDaoImpl_Hibernate implements MerchantChildDao {
 	}
 
 	// 由參數BusAccount(商家帳號)到MerchantChildRegistration表格中取得某個商家的所有資料，
+	@SuppressWarnings("unchecked")
 	// 傳回值為一個MerchantChildBean的物件；如果找不到對應的商家資料，傳回值為null。
 	@Override
-	public MerchantChildBean queryMerchantChild(String account) {
-		MerchantChildBean mcb = null;
+	public List<MerchantChildBean> queryAllMerchantChilds(String account) {
 		Session session = factory.getCurrentSession();
 		String hql = "FROM MerchantChildBean m WHERE m.busAccount = :account";
-		try {
-			mcb = (MerchantChildBean) session.createQuery(hql).setParameter("account", account).getResultList();
-		} catch (NoResultException e) {
-			e.printStackTrace();
-			mcb = null;
-		}
-		return mcb;
+		List<MerchantChildBean> mcbs = session.createQuery(hql).setParameter("account", account).getResultList();
+		return mcbs;
 	}
 
 	// 判斷參數CusAccount(會員帳號)是否已經被現有會員或商家使用，

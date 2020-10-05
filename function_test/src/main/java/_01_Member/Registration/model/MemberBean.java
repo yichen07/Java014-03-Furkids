@@ -3,16 +3,13 @@ package _01_Member.Registration.model;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Date;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 @Entity
 @Table(name="membraneregistration")
 public class MemberBean implements Serializable {
@@ -32,11 +29,9 @@ public class MemberBean implements Serializable {
 	private String cusFileName;
 	@Transient
 	final private Integer CLASSIFY = 0;
+	@Transient
+	MultipartFile memberMultipartFile;
 	
-	// 雙向一對多
-	@OneToMany
-	@JoinColumn(name = "cusAccount")
-	Set<PetBean> pet = new LinkedHashSet<>();
 
 	
 	public MemberBean() {
@@ -151,13 +146,11 @@ public class MemberBean implements Serializable {
 		return CLASSIFY;
 	}
 
-	public Set<PetBean> getPet() {
-		return pet;
+	public MultipartFile getMemberMultipartFile() {
+		return memberMultipartFile;
 	}
 
-	public void setPet(Set<PetBean> pet) {
-		this.pet = pet;
+	public void setMemberMultipartFile(MultipartFile memberMultipartFile) {
+		this.memberMultipartFile = memberMultipartFile;
 	}
-
-	
 }

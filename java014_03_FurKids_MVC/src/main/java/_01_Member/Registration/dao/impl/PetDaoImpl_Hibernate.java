@@ -1,8 +1,7 @@
 package _01_Member.Registration.dao.impl;
 
 import java.sql.Connection;
-
-import javax.persistence.NoResultException;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import _01_Member.Registration.dao.PetDao;
 import _01_Member.Registration.model.PetBean;
-import _01_Member.util.HibernateUtils;
+
 
 @Repository
 public class PetDaoImpl_Hibernate implements PetDao {
@@ -38,19 +37,14 @@ public class PetDaoImpl_Hibernate implements PetDao {
 	}
 
 	// 由參數BusAccount(商家帳號)到PetRegistration表格中取得某個會員的所有寵物資料，
+	@SuppressWarnings("unchecked")
 	// 傳回值為一個PetBean的物件；如果找不到對應的會員寵物資料，傳回值為null。
 	@Override
-	public PetBean queryPet(String account) {
-		PetBean pet = null;
+	public List<PetBean> queryAllPets(String account) {
 		Session session = factory.getCurrentSession();
 		String hql = "FROM PetBean p WHERE p.cusAccount = :account";
-		try {
-			pet = (PetBean) session.createQuery(hql).setParameter("account", account).getResultList();
-		} catch (NoResultException e) {
-			e.printStackTrace();
-			pet = null;
-		}
-		return pet;
+		List<PetBean> pets = session.createQuery(hql).setParameter("account", account).getResultList();
+		return pets;
 	}
 
 	@Override
