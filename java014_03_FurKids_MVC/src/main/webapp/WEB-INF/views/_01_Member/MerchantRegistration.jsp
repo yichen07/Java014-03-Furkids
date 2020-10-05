@@ -65,8 +65,7 @@
 								<div
 									class="col-3 d-flex-column justify-content-center align-items-center text-center">
 									<div class="mb-1">
-										<img src="<c:url value='/resources/images/_01_Member/info-circle-solid.svg'/>" id="show_image" style="width:50px; height:auto; border-radius:50%; border: 1px solid gray"/>
-										<i class="fas fa-user-circle fa-fw leftIcon"></i>
+										<img src="<c:url value='resources/images/_01_Member/user-circle-solid.svg'/>" class="leftUserIcon" id="show_image" style="height: 50px; width: 50px" />
 									</div>
 									<div class="pb-3">
 										<h5 class="leftTitle">基本資料</h5>
@@ -147,7 +146,7 @@
 										<form:errors path="busAddress" cssClass="error" style="color: red" />
 									</div>
 									<div class="input-group">
-										<form:input type="tel" path='busTel' required="" class="w-80"
+										<form:input type="text" path='busTel' required="" class="w-80"
 											id="inputStyle" /> <span class="colTitle">電話</span>
 										<form:errors path="busTel" cssClass="error" style="color: red" />
 									</div>
@@ -230,9 +229,13 @@
 	<script src="https://kit.fontawesome.com/8e822d04fb.js"
 		crossorigin="anonymous"></script>
 
+
+	<!-- banner effect -->
+	<script src="<c:url value='/resources/javascript/jquery.stellar.js' />"></script>
+	
 	<!-- Taiwan Address -->
-	<script type="text/javascript"
-		src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<!-- 	<script type="text/javascript" -->
+<!-- 		src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> -->
 <%--     <script src="<c:url value='/resources/javascript/jquery.twzipcode_mvc.js' />"></script> --%>
 
 	<!-- JavaScript Plug-in End------------------------------------------------------------->
@@ -256,10 +259,6 @@
         readFile.addEventListener("load", function (e) {
             let image = document.getElementById("show_image");
             image.src = this.result;
-
-            // image.width = 500 ;
-            image.style.maxWidth = "200px"; //css屬性
-            image.style.maxHeight = "200px";
           });
       });
       </script>
