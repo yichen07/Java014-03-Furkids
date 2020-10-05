@@ -353,6 +353,8 @@
 <script
     src="https://kit.fontawesome.com/8e822d04fb.js" crossorigin="anonymous"></script>
 
+<%--
+
 	<%-- Nav特效 --%>
 <!-- <script  -->
 <!-- 	src="../resources/javascript/blogIndex.js"></script> -->
@@ -360,67 +362,67 @@
 <%-- 登入時，如有錯誤，重新導回登入畫面 --%>
 <c:if test="${!empty LoginError || !empty LoginInputError}">
 	<script>
-		$('#login').modal('show')
+// 		$('#login').modal('show')
 	</script>
 </c:if>
 
 <%-- 未登入，執行登入後功能時，重新導回登入畫面 --%>
 <c:if test="${!empty errorNotLogin}">
 	<script>
-		$('#login').modal('show')
+// 		$('#login').modal('show')
 	</script>
 </c:if>
 
 <%-- 新增(含註冊、分店與寵物新增)、登入、登出成功與使用逾時時，顯示提示視窗 --%>
 <c:if test="${!empty InsertOK}">
 	<script>
-		$('#messages').modal('show');
-		setTimeout(function() {
-            $('#messages').modal('hide') // 3秒後，modal消失。
-        }, 3000);
+// 		$('#messages').modal('show');
+// 		setTimeout(function() {
+//             $('#messages').modal('hide') // 3秒後，modal消失。
+//         }, 3000);
 	</script>
 </c:if>
 
 <c:if test="${!empty sessionScope.timeOut}">
 	<script>
-		$('#messages').modal('show');
-		setTimeout(function() {
-            $('#messages').modal('hide') // 3秒後，modal消失。
-        }, 3000);
+// 		$('#messages').modal('show');
+// 		setTimeout(function() {
+//             $('#messages').modal('hide') // 3秒後，modal消失。
+//         }, 3000);
 	</script>
-	<% session.removeAttribute("timeOut"); %>
+<%-- 	<% session.removeAttribute("timeOut"); %> --%>
 </c:if>
 
 <c:if test="${!empty FlashMSG_farewell}">
 	<script>
-		$('#messages').modal('show');
-		setTimeout(function() {
-            $('#messages').modal('hide') // 3秒後，modal消失。
-        }, 3000);
+// 		$('#messages').modal('show');
+// 		setTimeout(function() {
+//             $('#messages').modal('hide') // 3秒後，modal消失。
+//         }, 3000);
 	</script>
 </c:if>
 
 
 <%-- 登出時，跳出詢問視窗 --%>
 <script language="javascript"> 
-	function logout(){ 
-	    if (confirm("您確定要登出嗎？")){ 
-	    	$('.logout').attr('href', '${pageContext.request.contextPath}/logout')
-	    } 
-	} 
+// 	function logout(){ 
+// 	    if (confirm("您確定要登出嗎？")){ 
+// 	    	$('.logout').attr('href', '${pageContext.request.contextPath}/logout')
+// 	    } 
+// 	} 
 </script>
 
 <%-- 登入與註冊畫面切換 --%>
 <script language="javascript"> 
-	function changeModal(){
+// 	function changeModal(){
 
-		$("#regis").on("show.bs.modal",function(e){
-			$('#login').modal('hide');
-		});
+// 		$("#regis").on("show.bs.modal",function(e){
+// 			$('#login').modal('hide');
+// 		});
 
-		$("#login").on("show.bs.modal",function(e){
-			$('#regis').modal('hide');
-		});
+// 		$("#login").on("show.bs.modal",function(e){
+// 			$('#regis').modal('hide');
+// 		});
 		
 		/*
 		if ($('#regis').modal('show')){
@@ -430,14 +432,14 @@
 			$('#regis').modal('hide')
 		}
 		*/
-	}
+// 	}
 </script>
 
 <%-- 關閉Modal隱藏錯誤訊息 --%>
 <script type="text/javascript">
-	$("#login").on("hidden.bs.modal",function(e){
-	  $('.errhide').css('display', 'none');
-	});
+// 	$("#login").on("hidden.bs.modal",function(e){
+// 	  $('.errhide').css('display', 'none');
+// 	});
 </script>
 
 <%-- 禁用鍵盤F5功能 --%>
@@ -455,3 +457,4 @@
 //     }
 // } 
 </script>
+

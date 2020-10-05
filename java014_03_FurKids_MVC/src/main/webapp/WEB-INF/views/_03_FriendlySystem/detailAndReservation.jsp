@@ -44,7 +44,9 @@
 	<!-- JavaScript Plug-in ---------------------------------------------------------------->
 
 
-	
+	<!-- navigation bar js ------------------------------------->
+		<jsp:include page="/fragment/navigation_determine.jsp" />
+	<!-- navigation bar js End------------------------------------->
 	
 </body>
 </html>
