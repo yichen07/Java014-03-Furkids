@@ -43,14 +43,15 @@ public class RegisterController {
 	@Autowired
 	MerchantService merchantService;
 	
+// 日期格式
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-mm-dd"), true, 10));
 	}
 	
 	
-// 會員
-	@GetMapping("/_01_Member/MemberRegistration")
+// 會員註冊
+	@GetMapping("/MemberRegistration")
 	public String memberRegisterEmptyForm (Model model) {
 //		model.addAttribute("RequestPath","/_01_Member/MemberRegistration");
 		MemberBean memberBean = new MemberBean();
@@ -58,7 +59,7 @@ public class RegisterController {
 		return "_01_Member/MemberRegistration";
 	}
 	
-	@PostMapping("/_01_Member/MemberRegistration")
+	@PostMapping("/MemberRegistration")
 	public String memberRegisterProcessForm(
 			@ModelAttribute("memberBean") MemberBean memberBean,
 			BindingResult result, 
@@ -121,11 +122,10 @@ public class RegisterController {
 		
 		return "redirect:/";
 	}
+
 	
-	
-	
-// 商家	
-	@GetMapping("/_01_Member/MerchantRegistration")
+// 商家註冊	
+	@GetMapping("/MerchantRegistration")
 	public String merchantRegisterEmptyForm (Model model) {
 //		model.addAttribute("RequestPath","/_01_Member/MerchantRegistration");
 		MerchantBean merchantBean = new MerchantBean();
@@ -133,7 +133,7 @@ public class RegisterController {
 		return "_01_Member/MerchantRegistration";
 	}
 	
-	@PostMapping("/_01_Member/MerchantRegistration")
+	@PostMapping("/MerchantRegistration")
 	public String mrchantRegisterProcessForm(
 			@ModelAttribute("merchantBean") MerchantBean merchantBean,
 			BindingResult result, 
@@ -198,8 +198,8 @@ public class RegisterController {
 	}
 	
 	
-// 會員寵物	
-	@GetMapping("/_01_Member/PetRegistration")
+// 會員寵物新增	
+	@GetMapping("/PetRegistration")
 	public String petRegisterEmptyForm (Model model) {
 //		model.addAttribute("RequestPath","/_01_Member/PetRegistration");
 		PetBean petBean = new PetBean();
@@ -207,7 +207,7 @@ public class RegisterController {
 		return "_01_Member/PetRegistration";
 	}
 	
-	@PostMapping("/_01_Member/PetRegistration")
+	@PostMapping("/PetRegistration")
 	public String petRegisterProcessForm(
 			@ModelAttribute("petBean") PetBean petBean,
 			BindingResult result, 
@@ -221,7 +221,7 @@ public class RegisterController {
 		MemberBean memberBean = (MemberBean)model.getAttribute("LoginOK");
 		if (memberBean == null) {
 			redirectAtt.addFlashAttribute("errorNotLogin", "請先註冊或登入會員帳號");
-			return "redirect:/_01_Member/PetRegistration";
+			return "redirect:/PetRegistration";
 		} else {
 			cusAccount = memberBean.getCusAccount();
 //			petBean.setMemberBean(memberBean);
@@ -268,12 +268,12 @@ public class RegisterController {
 			System.out.println(e.getClass().getName() + ", e.getMessage()=" + e.getMessage());
 			result.rejectValue("petName", "", "發生異常，請通知系統人員..." + e.getMessage());
 		}			
-		return "redirect:/_01_Member/PetRegistration";
+		return "redirect:/PetRegistration";
 	}
 	
-	
-// 商家分店	
-	@GetMapping("/_01_Member/MerchantChildRegistration")
+
+// 商家分店新增	
+	@GetMapping("/MerchantChildRegistration")
 	public String merchantChildRegisterEmptyForm (Model model) {
 //		model.addAttribute("RequestPath","/_01_Member/MerchantChildRegistration");
 		MerchantChildBean merchantChildBean = new MerchantChildBean();
@@ -281,7 +281,7 @@ public class RegisterController {
 		return "_01_Member/MerchantChildRegistration";
 	}
 	
-	@PostMapping("/_01_Member/MerchantChildRegistration")
+	@PostMapping("/MerchantChildRegistration")
 	public String mrchantChildRegisterProcessForm(
 			@ModelAttribute("merchantChildBean") MerchantChildBean merchantChildBean,
 			BindingResult result, 
@@ -294,7 +294,7 @@ public class RegisterController {
 		MerchantBean merchantBean = (MerchantBean)model.getAttribute("LoginOK");
 		if (merchantBean == null) {
 			redirectAtt.addFlashAttribute("errorNotLogin", "請先註冊或登入商家帳號");
-			return "redirect:/_01_Member/MerchantChildRegistration";
+			return "redirect:/MerchantChildRegistration";
 		} else {
 			busAccount = merchantBean.getBusAccount();
 //			merchantChildBean.setMerchantBean(merchantBean);
@@ -346,11 +346,10 @@ public class RegisterController {
 			} catch (Exception e) {
 				System.out.println(e.getClass().getName() + ", e.getMessage()=" + e.getMessage());
 				result.rejectValue("busChildName", "", "發生異常，請通知系統人員...");
-				return "_01_Member/MerchantChildRegistration";
 			}			
 		}
 		
-		return "redirect:/_01_Member/MerchantChildRegistration";
+		return "redirect:/MerchantChildRegistration";
 	}
 
 
