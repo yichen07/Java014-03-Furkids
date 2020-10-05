@@ -1,0 +1,426 @@
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+
+body {
+    font-family: "Tahoma", "cwTeXYen", sans-serif;
+
+    background: url(../../images/_01_Member/MerchantRegistration_background.jpg);
+    background-size: cover;
+}
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+/* NavBar -------------------------------------------------------------------------> */
+
+.navbar-collapse ul li a.nav-link:before {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: transparent;
+    content: "";
+    opacity: 0;
+    -ms-transition: opacity 0.3s, -webkit-transform 0.3s;
+    -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+    transition: opacity 0.3s, transform 0.3s;
+    -ms-transform: translateY(10px);
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+}
+
+.navbar-collapse ul li:hover a.nav-link:before {
+    opacity: 1;
+    -ms-transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    bottom: 0px;
+    background: #447ee9;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #447ee9;
+}
+
+.navbar-cart {
+    color: #262626;
+    font-size: 18px;
+}
+.navbar-user {
+    color: #262626;
+    font-size: 18px;
+}
+.dropdown-toggle::after {
+    content: none;
+}
+.bg-white {
+    font-weight: 500 !important;
+    font-size: 19px !important;
+    color: #262626 !important;
+}
+.nav-font {
+    color: #262626 !important;
+}
+
+/* NavBar End-------------------------------------------------------------------------> */
+
+.imgBackground {
+    background: url(../../images/_01_Member/MerchantRegistration_background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/* Main Form Start ----------------------------------------------------------------> */
+
+/* 瀏覽歷史紀錄顏色 Start */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: transparent !important;
+    background-image: none !important;
+    -webkit-box-shadow: 0 0 0 1000px #f7f9ff inset !important;
+    -webkit-text-fill-color:#808aa0;
+}
+/* 瀏覽歷史紀錄顏色 End */
+.formTitle {
+    color: #575757;
+    font-weight: 600;
+    font-size: 40px;
+}
+.leftIcon {
+    font-size: 35px;
+    color: #9abafd;
+}
+.leftTitle {
+    color: #9abafd;
+    font-weight: 500;
+}
+
+.wrapper {
+    background: #f7f9ff;
+    padding: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.wrapper .input-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 25px;
+    background: transparent;
+}
+.input-group:hover {
+    border-radius: 7px;
+
+    border: none;
+}
+#eyeInput,
+#inputStyle,
+#eyeInputCheck {
+    border-radius: 7px;
+    background: transparent;
+    color: #808aa0;
+}
+.wrapper .input-group input {
+    height: 50px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    font-size: 24px;
+    outline: none;
+    border: 2px solid rgb(209, 215, 223);
+    border-radius: 7px;
+}
+#eyeInput:valid,
+.eyeInputCheck:valid {
+    background: transparent;
+}
+#inputStyle:valid {
+    background: transparent;
+}
+#eyeInput:focus,
+#inputStyle:focus {
+    border-radius: 7px;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    border: 2px solid #c5c5c5;
+}
+
+.wrapper .input-group .colTitle {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 0;
+    transition: 0.5s;
+    color: #8a8a8a;
+    pointer-events: none;
+    background: #f7f9ff;
+    font-weight: 400;
+}
+.eyePosition {
+    position: absolute;
+    right: 15px;
+    transform: translate(0, -50%);
+    top: 50%;
+    cursor: pointer;
+}
+.fa-eye {
+    font-size: 20px;
+    color: rgb(107, 107, 107);
+}
+.fa-eye-slash {
+    font-size: 20px;
+    color: rgb(107, 107, 107);
+}
+#eyeHide,
+#eyeHideCheck {
+    display: none;
+}
+.wrapper .input-group input:focus ~ .colTitle,
+.wrapper .input-group input:valid ~ .colTitle {
+    top: -14px;
+    left: 14px;
+    font-size: 17px;
+    padding: 0px 1px;
+    background: #f7f9ff;
+    border-radius: 7px;
+}
+@media (max-width: 767px) {
+    .imgBackground {
+        background: #f7f9ff;
+    }
+    .wrapper {
+        background: #f7f9ff;
+        box-shadow: none;
+    }
+}
+@media (max-width: 960px) {
+    .wrapperOut {
+        background: #f7f9ff;
+        box-shadow: none;
+    }
+    .wrapper {
+        background: #f7f9ff;
+        box-shadow: none;
+    }
+}
+/* --------------------------------------------------------- */
+
+/* Commit Terms Start -----------------------------------------------------------------> */
+
+/* Checked Box Start*/
+.checkStyle {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #ddd;
+    border-radius: 50%;
+    position: relative;
+    transition: background-color 0.4s;
+    top: 8px;
+    box-shadow: inset -2px -2px 2px rgba(255, 255, 255, 0.335), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+    border: #e0e0e0 solid 0.1px;
+    padding: 10px;
+    overflow: hidden;
+}
+#checkTerms:checked ~ .checkStyle {
+    background: #4f69d8;
+}
+
+.checkStyle::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 14px;
+    border-right: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateZ(40deg) scale(10);
+    opacity: 0;
+    transition: all 0.4s;
+}
+#checkTerms:checked ~ .checkStyle::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotateZ(40deg) scale(1);
+}
+.checkboxText {
+    padding-top: 6px;
+    word-break: break-all;
+    color: #777777;
+}
+
+/* Checked Box End*/
+
+/* Button Start-------------------------------->*/
+/* Ripple effect */
+.ripple {
+    background-position: center;
+    transition: 0.8s;
+}
+.ripple:hover {
+    background: #6a83f5 radial-gradient(circle, transparent 1%, #4775f5 1%) center/15000%;
+    -webkit-filter: drop-shadow(3px 3px 5px rgba(129, 129, 129, 0.7));
+    filter: drop-shadow(3px 3px 5px rgba(129, 129, 129, 0.7));
+}
+.ripple:active {
+    background-color: #5679d8;
+    background-size: 100%;
+    transition: 0s;
+}
+
+/* Button style */
+.buybtn {
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 55px 5px 55px;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: white;
+    background-color: #4f69d8;
+    box-shadow: 0 0 4px #999;
+    outline: none;
+}
+.buybtn:focus {
+    box-shadow: none;
+    outline: none;
+}
+.buybtnOutline {
+    margin-right: 10px;
+    border: 2px solid #4f69d8;
+    border-radius: 5px;
+    padding: 5px 50px 5px 50px;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #4f69d8;
+    background-color: #f7f9ff;
+    box-shadow: 0 0 4px #999;
+    outline: none;
+}
+.buybtnOutline:focus {
+    box-shadow: none;
+    outline: none;
+}
+.buybtnOutline:hover {
+    color: white;
+}
+
+.btnText {
+    font-family: "cwTeXYen", sans-serif;
+    font-size: 19px;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+/* Button Start-------------------------------->*/
+
+/* Commit Terms End -------------------------------------------------------------------> */
+/* Main Form End ----------------------------------------------------------------> */
+
+
+/* Address CSS */
+
+.form-control{
+    border-radius: 0;
+     border: none;
+     border-bottom: #adadad solid 2px;
+     background: white !important;
+     outline: none;
+ }
+   
+   .form-control-placeholder {
+     position: absolute;
+     top: 0;
+     padding: 0 0 0 0;
+     transition: all 200ms;
+     opacity: 0.5;
+     outline: none;
+   }
+   
+   .form-control:focus + .form-control-placeholder,
+   .form-control:valid + .form-control-placeholder {
+     font-size: 90%;
+     transform: translate3d(0, -90%, 0);
+     color: #637ef5 ;
+     opacity: 1; background: transparent;
+     outline: none;
+     padding-left: 0px;
+   }
+  
+ .city {
+     display: flex;
+     width: 190px;
+     margin-right: 40px;
+    padding-left: 0px;
+     font-weight: 500;
+ }
+ .city option{
+     color: #323744;
+     font-weight: 00;
+ }
+ 
+ .town {
+     display: flex;
+     width: 190px;
+     margin-right: 30px;
+     padding-left: 0px;
+ 
+ 
+     font-weight: 500;
+ }
+ .town option{
+    
+     font-weight: 500;
+ }
+ .twAdress{
+     font-size: 90%;
+     transform: translate3d(0, 813%, 0);
+     color: #637ef5;
+     opacity: 1; background: transparent;
+     outline: none;
+     font-weight: 600;
+ 
+ }
+ .form-control:focus {
+     box-shadow: none;
+ }
+
+ @media (max-width: 767px) {
+    .city {
+      
+        width: 50%;
+        margin-right: 30px;
+       padding-left: 0px;
+        font-weight: 500;
+    }
+    .town {
+        
+        width:50%;
+        margin-right: 30px;
+        padding-left: 0px;
+    
+    
+        font-weight: 500;
+    }
+}
