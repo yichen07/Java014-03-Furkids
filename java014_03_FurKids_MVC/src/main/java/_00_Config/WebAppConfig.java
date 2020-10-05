@@ -14,6 +14,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration //用來提供組態資訊
 @EnableWebMvc
 @ComponentScan({"_00_Init","_00_Config","_01_Member","_03_FriendlyService"})
+//@ComponentScan({"_00_Init","_00_Config","_01_Member","_03_FriendlyService","_02_ShoppingSystem"})
 public class WebAppConfig implements WebMvcConfigurer{
 	
 	@Bean

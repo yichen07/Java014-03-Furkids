@@ -11,7 +11,7 @@
     
     <context:property-placeholder location="classpath:db.properties"/>
     
-    <context:component-scan base-package="_03_FriendlyService" />
+    <context:component-scan base-package="_03_FriendlyService,_02_ShoppingSystem" />
    
     <bean id="dataSource" destroy-method='close' scope="prototype"
       class="com.mchange.v2.c3p0.ComboPooledDataSource" >
@@ -28,7 +28,7 @@
         <property name="dataSource" ref='dataSource' />
 
         <property name="packagesToScan" 
-        	value='_03_FriendlyService,_01_Member' />
+        	value='_03_FriendlyService,_01_Member,_02_ShoppingSystem' />
                    
         <property name="configLocation"
             value='classpath:hibernate.cfg.xml' />
