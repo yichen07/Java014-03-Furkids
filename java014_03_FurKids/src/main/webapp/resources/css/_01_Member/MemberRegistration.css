@@ -3,7 +3,6 @@
 body {
     font-family: "Tahoma", "cwTeXYen", sans-serif;
 
-    background: url(../../images/_01_Member/MerchantRegistration_background.jpg);
     background-size: cover;
 }
 ul,
@@ -82,7 +81,7 @@ li {
 /* NavBar End-------------------------------------------------------------------------> */
 
 .imgBackground {
-    background: url(../../images/_01_Member/MerchantRegistration_background.jpg);
+    background: url(../../images/_01_Member/MemberRegistration_background.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -97,8 +96,10 @@ select:-webkit-autofill {
     background-color: transparent !important;
     background-image: none !important;
     -webkit-box-shadow: 0 0 0 1000px #f7f9ff inset !important;
-    -webkit-text-fill-color:#808aa0;
+    -webkit-text-fill-color: #808aa0;
 }
+/* 瀏覽歷史紀錄顏色 End */
+
 .formTitle {
     color: #575757;
     font-weight: 600;
@@ -124,6 +125,7 @@ select:-webkit-autofill {
     padding: 30px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
+    right: 50px;
 }
 
 .wrapper .input-group {
@@ -217,6 +219,7 @@ select:-webkit-autofill {
     .wrapper {
         background: #f7f9ff;
         box-shadow: none;
+        right: 0;
     }
 }
 @media (max-width: 960px) {
@@ -229,7 +232,48 @@ select:-webkit-autofill {
         box-shadow: none;
     }
 }
-/* --------------------------------------------------------- */
+
+/* TWzipcode Start --------------------------------------------------------------------> */
+
+/* .city,
+.town {
+    background: transparent;
+    color: #808aa0;
+    height: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 18px;
+    outline: none;
+    border: 2px solid rgb(209, 215, 223);
+    border-radius: 7px;
+}
+.city:hover,
+.town:hover {
+    background: transparent;
+    color: #808aa0;
+    height: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 18px;
+    outline: none;
+    border: 2px solid rgb(116, 163, 250);
+    border-radius: 7px;
+    box-shadow: none;
+}
+.city:valid,
+.town:valid {
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+}
+.city:focus,
+.town:focus {
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+} */
+
+/* TWzipcode End ----------------------------------------------------------------------> */
 
 /* Commit Terms Start -----------------------------------------------------------------> */
 
