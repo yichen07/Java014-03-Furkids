@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 @Entity
 @Table(name="petregistration")
 public class PetBean implements Serializable {
@@ -22,12 +26,7 @@ public class PetBean implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer petID;
 	
-	
 	private String cusAccount;
-	// 雙向多對一
-	@ManyToOne
-	@JoinColumn(name = "cusAccount", insertable=false ,updatable=false)
-	private MemberBean memberBean;
 	
 	private String petName;
 	private String petGender;
@@ -36,9 +35,16 @@ public class PetBean implements Serializable {
 	private String petVariety;
 	private Blob petPhoto;
 	private String petFileName;
+	@Transient
+	MultipartFile petMultipartFile;
 	
-	
+	// 雙向多對一
+	@ManyToOne
+	@JoinColumn(name = "cusAccount", insertable=false, updatable=false)
+	private MemberBean memberBean;
+
 	public PetBean() {
+		super();
 	}
 
 	public PetBean(Integer petID, String cusAccount, String petName, String petGender, Date petBirthday,
@@ -53,6 +59,21 @@ public class PetBean implements Serializable {
 		this.petVariety = petVariety;
 		this.petPhoto = petPhoto;
 		this.petFileName = petFileName;
+	}
+
+	public PetBean(Integer petID, String cusAccount, String petName, String petGender, Date petBirthday,
+			String petBreed, String petVariety, Blob petPhoto, String petFileName, MultipartFile petMultipartFile) {
+		super();
+		this.petID = petID;
+		this.cusAccount = cusAccount;
+		this.petName = petName;
+		this.petGender = petGender;
+		this.petBirthday = petBirthday;
+		this.petBreed = petBreed;
+		this.petVariety = petVariety;
+		this.petPhoto = petPhoto;
+		this.petFileName = petFileName;
+		this.petMultipartFile = petMultipartFile;
 	}
 
 	public Integer getPetID() {
@@ -127,6 +148,14 @@ public class PetBean implements Serializable {
 		this.petFileName = petFileName;
 	}
 
+	public MultipartFile getPetMultipartFile() {
+		return petMultipartFile;
+	}
+
+	public void setPetMultipartFile(MultipartFile petMultipartFile) {
+		this.petMultipartFile = petMultipartFile;
+	}
+
 	public MemberBean getMemberBean() {
 		return memberBean;
 	}
@@ -135,5 +164,4 @@ public class PetBean implements Serializable {
 		this.memberBean = memberBean;
 	}
 
-	
 }

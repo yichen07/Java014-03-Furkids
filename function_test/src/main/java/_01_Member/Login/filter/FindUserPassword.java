@@ -14,26 +14,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import _00_Init.util.GlobalService;
-
-
-// 本過濾器監控 /_01_Member/Login.jsp。
+// 本過濾器監控 /_02_login/login.jsp。
 // 當使用者要求此jsp時，容器會將本jsp網頁轉譯為java程式，接者編譯為類別檔，然後載入並執行此jsp。
 // 當容器執行jsp之前會先執行本過濾器。其目的是要檢視瀏覽器送來的Cookie中是否含有帳、密等資料。
 // 如果有，取出來，將密碼解密，然後存入Request物件內，以便jsp能將其加入相關之input標籤的value屬性內。
 
-@WebFilter("/fragment/navigation.jsp")
+@WebFilter("/_01_Member/login.jsp")
 public class FindUserPassword implements Filter {
 	String requestURI;
 	public FindUserPassword() {
 
 	}	
-	// 參數定義需合理的向上提升。
-	// 父代功能少，子代功能多。
-	// 物件型態不會變，存物件的參考的型態改變。
-	// instanceof 準備將父代型別(ex: ServletRequest)的參數轉換成子代型別(ex: HttpServletRequest)。
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
-		// 容器會在遠方客戶端提出請求、要求容器執行_01_Member/Login.jsp前，先執行本程式
+		// 容器會在遠方客戶端提出請求、要求容器執行_02_login/login.jsp前，先執行本程式
 		if (request instanceof HttpServletRequest
 				&& response instanceof HttpServletResponse) {
 			HttpServletRequest req = (HttpServletRequest) request;
@@ -47,7 +41,7 @@ public class FindUserPassword implements Filter {
 			if (cookies != null) {   						// 如果含有Cookie
 				for (int i = 0; i < cookies.length; i++) {	// 檢視每個Cookie
 					cookieName = cookies[i].getName();
-					if (cookieName.equals("user")) {
+					if (cookieName.equals("account")) {
 						//找到user這個Cookie
 						user = cookies[i].getValue();
 					} else if (cookieName.equals("password")) {
@@ -69,7 +63,7 @@ public class FindUserPassword implements Filter {
 			}
 			// 將這三項資料存入request物件
 			request.setAttribute("rememberMe", rememberMe);
-			request.setAttribute("user", user);
+			request.setAttribute("account", user);
 			request.setAttribute("password", password);
 		}
 		chain.doFilter(request, response);   // 請容器執行下一棒程式

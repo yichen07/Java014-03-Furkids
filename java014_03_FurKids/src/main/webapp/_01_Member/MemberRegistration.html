@@ -33,7 +33,7 @@
 
     <link
       rel="stylesheet"
-      href="../resources/css/_01_Member/MerchantRegistration.css"
+      href="../resources/css/_01_Member/MemberRegistration.css"
     />
 
     <!-- Input CSS End---------------------------------------------------------------------->
@@ -168,17 +168,15 @@
 
     <!-- Main Form Start------------------------------------------------------------------------->
     <section class="imgBackground">
-      <div class="container-fluid">
-        <div class="row wrapperOut">
+      <div class="container-fluid wrapperOut">
+        <div class="row d-flex justify-content-end">
           <!-- Left Content Start ---------------------->
-          <div
-            class="col-xl-7 col-lg-8 col-md-10 col-12 mt-5 wrapper my-md-5 my-0 ml-md-5 ml-0 mb-5 pb-5 mt-lg-5"
-          >
+          <div class="col-xl-6 col-lg-8 col-md-10 col-12 mt-5 mb-5 wrapper">
             <form class="mt-0">
               <div class="px-1">
                 <div class="row">
                   <div class="col-12 d-flex justify-content-center">
-                    <div class="mb-4"><h2 class="formTitle">商家註冊</h2></div>
+                    <div class="mb-4"><h2 class="formTitle">會員註冊</h2></div>
                   </div>
                 </div>
 
@@ -190,8 +188,7 @@
                     class="col-3 d-flex-column justify-content-center align-items-center text-center"
                   >
                     <div class="mb-1">
-                      <img
-                        class="leftUserIcon"
+                      <img class="leftUserIcon"
                         src="../resources/images/_01_Member/user-circle-solid.svg"
                         style="height: 50px; width: 50px"
                       />
@@ -287,6 +284,43 @@
                   </div>
                 </div>
                 <!-- 密碼 End -->
+                <!-- 地址 Start -->
+                <!-- <div
+                  class="row d-flex justify-content-center align-items-center border-bottom mb-4"
+                >
+                  <div
+                    class="col-3 d-flex-column justify-content-center align-items-center text-center"
+                  >
+                    <div class="mb-1">
+                      <i class="fas fa-map-marked-alt leftIcon"></i>
+                    </div>
+                    <div class="pb-3"><h5 class="leftTitle">地址</h5></div>
+                  </div>
+                  <div class="col-9 pr-5">
+                    <div class="d-flex  twzipStyle mb-4 w-75" id="twzipcode_ADV">
+                      </div>
+                    <div
+                      class="d-flex justify-content-between mb-4"
+                      id="zipcode"
+                    >
+                      <div
+                        class="countyMenu w-50 mr-3"
+                        data-role="county"
+                      ></div>
+                      <div class="townshipMenu w-50" data-role="district"></div>
+                    </div>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        required="required"
+                        class="w-80"
+                        id="inputStyle"
+                      />
+                      <span class="colTitle">街道</span>
+                    </div>
+                  </div>
+                </div> -->
+                <!-- 地址 End -->
                 <!-- 其他資料 Start -->
                 <div
                   class="row d-flex justify-content-center align-items-center border-bottom mb-4"
@@ -327,33 +361,9 @@
                       />
                       <span class="colTitle">電子郵件</span>
                     </div>
-                 
                   </div>
                 </div>
                 <!-- 其他資料 End -->
-                <!-- 商家描述 Start-->
-                <div
-                  class="row d-flex justify-content-center align-items-center border-bottom mb-4"
-                >
-                  <div
-                    class="col-3 d-flex-column justify-content-center align-items-center text-center"
-                  >
-                    <div class="mb-1">
-                      <i class="fas fa-store fa-fw leftIcon"></i>
-                    </div>
-                    <div class="pb-3"><h5 class="leftTitle">商家描述</h5></div>
-                  </div>
-                  <div class="col-9 pr-5">
-                    <div class="input-group">
-                      <textarea
-                        class="form-control noteborder"
-                        rows="4"
-                        placeholder="請輸入對您商店的描述"
-                      ></textarea>
-                    </div>
-                  </div>
-                </div>
-                <!-- 商家描述 End-->
                 <!-- 確認表單 Start-->
                 <div class="commitOrder row mt-0">
                   <div
@@ -429,8 +439,9 @@
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
     ></script>
-
+    <!-- Taiwan Address -->
+    <script src="../resources/javascript/jquery.twzipcode.js"></script>
     <!-- JavaScript Plug-in End------------------------------------------------------------->
-    <script src="../resources/javascript/MerchantRegistration.js"></script>
+    <script src="../resources/javascript/MemberRegistration.js"></script>
   </body>
 </html>

@@ -13,15 +13,15 @@ public interface ConvenienceService {
 
 	void update(ConvenienceBean_H cb);
 
-	void update(MerchantChildBean mb);
+	void update(MerchantChildBean mcb);
 	
 	void delete(ConvenienceBean_H cb);
+	
+	void Update(ConvenienceBean_H cb, MerchantChildBean mcb);
 	
 	void insertAndUpdate(ConvenienceBean_H cb, MerchantChildBean mcb);
 	
 	void Update(ConvenienceBean_H cb, MerchantChildBean mcb, MerchantBean mb);
-	
-	
 	
 	List<ConvenienceBean_H> getAllConvenience();
 	

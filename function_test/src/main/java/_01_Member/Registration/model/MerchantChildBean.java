@@ -13,6 +13,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import _03_FriendlyService.model.ConvenienceBean_H;
 
 @Entity
@@ -24,15 +26,16 @@ public class MerchantChildBean implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer busChildNo;		// Auto_Increment 自增欄位。
-	
 	private String busAccount;
-	
 	private String busChildName;
 	private String busChildTel;
 	private String busChildAddress;
 	private String busChildDescription;
 	private Blob busChildPhoto;
 	private String busChildFileName;
+	
+	@Transient
+	MultipartFile merchantChildMultipartFile;
 	
 	//雙向一對一
 	@OneToOne
@@ -139,5 +142,12 @@ public class MerchantChildBean implements Serializable {
 	public void setBusChildFileName(String busChildFileName) {
 		this.busChildFileName = busChildFileName;
 	}
+
+	public MultipartFile getMerchantChildMultipartFile() {
+		return merchantChildMultipartFile;
+	}
 	
+	public void setMerchantChildMultipartFile(MultipartFile merchantChildMultipartFile) {
+		this.merchantChildMultipartFile = merchantChildMultipartFile;
+	}
 }

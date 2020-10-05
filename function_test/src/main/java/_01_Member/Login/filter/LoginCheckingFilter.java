@@ -1,13 +1,24 @@
 package _01_Member.Login.filter;
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 
-import javax.servlet.*;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import _01_Member.Registration.model.MemberBean;
+
+
 
 // 每個請求送達Server端時，都由本過濾器來檢查該請求所要求的資源是否需要登入才能使用。
 // 檢查的邏輯為：
@@ -24,10 +35,11 @@ import _01_Member.Registration.model.MemberBean;
 @WebFilter(
 		urlPatterns = { "/*" }, 
 		initParams = { 
-				@WebInitParam(name = "mustLogin1", value = "/AAAAA/*"), 
-				@WebInitParam(name = "mustLogin2", value = "/BBBBB/*"), 
-				@WebInitParam(name = "mustLogin3", value = "/CCCCC/*"),
-				@WebInitParam(name = "mustLogin4", value = "/DDDDD/*")				
+				@WebInitParam(name = "mustLogin1", value = "/_01_Member/*"), 
+				@WebInitParam(name = "mustLogin2", value = "/_02_ShoppingSystem/*"), 
+				@WebInitParam(name = "mustLogin3", value = "/_03_FriendlySystem/*"),
+				@WebInitParam(name = "mustLogin4", value = "/_04_Community/*"),	
+				@WebInitParam(name = "mustLogin5", value = "/_05_HealthControl/*"),	
 		})
 public class LoginCheckingFilter implements Filter {
 	List<String> url = new ArrayList<String>();
@@ -71,7 +83,7 @@ public class LoginCheckingFilter implements Filter {
 						// 原本要執行的程式。
 						session.setAttribute("requestURI", requestURI);	
 					}
-					resp.sendRedirect(contextPath + "/index.jsp");
+					resp.sendRedirect(contextPath + "/_06_login/login.jsp");
 					return;
 				}
 			} else {   //不需要登入，直接去執行他要執行的程式
