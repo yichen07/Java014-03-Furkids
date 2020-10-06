@@ -33,7 +33,7 @@
 
     <link
       rel="stylesheet"
-      href="../resources/css/_01_Member/MerchantRegistration.css"
+      href="../resources/css/_01_Member/MemberRegistration.css"
     />
 
     <!-- Input CSS End---------------------------------------------------------------------->
@@ -168,21 +168,28 @@
 
     <!-- Main Form Start------------------------------------------------------------------------->
     <section class="imgBackground">
-      <div class="container-fluid">
-        <div class="row wrapperOut">
-          <!-- Left Content Start ---------------------->
-          <div
-            class="col-xl-7 col-lg-8 col-md-10 col-12 mt-5 wrapper my-md-5 my-0 ml-md-5 ml-0 mb-5 pb-5 mt-lg-5"
-          >
-            <form class="mt-0">
+      <div class="container-fluid ">
+        <div class="row">
+          <div class="col-lg-6 col-md-9 col-12 wrapper my-5">
+            <form>
               <div class="px-1">
                 <div class="row">
                   <div class="col-12 d-flex justify-content-center">
-                    <div class="mb-4"><h2 class="formTitle">商家註冊</h2></div>
+                    <div class="d-flex align-items-center mb-4">
+                      <div class="pr-3">
+                        <img
+                          src="../resources/images/_01_Member/picture.svg"
+                          style="height: 50px"
+                          class="UserIcon"
+                        />
+                      </div>
+                      <div><h2 class="formTitle">商家註冊</h2></div>
+                    </div>
                   </div>
                 </div>
 
                 <!-- 基本資料 Start -->
+                
                 <div
                   class="row d-flex justify-content-center align-items-center border-bottom mb-4"
                 >
@@ -190,32 +197,30 @@
                     class="col-3 d-flex-column justify-content-center align-items-center text-center"
                   >
                     <div class="mb-1">
-                      <img
-                        class="leftUserIcon"
-                        src="../resources/images/_01_Member/user-circle-solid.svg"
-                        style="height: 50px; width: 50px"
-                      />
+                      <i class="fas fa-user fa-fw leftIcon leftIcon2"></i>
                     </div>
-                    <div class="pb-4"><h5 class="leftTitle">基本資料</h5></div>
+                    <div class="pb-2"><h5 class="leftTitle">基本資料</h5></div>
                   </div>
                   <div class="col-9 pr-5">
-                    <div class="input-group">
+                    <div class="input-group mb-4">
                       <input
                         type="text"
-                        required="required"
-                        class="w-80"
+                        name="name"
+                        class="inputClass"
                         id="inputStyle"
                       />
-                      <span class="colTitle">帳號</span>
+                      <label for="">帳號 / Email</label>
+                      <span>帳號 / Email</span>
                     </div>
-                    <div class="input-group">
+                    <div class="input-group mb-4">
                       <input
                         type="text"
-                        required="required"
-                        class="w-80"
+                        name="name"
+                        class="inputClass"
                         id="inputStyle"
                       />
-                      <span class="colTitle">姓名</span>
+                      <label for="">姓名</label>
+                      <span>姓名</span>
                     </div>
                     <div class="buybtnP mb-4">
                       <button type="button" class="btn-block ripple buybtn">
@@ -228,25 +233,22 @@
                     </div>
                   </div>
                 </div>
+
                 <!-- 基本資料 End -->
                 <!-- 密碼 Start -->
+                
                 <div
                   class="row d-flex justify-content-center align-items-center border-bottom mb-4"
                 >
                   <div
                     class="col-3 d-flex-column justify-content-center align-items-center text-center"
                   >
-                    <div class="mb-1"><i class="fas fa-key leftIcon"></i></div>
-                    <div class="pb-3"><h5 class="leftTitle">密碼</h5></div>
+                    <div class="mb-1"><i class="fas fa-key leftIcon leftIcon2"></i></div>
+                    <div class="pb-2"><h5 class="leftTitle">密碼</h5></div>
                   </div>
                   <div class="col-9 pr-5">
-                    <div class="input-group">
-                      <input
-                        type="password"
-                        required="required"
-                        id="eyeInput"
-                      />
-                      <span class="colTitle">密碼</span>
+                    <!-- 第一次輸入密碼 Start-->
+                    <div class="mb-4">
                       <span class="eyePosition"
                         ><i
                           class="far fa-eye-slash"
@@ -261,31 +263,49 @@
                           onclick="eyeFunction()"
                         ></i
                       ></span>
+                      <div class="input-group">
+                        <input
+                          type="password"
+                          required="required"
+                          class="inputClass"
+                          id="eyeInput"
+                        />
+                        <label for="" class="colTitle">密碼</label>
+                        <span>密碼</span>
+                      </div>
                     </div>
-                    <div class="input-group">
-                      <input
-                        type="password"
-                        required="required"
-                        id="eyeInputCheck"
-                      />
-                      <span class="colTitle">密碼確認</span>
-                      <span class="eyePosition"
+                    <!-- 第一次輸入密碼 End-->
+                    <!-- 密碼 確認 Start-->
+                    <div class="mb-4">
+                      <span class="eyePosition2"
                         ><i
                           class="far fa-eye-slash"
                           id="eyeHideCheck"
                           onclick="eyeFunctionCheck()"
                         ></i
                       ></span>
-                      <span class="eyePosition"
+                      <span class="eyePosition2"
                         ><i
                           class="far fa-eye"
                           id="eyeShowCheck"
                           onclick="eyeFunctionCheck()"
                         ></i
                       ></span>
+                      <div class="input-group">
+                        <input
+                          type="password"
+                          required="required"
+                          class="inputClass"
+                          id="eyeInputCheck"
+                        />
+                        <label for="" class="colTitle">再次確認密碼</label>
+                        <span>再次確認密碼</span>
+                      </div>
                     </div>
+                    <!-- 密碼 確認 End -->
                   </div>
                 </div>
+
                 <!-- 密碼 End -->
                 <!-- 其他資料 Start -->
                 <div
@@ -300,34 +320,26 @@
                     <div class="pb-3"><h5 class="leftTitle">其他資料</h5></div>
                   </div>
                   <div class="col-9 pr-5">
-                    <div class="input-group">
+                    <div class="input-group mb-4">
                       <input
                         type="text"
-                        required="required"
-                        class="w-80"
+                        name="name"
+                        class="inputClass"
                         id="inputStyle"
                       />
-                      <span class="colTitle">地址</span>
+                      <label for="">地址</label>
+                      <span>地址</span>
                     </div>
-                    <div class="input-group">
+                    <div class="input-group mb-4">
                       <input
-                        type="tel"
-                        required="required"
-                        class="w-80"
+                        type="text"
+                        name="name"
+                        class="inputClass"
                         id="inputStyle"
                       />
-                      <span class="colTitle">電話</span>
+                      <label for="">電話</label>
+                      <span>電話</span>
                     </div>
-                    <div class="input-group">
-                      <input
-                        type="tel"
-                        required="required"
-                        class="w-80"
-                        id="inputStyle"
-                      />
-                      <span class="colTitle">電子郵件</span>
-                    </div>
-                 
                   </div>
                 </div>
                 <!-- 其他資料 End -->
@@ -344,26 +356,30 @@
                     <div class="pb-3"><h5 class="leftTitle">商家描述</h5></div>
                   </div>
                   <div class="col-9 pr-5">
-                    <div class="input-group">
-                      <textarea
-                        class="form-control noteborder"
-                        rows="4"
-                        placeholder="請輸入對您商店的描述"
-                      ></textarea>
+                    <div class="mb-4">
+                      <div class="textarea input-group">
+                        <textarea
+                          name="message"
+                          class="inputClass"
+                          id="inputClassMessage"
+                        ></textarea>
+                        <label for="">商家描述內容</label>
+                        <span>商家描述內容</span>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <!-- 商家描述 End-->
-                <!-- 確認表單 Start-->
-                <div class="commitOrder row mt-0">
+                 <!-- 確認表單 Start-->
+                 <div class="commitOrder row mt-0">
                   <div
-                    class="checkbox-wrapper col-12 ml-2 d-flex justify-content-center"
+                    class="checkbox-wrapper col-12  ml-2 d-flex justify-content-center"
                   >
                     <input type="checkbox" id="checkTerms" hidden /><label
                       for="checkTerms"
                       class="checkStyle"
                     ></label>
-                    <div class="checkboxText ml-2 mb-1 pr-4">
+                    <div class="checkboxText ml-2 mb-2 pr-4">
                       我已閱讀條款並同意FurKids有權於任何時間修改或變更本服務條款內容，修改後將公布本網站上，FurKids不再個別通知會員，建議會員隨時注意該等修改或變更。會員於任何修改或變更後繼續使用本網站服務時，視為會員已瞭解並同意接受該等修改或變更。
                     </div>
                   </div>
@@ -379,8 +395,6 @@
               </div>
             </form>
           </div>
-
-          <!-- Left Content End ------------------------>
         </div>
       </div>
     </section>
@@ -431,6 +445,6 @@
     ></script>
 
     <!-- JavaScript Plug-in End------------------------------------------------------------->
-    <script src="../resources/javascript/MerchantRegistration.js"></script>
+    <script src="../resources/javascript/MemberRegistration.js"></script>
   </body>
 </html>
