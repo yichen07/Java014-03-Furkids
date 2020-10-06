@@ -24,10 +24,9 @@ public class ReservationChildBean implements Serializable{
 	private String resName;
 	private String resSpecies;
 	private String resVariety;
-	private Integer resQuantity;
 	
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="resID" , insertable=false ,updatable=false)
 	private ReservationBean reservationBean;
 
@@ -45,15 +44,13 @@ public class ReservationChildBean implements Serializable{
 		this.resVariety = resVariety;
 	}
 	
-	public ReservationChildBean(Integer resChildID, Integer resID, String resName, String resSpecies, String resVariety,
-			Integer resQuantity) {
+	public ReservationChildBean(Integer resChildID, Integer resID, String resName, String resSpecies, String resVariety) {
 		super();
 		this.resChildID = resChildID;
 		this.resID = resID;
 		this.resName = resName;
 		this.resSpecies = resSpecies;
 		this.resVariety = resVariety;
-		this.resQuantity = resQuantity;
 	}
 
 
@@ -95,14 +92,6 @@ public class ReservationChildBean implements Serializable{
 
 	public void setResVariety(String resVariety) {
 		this.resVariety = resVariety;
-	}
-
-	public Integer getResQuantity() {
-		return resQuantity;
-	}
-
-	public void setResQuantity(Integer resQuantity) {
-		this.resQuantity = resQuantity;
 	}
 
 	public ReservationBean getReservationBean() {

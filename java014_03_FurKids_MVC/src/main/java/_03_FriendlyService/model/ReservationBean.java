@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="reservation")
@@ -31,8 +32,11 @@ public class ReservationBean implements Serializable{
 	private String resDate;
 	private String resTime;
 	private String resNote;
+	private String cusName;
+	private String BusChildEmail;
+	private String BusChildTel;
 	
-	@OneToMany(mappedBy="reservationBean",cascade = CascadeType.ALL ,fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="reservationBean" ,fetch=FetchType.EAGER)
 	private List<ReservationChildBean> reservationChildBean = new ArrayList<>();
 
 	
@@ -174,6 +178,42 @@ public class ReservationBean implements Serializable{
 
 	public void setResNote(String resNote) {
 		this.resNote = resNote;
+	}
+
+
+
+	public String getCusName() {
+		return cusName;
+	}
+
+
+
+	public void setCusName(String cusName) {
+		this.cusName = cusName;
+	}
+
+
+
+	public String getBusChildEmail() {
+		return BusChildEmail;
+	}
+
+	
+
+	public String getBusChildTel() {
+		return BusChildTel;
+	}
+
+
+
+	public void setBusChildTel(String busChildTel) {
+		BusChildTel = busChildTel;
+	}
+
+
+
+	public void setBusChildEmail(String busChildEmail) {
+		BusChildEmail = busChildEmail;
 	}
 	
 }
