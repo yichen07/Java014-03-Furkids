@@ -4,6 +4,8 @@ package _03_FriendlyService.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,8 @@ import org.springframework.stereotype.Repository;
 
 import _03_FriendlyService.dao.ReservationDao;
 import _03_FriendlyService.model.ConvenienceBean_H;
+import _03_FriendlyService.model.ReservationBean;
+import _03_FriendlyService.model.ReservationChildBean;
 
 @Repository
 public class ReservationDaoImp implements ReservationDao{
@@ -52,8 +56,89 @@ public class ReservationDaoImp implements ReservationDao{
 		return list;
 	
 	}
+	@Override
+	public void insert(ReservationBean rb) {
+		Session session = factory.getCurrentSession();
+		session.save(rb);
+		
+	}
+	//查PK
+	@Override
+	public int getReservationBeanPK(ReservationBean rb) {
+		int n = 0;
+		String hql = "Select resID FROM ReservationBean where busChildNo = :busChildNo";
+		Session session = factory.getCurrentSession();
+		n = (int) session.createQuery(hql).setParameter("busChildNo", rb.getBusChildNo()).getSingleResult();
+		return n;
+	}
+	@Override
+	public void insert(ReservationChildBean rb) {
+		Session session = factory.getCurrentSession();
+		session.save(rb);
+	}
+	
+	//查會員帳號
+
+	@Override
+	public Boolean getReservationBeanCusAccount(String account, int no) {
+		Boolean id = true;
+		String hql = "Select cusAccount FROM ReservationBean where busChildNo = :busChildNo and cusAccount = :account";
+		Session session = factory.getCurrentSession();
+		try {
+			String act = (String) session.createQuery(hql).setParameter("busChildNo", no).
+											setParameter("account" ,account).getSingleResult();
+			
+		}catch(NoResultException e) {
+			id = false;
+		}
+		return id;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ConvenienceBean_H> getViewConvenience(String item) {
+		List<ConvenienceBean_H> list = new ArrayList<>();
+		String hql = "FROM ConvenienceBean_H m where m.conItem = :mitem";
+		Session session = factory.getCurrentSession();
+		list = session.createQuery(hql).setParameter("mitem", item).getResultList();
+		return list;
+	
+	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ReservationBean> getReservationInfo(String account) {
+		List<ReservationBean> list = new ArrayList<>();
+		String hql = "FROM ReservationBean where cusAccount = :account";
+		Session session = factory.getCurrentSession();
+		list = session.createQuery(hql).setParameter("account", account).getResultList();	
+		return list;
+	}
+	@Override
+	public void delete(ReservationChildBean rb) {
+		Session session = factory.getCurrentSession();
+		session.delete(rb);
+		
+	}
+	@Override
+	public void delete(ReservationBean rb) {
+		Session session = factory.getCurrentSession();
+		session.delete(rb);
+	}
+	@Override
+	public ReservationBean getReservation(int no) {
+		Session session = factory.getCurrentSession();
+		String hql = "FROM ReservationBean where resId = :id";
+		ReservationBean rb = (ReservationBean) session.createQuery(hql).setParameter("id", no).getSingleResult();
+		return rb;
+	}
+	@Override
+	public ReservationChildBean getReservationChild(int no) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
+	
 	
 
 }

@@ -95,10 +95,10 @@
 						<i class="fas fa-hand-holding-heart" style="color: grey"></i>&nbsp;寵物友善系統
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/景點/1' />">景點</a>
-						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/餐廳/1' />">餐廳</a>
-						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/美容/1' />">寵物美容</a>
-						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/旅館/1' />">寵物旅館</a>
+						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/景點' />">景點</a>
+						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/餐廳' />">餐廳</a>
+						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/美容' />">寵物美容</a>
+						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/旅館' />">寵物旅館</a>
 						
 					</div>
 				</li>
@@ -139,6 +139,8 @@
 									href="<c:url value='/PetRegistration' />">寵物新增</a>
 								<a class="dropdown-item" 
 									href="<c:url value='/MemberManagementCenter' />">會員管理</a> 
+								<a class="dropdown-item" 
+									href="<c:url value='/_03_FriendlySystem/MemReservationDetail' />">預約管理</a>
 							</div>
 						</div>
 					</c:when>

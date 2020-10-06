@@ -85,7 +85,7 @@ li {
 /* Banner Start-----------------------------------------------------------------------> */
 
 .bannerImg {
-    background-image: url(../../images/_03_FriendlySystem/touristInfo/touristInfo_banner_01.jpg);
+/*     background-image: url(../../images/_03_FriendlySystem/touristInfo/touristInfo_banner_01.jpg); */
     height: 350px;
     width: 100%;
     background-color: rgba(41, 41, 41, 0.5);

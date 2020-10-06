@@ -3,12 +3,13 @@ package _01_Member.Registration.model;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -42,8 +43,8 @@ public class MemberBean implements Serializable {
 	final private Integer CLASSIFY = 0;
 	
 	// 雙向一對多
-	@OneToMany(mappedBy = "memberBean", cascade = CascadeType.ALL)
-	Set<PetBean> pet = new LinkedHashSet<>();
+	@OneToMany(mappedBy = "memberBean", cascade = CascadeType.ALL ,fetch=FetchType.EAGER)
+	List<PetBean> pet = new ArrayList<>();
 
 	public MemberBean() {
 		super();
@@ -178,16 +179,15 @@ public class MemberBean implements Serializable {
 	public void setMemberMultipartFile(MultipartFile memberMultipartFile) {
 		this.memberMultipartFile = memberMultipartFile;
 	}
-
-	public Set<PetBean> getPet() {
+	
+	public List<PetBean> getPet() {
 		return pet;
 	}
 
-	public void setPet(Set<PetBean> pet) {
+	public void setPet(List<PetBean> pet) {
 		this.pet = pet;
 	}
 
-	
 	public Integer getCLASSIFY() {
 		return CLASSIFY;
 	}

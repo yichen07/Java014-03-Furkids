@@ -21,12 +21,12 @@ public class ReservationChildBean implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer resChildID;
 	private Integer resID;
+	private String resName;
 	private String resSpecies;
 	private String resVariety;
-	private Integer resQuantity;
-	private String resNote;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	
+	@ManyToOne
 	@JoinColumn(name="resID" , insertable=false ,updatable=false)
 	private ReservationBean reservationBean;
 
@@ -35,18 +35,24 @@ public class ReservationChildBean implements Serializable{
 	public ReservationChildBean() {
 	
 	}
-
-	public ReservationChildBean(Integer resChildID, Integer resID, String resSpecies, String resVariety,
-			Integer resQuantity, String resNote, ReservationBean reservationBean) {
+	
+	
+	public ReservationChildBean(String resName, String resSpecies, String resVariety) {
+		super();
+		this.resName = resName;
+		this.resSpecies = resSpecies;
+		this.resVariety = resVariety;
+	}
+	
+	public ReservationChildBean(Integer resChildID, Integer resID, String resName, String resSpecies, String resVariety) {
 		super();
 		this.resChildID = resChildID;
 		this.resID = resID;
+		this.resName = resName;
 		this.resSpecies = resSpecies;
 		this.resVariety = resVariety;
-		this.resQuantity = resQuantity;
-		this.resNote = resNote;
-		this.reservationBean = reservationBean;
 	}
+
 
 	public Integer getResChildID() {
 		return resChildID;
@@ -64,6 +70,14 @@ public class ReservationChildBean implements Serializable{
 		this.resID = resID;
 	}
 
+	public String getResName() {
+		return resName;
+	}
+
+	public void setResName(String resName) {
+		this.resName = resName;
+	}
+
 	public String getResSpecies() {
 		return resSpecies;
 	}
@@ -78,22 +92,6 @@ public class ReservationChildBean implements Serializable{
 
 	public void setResVariety(String resVariety) {
 		this.resVariety = resVariety;
-	}
-
-	public Integer getResQuantity() {
-		return resQuantity;
-	}
-
-	public void setResQuantity(Integer resQuantity) {
-		this.resQuantity = resQuantity;
-	}
-
-	public String getResNote() {
-		return resNote;
-	}
-
-	public void setResNote(String resNote) {
-		this.resNote = resNote;
 	}
 
 	public ReservationBean getReservationBean() {
