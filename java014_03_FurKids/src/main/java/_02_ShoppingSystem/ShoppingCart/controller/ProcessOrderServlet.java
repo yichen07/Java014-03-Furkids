@@ -90,8 +90,11 @@ public class ProcessOrderServlet extends HttpServlet {
 			OrderService orderService = new OrderServiceImpl();
 			orderService.persistOrder(ob);
 			session.removeAttribute("ShoppingCart");
-			response.sendRedirect(response.encodeRedirectURL ("../ThanksForOrdering.jsp"));
-			return;
+//			response.sendRedirect(response.encodeRedirectURL ("/java014_03_FurKids/_02_ShoppingSystem/ThanksForOrdering.jsp"));
+				response.sendRedirect(getServletContext().getContextPath()
+						+ "/index.jsp");
+				return;
+
 		} catch(RuntimeException ex){
 			String message = ex.getMessage();
 			String shortMsg = "" ;   
