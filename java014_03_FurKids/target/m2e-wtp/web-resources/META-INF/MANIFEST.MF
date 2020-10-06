@@ -1,5 +1,17 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: lww
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Built-By: NTUT
+=======
+Built-By: Wind
+>>>>>>> ddc5c6f4a733aa973a2c345815ef6ad22e1655fa
+=======
+Built-By: lww
+>>>>>>> 0dc2640f23f04e18e8b0bcde4b3c801fa1717bf9
+>>>>>>> 2c3e6d62c0269cd8d9b5f5ea0005b70ffe746a96
 Build-Jdk: 1.8.0_252
 Created-By: Maven Integration for Eclipse
 

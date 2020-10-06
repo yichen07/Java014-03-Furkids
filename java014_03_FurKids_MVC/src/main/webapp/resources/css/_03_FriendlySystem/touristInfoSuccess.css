@@ -120,7 +120,7 @@ li {
 }
 
 .bannerImg {
-    background-image: url(../../images/_03_FriendlySystem/touristInfo/touristInfoSuccess_Background.jpg);
+/*     background-image: url(../../images/_03_FriendlySystem/touristInfo/touristInfoSuccess_Background.jpg); */
     height: 100vh;
     width: 100%;
     background-color: rgba(83, 83, 83, 0.048);
