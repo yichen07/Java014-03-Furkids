@@ -39,7 +39,7 @@
 <!-- Banner ---------------------------------------------------------------------------->
 	<div
 		class="container-fluid bannerImg d-flex justify-content-center align-items-center"
-		style="background-image: url(<c:url value='/resources/images/_01_Member/member_banner_01.jpg' />)" 
+		style="background-image: url('<c:url value='/resources/images/_01_Member/member_banner_02.jpg' />')" 
 		id="imageStellar" data-stellar-background-ratio="0.5">
 		<div class="row">
 			<div class="col-md-12 text-center">
@@ -88,7 +88,7 @@
 								<li><a href="<c:url value='/MemberManagementCenter' />"> <span class="icon"><i 
 											class="fas fa-address-card"></i></span> <span class="list">會員基本資料</span>
 								</a></li>
-								<li><a href="<c:url value='#' />"> <span class="icon"><i 
+								<li><a href="<c:url value='/MemberManagementCenter/MemberUpdate' />"> <span class="icon"><i 
 											class="fas fa-user-edit"></i></span> <span class="list">會員資料修改</span>
 								</a></li>
 								<li><a href="<c:url value='#' />"> <span class="icon"><i 

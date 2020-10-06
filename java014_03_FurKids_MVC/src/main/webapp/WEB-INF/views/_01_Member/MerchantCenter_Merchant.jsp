@@ -39,7 +39,7 @@
 <!-- Banner ---------------------------------------------------------------------------->
 	<div
 		class="container-fluid bannerImg d-flex justify-content-center align-items-center"
-		style="background-image: url(<c:url value='/resources/images/_01_Member/merchant_banner_01.jpg' />)" 
+		style="background-image: url('<c:url value='/resources/images/_01_Member/merchant_banner_01.jpg' />')" 
 		id="imageStellar" data-stellar-background-ratio="0.5">
 		<div class="row">
 			<div class="col-md-12 text-center">

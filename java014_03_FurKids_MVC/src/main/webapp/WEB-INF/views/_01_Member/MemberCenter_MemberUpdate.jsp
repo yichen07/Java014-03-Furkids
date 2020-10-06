@@ -42,7 +42,7 @@
 <!-- Banner ---------------------------------------------------------------------------->
 	<div
 		class="container-fluid bannerImg d-flex justify-content-center align-items-center"
-		style="background-image: url(<c:url value='/resources/images/_01_Member/member_banner_01.jpg' />)" 
+		style="background-image: url(<c:url value='/resources/images/_01_Member/member_banner_02.jpg' />)" 
 		id="imageStellar" data-stellar-background-ratio="0.5">
 		<div class="row">
 			<div class="col-md-12 text-center">
@@ -124,29 +124,29 @@
 		<!-- Part 4. 內容顯示 -->
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="card rightContent sideBarBgType" style="height: auto;">
+				<div class="card rightContent outerlayer" style="height: auto;">
 					<div class="container-fluid">
 					
 					<!-- 會員基本資料清單 -->
-						<div class="row justify-content-center">
+						<div class="row justify-content-start ml-5">
 
 								<div class="m-3 col-lg-6 col-lg-offset-6">
 
 									<form:form class="m-3" method="POST" modelAttribute="memberBean" enctype='multipart/form-data'>
 									
-										<fieldset class="bg-light" style="border: 1px solid black; border-radius: 10px; box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); padding: 20px">
-											<legend style="text-align:center; border: 1px solid gray; border-radius: 10px; width:60%; background: gray; color: white">會員資料修改</legend>
+										<fieldset class="m-3 innerlayer">
+											<legend style="text-align:center; border: 1px solid black; border-radius: 10px; width:60%; background: gray; color: white">會員資料修改</legend>
 											
 											<%-- FormContent --%>
 											
 											<div class="form-group has-feedback text-center">
-												<img style="width: 200px; height: 200px; border: 1px solid gray; border-radius: 50%; object-fit: cover;" 
+												<img  style="width: 200px; height: 200px; border: 1px solid gray; border-radius: 50%; object-fit: cover;" 
 												src="<c:url value='/_00_init/getHeadshot?account=${LoginOK.cusAccount}' />" id="show_image">
 												<form:input  path="memberMultipartFile" type="file" id="image_file" style="display: none;" disabled="true" /> 
 											</div>
 
-											<div class="form-group has-feedback">
-												<label>姓名</label>
+											<div class="form-group has-feedback border-top">
+												<label class="mt-3">姓名</label>
 												<form:input path="cusName" class="form-control" type="text" disabled="true" />
 											</div>
 
@@ -173,6 +173,12 @@
 											<div class="form-group has-feedback">
 												<label>電話</label>
 												<form:input path="cusTel" class="form-control" type="text" disabled="true" />
+											</div>
+											
+											
+											<div class="form-group has-feedback d-flex justify-content-center border-top">
+												<input type="submit" name="submit" id="submit" class="btn btn-primary mr-5 mt-3"/>
+												<input type="reset" name="cancel" id="cancel" class="btn btn-outline-primary mt-3" />
 											</div>
 											
 										</fieldset>
