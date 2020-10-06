@@ -132,7 +132,7 @@
 							<a class="nav-link" href="<c:url value='#' />" id="navbarDropdown" role="button"
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  
 								<img src="<c:url value='/_00_init/getHeadshot?account=${LoginOK.cusAccount}' />"
-									style="width:30px; height:auto; border-radius:50%; border: 1px solid gray" />
+									style="width:30px; height:30px; border-radius:50%; border: 1px solid gray; object-fit: cover" />
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item"
@@ -148,7 +148,7 @@
 							<a class="nav-link" href="<c:url value='#' />" id="navbarDropdown" role="button" data-toggle="dropdown"
 								aria-haspopup="true" aria-expanded="false"> 
 								<img src="<c:url value='/_00_init/getHeadshot?account=${LoginOK.busAccount}' />"
-									style="width:30px; height:auto; border-radius:50%; border: 1px solid gray" />
+									style="width:30px; height:30px; border-radius:50%; border: 1px solid gray; object-fit: cover" />
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item"

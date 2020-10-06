@@ -9,7 +9,7 @@
 <!-- Required meta tags -->
 <meta charset="UTF-8">
 <link rel="icon" href="<c:url value='/resources/images/logo_08_iP6_6.ico' />" type="image/x-icon" />
-<title>會員管理系統_會員基本資料</title>
+<title>會員管理系統_會員資料修改</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -50,7 +50,7 @@
 					會員管理</h1>
 				<div
 					class="align-items-center banner-text animate__animated animate__fadeInUp">
-					<h2 class="text-center"><i class="fas fa-address-card"></i>&nbsp;會員基本資料</h2>
+					<h2 class="text-center"><i class="fas fa-user-edit"></i>&nbsp;會員資料修改</h2>
 				</div>		
 				<div
 					class="align-items-center banner-text animate__animated animate__fadeInUp">
@@ -135,7 +135,7 @@
 									<form:form class="m-3" method="POST" modelAttribute="memberBean" enctype='multipart/form-data'>
 									
 										<fieldset class="bg-light" style="border: 1px solid black; border-radius: 10px; box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); padding: 20px">
-											<legend style="text-align:center; border: 1px solid gray; border-radius: 10px; width:60%; background: gray; color: white">會員基本資料</legend>
+											<legend style="text-align:center; border: 1px solid gray; border-radius: 10px; width:60%; background: gray; color: white">會員資料修改</legend>
 											
 											<%-- FormContent --%>
 											
@@ -143,11 +143,6 @@
 												<img style="width: 200px; height: 200px; border: 1px solid gray; border-radius: 50%; object-fit: cover;" 
 												src="<c:url value='/_00_init/getHeadshot?account=${LoginOK.cusAccount}' />" id="show_image">
 												<form:input  path="memberMultipartFile" type="file" id="image_file" style="display: none;" disabled="true" /> 
-											</div>
-											
-											<div class="form-group has-feedback">
-												<label>帳號 / 電子信箱</label>
-												<form:input path="cusAccount" class="form-control" type="text" disabled="true" />
 											</div>
 
 											<div class="form-group has-feedback">

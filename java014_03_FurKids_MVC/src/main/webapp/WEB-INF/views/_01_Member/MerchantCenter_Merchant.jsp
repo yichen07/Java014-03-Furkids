@@ -72,14 +72,14 @@
 							<!-- 用戶大頭照 -->
 								<div class="mr-3">
 									<img class="userImgConer"
-										src="https://randomuser.me/api/portraits/women/60.jpg"
-										height="60px" width="60px" />
+										src="<c:url value='/_00_init/getHeadshot?account=${LoginOK.busAccount}' />"
+										style="height:60px; width:60px; object-fit: cover" />
 								</div>
 							<!-- 用戶名稱與信箱 -->
 								<div>
-									<span class="userName mt-3">Adora</span><br /> 
+									<span class="userName mt-3">${LoginOK.busName}</span><br /> 
 									<small class="mt-0 userMail">
-									<i class="far fa-envelope"></i> adora@gmail.com</small>
+									<i class="far fa-envelope"></i>&nbsp;${LoginOK.busAccount}</small>
 								</div>
 							</div>
 							
