@@ -298,6 +298,9 @@
 	<!-- JavaScript Plug-in End------------------------------------------------------------->
 	<script src="<c:url value='/resources/javascript/memberManagement.js' />"></script>
 
+	<!-- navigation bar js ------------------------------------->
+		<jsp:include page="/fragment/navigation_determine.jsp" />
+	<!-- navigation bar js End------------------------------------->
 
 </body>
 </html>

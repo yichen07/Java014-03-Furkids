@@ -26,8 +26,8 @@ public class OrderListDaoImpl implements OrderListDao {
 	public int updateProductStock(OrderListBean oib) {
 		int n = 0;
 		int stock = 0;
-		String sql0 = "SELECT ComStock FROM Commodity WHERE ComID = ?";
-		String sql1 = "UPDATE Commodity SET ComStock = ComStock - ? WHERE ComId = ?";
+		String sql0 = "SELECT ComStock FROM Commoditylist WHERE ComID = ?";
+		String sql1 = "UPDATE Commoditylist SET ComStock = ComStock - ? WHERE ComId = ?";
 		try (PreparedStatement ps = conn.prepareStatement(sql0);) {
 			ps.setInt(1, oib.getComID());
 			try (ResultSet rs = ps.executeQuery();) {

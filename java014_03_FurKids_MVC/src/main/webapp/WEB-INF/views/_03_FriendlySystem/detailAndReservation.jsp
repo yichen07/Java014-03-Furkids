@@ -355,5 +355,12 @@
 	<script src="<c:url value='/resources/javascript/touristInfo_01.js' />"></script>
 
 
+<<<<<<< HEAD
+=======
+	<!-- navigation bar js ------------------------------------->
+		<jsp:include page="/fragment/navigation_determine.jsp" />
+	<!-- navigation bar js End------------------------------------->
+	
+>>>>>>> 0dc2640f23f04e18e8b0bcde4b3c801fa1717bf9
 </body>
 </html>
