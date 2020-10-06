@@ -1,10 +1,13 @@
 package _03_FriendlyService.model;
 
 import java.io.Serializable;
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,9 +30,10 @@ public class ReservationBean implements Serializable{
 	private String busChildAddress;
 	private String resDate;
 	private String resTime;
+	private String resNote;
 	
-	@OneToMany(mappedBy="reservationBean")
-	private Set<ReservationChildBean> reservationChildBean = new LinkedHashSet<>();
+	@OneToMany(mappedBy="reservationBean",cascade = CascadeType.ALL ,fetch=FetchType.EAGER)
+	private List<ReservationChildBean> reservationChildBean = new ArrayList<>();
 
 	
 	
@@ -40,7 +44,7 @@ public class ReservationBean implements Serializable{
 
 
 	public ReservationBean(Integer resID, String cusAccount, String conAccount, Integer busChildNo, String busChildName,
-			String busChildAddress, String resDate, String resTime, Set<ReservationChildBean> reservationChildBean) {
+			String busChildAddress, String resDate, String resTime, String resNote, List<ReservationChildBean> reservationChildBean) {
 		super();
 		this.resID = resID;
 		this.cusAccount = cusAccount;
@@ -150,15 +154,26 @@ public class ReservationBean implements Serializable{
 	}
 
 
-
-	public Set<ReservationChildBean> getReservationChildBean() {
+	public List<ReservationChildBean> getReservationChildBean() {
 		return reservationChildBean;
 	}
 
 
 
-	public void setReservationChildBean(Set<ReservationChildBean> reservationChildBean) {
+	public void setReservationChildBean(List<ReservationChildBean> reservationChildBean) {
 		this.reservationChildBean = reservationChildBean;
+	}
+
+
+
+	public String getResNote() {
+		return resNote;
+	}
+
+
+
+	public void setResNote(String resNote) {
+		this.resNote = resNote;
 	}
 	
 }

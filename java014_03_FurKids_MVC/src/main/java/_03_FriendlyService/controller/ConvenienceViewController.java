@@ -3,6 +3,7 @@ package _03_FriendlyService.controller;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -15,20 +16,28 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import _01_Member.Registration.model.MemberBean;
 import _01_Member.Registration.model.MerchantBean;
+import _01_Member.Registration.model.PetBean;
 import _03_FriendlyService.model.ConvenienceBean_H;
+import _03_FriendlyService.model.ReservationBean;
+import _03_FriendlyService.model.ReservationChildBean;
 import _03_FriendlyService.service.ConvenienceService;
 import _03_FriendlyService.service.ReservationService;
 
 @Controller
 @RequestMapping("/_03_FriendlySystem")
 
-@SessionAttributes({"nowPage","AllViewConvenience","item","TotalPages","loginBean"})
+@SessionAttributes({"nowPage","AllViewConvenience","item","TotalPages",
+	"loginBean","Classify","LoginOK","Pet123","ResBean"})
 
 public class ConvenienceViewController {
 	@Autowired
@@ -68,10 +77,56 @@ public class ConvenienceViewController {
 	
 	//詳細內容&預約畫面
 	@GetMapping("/ViewReservation/{no}")
-	public String detailAndReservation(){
+	public String detailAndReservation(Model model,
+			@PathVariable(value="no" ,required = false) Integer no){
+//		ReservationBean resBean = new ReservationBean();
+//		model.addAttribute("ResBean",resBean);
+		MemberBean mb = null;
+		List<PetBean> pet = null;
+		ReservationBean resBean = new ReservationBean();
+		List<ReservationChildBean> listRcb = new ArrayList<>();
+		if(model.getAttribute("Classify") != null ) {
+			if(model.getAttribute("Classify").equals(0)) {
+				 mb = (MemberBean) model.getAttribute("LoginOK");
+				 pet = mb.getPet(); 
+				 for(int i = 0; i < pet.size(); i++) {
+					 listRcb.add(new ReservationChildBean(pet.get(i).getPetName(), 
+							 							  pet.get(i).getPetVariety(),
+							 							  pet.get(i).getPetBreed()));
+				 }
+				 resBean.setCusAccount(mb.getCusAccount()); 							//會員帳號
+				 resBean.setConAccount(service.getBusChild(no).getBusAccount()); 		//商家帳號
+				 resBean.setBusChildNo(no); 											//分店編號
+				 resBean.setBusChildName(service.getBusChild(no).getBusChildName()); 	//分店名稱
+				 resBean.setBusChildAddress(service.getBusChild(no).getBusChildAddress()); //分店地址
+				 resBean.setReservationChildBean(listRcb);
+			}
+		} else {
+			 mb = new MemberBean();
+		}
+		
+		model.addAttribute("Member", mb);
+		model.addAttribute("ResBean", resBean);
+		model.addAttribute("Reservation",service.getBusChild(no));
 		
 		return "/_03_FriendlySystem/detailAndReservation";
 	}
+	
+	@PostMapping("/ViewReservation/{no}")
+	public String Reservation(
+			@ModelAttribute("ResBean") ReservationBean resBean,
+			BindingResult result,
+			Model model) {
+		if(model.getAttribute("Classify") == null ) {
+			return "index";
+		} else if(!model.getAttribute("Classify").equals(0)) {
+			return "index";
+		}
+		
+		System.out.println(resBean.getResDate());
+		return "/_03_FriendlySystem/detailAndReservation";
+	}
+	
 	
 	//撈該分店圖片
 		@GetMapping("/getSmallPicture/{id}")
