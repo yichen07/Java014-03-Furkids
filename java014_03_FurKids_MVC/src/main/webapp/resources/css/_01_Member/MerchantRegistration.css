@@ -99,7 +99,6 @@ select:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px #f7f9ff inset !important;
     -webkit-text-fill-color:#808aa0;
 }
-/* 瀏覽歷史紀錄顏色 End */
 .formTitle {
     color: #575757;
     font-weight: 600;
@@ -112,6 +111,12 @@ select:-webkit-autofill {
 .leftTitle {
     color: #9abafd;
     font-weight: 500;
+}
+.leftUserIcon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .wrapper {
@@ -150,19 +155,20 @@ select:-webkit-autofill {
     border-radius: 7px;
 }
 #eyeInput:valid,
-.eyeInputCheck:valid {
+#eyeInputCheck:valid {
     background: transparent;
 }
 #inputStyle:valid {
     background: transparent;
 }
 #eyeInput:focus,
-#inputStyle:focus {
+#inputStyle:focus,
+#eyeInputCheck:focus {
     border-radius: 7px;
     box-shadow: none;
     border: none;
     background: transparent;
-    border: 2px solid #c5c5c5;
+    border: 2px solid rgb(116, 163, 250);
 }
 
 .wrapper .input-group .colTitle {
@@ -195,8 +201,8 @@ select:-webkit-autofill {
 #eyeHideCheck {
     display: none;
 }
-.wrapper .input-group input:focus ~ .colTitle,
-.wrapper .input-group input:valid ~ .colTitle {
+.wrapper .input-group input:valid ~ .colTitle,
+.wrapper .input-group input:invalid ~ .colTitle {
     top: -14px;
     left: 14px;
     font-size: 17px;
@@ -204,6 +210,14 @@ select:-webkit-autofill {
     background: #f7f9ff;
     border-radius: 7px;
 }
+/* .wrapper .input-group input:focus ~ .colTitle { */
+/*     top: -14px; */
+/*     left: 14px; */
+/*     font-size: 17px; */
+/*     padding: 0px 1px; */
+/*     background: #f7f9ff; */
+/*     border-radius: 7px; */
+/* } */
 @media (max-width: 767px) {
     .imgBackground {
         background: #f7f9ff;
@@ -341,86 +355,86 @@ select:-webkit-autofill {
 
 /* Address CSS */
 
-.form-control{
-    border-radius: 0;
-     border: none;
-     border-bottom: #adadad solid 2px;
-     background: white !important;
-     outline: none;
- }
+/* .form-control{ */
+/*     border-radius: 0; */
+/*      border: none; */
+/*      border-bottom: #adadad solid 2px; */
+/*      background: white !important; */
+/*      outline: none; */
+/*  } */
    
-   .form-control-placeholder {
-     position: absolute;
-     top: 0;
-     padding: 0 0 0 0;
-     transition: all 200ms;
-     opacity: 0.5;
-     outline: none;
-   }
+/*    .form-control-placeholder { */
+/*      position: absolute; */
+/*      top: 0; */
+/*      padding: 0 0 0 0; */
+/*      transition: all 200ms; */
+/*      opacity: 0.5; */
+/*      outline: none; */
+/*    } */
    
-   .form-control:focus + .form-control-placeholder,
-   .form-control:valid + .form-control-placeholder {
-     font-size: 90%;
-     transform: translate3d(0, -90%, 0);
-     color: #637ef5 ;
-     opacity: 1; background: transparent;
-     outline: none;
-     padding-left: 0px;
-   }
+/*    .form-control:focus + .form-control-placeholder, */
+/*    .form-control:valid + .form-control-placeholder { */
+/*      font-size: 90%; */
+/*      transform: translate3d(0, -90%, 0); */
+/*      color: #637ef5 ; */
+/*      opacity: 1; background: transparent; */
+/*      outline: none; */
+/*      padding-left: 0px; */
+/*    } */
   
- .city {
-     display: flex;
-     width: 190px;
-     margin-right: 40px;
-    padding-left: 0px;
-     font-weight: 500;
- }
- .city option{
-     color: #323744;
-     font-weight: 00;
- }
+/*  .city { */
+/*      display: flex; */
+/*      width: 190px; */
+/*      margin-right: 40px; */
+/*     padding-left: 0px; */
+/*      font-weight: 500; */
+/*  } */
+/*  .city option{ */
+/*      color: #323744; */
+/*      font-weight: 00; */
+/*  } */
  
- .town {
-     display: flex;
-     width: 190px;
-     margin-right: 30px;
-     padding-left: 0px;
+/*  .town { */
+/*      display: flex; */
+/*      width: 200px; */
+/*      margin-right: 30px; */
+/*      padding-left: 0px; */
  
  
-     font-weight: 500;
- }
- .town option{
+/*      font-weight: 500; */
+/*  } */
+/*  .town option{ */
     
-     font-weight: 500;
- }
- .twAdress{
-     font-size: 90%;
-     transform: translate3d(0, 813%, 0);
-     color: #637ef5;
-     opacity: 1; background: transparent;
-     outline: none;
-     font-weight: 600;
+/*      font-weight: 500; */
+/*  } */
+/*  .twAdress{ */
+/*      font-size: 90%; */
+/*      transform: translate3d(0, 813%, 0); */
+/*      color: #637ef5; */
+/*      opacity: 1; background: transparent; */
+/*      outline: none; */
+/*      font-weight: 600; */
  
- }
- .form-control:focus {
-     box-shadow: none;
- }
+/*  } */
+/*  .form-control:focus { */
+/*      box-shadow: none; */
+/*  } */
 
- @media (max-width: 767px) {
-    .city {
+/*  @media (max-width: 767px) { */
+/*     .city { */
       
-        width: 50%;
-        margin-right: 30px;
-       padding-left: 0px;
-        font-weight: 500;
-    }
-    .town {
+/*         width: 50%; */
+/*         margin-right: 30px; */
+/*        padding-left: 0px; */
+/*         font-weight: 500; */
+/*     } */
+/*     .town { */
         
-        width:50%;
-        margin-right: 30px;
-        padding-left: 0px;
+/*         width:50%; */
+/*         margin-right: 30px; */
+/*         padding-left: 0px; */
     
     
-        font-weight: 500;
-    }
-}
+/*         font-weight: 500; */
+/*     } */
+/* } */

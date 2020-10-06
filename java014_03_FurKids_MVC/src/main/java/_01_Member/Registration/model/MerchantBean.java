@@ -25,7 +25,7 @@ public class MerchantBean implements Serializable {
 	@Transient
 	private String confirmPassword;
 	private String busName;
-	private String busTel;
+	private String busTel;	
 	private String busAddress;
 	private String busDescription;
 	private Blob busPhoto;

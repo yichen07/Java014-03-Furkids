@@ -195,7 +195,7 @@
                 obj = {},
                 ele = {},
                 s = {};
-            obj = this.container.find('select,input');
+            obj = this.container.find('form:select,form:input');
             if (obj.length) {
                 obj.each(function () {
                     ele = $(this);
@@ -291,8 +291,8 @@
                 opts = self.options,
                 county = '',
                 list = {
-                    'county': '<option value="">縣市</option>',
-                    'district': '<option value="">鄉鎮市區</option>'
+                    'county': '<form:option value="">縣市</form:option>',
+                    'district': '<form:option value="">鄉鎮市區</form:option>'
                 },
                 tpl = [];
 
@@ -305,7 +305,7 @@
                 wrap.district.html(list.district);
                 for (county in data) {
                     if ('undefined' !== typeof data[county] && -1 === opts.hideCounty.indexOf(county)) {
-                        tpl.push('<option value="' + county + '">' + county + '</option>');
+                        tpl.push('<form:option value="' + county + '">' + county + '</form:option>');
                     }
                 }
                 $(tpl.join('')).appendTo(wrap.county);
@@ -340,9 +340,9 @@
                             if ('undefined' !== typeof data[val][district] &&
                                 (-1 === opts.hideDistrict.indexOf(district) && -1 === opts.hideDistrict.indexOf(data[val][district]))
                             ) {
-                                tpl.push('<option value="' + district + '">');
+                                tpl.push('<form:option value="' + district + '">');
                                 tpl.push(data[val][district] + ' ' + district);
-                                tpl.push('</option>');
+                                tpl.push('</form:option>');
                             }
                         }
                     } else {
@@ -350,15 +350,15 @@
                             if ('undefined' !== typeof data[val][district] &&
                                 (-1 === opts.hideDistrict.indexOf(district) && -1 === opts.hideDistrict.indexOf(data[val][district]))
                             ) {
-                                tpl.push('<option value="' + district + '">');
+                                tpl.push('<form:option value="' + district + '">');
                                 tpl.push(district);
-                                tpl.push('</option>');
+                                tpl.push('</form:option>');
                             }
                         }
                     }
                     wrap.district.append(tpl.join('')).trigger('change.twzipcode');
                 } else {
-                    wrap.county.find('option:first').prop('selected', true);
+                    wrap.county.find('form:option:first').prop('selected', true);
                     self.reset('district');
                 }
                 // County callback binding
@@ -417,17 +417,17 @@
                     n;
                 for (n in zip) {
                     if ('role' !== n) {
-                        self.role.zipcode.find(':input').attr(n, zip[n]);
+                        self.role.zipcode.find('form:input').attr(n, zip[n]);
                     }
                 }
                 for (n in county) {
                     if ('role' !== n) {
-                        self.role.county.find('select').attr(n, county[n]);
+                        self.role.county.find('form:select').attr(n, county[n]);
                     }
                 }
                 for (n in district) {
                     if ('role' !== n) {
-                        self.role.district.find('select').attr(n, district[n]);
+                        self.role.district.find('form:select').attr(n, district[n]);
                     }
                 }
             }());
@@ -550,26 +550,26 @@
                 readonly = role.zipcode.data('readonly') || opts.readonly;
 
             // Elements create
-            $('<select/>')
-                .attr('name', countyName)
+            $('<form:select/>')
+                .attr({'name': countyName,'path':'countyName'})
                 .addClass(role.county.data('style') || ('undefined' !== typeof opts.css[0] ? opts.css[0] : ''))
                 .appendTo(role.county.length ? role.county : container);
 
-            $('<select/>')
-                .attr('name', districtName)
+            $('<form:select/>')
+                .attr({'name': districtName, 'path': 'districtName'})
                 .addClass(role.district.data('style') || ('undefined' !== typeof opts.css[1] ? opts.css[1] : ''))
                 .appendTo(role.district.length ? role.district : container);
 
-            $('<input/>')
-                .attr({'type': 'text', 'name': zipcodeName, 'placeholder': zipcodePlaceholder})
+            $('<form:input/>')
+                .attr({'type': 'text', 'name': zipcodeName, 'path': 'zipcodeName', 'placeholder': zipcodePlaceholder})
                 .prop('readonly', readonly)
                 .addClass(role.zipcode.data('style') || ('undefined' !== typeof opts.css[2] ? opts.css[2] : ''))
                 .appendTo(role.zipcode.length ? role.zipcode : container);
 
             self.wrap = {
-                'county': container.find('select[name="' + countyName + '"]:first'),
-                'district': container.find('select[name="' + districtName + '"]:first'),
-                'zipcode': container.find('input[type=text][name="' + zipcodeName + '"]:first')
+                'county': container.find('form:select[name="' + countyName + '"]:first'),
+                'district': container.find('form:select[name="' + districtName + '"]:first'),
+                'zipcode': container.find('form:input[type=text][name="' + zipcodeName + '"]:first')
             };
 
             if (true === opts.zipcodeIntoDistrict) {

@@ -123,12 +123,6 @@ public class RegisterController {
 		return "redirect:/";
 	}
 
-// 會員管理
-	@GetMapping("/MemberManagementCenter")
-	public String memberManagementSystem(Model model) {
-		return "_01_Member/MemberCenter_Member";
-	}
-	
 	
 // 商家註冊	
 	@GetMapping("/MerchantRegistration")
@@ -203,11 +197,6 @@ public class RegisterController {
 		return "redirect:/";
 	}
 	
-// 商家管理
-	@GetMapping("/MerchantManagementCenter")
-	public String merchantManagementSystem(Model model) {
-		return "_01_Member/MerchantCenter_Merchant";
-	}
 	
 // 會員寵物新增	
 	@GetMapping("/PetRegistration")
@@ -282,12 +271,7 @@ public class RegisterController {
 		return "redirect:/PetRegistration";
 	}
 	
-// 會員寵物管理
-	@GetMapping("/PetManagementCenter")
-	public String PetManagementSystem(Model model) {
-		return "_01_Member/MemberCenter_Pet";
-	}
-	
+
 // 商家分店新增	
 	@GetMapping("/MerchantChildRegistration")
 	public String merchantChildRegisterEmptyForm (Model model) {
@@ -368,10 +352,5 @@ public class RegisterController {
 		return "redirect:/MerchantChildRegistration";
 	}
 
-// 商家分店管理
-	@GetMapping("/MerchantChildManagementCenter")
-	public String MerchantChildManagementSystem(Model model) {
-		return "_01_Member/MerchantCenter_MerchantChild";
-	}
-	
+
 }

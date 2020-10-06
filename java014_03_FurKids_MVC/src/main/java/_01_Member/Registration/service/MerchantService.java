@@ -18,7 +18,7 @@ public interface MerchantService {
 	boolean accountExists(String account);
 	// 搜尋特定商家資料
 	MerchantBean queryMerchant(String account);
-	// 搜尋特定商家資料
+	// 搜尋全部商家資料
 	List<MerchantBean> queryAllMerchants();
 	// 登入驗證
 	MerchantBean checkAccountPassword(String account, String password);

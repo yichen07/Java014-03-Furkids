@@ -86,8 +86,8 @@
 						<i class="fas fa-handshake"></i>&nbsp;寵物交流版
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
-						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
+						<a class="dropdown-item" href="<c:url value='/_04_Community/BlogIndex' />">寵物專欄</a>
+						<a class="dropdown-item" href="<c:url value='/_04_Community/discussionBoard.jsp' />">寵物討論板</a>
 						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
 					</div>
 				</li>

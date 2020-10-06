@@ -43,5 +43,8 @@
 		crossorigin="anonymous"></script>
 	<!-- jQuery first, then Popper.js, then Bootstrap JS End-------------------------------->
 
+<!-- navigation bar js ------------------------------------->
+	<jsp:include page="/fragment/navigation_determine.jsp" />
+<!-- navigation bar js End------------------------------------->
 </body>
 </html>

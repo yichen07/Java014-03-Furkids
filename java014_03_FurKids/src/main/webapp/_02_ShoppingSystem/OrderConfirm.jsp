@@ -7,10 +7,10 @@
 function cancelOrder() {
 	if (confirm("確定取消此份訂單 ? ") ) {
 		// 接收此資料的Servlet會使用 finalDecision 參數的值
-		document.forms[0].finalDecision.value = "CANCEL";
-		document.forms[0].action="<c:url value='/_02_ShoppingCart/ProcessOrder.do' />";
-		document.forms[0].method="POST";
-		document.forms[0].submit();
+		document.forms[1].finalDecision.value = "CANCEL";
+		document.forms[1].action="<c:url value='/_02_ShoppingCart/ProcessOrder.do' />";
+		document.forms[1].method="POST";
+		document.forms[1].submit();
 		return;
 	} else {
 		return;
@@ -24,10 +24,10 @@ function reconfirmOrder() {
 	}
 	if (confirm("確定送出此份訂單 ? ") ) {
 		// 接收此資料的Servlet會使用 finalDecision 參數的值
-		document.forms[0].finalDecision.value = "ORDER";
-		document.forms[0].action="<c:url value='/_02_ShoppingCart/ProcessOrder.do' />";
-		document.forms[0].method="POST";
-		document.forms[0].submit();
+		document.forms[1].finalDecision.value = "ORDER";
+		document.forms[1].action="<c:url value='/_02_ShoppingCart/ProcessOrder.do' />";
+		document.forms[1].method="POST";
+		document.forms[1].submit();
 		return;
 	} else {
 		return;

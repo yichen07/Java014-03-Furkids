@@ -47,13 +47,16 @@
 			<div class="row wrapperOut">
 				<!-- Left Content Start ---------------------->
 				<div
-					class="col-xl-7 col-lg-8 col-md-10 col-12 mt-5 wrapper my-md-5 my-0 ml-md-5 ml-0 mb-5 pb-5 mt-lg-5 animate__animated animate__fadeInLeft">
-					<form class="mt-0">
+					class="col-xl-7 col-lg-8 col-md-10 col-12 mt-5 wrapper my-md-5 my-0 ml-md-5 ml-0 mb-5 pb-5 mt-lg-5 animate__animated animate__fadeInLeft">	
+					
+					<form:form class="mt-0" method="POST" modelAttribute="merchantBean" enctype='multipart/form-data'>
 						<div class="px-1">
 							<div class="row">
 								<div class="col-12 d-flex justify-content-center">
 									<div class="mb-4">
-										<h2 class="formTitle">商家註冊</h2>
+										<h2 class="formTitle">商家註冊
+										<span style="font-size: 16px">(切換至<a href="<c:url value='/MemberRegistration' />" >會員註冊</a>)</span>
+										</h2>
 									</div>
 								</div>
 							</div>
@@ -64,7 +67,7 @@
 								<div
 									class="col-3 d-flex-column justify-content-center align-items-center text-center">
 									<div class="mb-1">
-										<i class="fas fa-user-circle fa-fw leftIcon"></i>
+										<img src="<c:url value='resources/images/_01_Member/user-circle-solid.svg'/>" class="leftUserIcon" id="show_image" style="height: 50px; width: 50px" />
 									</div>
 									<div class="pb-3">
 										<h5 class="leftTitle">基本資料</h5>
@@ -72,12 +75,23 @@
 								</div>
 								<div class="col-9 pr-5">
 									<div class="input-group">
-										<input type="text" required="required" class="w-80"
-											id="inputStyle" /> <span class="colTitle">帳號</span>
+										<form:input type="email" path='busAccount' required="" class="w-80"
+											id="inputStyle" /> <span class="colTitle">帳號 / 電子信箱</span>
+										<form:errors path="busAccount" cssClass="error" style="color: red" />
 									</div>
 									<div class="input-group">
-										<input type="text" required="required" class="w-80"
+										<form:input type="text" path="busName" required="" class="w-80"
 											id="inputStyle" /> <span class="colTitle">姓名</span>
+										<form:errors path="busName" cssClass="error" style="color: red" />
+									</div>
+									<div class="buybtnP mb-4">
+										<form:input type='file' path="merchantMultipartFile" style="display: none" id="image_file"/>
+										<button type="button" class="btn-block ripple buybtn" id="upload_image">
+											<i class="fas fa-camera-retro mr-2"> <span
+												class="btnText align-self-center">上傳照片</span>
+											</i>
+										</button>
+										<form:errors path="merchantMultipartFile"  cssClass="error" style="color: red" />
 									</div>
 								</div>
 							</div>
@@ -96,19 +110,21 @@
 								</div>
 								<div class="col-9 pr-5">
 									<div class="input-group">
-										<input type="password" required="required" id="eyeInput" /> <span
+										<form:input type="password" path='busPassword' required="" id="eyeInput" /> <span
 											class="colTitle">密碼</span> <span class="eyePosition"><i
 											class="far fa-eye-slash" id="eyeHide" onclick="eyeFunction()"></i></span>
 										<span class="eyePosition"><i class="far fa-eye"
 											id="eyeShow" onclick="eyeFunction()"></i></span>
+										<form:errors path="busPassword" cssClass="error" style="color: red" />
 									</div>
 									<div class="input-group">
-										<input type="password" required="required" id="eyeInputCheck" />
+										<form:input type="password" path='confirmPassword' required="" id="eyeInputCheck" />
 										<span class="colTitle">密碼確認</span> <span class="eyePosition"><i
 											class="far fa-eye-slash" id="eyeHideCheck"
 											onclick="eyeFunctionCheck()"></i></span> <span class="eyePosition"><i
 											class="far fa-eye" id="eyeShowCheck"
 											onclick="eyeFunctionCheck()"></i></span>
+										<form:errors path="confirmPassword" cssClass="error" style="color: red" />
 									</div>
 								</div>
 							</div>
@@ -126,31 +142,15 @@
 									</div>
 								</div>
 								<div class="col-9 pr-5">
-
 									<div class="input-group">
-										<div class="d-flex" id="twzipcode_ADV">
-											<label class="form-control-placeholder twAdress"></label>
-										</div>
-									</div>
-
-									<div class="input-group">
-										<input type="text" required="required" class="w-80"
-											id="inputStyle" /> <span class="colTitle">街道</span>
+										<form:input type="text" path='busAddress' required="" class="w-80"
+											id="inputStyle" /> <span class="colTitle">地址</span>
+										<form:errors path="busAddress" cssClass="error" style="color: red" />
 									</div>
 									<div class="input-group">
-										<input type="tel" required="required" class="w-80"
+										<form:input type="text" path='busTel' required="" class="w-80"
 											id="inputStyle" /> <span class="colTitle">電話</span>
-									</div>
-									<div class="input-group">
-										<input type="tel" required="required" class="w-80"
-											id="inputStyle" /> <span class="colTitle">電子郵件</span>
-									</div>
-									<div class="buybtnP mb-4">
-										<button type="button" class="btn-block ripple buybtn">
-											<i class="fas fa-camera-retro mr-2"> <span
-												class="btnText align-self-center">上傳照片</span>
-											</i>
-										</button>
+										<form:errors path="busTel" cssClass="error" style="color: red" />
 									</div>
 								</div>
 							</div>
@@ -169,9 +169,9 @@
 								</div>
 								<div class="col-9 pr-5">
 									<div class="input-group">
-										<textarea class="form-control noteborder" rows="4"
-											placeholder="請輸入對您商店的描述"></textarea>
-
+										<form:textarea path="busDescription" class="form-control noteborder" rows="4"
+											placeholder="請輸入對您商店的描述"></form:textarea>
+										<form:errors path="busDescription"  cssClass="error" style="color: red" />
 									</div>
 
 								</div>
@@ -190,14 +190,15 @@
 							</div>
 							<div class="buybtnP mt-3 mb-0 mr-2">
 								<div class="col-12 mr-0 d-flex justify-content-end">
-									<button class="ripple buybtnOutline">重填</button>
-									<button class="ripple buybtn">確認</button>
+									<input type="submit" name="submit" id="submit" class="ripple buybtn"/>
+									<input type="reset" name="cancel" id="cancel" class="ripple buybtnOutline" />
 								</div>
 							</div>
 
 							<!-- 確認表單 End-->
 						</div>
-					</form>
+					</form:form>
+					
 				</div>
 
 				<!-- Left Content End ------------------------>
@@ -207,10 +208,6 @@
 
 	<!-- Main Form End--------------------------------------------------------------------------->
 	
-	<!-- Footer Start----------------------------------------------------------------------->
-		<!-- 引入簡易的頁尾 -->
-		<jsp:include page="/fragment/footer_brief.jsp" />
-	<!-- Footer End----------------------------------------------------------------------->
 	
 
 	<!-- Optional JavaScript -->
@@ -234,13 +231,40 @@
 	<script src="https://kit.fontawesome.com/8e822d04fb.js"
 		crossorigin="anonymous"></script>
 
+
+	<!-- banner effect -->
+	<script src="<c:url value='/resources/javascript/jquery.stellar.js' />"></script>
+	
 	<!-- Taiwan Address -->
-	<script type="text/javascript"
-		src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script src="<c:url value='/resources/javascript/jquery.twzipcode.js' />"></script>
+<!-- 	<script type="text/javascript" -->
+<!-- 		src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> -->
+<%--     <script src="<c:url value='/resources/javascript/jquery.twzipcode_mvc.js' />"></script> --%>
 
 	<!-- JavaScript Plug-in End------------------------------------------------------------->
 	<script
 		src="<c:url value='/resources/javascript/MerchantRegistration.js' />"></script>
+		
+	<!-- navigation bar js ------------------------------------->
+		<jsp:include page="/fragment/navigation_determine.jsp" />
+	<!-- navigation bar js End------------------------------------->
+	
+	<!-- 上傳圖片 js -->
+	<script type="text/javascript">
+	$("#upload_image").click(function (e) {
+        document.getElementById("image_file").click();
+      });
+
+      $("#image_file").on("change", function (event) {
+        const file = event.target.files[0];
+        let readFile = new FileReader();
+        readFile.readAsDataURL(file);
+        readFile.addEventListener("load", function (e) {
+            let image = document.getElementById("show_image");
+            image.src = this.result;
+          });
+      });
+      </script>
+	
+	
 </body>
 </html>
