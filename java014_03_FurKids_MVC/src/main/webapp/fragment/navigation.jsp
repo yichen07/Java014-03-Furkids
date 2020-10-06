@@ -163,7 +163,7 @@
 				</c:choose>
 				
 				<%-- 購物車 --%>
-				<a href="<c:url value='#' />" class="m-2">
+				<a href="<c:url value='/_02_ShoppingSystem/ShowCartContent' />" class="m-2">
 					<i class="fas fa-shopping-cart navbar-cart fa-lg"></i>
 				</a>
 				

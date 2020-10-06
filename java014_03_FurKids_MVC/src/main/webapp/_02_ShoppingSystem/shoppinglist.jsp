@@ -112,9 +112,8 @@
 
      <!-- topPicture  Start-->
   
- 	<jsp:include page="/fragment/navigation.jsp" />
+<%-- 	<jsp:include page="/fragment/navigation.jsp" /> --%>
    
-    ${session.LoginOK}
     
      <div class="container-fluid" id="imageStellar">
          <div class="row">
