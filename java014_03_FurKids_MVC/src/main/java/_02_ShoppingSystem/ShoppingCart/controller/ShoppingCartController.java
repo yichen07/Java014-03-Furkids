@@ -62,7 +62,7 @@ public class ShoppingCartController {
         if (obj == null){
 			status.setComplete();
  			redirectAtt.addFlashAttribute("errorNotLogin", "請先註冊或登入會員帳號");
-			return "redirect:/_01_Member/PetRegistration";
+			return "redirect:/_02_ShoppingSystem/ShowCartContent";
        } 
 		return  "_02_ShoppingSystem/OrderConfirm";
 	}
@@ -88,7 +88,7 @@ public class ShoppingCartController {
 		if (obj == null) {
 			status.setComplete();
             redirectAtt.addFlashAttribute("errorNotLogin", "請先註冊或登入會員帳號");
-			return "redirect:/_01_Member/PetRegistration";		}
+			return "redirect:/_02_ShoppingSystem/ShowCartContent";		}
 		if (cmd.equalsIgnoreCase("DEL")) {
 	        sc.deleteBook(ComId); // 刪除購物車內的某項商品
 		    return SHOW_CART_CONTENT;

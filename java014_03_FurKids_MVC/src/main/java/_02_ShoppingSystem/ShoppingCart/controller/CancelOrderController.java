@@ -11,7 +11,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.WebRequest;
 
 @Controller
-@RequestMapping("_04_ShoppingSystem")
+@RequestMapping("_02_ShoppingSystem")
 @SessionAttributes({"ShoppingCart" , "loginBean"})
 public class CancelOrderController {
 	@Autowired

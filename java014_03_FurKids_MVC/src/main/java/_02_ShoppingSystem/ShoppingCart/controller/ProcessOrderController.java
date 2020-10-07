@@ -29,8 +29,8 @@ import _02_ShoppingSystem.ShoppingCart.service.OrderService;
 // OrderConfirm.jsp 呼叫本程式。
 //@WebServlet("/_02_ShoppingCart/ProcessOrder.do")
 @Controller
-@RequestMapping("_02_ShoppingSystem , loginBean")
-@SessionAttributes({ "LoginOK", "ShoppingCart", "OrderErrorMessage"})
+@RequestMapping("_02_ShoppingSystem")
+@SessionAttributes({ "LoginOK", "ShoppingCart", "OrderErrorMessage" ,"loginBean"})
 public class ProcessOrderController {
 	
 	@Autowired
