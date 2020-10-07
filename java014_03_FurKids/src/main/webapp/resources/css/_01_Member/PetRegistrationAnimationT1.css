@@ -2,8 +2,10 @@
 
 body {
     font-family: "Tahoma", "cwTeXYen", sans-serif;
-
-    background-size: cover;
+    /* background: linear-gradient(-45deg, #f1f3ff, #e7ecfa, #e1f7ff, #e6efff);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite; */
+    background:#f7f9ff;
 }
 ul,
 li {
@@ -11,8 +13,7 @@ li {
     margin: 0;
     padding: 0;
 }
-
-@keyframes gradient {
+/* @keyframes gradient {
     0% {
         background-position: 0% 50%;
     }
@@ -22,7 +23,7 @@ li {
     100% {
         background-position: 0% 50%;
     }
-}
+} */
 /* NavBar -------------------------------------------------------------------------> */
 
 .navbar-collapse ul li a.nav-link:before {
@@ -80,14 +81,78 @@ li {
 
 /* NavBar End-------------------------------------------------------------------------> */
 
-
-/* Main Form Start ----------------------------------------------------------------> */
 .imgBackground {
-    background: url(../../images/_01_Member/MerchantRegistration_background.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+    position: relative;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
 }
+.imgBackground .rotate {
+    position: absolute;
+    top: calc(50% - 200px);
+    left: calc(50% - 200px);
+    width: 400px;
+    height: 400px;
+    transform-style: preserve-3d;
+    animation: rotate 20s linear infinite;
+    zoom: 6;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    100% {
+        transform: rotateX(360deg) rotateY(36deg);
+    }
+}
+.imgBackground .rotate .sphere {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+.imgBackground .rotate .sphere:nth-child(2) {
+    transform: rotate(90deg);
+}
+.imgBackground .rotate .sphere:nth-child(3) {
+    transform: rotate(45deg);
+}
+.imgBackground .rotate .sphere:nth-child(4) {
+    transform: rotate(-45deg);
+}
+.imgBackground .rotate .sphere span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    background: radial-gradient(#ccc, #fff);
+    border-radius: 50%;
+}
+
+.imgBackground .rotate .sphere span:nth-child(1) {
+    transform: rotateY(0deg);
+}
+.imgBackground .rotate .sphere span:nth-child(2) {
+    transform: rotateY(30deg);
+}
+.imgBackground .rotate .sphere span:nth-child(3) {
+    transform: rotateY(60deg);
+}
+.imgBackground .rotate .sphere span:nth-child(4) {
+    transform: rotateY(90deg);
+}
+.imgBackground .rotate .sphere span:nth-child(5) {
+    transform: rotateY(120deg);
+}
+.imgBackground .rotate .sphere span:nth-child(6) {
+    transform: rotateY(150deg);
+}
+/* Main Form Start ----------------------------------------------------------------> */
 
 /* 瀏覽歷史紀錄顏色 Start */
 input:-webkit-autofill,
@@ -99,9 +164,8 @@ select:-webkit-autofill {
     -webkit-text-fill-color: #808aa0;
 }
 /* 瀏覽歷史紀錄顏色 End */
-
 .formTitle {
-    color: #a3a3a3;
+    color: #575757;
     font-weight: 600;
     font-size: 40px;
 }
@@ -114,36 +178,42 @@ select:-webkit-autofill {
     font-weight: 500;
     font-size: 16px;
 }
+
 .UserIcon {
     width: auto;
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
 }
+.backImg {
+    background: url(../../images/_01_Member/MerchantChildRegistration_background.jpg);
+    background-position: center center;
+    background-size: cover;
+    border-radius: 30px;
+    -webkit-filter: drop-shadow(3px 3px 5px rgba(223, 223, 223, 0.7));
+    filter: drop-shadow(3px 3px 5px rgba(83, 83, 83, 0.7));
+}
 
 .wrapper {
     background: #f7f9ff;
-    padding: 30px;
+    padding: 35px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
-    left: 50px;
-  
-   
-   
+    right: 20px;
 }
-.leftIcon2{
+.leftIcon2 {
     font-size: 34px;
 }
 
 .input-group {
     position: relative;
     width: 100%;
-    
+
     background: transparent;
 }
-.inputClass{
+.inputClass {
     width: 100%;
-   
+
     background: none;
     padding: 0.6rem 1.2rem;
     color: #808aa0;
@@ -154,7 +224,6 @@ select:-webkit-autofill {
     border-radius: 25px;
     transition: 0.3s;
     height: 45px;
-   
     box-sizing: border-box;
     font-size: 24px;
     outline: none;
@@ -163,7 +232,6 @@ select:-webkit-autofill {
 }
 textarea.input {
     padding: 0.8rem 1.2rem;
- 
     border-radius: 22px;
     resize: none;
     overflow-y: auto;
@@ -184,8 +252,8 @@ textarea.input {
 .input-group.textarea label {
     top: 0.9rem;
     transform: translateY(0);
-  }
-  .input-group span {
+}
+.input-group span {
     position: absolute;
     top: 0;
     left: 13px;
@@ -195,12 +263,11 @@ textarea.input {
     color: transparent;
     pointer-events: none;
     z-index: 500;
-    font-family:  "cwTeXYen", sans-serif;
+    font-family: "cwTeXYen", sans-serif;
+}
 
-  }
-  
-  .input-group span:before,
-  .input-group span:after {
+.input-group span:before,
+.input-group span:after {
     content: "";
     position: absolute;
     width: 10%;
@@ -210,50 +277,41 @@ textarea.input {
     background-color: #f7f9ff;
     top: 50%;
     transform: translateY(-50%);
-    
-  }
+}
 
-  .input-group span:before {
+.input-group span:before {
     left: 50%;
-  }
-  
-  .input-group span:after {
+}
+
+.input-group span:after {
     right: 50%;
-  }
-  
-  .input-group.focus label {
+}
+
+.input-group.focus label {
     top: 0;
     transform: translateY(-50%);
     left: 13px;
     font-size: 0.9rem;
     color: #808aa0;
     font-family: "cwTeXYen", sans-serif;
+}
 
-  }
-  
-  .input-group.focus span:before,
-  .input-group.focus span:after {
+.input-group.focus span:before,
+.input-group.focus span:after {
     width: 50%;
     opacity: 1;
-   
-
-  }
-
+}
 
 .input-group:hover {
     border-radius: 7px;
     border: none;
 }
 #eyeInput,
-
 #eyeInputCheck {
     border-radius: 7px;
     background: transparent;
     color: #808aa0;
-
 }
-
-
 
 #eyeInput:valid,
 #eyeInputCheck:valid {
@@ -265,7 +323,7 @@ textarea.input {
 #eyeInput:focus,
 #inputStyle:focus,
 #eyeInputCheck:focus,
-#inputClassMessage:focus{
+#inputClassMessage:focus {
     border-radius: 7px;
     box-shadow: none;
     border: none;
@@ -301,33 +359,136 @@ textarea.input {
 #eyeHideCheck {
     display: none;
 }
-#inputClassMessage{
+#inputClassMessage {
     height: auto;
 }
+/* birthday Start*/
+.input-group .birthdayFocus {
+    top: 0;
+    transform: translateY(-50%);
+    left: 13px;
+    font-size: 0.9rem;
+    color: #808aa0;
+    font-family: "cwTeXYen", sans-serif;
+}
+.input-group .birthdayFocusSpan {
+    top: 0;
+    transform: translateY(-50%);
+    left: 13px;
+    font-size: 0.9rem;
+    font-family: "cwTeXYen", sans-serif;
+    background-color: #f7f9ff;
 
+    transform: translateY(-50%);
+}
+#date:focus {
+    border-radius: 7px;
+    box-shadow: none;
+    border: none;
+    background: none;
+    border: 2px solid rgb(116, 163, 250);
+}
 
+#date {
+    color: #808aa0;
+    font-size: 18px;
+}
+/* birthday End*/
+
+/* 性別 Radio Button  Start*/
+input[type="radio"] {
+    display: none;
+}
+.maleLable,
+.femaleLable {
+    position: relative;
+    color: rgb(187, 190, 194);
+    font-family: "cwTeXYen", sans-serif;
+    font-size: 20px;
+    border: 2px dotted rgb(209, 215, 223);
+    border-radius: 7px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#female:checked + .femaleLable {
+    background: #f85656;
+    color: white;
+    -webkit-filter: drop-shadow(3px 3px 5px rgba(223, 223, 223, 0.7));
+    filter: drop-shadow(3px 3px 5px rgba(99, 59, 59, 0.452));
+    border: 2px solid #f83f3f;
+}
+#male:checked + .maleLable {
+    background: #447ee9;
+    color: white;
+    -webkit-filter: drop-shadow(3px 3px 5px rgba(223, 223, 223, 0.7));
+    filter: drop-shadow(3px 3px 5px rgba(94, 115, 148, 0.7));
+    border: 2px solid #317aee;
+}
+
+/* 性別 Radio Button  End*/
+
+/* 貓狗 Radio Button  Start*/
+input[type="radio"] {
+    display: none;
+}
+.catLable,
+.dogLable {
+    position: relative;
+    color: rgb(187, 190, 194);
+    font-family: "cwTeXYen", sans-serif;
+    font-size: 20px;
+    border: 2px dotted rgb(209, 215, 223);
+    border-radius: 7px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#cat:checked + .catLable {
+    background: #447ee9;
+    color: white;
+    -webkit-filter: drop-shadow(3px 3px 5px rgba(223, 223, 223, 0.7));
+    filter: drop-shadow(3px 3px 5px rgba(94, 115, 148, 0.7));
+    border: 2px solid #317aee;
+}
+#dog:checked + .dogLable {
+    background: #447ee9;
+    color: white;
+    -webkit-filter: drop-shadow(3px 3px 5px rgba(223, 223, 223, 0.7));
+    filter: drop-shadow(3px 3px 5px rgba(94, 115, 148, 0.7));
+    border: 2px solid #317aee;
+}
+
+/* 貓狗 Radio Button  End*/
 @media (max-width: 767px) {
     .imgBackground {
         background: #f7f9ff;
     }
-    .wrapper {
-        background: #f7f9ff;
-        box-shadow: none;
-        left: 0;
-    }
 }
-@media (max-width: 960px) {
+@media (max-width: 992px) {
     .wrapperOut {
-        background: #f7f9ff;
+        background: none;
         box-shadow: none;
+        -webkit-filter: none;
+        filter: none;
     }
     .wrapper {
-        background: #f7f9ff;
+        background: none;
         box-shadow: none;
+        right: 0px;
+        -webkit-filter: none;
+        filter: none;
+    }
+    .backImg {
+        background: none;
+        -webkit-filter: none;
+        filter: none;
     }
 }
-
-
 
 /* Commit Terms Start -----------------------------------------------------------------> */
 
