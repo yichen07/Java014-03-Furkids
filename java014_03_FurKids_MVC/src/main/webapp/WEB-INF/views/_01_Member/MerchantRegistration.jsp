@@ -1,13 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8" />
-<link rel="icon" href="<c:url value='/resources/images/logo_08_iP6_6.ico' />" type="image/x-icon" />
+<link rel="icon"
+	href="<c:url value='/resources/images/logo_08_iP6_6.ico' />"
+	type="image/x-icon" />
 <title>商家註冊</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -44,19 +47,30 @@
 	<!-- Main Form Start------------------------------------------------------------------------->
 	<section class="imgBackground">
 		<div class="container-fluid">
-			<div class="row wrapperOut">
+			<div class="row">
 				<!-- Left Content Start ---------------------->
 				<div
-					class="col-xl-7 col-lg-8 col-md-10 col-12 mt-5 wrapper my-md-5 my-0 ml-md-5 ml-0 mb-5 pb-5 mt-lg-5 animate__animated animate__fadeInLeft">	
-					
-					<form:form class="mt-0" method="POST" modelAttribute="merchantBean" enctype='multipart/form-data'>
+					class="col-lg-6 col-md-9 col-12 wrapper my-5 animate__animated animate__fadeInLeft">
+
+					<form:form method="POST" modelAttribute="merchantBean"
+						enctype='multipart/form-data'>
 						<div class="px-1">
 							<div class="row">
 								<div class="col-12 d-flex justify-content-center">
-									<div class="mb-4">
-										<h2 class="formTitle">商家註冊
-										<span style="font-size: 16px">(切換至<a href="<c:url value='/MemberRegistration' />" >會員註冊</a>)</span>
-										</h2>
+									<div class="d-flex align-items-center mb-4">
+										<div class="pr-3">
+											<img
+												src="<c:url value='/resources/images/_01_Member/picture.svg' />"
+												style="height: 50px; width: 50px" class="UserIcon"
+												id="show_image" />
+										</div>
+										<div>
+											<h2 class="formTitle">
+												商家註冊 <span style="font-size: 16px">(切換至<a
+													href="<c:url value='/MemberRegistration' />">會員註冊</a>)
+												</span>
+											</h2>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -67,31 +81,41 @@
 								<div
 									class="col-3 d-flex-column justify-content-center align-items-center text-center">
 									<div class="mb-1">
-										<img src="<c:url value='resources/images/_01_Member/user-circle-solid.svg'/>" class="leftUserIcon" id="show_image" style="height: 50px; width: 50px" />
+										<i class="fas fa-user fa-fw leftIcon leftIcon2"></i>
 									</div>
-									<div class="pb-3">
+									<div class="pb-2">
 										<h5 class="leftTitle">基本資料</h5>
 									</div>
 								</div>
 								<div class="col-9 pr-5">
-									<div class="input-group">
-										<form:input type="email" path='busAccount' required="" class="w-80"
-											id="inputStyle" /> <span class="colTitle">帳號 / 電子信箱</span>
-										<form:errors path="busAccount" cssClass="error" style="color: red" />
+									<form:errors path="busAccount" cssClass="error"
+										style="color: red;" />
+									<div class="input-group mb-4">
+										<form:input type="email" path='busAccount' name="name"
+											required="" class="inputClass" id="inputStyle" />
+										<label for="">帳號 / Email</label> <span>帳號 / Email</span>
 									</div>
-									<div class="input-group">
-										<form:input type="text" path="busName" required="" class="w-80"
-											id="inputStyle" /> <span class="colTitle">姓名</span>
-										<form:errors path="busName" cssClass="error" style="color: red" />
+
+
+									<form:errors path="busName" cssClass="error"
+										style="color: red;" />
+									<div class="input-group mb-4">
+										<form:input type="text" path="busName" name="name" required=""
+											class="inputClass" id="inputStyle" />
+										<label for="">姓名</label> <span>姓名</span>
 									</div>
+
+									<form:errors path="merchantMultipartFile" cssClass="error"
+										style="color: red;" />
 									<div class="buybtnP mb-4">
-										<form:input type='file' path="merchantMultipartFile" style="display: none" id="image_file"/>
-										<button type="button" class="btn-block ripple buybtn" id="upload_image">
+										<form:input type='file' path="merchantMultipartFile"
+											style="display: none" id="image_file" />
+										<button type="button" class="btn-block ripple buybtn"
+											id="upload_image">
 											<i class="fas fa-camera-retro mr-2"> <span
 												class="btnText align-self-center">上傳照片</span>
 											</i>
 										</button>
-										<form:errors path="merchantMultipartFile"  cssClass="error" style="color: red" />
 									</div>
 								</div>
 							</div>
@@ -102,29 +126,44 @@
 								<div
 									class="col-3 d-flex-column justify-content-center align-items-center text-center">
 									<div class="mb-1">
-										<i class="fas fa-key leftIcon"></i>
+										<i class="fas fa-key leftIcon leftIcon2"></i>
 									</div>
-									<div class="pb-3">
+									<div class="pb-2">
 										<h5 class="leftTitle">密碼</h5>
 									</div>
 								</div>
+
 								<div class="col-9 pr-5">
-									<div class="input-group">
-										<form:input type="password" path='busPassword' required="" id="eyeInput" /> <span
-											class="colTitle">密碼</span> <span class="eyePosition"><i
-											class="far fa-eye-slash" id="eyeHide" onclick="eyeFunction()"></i></span>
-										<span class="eyePosition"><i class="far fa-eye"
-											id="eyeShow" onclick="eyeFunction()"></i></span>
-										<form:errors path="busPassword" cssClass="error" style="color: red" />
+									<div class="mb-4">
+										<span class="eyePosition"> <i class="far fa-eye-slash"
+											id="eyeHide" onclick="eyeFunction()"></i>
+										</span> <span class="eyePosition"> <i class="far fa-eye"
+											id="eyeShow" onclick="eyeFunction()"></i>
+										</span>
+
+										<div class="input-group">
+											<form:input type="password" path='busPassword'
+												class="inputClass" required="" id="eyeInput" />
+											<label for="" class="colTitle">密碼</label> <span>密碼</span>
+										</div>
+
+										<form:errors path="busPassword" cssClass="error"
+											style="color: red; position:absolute;" />
 									</div>
-									<div class="input-group">
-										<form:input type="password" path='confirmPassword' required="" id="eyeInputCheck" />
-										<span class="colTitle">密碼確認</span> <span class="eyePosition"><i
-											class="far fa-eye-slash" id="eyeHideCheck"
-											onclick="eyeFunctionCheck()"></i></span> <span class="eyePosition"><i
-											class="far fa-eye" id="eyeShowCheck"
-											onclick="eyeFunctionCheck()"></i></span>
-										<form:errors path="confirmPassword" cssClass="error" style="color: red" />
+
+									<div class="mb-4">
+										<span class="eyePosition2"><i class="far fa-eye-slash"
+											id="eyeHideCheck" onclick="eyeFunctionCheck()"></i></span> <span
+											class="eyePosition2"><i class="far fa-eye"
+											id="eyeShowCheck" onclick="eyeFunctionCheck()"></i></span>
+
+										<div class="input-group">
+											<form:input type="password" path='confirmPassword'
+												class="inputClass" required="" id="eyeInputCheck" />
+											<label for="" class="colTitle">再次確認密碼</label> <span>再次確認密碼</span>
+										</div>
+										<form:errors path="confirmPassword" cssClass="error"
+											style="color: red; position:absolute;" />
 									</div>
 								</div>
 							</div>
@@ -141,16 +180,21 @@
 										<h5 class="leftTitle">其他資料</h5>
 									</div>
 								</div>
+
 								<div class="col-9 pr-5">
-									<div class="input-group">
-										<form:input type="text" path='busAddress' required="" class="w-80"
-											id="inputStyle" /> <span class="colTitle">地址</span>
-										<form:errors path="busAddress" cssClass="error" style="color: red" />
+									<form:errors path="busAddress" cssClass="error"
+										style="color: red" />
+									<div class="input-group mb-4">
+										<form:input type="text" path='busAddress' name="name"
+											class="inputClass" required="" id="inputStyle" />
+										<label for="">地址</label> <span>地址</span>
 									</div>
-									<div class="input-group">
-										<form:input type="text" path='busTel' required="" class="w-80"
-											id="inputStyle" /> <span class="colTitle">電話</span>
-										<form:errors path="busTel" cssClass="error" style="color: red" />
+
+									<form:errors path="busTel" cssClass="error" style="color: red" />
+									<div class="input-group mb-4">
+										<form:input type="text" path='busTel' name="name" required=""
+											class="inputClass" id="inputStyle" />
+										<label for="">電話</label> <span>電話</span>
 									</div>
 								</div>
 							</div>
@@ -167,13 +211,17 @@
 										<h5 class="leftTitle">商家描述</h5>
 									</div>
 								</div>
+								<form:errors path="busDescription" cssClass="error"
+									style="color: red" />
 								<div class="col-9 pr-5">
-									<div class="input-group">
-										<form:textarea path="busDescription" class="form-control noteborder" rows="4"
-											placeholder="請輸入對您商店的描述"></form:textarea>
-										<form:errors path="busDescription"  cssClass="error" style="color: red" />
-									</div>
+									<div class="mb-4">
+										<div class="textarea input-group">
+											<form:textarea path="busDescription" class="inputClass"
+												name="message" id="inputClassMessage"></form:textarea>
+											<label for="">商家描述內容</label> <span>商家描述內容</span>
 
+										</div>
+									</div>
 								</div>
 							</div>
 							<!-- 商家描述 End-->
@@ -190,15 +238,16 @@
 							</div>
 							<div class="buybtnP mt-3 mb-0 mr-2">
 								<div class="col-12 mr-0 d-flex justify-content-end">
-									<input type="submit" name="submit" id="submit" class="ripple buybtn"/>
-									<input type="reset" name="cancel" id="cancel" class="ripple buybtnOutline" />
+									<input type="reset" name="cancel" id="cancel"
+										class="ripple buybtnOutline" /> <input type="submit"
+										name="submit" id="submit" class="ripple buybtn" />
 								</div>
 							</div>
 
 							<!-- 確認表單 End-->
 						</div>
 					</form:form>
-					
+
 				</div>
 
 				<!-- Left Content End ------------------------>
@@ -207,8 +256,8 @@
 	</section>
 
 	<!-- Main Form End--------------------------------------------------------------------------->
-	
-	
+
+
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS ----------------------------------->
@@ -234,37 +283,37 @@
 
 	<!-- banner effect -->
 	<script src="<c:url value='/resources/javascript/jquery.stellar.js' />"></script>
-	
+
 	<!-- Taiwan Address -->
-<!-- 	<script type="text/javascript" -->
-<!-- 		src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> -->
-<%--     <script src="<c:url value='/resources/javascript/jquery.twzipcode_mvc.js' />"></script> --%>
+	<!-- 	<script type="text/javascript" -->
+	<!-- 		src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> -->
+	<%--     <script src="<c:url value='/resources/javascript/jquery.twzipcode_mvc.js' />"></script> --%>
 
 	<!-- JavaScript Plug-in End------------------------------------------------------------->
 	<script
 		src="<c:url value='/resources/javascript/MerchantRegistration.js' />"></script>
-		
+
 	<!-- navigation bar js ------------------------------------->
-		<jsp:include page="/fragment/navigation_determine.jsp" />
+	<jsp:include page="/fragment/navigation_determine.jsp" />
 	<!-- navigation bar js End------------------------------------->
-	
+
 	<!-- 上傳圖片 js -->
 	<script type="text/javascript">
-	$("#upload_image").click(function (e) {
-        document.getElementById("image_file").click();
-      });
+		$("#upload_image").click(function(e) {
+			document.getElementById("image_file").click();
+		});
 
-      $("#image_file").on("change", function (event) {
-        const file = event.target.files[0];
-        let readFile = new FileReader();
-        readFile.readAsDataURL(file);
-        readFile.addEventListener("load", function (e) {
-            let image = document.getElementById("show_image");
-            image.src = this.result;
-          });
-      });
-      </script>
-	
-	
+		$("#image_file").on("change", function(event) {
+			const file = event.target.files[0];
+			let readFile = new FileReader();
+			readFile.readAsDataURL(file);
+			readFile.addEventListener("load", function(e) {
+				let image = document.getElementById("show_image");
+				image.src = this.result;
+			});
+		});
+	</script>
+
+
 </body>
 </html>

@@ -1,8 +1,8 @@
-/*-- Carousel Start------------------------------->*/
+/*-- Carousel Start
 $('#myCarousel').carousel({
   interval: 2000,
   cycle: true
-});
+});------------------------------->*/
 /*-- Carousel End--------------------------------->*/
 
 
