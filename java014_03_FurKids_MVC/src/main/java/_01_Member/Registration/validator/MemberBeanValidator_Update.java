@@ -8,7 +8,7 @@ import _01_Member.Registration.model.MemberBean;
 
 
 
-public class MemberBeanValidator implements Validator {
+public class MemberBeanValidator_Update implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
@@ -20,12 +20,10 @@ public class MemberBeanValidator implements Validator {
 		MemberBean mb = (MemberBean) target;
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusAccount", "", "帳號欄不能空白");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusName", "", "姓名欄不能空白");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusPassword", "", "密碼欄不能空白");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "", "確認密碼欄不能空白");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusAddress", "", "地址欄不能空白");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusTel", "", "電話欄不能空白");
 		
-		if (mb.getConfirmPassword() != null) {
+		if (mb.getCusPassword() != null && mb.getConfirmPassword() != null) {
 			if (! mb.getCusPassword().equals(mb.getConfirmPassword())) {
 				errors.rejectValue("cusPassword","", "密碼欄與確認密碼不一致");
 			}

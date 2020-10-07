@@ -128,14 +128,14 @@
 					<div class="container-fluid">
 					
 					<!-- 會員基本資料清單 -->
-						<div class="row justify-content-start ml-5">
+						<div class="row justify-content-start ml-5 animate__animated animate__fadeInLeft">
 
 								<div class="m-3 col-lg-6 col-lg-offset-6">
 
 									<form:form class="m-3" method="POST" modelAttribute="memberBean" enctype='multipart/form-data'>
 									
 										<fieldset class="m-3 innerlayer">
-											<legend style="text-align:center; border: 1px solid black; border-radius: 10px; width:60%; background: gray; color: white">會員基本資料</legend>
+											<legend style="text-align:center; border: 1px solid black; border-radius: 10px; width:60%; background: gray; color: white"><b>會員基本資料</b></legend>
 											
 											<%-- FormContent --%>
 											
@@ -146,37 +146,37 @@
 											</div>
 											
 											<div class="form-group has-feedback border-top">
-												<label class="mt-3">帳號 / 電子信箱</label>
+												<label class="mt-3"><b>帳號 / 電子信箱</b></label>
 												<form:input path="cusAccount" class="form-control" type="text" disabled="true" />
 											</div>
 
 											<div class="form-group has-feedback">
-												<label>姓名</label>
+												<label><b>姓名</b></label>
 												<form:input path="cusName" class="form-control" type="text" disabled="true" />
 											</div>
 
 											<div class="form-group has-feedback">
-												<label>會員暱稱</label>
+												<label><b>會員暱稱</b></label>
 												<form:input path='cusNickName' class="form-control" type="text" disabled="true" />
 											</div>
 											
 											<div class="form-group has-feedback">
-												<label>性別</label>
+												<label><b>性別</b></label>
 												<form:input path='cusGender' class="form-control" type="text" disabled="true" />
 											</div>
 											
 											<div class="form-group has-feedback">
-												<label>生日</label>
+												<label><b>生日</b></label>
 												<form:input path="cusBirthday" class="form-control" type="date" value="${LoginOK.cusBirthday}" disabled="true" />
 											</div>
 
 											<div class="form-group has-feedback">
-												<label>地址</label>
+												<label><b>地址</b></label>
 												<form:input path="cusAddress" class="form-control" type="text" disabled="true" />
 											</div>
 											
 											<div class="form-group has-feedback">
-												<label>電話</label>
+												<label><b>電話</b></label>
 												<form:input path="cusTel" class="form-control" type="text" disabled="true" />
 											</div>
 											

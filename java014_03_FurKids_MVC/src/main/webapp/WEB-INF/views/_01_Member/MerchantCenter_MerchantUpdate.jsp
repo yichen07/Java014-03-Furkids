@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +10,7 @@
 <link rel="icon"
 	href="<c:url value='/resources/images/logo_08_iP6_6.ico' />"
 	type="image/x-icon" />
-<title>會員管理系統_會員資料修改</title>
+<title>商家管理系統_商家資料修改</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -33,7 +32,6 @@
 <!-- Other CSS ----------------------------------------------------------------->
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/_01_Member/memberManagement.css' />" />
-
 <!--------------------------------------------------------------------- Import CSS End-->
 
 
@@ -46,16 +44,16 @@
 	<!-- Banner ---------------------------------------------------------------------------->
 	<div
 		class="container-fluid bannerImg d-flex justify-content-center align-items-center"
-		style="background-image: url(<c:url value='/resources/images/_01_Member/member_banner_02.jpg' />)"
+		style="background-image: url('<c:url value='/resources/images/_01_Member/merchant_banner_01.jpg' />')"
 		id="imageStellar" data-stellar-background-ratio="0.5">
 		<div class="row">
 			<div class="col-md-12 text-center">
 				<h1 class="mt-3 bannerTitle animate__animated animate__fadeInDown">
-					會員管理</h1>
+					商家管理</h1>
 				<div
 					class="align-items-center banner-text animate__animated animate__fadeInUp">
 					<h2 class="text-center">
-						<i class="fas fa-user-edit"></i>&nbsp;會員資料修改
+						<i class="fas fa-user-edit"></i>&nbsp;商家資料修改
 					</h2>
 				</div>
 				<div
@@ -81,34 +79,34 @@
 								<!-- 用戶大頭照 -->
 								<div class="mr-3">
 									<img class="userImgConer"
-										src="<c:url value='/_00_init/getHeadshot?account=${LoginOK.cusAccount}' />"
+										src="<c:url value='/_00_init/getHeadshot?account=${LoginOK.busAccount}' />"
 										style="height: 60px; width: 60px; object-fit: cover" />
 								</div>
 								<!-- 用戶名稱與信箱 -->
 								<div>
-									<span class="userName mt-3">${LoginOK.cusName}</span><br /> <small
-										class="mt-0 userMail"> <i class="far fa-envelope"></i>&nbsp;${LoginOK.cusAccount}
+									<span class="userName mt-3">${LoginOK.busName}</span><br /> <small
+										class="mt-0 userMail"> <i class="far fa-envelope"></i>&nbsp;${LoginOK.busAccount}
 									</small>
 								</div>
 							</div>
 
 							<!-- Part 2. 側邊選單內容 -->
 							<ul>
-								<li><a href="<c:url value='/MemberManagementCenter' />">
+								<li><a href="<c:url value='/MerchantManagementCenter' />">
 										<span class="icon"><i class="fas fa-address-card"></i></span>
-										<span class="list">會員基本資料</span>
+										<span class="list">商家基本資料</span>
 								</a></li>
 								<li><a
-									href="<c:url value='/MemberManagementCenter/MemberUpdate' />">
+									href="<c:url value='/MerchantManagementCenter/MerchantUpdate' />">
 										<span class="icon"><i class="fas fa-user-edit"></i></span> <span
-										class="list">會員資料修改</span>
+										class="list">商家資料修改</span>
 								</a></li>
 								<li><a href="<c:url value='#' />"> <span class="icon"><i
 											class="fas fa-key"></i></span> <span class="list">修改密碼</span>
 								</a></li>
-								<li><a href="<c:url value='/PetManagementCenter' />"> <span
-										class="icon"><i class="fas fa-paw"></i></span> <span
-										class="list">會員寵物資料</span>
+								<li><a
+									href="<c:url value='/MerchantChildManagementCenter' />"> <i
+										class="fas fa-store"></i> <span class="list">商家分店資料</span>
 								</a></li>
 							</ul>
 
@@ -134,85 +132,70 @@
 		<!-- Part 4. 內容顯示 -->
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="card rightContent outerlayer2" style="height: auto;">
+				<div class="card rightContent outerlayer4" style="height: auto;">
 					<div class="container-fluid">
 
 						<!-- 會員基本資料清單 -->
-						<div class="row justify-content-end mr-5 animate__animated animate__fadeInRight">
+						<div
+							class="row justify-content-end mr-5 animate__animated animate__fadeInRight">
 
 							<div class="m-3 col-lg-6 col-lg-offset-6">
 
-								<form:form class="m-3" method="POST" modelAttribute="memberBean"
-									enctype='multipart/form-data'>
+								<form:form class="m-3" method="POST"
+									modelAttribute="merchantBean" enctype='multipart/form-data'>
 
-									<fieldset class="m-3 innerlayer2">
+									<fieldset class="m-3 innerlayer4">
 										<legend
-											style="text-align: center; border: 1px solid black; border-radius: 10px; width: 60%; background: gray; color: white"><b>會員資料修改</b></legend>
+											style="text-align: center; border: 1px solid black; border-radius: 10px; width: 60%; background: gray; color: white">
+											<b>商家資料修改</b>
+										</legend>
 
 										<%-- FormContent --%>
 
 										<div class="form-group has-feedback text-center">
 											<img
 												style="width: 200px; height: 200px; border: 1px solid gray; border-radius: 50%; object-fit: cover;"
-												src="<c:url value='/_00_init/getHeadshot?account=${LoginOK.cusAccount}' />"
+												src="<c:url value='/_00_init/getHeadshot?account=${LoginOK.busAccount}' />"
 												id="show_image">
-											<form:input path="memberMultipartFile" type="file"
+											<form:input path="merchantMultipartFile" type="file"
 												id="image_file" style="display: none;" />
 											<div
 												style="position: relative; z-index: 1; top: -30px; left: 90px; font-size: 25px; color: darkblue">
 												<a type="button" id="upload_image"><i
 													class="fas fa-plus-square"></i></a>
 											</div>
-											<form:errors path="memberMultipartFile" cssClass="error"
-												style="color: red;" />
-										</div>
-
-										<div class="form-group has-feedback border-top">
-											<label class="mt-3"><b>姓名</b></label>
-											<form:input path="cusName" class="form-control" type="text" />
-											<form:errors path="cusName" cssClass="error"
+											<form:errors path="merchantMultipartFile" cssClass="error"
 												style="color: red;" />
 										</div>
 
 										<div class="form-group has-feedback">
-											<label><b>會員暱稱</b></label>
-											<form:input path='cusNickName' class="form-control"
-												type="text" />
-											<form:errors path="cusNickName" cssClass="error"
-												style="color: red;" />
-										</div>
-
-										<div class="form-group has-feedback">
-											<label><b>性別</b></label> &nbsp;&nbsp;&nbsp;
-											<form:radiobutton path='cusGender' class="col-0" value="Male" /> 男 &nbsp;&nbsp;&nbsp;
-											<form:radiobutton path='cusGender' class="col-0" value="Female" /> 女 
-											<form:errors path="cusGender" cssClass="error"
-												style="color: red;" />
-										</div>
-
-										<div class="form-group has-feedback">
-											<label><b>生日</b></label>
-											<form:input path="cusBirthday" class="form-control"
-												type="date" value="${LoginOK.cusBirthday}" />
-											<form:errors path="cusBirthday" cssClass="error"
-												style="color: red;" />
-										</div>
-
-										<div class="form-group has-feedback">
-											<label><b>地址</b></label>
-											<form:input path="cusAddress" class="form-control"
-												type="text" />
-											<form:errors path="cusAddress" cssClass="error"
+											<label><b>商家名稱</b></label>
+											<form:input path="busName" class="form-control" type="text" />
+											<form:errors path="busName" cssClass="error"
 												style="color: red;" />
 										</div>
 
 										<div class="form-group has-feedback">
 											<label><b>電話</b></label>
-											<form:input path="cusTel" class="form-control" type="text" />
-											<form:errors path="cusTel" cssClass="error"
+											<form:input path='busTel' class="form-control" type="text" />
+											<form:errors path="busTel" cssClass="error"
 												style="color: red;" />
 										</div>
 
+										<div class="form-group has-feedback">
+											<label><b>地址</b></label>
+											<form:input path='busAddress' class="form-control"
+												type="text" />
+											<form:errors path="busAddress" cssClass="error"
+												style="color: red;" />
+										</div>
+
+										<div class="form-group has-feedback">
+											<label><b>商家描述</b></label>
+											<form:textarea path="busDescription" class="form-control" />
+											<form:errors path="busDescription" cssClass="error"
+												style="color: red;" />
+										</div>
 
 										<div
 											class="form-group has-feedback d-flex justify-content-center border-top">
@@ -228,6 +211,7 @@
 
 							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
@@ -275,7 +259,7 @@
 	<!-- navigation bar js ------------------------------------->
 	<jsp:include page="/fragment/navigation_determine.jsp" />
 	<!-- navigation bar js End------------------------------------->
-
+	
 	<!-- 上傳圖片 js -->
 	<script type="text/javascript">
 		$("#upload_image").click(function(e) {
@@ -292,5 +276,7 @@
 			});
 		});
 	</script>
+	
+	
 </body>
 </html>
