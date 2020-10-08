@@ -7,10 +7,10 @@
 function cancelOrder() {
 	if (confirm("確定取消此份訂單 ? ") ) {
 		// 接收此資料的Servlet會使用 finalDecision 參數的值
-		document.forms[0].finalDecision.value = "CANCEL";
-		document.forms[0].action="<c:url value='ProcessOrder.do' />";
-		document.forms[0].method="POST";
-		document.forms[0].submit();
+		document.forms[1].finalDecision.value = "CANCEL";
+		document.forms[1].action="<c:url value='/_02_ShoppingSystem/ProcessOrder' />";
+		document.forms[1].method="POST";
+		document.forms[1].submit();
 		return;
 	} else {
 		return;
@@ -24,10 +24,10 @@ function reconfirmOrder() {
 	}
 	if (confirm("確定送出此份訂單 ? ") ) {
 		// 接收此資料的Servlet會使用 finalDecision 參數的值
-		document.forms[0].finalDecision.value = "ORDER";
-		document.forms[0].action="<c:url value='ProcessOrder.do' />";
-		document.forms[0].method="POST";
-		document.forms[0].submit();
+		document.forms[1].finalDecision.value = "ORDER";
+		document.forms[1].action="<c:url value='/_02_ShoppingSystem/ProcessOrder' />";
+		document.forms[1].method="POST";
+		document.forms[1].submit();
 		return;
 	} else {
 		return;
@@ -42,19 +42,23 @@ function reconfirmOrder() {
 <jsp:useBean   id="today"  class="java.util.Date" scope="session"/> 
 <title>訂單明細資訊確認</title>
 </head>
-<body style="background:#EBFFEB;">
+<body style="background:#FFFFFF;">
 <c:set var="funcName" value="CHE" scope="session"/>
 <jsp:include page="/fragment/navigation.jsp" />
 <div style="text-align:center">
 <h3>請確認下列訊息：</h3>
-<FORM style="margin: 0 auto; width:750px;" action="<c:url value='ProcessOrder.do' />" method="POST" >
+<FORM style="margin: 0 auto; width:750px;" action="<c:url value='ProcessOrder' />" method="POST" >
+  
    <TABLE border='1' style="background:#F5EBFF; border-color:rgb( 100, 100, 255); border-style: outset; width:810;">
+   
+<!--    此處判斷是會員還是商家 -->
+   <c:if test="${LoginOK.CLASSIFY == 0}">
       <TR >
          <TD style="text-align:left; border-color: #FFBD32; border-style: ridge;">
-         	會員編號：${LoginOK.memberId}
+         	會員編號：${LoginOK.cusAccount}
          </TD>
          <TD style="text-align:left; border-color: #FFBD32; border-style: ridge;">
-         	客戶姓名：${LoginOK.name}
+         	客戶姓名：${LoginOK.cusName}
          </TD>
          <TD style="text-align:left; border-color: #FFBD32; border-style: ridge;">
          	訂單日期：<fmt:formatDate value="${today}" pattern="yyyy-MM-dd"/>
@@ -62,7 +66,7 @@ function reconfirmOrder() {
       </TR>
       <TR>
          <TD colspan='3' style="text-align:left; border-color: #FFBD32; border-style: ridge;">
-         	會員地址：${LoginOK.address}
+         	會員地址：${LoginOK.cusAddress}
          </TD>
       </TR>
       <TR>
@@ -72,27 +76,42 @@ function reconfirmOrder() {
                    <font color='red'>${errorMsg.ShippingAddress}</font>
          </TD>
       </TR>
-      <TR>
-         <TD colspan='3' style="text-align:left; border-color: #FFBD32; border-style: ridge;">
-                                   統一編號：<Input style="background:#ECFFCD;" size="10" type="text" 
-                      name="BNO" value="">
+      </c:if>
+       <c:if test="${LoginOK.CLASSIFY == 1}">
+      <TR >
+         <TD style="text-align:left; border-color: #FFBD32; border-style: ridge;">
+         	會員編號：${LoginOK.busAccount}
+         </TD>
+         <TD style="text-align:left; border-color: #FFBD32; border-style: ridge;">
+         	客戶姓名：${LoginOK.busName}
+         </TD>
+         <TD style="text-align:left; border-color: #FFBD32; border-style: ridge;">
+         	訂單日期：<fmt:formatDate value="${today}" pattern="yyyy-MM-dd"/>
          </TD>
       </TR>
       <TR>
          <TD colspan='3' style="text-align:left; border-color: #FFBD32; border-style: ridge;">
-                                   發票抬頭：<Input style="background:#ECFFCD;" size="50" type="text" 
-                      name="InvoiceTitle" value="" >
+         	會員地址：${LoginOK.busAddress}
          </TD>
       </TR>
+      <TR>
+         <TD colspan='3' style="text-align:left; border-color: #FFBD32; border-style: ridge;">
+                             出貨地址：<Input style="background:#ECFFCD;" size="60" type="text" id='ShippingAddress' 
+                   name="ShippingAddress" value="">
+                   <font color='red'>${errorMsg.ShippingAddress}</font>
+         </TD>
+      </TR>
+      </c:if>
+<!--    此處判斷是會員還是商家 -->
     
       <TR>
          <TD colspan='3'>
          
    <TABLE border='1' style="background:#FFE7CD; border-color:rgb( 100, 100, 255); " >
       
-     <TR><TH style="text-align:center;font-size: 12pt;" width="350">書籍名稱</TH>
-         <TH style="text-align:center;font-size: 12pt;" width="80">作者</TH>
-         <TH style="text-align:center;font-size: 12pt;" width="80">出版社</TH>
+     <TR><TH style="text-align:center;font-size: 12pt;" width="350">商品名稱</TH>
+<!--          <TH style="text-align:center;font-size: 12pt;" width="80">作者</TH> -->
+         <TH style="text-align:center;font-size: 12pt;" width="80">廠商</TH>
          <TH style="text-align:center;font-size: 12pt;" width="80">單價</TH>
          <TH style="text-align:center;font-size: 12pt;" width="60">數量</TH>
          <TH style="text-align:center;font-size: 12pt;" width="110">小計</TH></TR>
@@ -100,22 +119,22 @@ function reconfirmOrder() {
      <c:forEach varStatus="vs" var="entry" items="${ShoppingCart.content}">
                                                     
         <TR height='16'>
-          <TD style="text-align:left  ;font-size: 11pt;">${entry.value.title}</TD>
+          <TD style="text-align:left  ;font-size: 11pt;">${entry.value.comName}</TD>
+<!--           <TD style="text-align:center;font-size: 11pt;"> -->
+<%--           	${fn:substring(entry.value.author, 0, 3)} --%>
+<!--           </TD> -->
           <TD style="text-align:center;font-size: 11pt;">
-          	${fn:substring(entry.value.author, 0, 3)}
-          </TD>
-          <TD style="text-align:center;font-size: 11pt;">
-          	${fn:substring(entry.value.companyName, 0, 2)}
+          	${entry.value.busName}
           </TD>
           <TD style="text-align:right ;font-size: 11pt;">
-          	<fmt:formatNumber value="${entry.value.unitPrice * entry.value.discount }" pattern="#,###" />元
+          	<fmt:formatNumber value="${entry.value.ordUnitPrice }" pattern="#,###" />元
           </TD>
           <TD style="text-align:right ;font-size: 11pt;"> 
-          	${entry.value.quantity}
+          	${entry.value.ordQuantity}
           </TD>
           <TD style="text-align:right ;font-size: 11pt;">
           	<fmt:formatNumber 
-          	value="${entry.value.unitPrice * entry.value.discount * entry.value.quantity}" pattern="#,###,###" />元
+          	value="${entry.value.ordUnitPrice * entry.value.ordQuantity}" pattern="#,###,###" />元
           </TD>
         </TR>
      </c:forEach>
@@ -126,12 +145,12 @@ function reconfirmOrder() {
           <fmt:formatNumber value="${ShoppingCart.subtotal}" pattern="#,###,###" />元</TD>
                   
         </TR>
-        <TR>
-          <TD colspan='5' style="text-align:right;font-size: 11pt;" >營業稅：</TD>
-          <c:set var="VAT" value="${ShoppingCart.subtotal*0.05 + 0.0001}"/>
-          <TD style="text-align:right;font-size: 11pt;" > 
-          <fmt:formatNumber value="${VAT}" pattern="#,###,###" />元</TD>
-        </TR>
+<!--         <TR> -->
+<!--           <TD colspan='5' style="text-align:right;font-size: 11pt;" >營業稅：</TD> -->
+<%--           <c:set var="VAT" value="${ShoppingCart.subtotal*0.05 + 0.0001}"/> --%>
+<!--           <TD style="text-align:right;font-size: 11pt;" >  -->
+<%--           <fmt:formatNumber value="${VAT}" pattern="#,###,###" />元</TD> --%>
+<!--         </TR> -->
         <TR>
           <TD colspan='5' style="text-align:right;font-size: 11pt;" >總計金額：</TD>
           <TD style="text-align:right;font-size: 11pt;color:#AA0200;" >

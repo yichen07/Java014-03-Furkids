@@ -217,4 +217,10 @@ public class BaseController {
 			}
 			return responseEntity;
 		}
+		
+		@GetMapping("ThanksForOrdering")
+		protected String thanksForOrdering(Model model) {
+			System.out.println("ThanksForOrdering......");
+			return "ThanksForOrdering";
+		}
 }

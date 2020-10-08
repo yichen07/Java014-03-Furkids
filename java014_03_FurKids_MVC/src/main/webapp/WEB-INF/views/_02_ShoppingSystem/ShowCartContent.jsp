@@ -15,7 +15,7 @@ response.setHeader("Pragma", "no-cache"); //HTTP 1.0 backward compatibility
     <script type="text/javascript">
 function confirmDelete(n) {
 	if (confirm("確定刪除此項商品 ? ") ) {
-		document.forms[0].action="<c:url value='UpdateItem.do?cmd=DEL&bookId=" + n +"' />" ;
+		document.forms[0].action="<c:url value='UpdateItem.do?cmd=DEL&ComId=" + n +"' />" ;
 		document.forms[0].method="POST";
 		document.forms[0].submit();
 	} else {
@@ -23,13 +23,13 @@ function confirmDelete(n) {
 	}
 }
 function modify(key, qty, index) {
-	var x = "newQty" + index;
+	var x = "newQty" + index +1;
 	var newQty = document.getElementById(x).value;
 	if  (newQty < 0 ) {
 		window.alert ('數量不能小於 0');
 		return ; 
 	}
-		document.forms[0].action="<c:url value='UpdateItem.do?cmd=MOD&bookId=" + key + "&newQty=" + newQty +"' />" ;
+		document.forms[0].action="<c:url value='UpdateItem.do?cmd=MOD&ComId=" + key + "&newQty=" + newQty +"' />" ;
 		document.forms[0].method="POST";
 		document.forms[0].submit();
 	
@@ -201,7 +201,7 @@ function subCounts() {
         <div
           class="d-flex col-lg-2 col-4 justify-content-center align-items-center colTrash shoppingListItem"
         >
-          <button class="btn trashButton">
+          <button class="btn trashButton" onclick="confirmDelete(${anEntry.key})">
             <i class="fas fa-trash-alt"></i>
           </button>
         </div>
@@ -209,24 +209,59 @@ function subCounts() {
           class="d-flex col-lg-2 col-4 justify-content-center align-items-center colQuantity shoppingListItem"
         >
           <input type="button" id="subs" value="-" onclick="modify(${anEntry.key}, ${anEntry.value.ordQuantity}, ${vs.index})" />
-
+            <input type="button" id="subs" value="-" />
           <input
             type="text"
             name="noOfRoom"
             class="onlyNumber form-control text-center p-0"
             id="noOfRoom"
-            value="1"
-          />
+            value="<fmt:formatNumber value="${anEntry.value.ordQuantity}" />"          />
 
           <input type="button" id="adds" value="+" onclick="modify(${anEntry.key}, ${anEntry.value.ordQuantity}, ${vs.index})" />
+<!--           <input type="button" id="adds" value="+" "/> -->
+
         </div>
 
         <div
           class="d-flex col-lg-2 col-4 justify-content-end align-items-center colPrice shoppingListItem pr-5"
         >
-          $<fmt:formatNumber value="${anEntry.value.ordUnitPrice * anEntry.value.ordQuantity}" pattern="#,###,###" />
+          <fmt:formatNumber value="${anEntry.value.ordUnitPrice * anEntry.value.ordQuantity}" pattern="#,###,###" />
         </div>
       </div>
+<!--         動態JS開始 -->
+<!--         <script> -->
+<%--         $('#adds${vs.index}').click(function add() { --%>
+<%--     var $rooms = $("#noOfRoom${vs.index}"); --%>
+<!--     var a = $rooms.val(); -->
+
+<!--     a++; -->
+<%--     $("#subs${vs.index}").prop("disabled", !a); --%>
+<!--     $rooms.val(a); -->
+
+<%--     modify(${anEntry.key}, ${anEntry.value.soiQty}, ${vs.index}) --%>
+<%--     $("#newQty${vs.index}").trigger(isNegative()); --%>
+    
+<!-- }); -->
+        
+
+<%-- $("#subs${vs.index}").prop("disabled", !$("#newQty${vs.index}").val()); --%>
+
+<%-- $('#subs${vs.index}').click(function subst() { --%>
+<%--     var $rooms = $("#noOfRoom${vs.index}"); --%>
+<!--     var b = $rooms.val(); -->
+<!--     if (b >= 2) { -->
+<!--         b--; -->
+<!--         $rooms.val(b); -->
+<!--     } -->
+<!--     else { -->
+        
+<%--         $("#subs${vs.index}").prop("disabled", true); --%>
+<!--     } -->
+<%--     modify(${anEntry.key}, ${anEntry.value.ordQuantity}, ${vs.index}) --%>
+<!-- }); -->
+
+<!--         </script> -->
+<!--         動態JS結束 -->
 	  </c:forEach>
       <!-- 商品細項欄位 no1 End -->
       <!-- 總價格欄位 Start-->
@@ -258,7 +293,10 @@ function subCounts() {
             <a href="<c:url value='/_02_ShoppingSystem/DisplayPageProducts?pageNo=${param.pageNo}' />" class="btn btnEffect effect01"><span>繼續購物</span></a>
           </div>
           <div class="shoppingBtn col-lg-2 col-md-3 col-sm-6 col-xs-6 mt-3">
-            <a href="<c:url value='/_02_ShoppingSystem/checkout.do' />" class="btn btnEffect02 effect02"><span>結帳</span></a>
+            <a href="<c:url value='checkout' />" class="btn btnEffect02 effect02"><span>結帳</span></a>
+          </div>
+          <div class="shoppingBtn col-lg-2 col-md-3 col-sm-6 col-xs-6 mt-3">
+            <a href="<c:url value='abort' />" onClick="return Abort();" class="btn btnEffect02 effect02"><span>放棄購物---</span></a>
           </div>
         </div>
       </div>

@@ -47,7 +47,7 @@ function reconfirmOrder() {
 <jsp:include page="/fragment/navigation.jsp" />
 <div style="text-align:center">
 <h3>請確認下列訊息：</h3>
-<FORM style="margin: 0 auto; width:750px;" action="<c:url value='ProcessOrder.do' />" method="POST" >
+<FORM style="margin: 0 auto; width:750px;" action="<c:url value='ProcessOrder' />" method="POST" >
    <TABLE border='1' style="background:#F5EBFF; border-color:rgb( 100, 100, 255); border-style: outset; width:810;">
       <TR >
          <TD style="text-align:left; border-color: #FFBD32; border-style: ridge;">
