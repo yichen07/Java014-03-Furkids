@@ -15,7 +15,7 @@ response.setHeader("Pragma", "no-cache"); //HTTP 1.0 backward compatibility
 <script type="text/javascript">
 function confirmDelete(n) {
 	if (confirm("確定刪除此項商品 ? ") ) {
-		document.forms[0].action="<c:url value='UpdateItem.do?cmd=DEL&bookId=" + n +"' />" ;
+		document.forms[0].action="<c:url value='UpdateItem.do?cmd=DEL&ComId=" + n +"' />" ;
 		document.forms[0].method="POST";
 		document.forms[0].submit();
 	} else {
@@ -39,7 +39,7 @@ function modify(key, qty, index) {
 		return ; 
 	}
 	if (confirm("確定將此商品的數量由" + qty + " 改為 " + newQty + " ? ") ) {
-		document.forms[0].action="<c:url value='UpdateItem.do?cmd=MOD&bookId=" + key + "&newQty=" + newQty +"' />" ;
+		document.forms[0].action="<c:url value='UpdateItem.do?cmd=MOD&ComId=" + key + "&newQty=" + newQty +"' />" ;
 		document.forms[0].method="POST";
 		document.forms[0].submit();
 	} else {
