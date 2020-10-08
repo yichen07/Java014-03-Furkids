@@ -159,6 +159,8 @@
 									href="<c:url value='/MerchantManagementCenter' />">商家管理</a> 
 								<a class="dropdown-item"
 									href="<c:url value='/_03_FriendlySystem/ViewSessionStatus_setComplete' />">商家服務上架</a>
+								<a class="dropdown-item"
+									href="<c:url value='/_03_FriendlySystem/busReservationDetail' />">預約明細</a>
 							</div>
 						</div>
 					</c:when>

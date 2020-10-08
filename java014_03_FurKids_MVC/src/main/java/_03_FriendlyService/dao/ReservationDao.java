@@ -24,13 +24,13 @@ public interface ReservationDao {
 	
 	ReservationBean getReservation(int no);
 	
-	ReservationChildBean getReservationChild(int no);
-	
 	List<ConvenienceBean_H> getPageViewConvenience(String item,int pageNo);
 	
 	List<ConvenienceBean_H> getViewConvenience(String item);
 	
 	List<ReservationBean> getReservationInfo(String account);
+	
+	List<ReservationBean> getReservationInfoForBus(String account);
 	
 	int getReservationBeanPK(ReservationBean rb);
 }
