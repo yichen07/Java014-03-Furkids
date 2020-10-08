@@ -111,10 +111,10 @@ public class ConvenienceViewController {
 			RedirectAttributes redirectAttributes,
 			Model model) {
 		if(model.getAttribute("Classify") == null ) {
-			redirectAttributes.addFlashAttribute("notlogin", "notlogin");
+			redirectAttributes.addFlashAttribute("errorNotLogin", "請先註冊或登入會員帳號");
 			return "redirect:/";
 		} else if(!model.getAttribute("Classify").equals(0)) {
-			redirectAttributes.addFlashAttribute("notlogin", "notlogin");
+			redirectAttributes.addFlashAttribute("errorNotLogin", "請先註冊或登入會員帳號");
 			return "redirect:/";
 		}
 		
@@ -139,10 +139,10 @@ public class ConvenienceViewController {
 	@GetMapping("/MemReservationDetail")
 	public String memReservationDetail(Model model,RedirectAttributes redirectAttributes) {
 		if(model.getAttribute("Classify") == null ) {
-			redirectAttributes.addFlashAttribute("notlogin", "notlogin");
+			redirectAttributes.addFlashAttribute("errorNotLogin", "請先註冊或登入會員帳號");
 			return "redirect:/";
 		} else if(!model.getAttribute("Classify").equals(0)) {
-			redirectAttributes.addFlashAttribute("notlogin", "notlogin");
+			redirectAttributes.addFlashAttribute("errorNotLogin", "請先註冊或登入會員帳號");
 			return "redirect:/";
 		}
 		MemberBean mb = (MemberBean) model.getAttribute("LoginOK");
@@ -154,10 +154,10 @@ public class ConvenienceViewController {
 		@GetMapping("/busReservationDetail")
 		public String busReservationDetail(Model model,RedirectAttributes redirectAttributes) {
 			if(model.getAttribute("Classify") == null ) {
-				redirectAttributes.addFlashAttribute("notlogin", "notlogin");
+				redirectAttributes.addFlashAttribute("errorNotLogin", "請先註冊或登入會員帳號");
 				return "redirect:/";
 			} else if(!model.getAttribute("Classify").equals(1)) {
-				redirectAttributes.addFlashAttribute("notlogin", "notlogin");
+				redirectAttributes.addFlashAttribute("errorNotLogin", "請先註冊或登入會員帳號");
 				return "redirect:/";
 			}
 			MerchantBean mcb = (MerchantBean) model.getAttribute("LoginOK");
