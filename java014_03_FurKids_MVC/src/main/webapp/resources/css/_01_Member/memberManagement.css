@@ -12,6 +12,7 @@ body {
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
 }
+
 ul,
 li {
     list-style: none;
@@ -91,7 +92,7 @@ li {
 /* Banner Start-----------------------------------------------------------------------> */
 
 .bannerImg {
-    background-image: url(../../images/_01_Member/member_banner_01.jpg);
+/*     background-image: url(../../images/_01_Member/member_banner_01.jpg); */
     height: 350px;
     width: 100%;
     background-color: rgba(41, 41, 41, 0.5);
@@ -117,6 +118,87 @@ li {
 /* Banner End -------------------------------------------------------------------------> */
 
 /* Side Bar Srart ---------------------------------------------------------------------> */
+
+.sideBarBgType {
+	background: linear-gradient(-45deg, #008afa4d, #0088c84d, #0087964d, #0089644d);
+}
+
+
+/* 設定背景圖透明度，文字不透明 */
+/* .bgtype_bg{ */
+/*     background: url(http://csssecrets.io/images/tiger.jpg) no-repeat; */
+/*     background-size: cover; */
+/* } */
+.bgtype_opacity {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background:rgba(255,255,255,0.3);
+}
+
+/* 毛玻璃效果_1 */
+.outerlayer, .innerlayer::before { background: url(../../images/_01_Member/MemberManagementBg_01.jpg) 0 / cover; }
+
+.innerlayer { 
+	position: relative; 
+	background: hsla(0,0%,100%,0.5); 
+	overflow: hidden; border: 1px solid black; 
+	border-radius: 10px; 
+	box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); 
+	padding: 20px
+}
+
+.innerlayer::before { position: absolute; top: 0; right: 0; bottom: 0; left: 0; filter: blur(20px); margin: -30px; }
+
+
+/* 毛玻璃效果_2 */
+.outerlayer2, .innerlayer2::before { background: url(../../images/_01_Member/MemberManagementBg_02.jpg) 0 / cover; }
+
+.innerlayer2 { 
+	position: relative; 
+	background: hsla(0,0%,100%,0.5); 
+	overflow: hidden; border: 1px solid black; 
+	border-radius: 10px; 
+	box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); 
+	padding: 20px
+}
+
+.innerlayer2::before { position: absolute; top: 0; right: 0; bottom: 0; left: 0; filter: blur(20px); margin: -30px; }
+
+/* 毛玻璃效果_3 */
+.outerlayer3, .innerlayer3::before { background: url(../../images/_01_Member/MerchantManagementBg_01.jpg) 0 / cover; }
+
+.innerlayer3 { 
+	position: relative; 
+	background: hsla(0,0%,100%,0.5); 
+	overflow: hidden; border: 1px solid black; 
+	border-radius: 10px; 
+	box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); 
+	padding: 20px
+}
+
+.innerlayer3::before { position: absolute; top: 0; right: 0; bottom: 0; left: 0; filter: blur(20px); margin: -30px; }
+
+/* 毛玻璃效果_4 */
+.outerlayer4, .innerlayer4::before { background: url(../../images/_01_Member/MerchantManagementBg_02.jpg) 0 / cover; }
+
+.innerlayer4 { 
+	position: relative; 
+	background: hsla(0,0%,100%,0.5); 
+	overflow: hidden; border: 1px solid black; 
+	border-radius: 10px; 
+	box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); 
+	padding: 20px
+}
+
+.innerlayer4::before { position: absolute; top: 0; right: 0; bottom: 0; left: 0; filter: blur(20px); margin: -30px; }
+
+
+
+/* -------------------------------------------------------- */
+
+
 .sideBarToTup {
     padding-top: 60px;
 }
@@ -395,3 +477,6 @@ li {
     margin-bottom: 0;
 }
 /* Footer End ---------------------------------------------------------------------> */
+
+
+

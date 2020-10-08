@@ -38,8 +38,8 @@ public class MemberDaoImpl_Hibernate implements MemberDao {
 	@Override
 	public int updateMember(MemberBean mb) {
 		int n = 0;
+		Session session = factory.getCurrentSession();
 		if (mb != null && mb.getCusAccount() != null) {
-			Session session = factory.getCurrentSession();
 			session.saveOrUpdate(mb);
 			n++;			
 		}
@@ -51,8 +51,8 @@ public class MemberDaoImpl_Hibernate implements MemberDao {
 	public int deleteMember(String account) {
 		int n = 0;
 		MemberBean mb = queryMember(account);
+		Session session = factory.getCurrentSession();
 		if (mb != null) {
-			Session session = factory.getCurrentSession();
 			session.delete(mb);
 			n++;			
 		}

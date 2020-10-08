@@ -25,8 +25,10 @@ public class MemberBeanValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusAddress", "", "地址欄不能空白");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusTel", "", "電話欄不能空白");
 		
-		if (! mb.getCusPassword().equals(mb.getConfirmPassword())) {
-			errors.rejectValue("cusPassword","", "密碼欄與確認密碼不一致");
+		if (mb.getConfirmPassword() != null) {
+			if (! mb.getCusPassword().equals(mb.getConfirmPassword())) {
+				errors.rejectValue("cusPassword","", "密碼欄與確認密碼不一致");
+			}
 		}
 		
 //		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "", "電子郵件欄不能空白");

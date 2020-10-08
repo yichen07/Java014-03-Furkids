@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +40,7 @@
 <!-- Banner ---------------------------------------------------------------------------->
 	<div
 		class="container-fluid bannerImg d-flex justify-content-center align-items-center"
-		style="background-image: url(<c:url value='/resources/images/_01_Member/merchant_banner_01.jpg' />)" 
+		style="background-image: url('<c:url value='/resources/images/_01_Member/merchant_banner_01.jpg' />')" 
 		id="imageStellar" data-stellar-background-ratio="0.5">
 		<div class="row">
 			<div class="col-md-12 text-center">
@@ -47,7 +48,7 @@
 					商家管理</h1>
 				<div
 					class="align-items-center banner-text animate__animated animate__fadeInUp">
-					<h2 class="text-center"><i class="fas fa-address-card"></i>&nbsp商家基本資料</h2>
+					<h2 class="text-center"><i class="fas fa-address-card"></i>&nbsp;商家基本資料</h2>
 				</div>
 				<div
 					class="align-items-center banner-text animate__animated animate__fadeInUp">
@@ -72,14 +73,14 @@
 							<!-- 用戶大頭照 -->
 								<div class="mr-3">
 									<img class="userImgConer"
-										src="https://randomuser.me/api/portraits/women/60.jpg"
-										height="60px" width="60px" />
+										src="<c:url value='/_00_init/getHeadshot?account=${LoginOK.busAccount}' />"
+										style="height:60px; width:60px; object-fit: cover" />
 								</div>
 							<!-- 用戶名稱與信箱 -->
 								<div>
-									<span class="userName mt-3">Adora</span><br /> 
+									<span class="userName mt-3">${LoginOK.busName}</span><br /> 
 									<small class="mt-0 userMail">
-									<i class="far fa-envelope"></i> adora@gmail.com</small>
+									<i class="far fa-envelope"></i>&nbsp;${LoginOK.busAccount}</small>
 								</div>
 							</div>
 							
@@ -88,7 +89,7 @@
 								<li><a href="<c:url value='/MerchantManagementCenter' />"> <span class="icon"><i 
 											class="fas fa-address-card"></i></span> <span class="list">商家基本資料</span>
 								</a></li>
-								<li><a href="<c:url value='#' />"> <span class="icon"><i 
+								<li><a href="<c:url value='/MerchantManagementCenter/MerchantUpdate' />"> <span class="icon"><i 
 											class="fas fa-user-edit"></i></span> <span class="list">商家資料修改</span>
 								</a></li>
 								<li><a href="<c:url value='#' />"> <span class="icon"><i 
@@ -121,140 +122,59 @@
 		<!-- Part 4. 內容顯示 -->
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="rightContent bg-info" style="height: auto;">
+				<div class="card rightContent outerlayer3" style="height: auto;">
 					<div class="container-fluid">
 					
-					<!-- Card View 清單 -->
-						<div class="row justify-content-center">
-							<div class="card m-3 col-xm-2" style="width: 18rem;">
-								<img src="..." class="card-img-top" alt="...">
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						<!-- 會員基本資料清單 -->
+						<div class="row justify-content-start ml-5 animate__animated animate__fadeInLeft">
+
+								<div class="m-3 col-lg-6 col-lg-offset-6">
+
+									<form:form class="m-3" method="POST" modelAttribute="merchantBean" enctype='multipart/form-data'>
+									
+										<fieldset class="m-3 innerlayer3">
+											<legend style="text-align:center; border: 1px solid black; border-radius: 10px; width:60%; background: gray; color: white"><b>商家基本資料</b></legend>
+											
+											<%-- FormContent --%>
+											
+											<div class="form-group has-feedback text-center">
+												<img style="width: 200px; height: 200px; border: 1px solid gray; border-radius: 50%; object-fit: cover;" 
+												src="<c:url value='/_00_init/getHeadshot?account=${LoginOK.busAccount}' />" id="show_image">
+												<form:input  path="merchantMultipartFile" type="file" id="image_file" style="display: none;" disabled="true" /> 
+											</div>
+											
+											<div class="form-group has-feedback border-top">
+												<label class="mt-3"><b>帳號 / 電子信箱</b></label>
+												<form:input path="busAccount" class="form-control" type="text" disabled="true" />
+											</div>
+
+											<div class="form-group has-feedback">
+												<label><b>商家名稱</b></label>
+												<form:input path="busName" class="form-control" type="text" disabled="true" />
+											</div>
+
+											<div class="form-group has-feedback">
+												<label><b>電話</b></label>
+												<form:input path='busTel' class="form-control" type="text" disabled="true" />
+											</div>
+											
+											<div class="form-group has-feedback">
+												<label><b>地址</b></label>
+												<form:input path='busAddress' class="form-control" type="text" disabled="true" />
+											</div>
+											
+											<div class="form-group has-feedback">
+												<label><b>商家描述</b></label>
+												<form:textarea path="busDescription" class="form-control" disabled="true" />
+											</div>
+
+										</fieldset>
+										
+									</form:form>
+									
 								</div>
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item">Cras justo odio</li>
-									<li class="list-group-item">Dapibus ac facilisis in</li>
-									<li class="list-group-item">Vestibulum at eros</li>
-								</ul>
-								<div class="card-body">
-									<a href="#" class="card-link">Card link</a>
-									<a href="#" class="card-link">Another link</a>
-								</div>
-							</div>
-							<div class="card m-3 col-xm-2" style="width: 18rem;">
-								<img src="..." class="card-img-top" alt="...">
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-								</div>
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item">Cras justo odio</li>
-									<li class="list-group-item">Dapibus ac facilisis in</li>
-									<li class="list-group-item">Vestibulum at eros</li>
-								</ul>
-								<div class="card-body">
-									<a href="#" class="card-link">Card link</a>
-									<a href="#" class="card-link">Another link</a>
-								</div>
-							</div>
-							<div class="card m-3 col-xm-2" style="width: 18rem;">
-								<img src="..." class="card-img-top" alt="...">
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-								</div>
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item">Cras justo odio</li>
-									<li class="list-group-item">Dapibus ac facilisis in</li>
-									<li class="list-group-item">Vestibulum at eros</li>
-								</ul>
-								<div class="card-body">
-									<a href="#" class="card-link">Card link</a>
-									<a href="#" class="card-link">Another link</a>
-								</div>
-							</div>
-							<div class="card m-3 col-xm-2" style="width: 18rem;">
-								<img src="..." class="card-img-top" alt="...">
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-								</div>
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item">Cras justo odio</li>
-									<li class="list-group-item">Dapibus ac facilisis in</li>
-									<li class="list-group-item">Vestibulum at eros</li>
-								</ul>
-								<div class="card-body">
-									<a href="#" class="card-link">Card link</a>
-									<a href="#" class="card-link">Another link</a>
-								</div>
-							</div>
-							<div class="card m-3 col-xm-2" style="width: 18rem;">
-								<img src="..." class="card-img-top" alt="...">
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-								</div>
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item">Cras justo odio</li>
-									<li class="list-group-item">Dapibus ac facilisis in</li>
-									<li class="list-group-item">Vestibulum at eros</li>
-								</ul>
-								<div class="card-body">
-									<a href="#" class="card-link">Card link</a>
-									<a href="#" class="card-link">Another link</a>
-								</div>
-							</div>
-							<div class="card m-3 col-xm-2" style="width: 18rem;">
-								<img src="..." class="card-img-top" alt="...">
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-								</div>
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item">Cras justo odio</li>
-									<li class="list-group-item">Dapibus ac facilisis in</li>
-									<li class="list-group-item">Vestibulum at eros</li>
-								</ul>
-								<div class="card-body">
-									<a href="#" class="card-link">Card link</a>
-									<a href="#" class="card-link">Another link</a>
-								</div>
-							</div>
-							<div class="card m-3 col-xm-2" style="width: 18rem;">
-								<img src="..." class="card-img-top" alt="...">
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-								</div>
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item">Cras justo odio</li>
-									<li class="list-group-item">Dapibus ac facilisis in</li>
-									<li class="list-group-item">Vestibulum at eros</li>
-								</ul>
-								<div class="card-body">
-									<a href="#" class="card-link">Card link</a>
-									<a href="#" class="card-link">Another link</a>
-								</div>
-							</div>
 						</div>
 					
-					<!-- 分頁選項 -->
-						<div class="row justify-content-center">
-							<nav aria-label="Page navigation example">
-									<ul class="pagination justify-content-center m-3">
-										<li class="page-item disabled">
-											<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-										</li>
-											<li class="page-item"><a class="page-link" href="#">1</a></li>
-											<li class="page-item"><a class="page-link" href="#">2</a></li>
-											<li class="page-item"><a class="page-link" href="#">3</a></li>
-											<li class="page-item"><a class="page-link" href="#">Next</a>
-										</li>
-									</ul>
-							</nav>
-						</div>			
 					</div>
 				</div>
 			</div>

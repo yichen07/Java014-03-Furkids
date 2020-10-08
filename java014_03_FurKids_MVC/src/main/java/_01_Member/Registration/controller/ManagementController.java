@@ -30,7 +30,9 @@ import _01_Member.Registration.model.PetBean;
 import _01_Member.Registration.service.MemberService;
 import _01_Member.Registration.service.MerchantService;
 import _01_Member.Registration.validator.MemberBeanValidator;
+import _01_Member.Registration.validator.MemberBeanValidator_Update;
 import _01_Member.Registration.validator.MerchantBeanValidator;
+import _01_Member.Registration.validator.MerchantBeanValidator_Update;
 import _01_Member.Registration.validator.MerchantChildBeanValidator;
 import _01_Member.Registration.validator.PetBeanValidator;
 
@@ -50,35 +52,145 @@ public class ManagementController {
 	}
 	
 
-// 會員管理
+// 會員管理(會員基本資料)
 	@GetMapping("/MemberManagementCenter")
 	public String memberManagementSystem(Model model) {
+		MemberBean memberBean = (MemberBean) model.getAttribute("LoginOK");
+		
+		MemberBean mb = memberService.queryMember(memberBean.getCusAccount());
+		model.addAttribute("memberBean", mb);
+		
 		return "_01_Member/MemberCenter_Member";
 	}
 	
-// 會員基本資料
-	
 
 // 會員基本資料修改
+	@GetMapping("/MemberManagementCenter/MemberUpdate")
+	public String memberUpdateEmptyForm(Model model) {
+		MemberBean memberBean = (MemberBean) model.getAttribute("LoginOK"); 
+		
+		MemberBean mb = memberService.queryMember(memberBean.getCusAccount());	
+		model.addAttribute("memberBean", mb); 
+		
+		return "_01_Member/MemberCenter_MemberUpdate"; 
+	}
+	
+	@PostMapping("/MemberManagementCenter/MemberUpdate")
+	public String memberUpdateProcessForm(
+			@ModelAttribute("memberBean") MemberBean memberBean,
+			BindingResult result,
+			Model model,
+			RedirectAttributes redirectAtt
+			) {
+		
+		// 修改表單驗證
+		MemberBeanValidator_Update validator = new MemberBeanValidator_Update();
+		validator.validate(memberBean, result);
+		if (result.hasErrors()) {
+			return "_01_Member/MemberCenter_MemberUpdate";
+		}
+		
+		MultipartFile memberImage = memberBean.getMemberMultipartFile();
+		String originalFilename = memberImage.getOriginalFilename();
+		if (memberImage != null && !memberImage.isEmpty()) {
+			try {
+				byte[] b = memberImage.getBytes();
+				Blob blob = new SerialBlob(b);
+				memberBean.setCusFileName(originalFilename);
+				memberBean.setCusPhoto(blob);
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
+			}
+		}
+		
+		int n = memberService.updateMember(memberBean);
+		if (n == 1) {
+			model.addAttribute("memberBean", memberBean);
+			model.addAttribute("LoginOK", memberBean);
+			redirectAtt.addFlashAttribute("UpdateOK", "<Font color='blue'>修改成功</Font>");
+		}
+		
+		return "redirect:/MemberManagementCenter";
+	}
 	
 
 // 會員密碼修改
-	
+	@PostMapping("/MemberManagementCenter/PasswordUpdate")
+	public String changeMemberPassword(
+			@ModelAttribute("memberBean") MemberBean memberBean,
+			BindingResult result,
+			Model model,
+			RedirectAttributes redirectAtt
+			) {
+		
+		return "redirect:/PasswordUpdateSuccess_Logout";
+	}
 	
 
 // -----------------------------------------------------------------------------------------
 	
-// 商家管理
+// 商家管理(商家基本資料)
 	@GetMapping("/MerchantManagementCenter")
 	public String merchantManagementSystem(Model model) {
+		MerchantBean merchantBean = (MerchantBean) model.getAttribute("LoginOK");
+		
+		MerchantBean mcb = merchantService.queryMerchant(merchantBean.getBusAccount());
+		model.addAttribute("merchantBean", mcb);
+		
 		return "_01_Member/MerchantCenter_Merchant";
-	}
-	
-
-// 商家基本資料
+	} 
 	
 
 // 商家基本資料修改
+	@GetMapping("/MerchantManagementCenter/MerchantUpdate")
+	public String merchantUpdateEmptyForm(Model model) {
+		MerchantBean merchantBean = (MerchantBean) model.getAttribute("LoginOK"); 
+		
+		MerchantBean mcb = merchantService.queryMerchant(merchantBean.getBusAccount());	
+		model.addAttribute("merchantBean", mcb); 
+		
+		return "_01_Member/MerchantCenter_MerchantUpdate";
+	}
+	
+	@PostMapping("/MerchantManagementCenter/MerchantUpdate")
+	public String merchantUpdateProcessForm(
+			@ModelAttribute("merchantBean") MerchantBean merchantBean,
+			BindingResult result,
+			Model model,
+			RedirectAttributes redirectAtt
+			) {
+
+		// 修改表單驗證
+		MerchantBeanValidator_Update validator = new MerchantBeanValidator_Update();
+		validator.validate(merchantBean, result);
+		if (result.hasErrors()) {
+			return "_01_Member/MerchantCenter_MerchantUpdate";
+		}
+		
+		MultipartFile memberImage = merchantBean.getMerchantMultipartFile();
+		String originalFilename = memberImage.getOriginalFilename();
+		if (memberImage != null && !memberImage.isEmpty()) {
+			try {
+				byte[] b = memberImage.getBytes();
+				Blob blob = new SerialBlob(b);
+				merchantBean.setBusFileName(originalFilename);
+				merchantBean.setBusPhoto(blob);
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
+			}
+		}
+		
+		int n = merchantService.updateMerchant(merchantBean);
+		if (n == 1) {
+			model.addAttribute("merchantBean", merchantBean);
+			model.addAttribute("LoginOK", merchantBean);
+			redirectAtt.addFlashAttribute("UpdateOK", "<Font color='blue'>修改成功</Font>");
+		}
+
+		return "redirect:/MerchantManagementCenter";
+	}
 		
 
 // 商家密碼修改

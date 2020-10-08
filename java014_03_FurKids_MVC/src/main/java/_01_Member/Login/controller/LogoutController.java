@@ -44,4 +44,20 @@ public class LogoutController {
 		
 //		return "redirect: /";		// 跳轉回http://localhost:8080/
 	}
+	
+	@GetMapping("/PasswordUpdateSuccess_Logout")
+	public String passwordUpdateSuccessLogout(
+			HttpSession session,  
+			Model model, 
+			SessionStatus status,
+			RedirectAttributes redirectAtt
+			) {
+		String farewellMessage = "<Font color='blue'>變更密碼成功，請重新登入</Font>";
+		redirectAtt.addFlashAttribute("FlashMSG_farewell", farewellMessage);
+		status.setComplete();		// 移除@SessionAttributes({"LoginOK"}) 標示的屬性物件
+		session.invalidate();		// 此敘述不能省略		
+		return "redirect:/";		// 跳轉回http://localhost:8080/Context_Path/
+	}
+	
+	
 }

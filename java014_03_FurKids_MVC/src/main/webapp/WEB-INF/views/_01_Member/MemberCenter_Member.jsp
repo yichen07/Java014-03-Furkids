@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +42,7 @@
 <!-- Banner ---------------------------------------------------------------------------->
 	<div
 		class="container-fluid bannerImg d-flex justify-content-center align-items-center"
-		style="background-image: url(<c:url value='/resources/images/_01_Member/member_banner_01.jpg' />)" 
+		style="background-image: url('<c:url value='/resources/images/_01_Member/member_banner_02.jpg' />')" 
 		id="imageStellar" data-stellar-background-ratio="0.5">
 		<div class="row">
 			<div class="col-md-12 text-center">
@@ -48,7 +50,7 @@
 					會員管理</h1>
 				<div
 					class="align-items-center banner-text animate__animated animate__fadeInUp">
-					<h2 class="text-center"><i class="fas fa-address-card"></i>&nbsp會員基本資料</h2>
+					<h2 class="text-center"><i class="fas fa-address-card"></i>&nbsp;會員基本資料</h2>
 				</div>		
 				<div
 					class="align-items-center banner-text animate__animated animate__fadeInUp">
@@ -73,14 +75,14 @@
 							<!-- 用戶大頭照 -->
 								<div class="mr-3">
 									<img class="userImgConer"
-										src="https://randomuser.me/api/portraits/women/60.jpg"
-										height="60px" width="60px" />
+										src="<c:url value='/_00_init/getHeadshot?account=${LoginOK.cusAccount}' />"
+										style="height:60px; width:60px; object-fit: cover" />
 								</div>
 							<!-- 用戶名稱與信箱 -->
 								<div>
-									<span class="userName mt-3">Adora</span><br /> 
+									<span class="userName mt-3">${LoginOK.cusName}</span><br /> 
 									<small class="mt-0 userMail">
-									<i class="far fa-envelope"></i> adora@gmail.com</small>
+									<i class="far fa-envelope"></i>&nbsp;${LoginOK.cusAccount}</small>
 								</div>
 							</div>
 							
@@ -89,7 +91,7 @@
 								<li><a href="<c:url value='/MemberManagementCenter' />"> <span class="icon"><i 
 											class="fas fa-address-card"></i></span> <span class="list">會員基本資料</span>
 								</a></li>
-								<li><a href="<c:url value='#' />"> <span class="icon"><i 
+								<li><a href="<c:url value='/MemberManagementCenter/MemberUpdate' />"> <span class="icon"><i 
 											class="fas fa-user-edit"></i></span> <span class="list">會員資料修改</span>
 								</a></li>
 								<li><a href="<c:url value='#' />"> <span class="icon"><i 
@@ -122,85 +124,68 @@
 		<!-- Part 4. 內容顯示 -->
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="card rightContent" style="height: auto;">
+				<div class="card rightContent outerlayer" style="height: auto;">
 					<div class="container-fluid">
 					
 					<!-- 會員基本資料清單 -->
-						<div class="row justify-content-center">
+						<div class="row justify-content-start ml-5 animate__animated animate__fadeInLeft">
 
-								<div class="card m-3 col-lg-6 col-lg-offset-6" style="border-radius: 10px;">
+								<div class="m-3 col-lg-6 col-lg-offset-6">
 
-									<form action="" class="m-3">
-										<fieldset style="border: 1px solid black; border-radius: 10px;">
-											<legend style="text-align:center; border: 1px solid black; border-radius: 10px; width:60%;">會員基本資料</legend>
+									<form:form class="m-3" method="POST" modelAttribute="memberBean" enctype='multipart/form-data'>
+									
+										<fieldset class="m-3 innerlayer">
+											<legend style="text-align:center; border: 1px solid black; border-radius: 10px; width:60%; background: gray; color: white"><b>會員基本資料</b></legend>
+											
+											<%-- FormContent --%>
+											
+											<div class="form-group has-feedback text-center">
+												<img style="width: 200px; height: 200px; border: 1px solid gray; border-radius: 50%; object-fit: cover;" 
+												src="<c:url value='/_00_init/getHeadshot?account=${LoginOK.cusAccount}' />" id="show_image">
+												<form:input  path="memberMultipartFile" type="file" id="image_file" style="display: none;" disabled="true" /> 
+											</div>
+											
+											<div class="form-group has-feedback border-top">
+												<label class="mt-3"><b>帳號 / 電子信箱</b></label>
+												<form:input path="cusAccount" class="form-control" type="text" disabled="true" />
+											</div>
+
+											<div class="form-group has-feedback">
+												<label><b>姓名</b></label>
+												<form:input path="cusName" class="form-control" type="text" disabled="true" />
+											</div>
+
+											<div class="form-group has-feedback">
+												<label><b>會員暱稱</b></label>
+												<form:input path='cusNickName' class="form-control" type="text" disabled="true" />
+											</div>
 											
 											<div class="form-group has-feedback">
-												<label for="username">帳號</label>
-												<input>
-												<div class="input-group">
-													<span class="input-group-addon"><span
-														class="glyphicon glyphicon-user"></span></span> <input
-														id="username" class="form-control"
-														placeholder="請使用電子信箱進行帳號設定" type="text">
-												</div>
-
+												<label><b>性別</b></label>
+												<form:input path='cusGender' class="form-control" type="text" disabled="true" />
+											</div>
+											
+											<div class="form-group has-feedback">
+												<label><b>生日</b></label>
+												<form:input path="cusBirthday" class="form-control" type="date" value="${LoginOK.cusBirthday}" disabled="true" />
 											</div>
 
 											<div class="form-group has-feedback">
-												<label for="password">密碼</label>
-												<div class="input-group">
-													<span class="input-group-addon"><span
-														class="glyphicon glyphicon-lock"></span></span> <input
-														id="password" class="form-control" placeholder="請輸入密碼"
-														type="password">
-												</div>
-
-												
+												<label><b>地址</b></label>
+												<form:input path="cusAddress" class="form-control" type="text" disabled="true" />
 											</div>
-
+											
 											<div class="form-group has-feedback">
-												<label for="passwordConfirm">密碼確認</label>
-												<div class="input-group">
-													<span class="input-group-addon"><span
-														class="glyphicon glyphicon-lock"></span></span> <input
-														id="passwordConfirm" class="form-control"
-														placeholder="請再次確認密碼" type="password">
-												</div>
-
-												
+												<label><b>電話</b></label>
+												<form:input path="cusTel" class="form-control" type="text" disabled="true" />
 											</div>
-
-
-											<div class="form-group has-feedback">
-												<label for="phoneNum">手机号码</label>
-												<div class="input-group">
-													<span class="input-group-addon"><span
-														class="glyphicon glyphicon-phone"></span></span> <input
-														id="phoneNum" class="form-control" placeholder="请输入手机号码"
-														maxlength="11" type="text">
-												</div>
-												
-											</div>
-
-
-											<div class="form-group col-xs-6">
-												<input class="form-control btn btn-primary" id="submit"
-													value="立&nbsp;&nbsp;即&nbsp;&nbsp;注&nbsp;&nbsp;册"
-													type="submit">
-											</div>
-
-											<div class="form-group col-xs-6">
-												<input value="重置" id="reset"
-													class="form-control btn btn-danger" type="reset">
-											</div>
-
+											
 										</fieldset>
-									</form>
+										
+									</form:form>
+									
 								</div>
-
-
 						</div>
-						
 					</div>
 				</div>
 			</div>
