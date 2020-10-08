@@ -41,10 +41,9 @@
 					<thead class="text-center">
 						<tr>
 							<th width="50">#</th>
-							<th  width="150">商家名稱</th>
-							<th>E-mail</th>
-							<th>商家電話</th>
-							<th>商家地址</th>
+							<th  width="150">分店名稱</th>
+							<th>預約人E-mail</th>
+							<th>電話</th>						
 							<th>預約人姓名</th>
 							<th>預約人數</th>
 							<th>預約時間</th>
@@ -57,9 +56,8 @@
 							<tr>
 								<th scope="row">${status.index +1}</th>
 								<td>${ResInfo.busChildName}</td>
-								<td>${ResInfo.busChildEmail}</td>
-								<td>${ResInfo.busChildTel}</td>
-								<td>${ResInfo.busChildAddress}</td>
+								<td>${ResInfo.cusAccount}</td>
+								<td>${ResInfo.cusTel}</td>
 								<td>${ResInfo.cusName}</td>
 								<th>${ResInfo.resQuantity}</th>
 								<td>${ResInfo.resDate}</td>
@@ -114,7 +112,6 @@
 	<!-- jQuery first, then Popper.js, then Bootstrap JS End-------------------------------->
 
 	<!-- JavaScript Plug-in ---------------------------------------------------------------->
-
 	<!-- icon -->
 	<script src="https://kit.fontawesome.com/8e822d04fb.js"
 		crossorigin="anonymous"></script>

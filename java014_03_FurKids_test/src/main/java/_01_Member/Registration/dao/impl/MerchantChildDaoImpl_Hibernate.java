@@ -1,5 +1,6 @@
 package _01_Member.Registration.dao.impl;
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.util.List;
 
@@ -73,6 +74,22 @@ public class MerchantChildDaoImpl_Hibernate implements MerchantChildDao {
 			return exist;
 		}
 	
+		@Override
+		public MerchantChildBean modifyMerchantChild(String account, String childName, String tel, String address,
+				String description, Blob photo, String fileName, String email) {
+			MerchantChildBean emp = null;
+	        Session session = factory.getCurrentSession();
+	        //先寫SQL
+	        String hql ="UPDATE MerchantChildBean m SET m.busAccount = :account, m.busChildName = :childName, m.busChildTel = :tel, m.busChildAddress = :address, m.busChildDescription = :description, m.busChildPhoto = :photo, m.busChildFileName = :fileName, m.busChildEmail = :email WHERE m.busAccount = :account";
+	        try{
+	            //準備執行SQL
+	            emp = (MerchantChildBean) session.createQuery(hql).setParameter("account", account).setParameter("userName", childName).setParameter("tel", tel).setParameter("address", address).setParameter("description", description).setParameter("photo", photo).setParameter("fileName", fileName).setParameter("email", email).getSingleResult();                
+	        } catch (NoResultException e) {
+//		        e.printStackTrace();
+		        emp = null;
+			} 
+	        return emp ;
+		}		
 	
 	@Override
 	public void setConnection(Connection con) {

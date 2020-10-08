@@ -1,5 +1,6 @@
 package _01_Member.Registration.dao;
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.util.List;
 
@@ -13,5 +14,8 @@ public interface MerchantChildDao {
 	
 	public boolean merchantChildExists(String account, String address);
 	
+	public MerchantChildBean modifyMerchantChild(String account, String childName, String tel, String address, String description,
+			Blob photo, String fileName, String email);
+
 	public void setConnection(Connection con); // 在Hibernate中不需要此方法。
 }
