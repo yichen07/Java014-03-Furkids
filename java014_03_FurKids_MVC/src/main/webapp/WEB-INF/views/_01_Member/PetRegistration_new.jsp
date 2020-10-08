@@ -116,6 +116,8 @@
 											<!-- Sex Radio Button End -->
 
 											<div class="buybtnP mb-4">
+												<form:input type='file' path="petMultipartFile"
+													style="display: none" id="image_file" />
 												<button type="button" class="btn-block ripple buybtn">
 													<i class="fas fa-camera-retro mr-2"> <span
 														class="btnText align-self-center">上傳照片</span>
