@@ -1,5 +1,6 @@
 package _01_Member.Registration.dao;
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.util.List;
 
@@ -22,5 +23,7 @@ public interface MerchantDao {
 	public MerchantBean checkAccountPassword(String account, String password);
 //	public Object checkAccountPassword(String account, String password);
 
+	public MerchantBean modifyMerchant(String account, String password, String userName, String tel, String address, String description, Blob photo, String fileName);
+	
 	public void setConnection(Connection con); // 在Hibernate中不需要此方法。
 }

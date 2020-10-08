@@ -1,6 +1,8 @@
 package _01_Member.Registration.dao.impl;
 
+import java.sql.Blob;
 import java.sql.Connection;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -135,6 +137,23 @@ public class MemberDaoImpl_Hibernate implements MemberDao {
 		}
 		return mb;
 	}
+	
+	//修改個人資料頁面使用的方法	
+	@Override
+    public MemberBean modifyMember(String account, String password, String userName, String nickName, String gender, Date birthday, String tel, String address, Blob photo, String fileName){
+        MemberBean emp = null;
+        Session session = factory.getCurrentSession();
+        //先寫SQL
+        String hql ="UPDATE MemberBean m SET m.cusAccount = :account, m.cusPassword = :password, m.cusName = :userName, m.cusNickName = :nickName, m.cusGender = :gender, m.cusBirthday = :birthday, m.cusTel = :tel, m.cusAddress = :address, m.cusPhoto = :photo m.cusFileName = :fileName WHERE m.cusAccount = :account";
+        try{
+            //準備執行SQL
+            emp = (MemberBean) session.createQuery(hql).setParameter("account", account).setParameter("password", password).setParameter("userName", userName).setParameter("nickName", nickName).setParameter("gender", gender).setParameter("birthday", birthday).setParameter("tel", tel).setParameter("address", address).setParameter("photo", photo).setParameter("fileName", fileName).getSingleResult();                
+        } catch (NoResultException e) {
+//	        e.printStackTrace();
+	        emp = null;
+		} 
+        return emp ;
+    }
 	
 	@Override
 	public void setConnection(Connection con) {

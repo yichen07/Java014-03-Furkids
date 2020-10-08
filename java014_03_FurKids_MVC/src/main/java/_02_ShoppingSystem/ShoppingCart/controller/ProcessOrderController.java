@@ -41,22 +41,24 @@ public class ProcessOrderController {
 
 	@PostMapping("ProcessOrder")
     protected String processOrder(Model model,
-            @RequestParam("ShippongAddress") String shippingAddress,
+            @RequestParam("ShippingAddress") String shippingAddress,
             WebRequest webRequest, SessionStatus status,			
             RedirectAttributes redirectAtt
 			) {
 		String memberId = null;
-	    MemberBean memberBean = (MemberBean) model.getAttribute("LoginOK");	   
-        MerchantBean merchantBean = (MerchantBean) model.getAttribute("LoginOK");
-        if (memberBean == null && merchantBean == null){
- 			redirectAtt.addFlashAttribute("errorNotLogin", "請先註冊或登入會員帳號");
-			return "redirect:/_01_Member/PetRegistration";
-       } else if(memberBean != null){
-            memberId = memberBean.getCusAccount();   						// 取出會員代號
-       } else {
-            memberId = merchantBean.getBusAccount();   						// 取出會員代號
-
-       }
+		Object obj = model.getAttribute("LoginOK");
+		
+		if(obj == null) {
+			redirectAtt.addFlashAttribute("errorNotLogin", "請先註冊或登入會員帳號");
+			return "redirect:/_02_ShoppingSystem/ShowCartContent";
+      }else if(obj instanceof MemberBean) {
+				MemberBean mb = (MemberBean) model.getAttribute("LoginOK");
+				memberId = mb.getCusAccount();
+			}else {
+				MerchantBean mcb = (MerchantBean) model.getAttribute("LoginOK");
+				memberId = mcb.getBusAccount();
+			}
+        
 		
 		
 		ShoppingCart sc = (ShoppingCart) model.getAttribute("ShoppingCart");
