@@ -11,7 +11,7 @@
 <link rel="icon"
 	href="<c:url value='/resources/images/logo_08_iP6_6.ico' />"
 	type="image/x-icon" />
-<title>商家分店新增</title>
+<title>會員寵物新增</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -32,7 +32,7 @@
 <!-- Inport CSS End--------------------------------------------------------------------->
 
 <link rel="stylesheet"
-	href="<c:url value='/resources/css/_01_Member/MerchantChildRegistration.css' />" />
+	href="<c:url value='/resources/css/_01_Member/PetRegistration.css' />" />
 
 <!-- Input CSS End---------------------------------------------------------------------->
 
@@ -46,14 +46,22 @@
 
 	<!-- Main Form Start------------------------------------------------------------------------->
 	<section class="imgBackground">
+		<div class="bg"></div>
+		<div class="bg bg2"></div>
+		<div class="bg bg3"></div>
+
 		<div class="container-fluid wrapperOut">
 			<div class="row d-flex justify-content-center">
 				<!-- Left Content Start ---------------------->
 				<div class="col-xl-10 col-lg-11 backImg my-5 p-4">
-					<div class="row d-flex justify-content-start">
-						<div class="col-xl-6 col-lg-6  col-12 wrapper animate__animated animate__fadeInLeft">
-							<form:form class="mt-0" method="POST"
-								modelAttribute="merchantChildBean" enctype='multipart/form-data'>
+					<div class="row d-flex justify-content-end">
+						<div
+							class="col-xl-6 col-lg-6 col-12 wrapper animate__animated animate__fadeInRight">
+
+
+
+							<form:form class="mt-0" method="POST" modelAttribute="petBean"
+								enctype='multipart/form-data'>
 								<div class="px-1">
 									<div class="row">
 										<div class="col-12 d-flex justify-content-center">
@@ -65,7 +73,7 @@
 														id="show_image" />
 												</div>
 												<div>
-													<h2 class="formTitle">商家分店新增</h2>
+													<h2 class="formTitle">會員寵物新增</h2>
 												</div>
 											</div>
 										</div>
@@ -84,28 +92,31 @@
 											</div>
 										</div>
 										<div class="col-9 pr-5">
-											<form:errors path="busChildName" cssClass="error"
-												style="color: red;" />
+											<form:errors path="cusAccount" cssClass="error"
+												style="color: red" />
 											<div class="input-group mb-4">
-												<form:input type="text" name="name" path='busChildName'
-													class="inputClass" id="inputStyle" />
-												<label for="">商家分店名稱</label> <span>商家分店名稱</span>
+												<form:input path='petName' type="text" name="name" class="inputClass"
+													id="inputStyle" /> <label for="">寵物暱稱</label> <span>寵物暱稱</span>
 											</div>
 
-											<form:errors path="busChildEmail" cssClass="error"
-												style="color: red;" />
-											<div class="input-group mb-4">
-												<form:input type="email" path='busChildEmail' name="name"
-													class="inputClass" id="inputStyle" />
-												<label for="">分店電子信箱</label> <span>分店電子信箱</span>
+											<!-- Sex Radio Button Start -->
+											<form:errors path="petVariety" cssClass="error"  />  
+											<div class="d-flex align-items-center mb-3">
+												<form:radiobutton path='petVariety' name="species" id="cat" value="Cat" /> <label
+													for="cat"
+													class="catLable mr-4 w-50 d-flex justify-content-center"><i
+													class="fas fa-cat fa-fw mr-1"></i>貓<span class="mr-2"></span>
+												</label> 
+												<form:radiobutton path='petVariety' name="species" id="dog" value="Dog"/> <label
+													for="dog"
+													class="dogLable w-50 d-flex justify-content-center"><i
+													class="fas fa-dog fa-fw mr-1"></i>狗<span class="mr-2"></span>
+												</label>
 											</div>
+											<!-- Sex Radio Button End -->
 
-											<form:errors path="merchantChildMultipartFile"
-												cssClass="error" style="color: red;" />
 											<div class="buybtnP mb-4">
-												<form:input type='file' path="merchantChildMultipartFile"
-													style="display: none" id="image_file" />
-												<button type="button" class="btn-block ripple buybtn" id="upload_image">
+												<button type="button" class="btn-block ripple buybtn">
 													<i class="fas fa-camera-retro mr-2"> <span
 														class="btnText align-self-center">上傳照片</span>
 													</i>
@@ -115,77 +126,59 @@
 									</div>
 
 									<!-- 基本資料 End -->
-									<!-- 電話 Start -->
+									<!-- 生日 Start -->
 									<div
 										class="row d-flex justify-content-center align-items-center border-bottom mb-4">
 										<div
 											class="col-3 d-flex-column justify-content-center align-items-center text-center">
 											<div class="mb-0">
-												<i class="fas fa-phone-square-alt leftIcon leftIcon2"></i>
+												<i class="fas fa-birthday-cake leftIcon leftIcon2"></i>
 											</div>
 											<div class="pb-3">
-												<h5 class="leftTitle">電話</h5>
+												<h5 class="leftTitle">生日</h5>
 											</div>
 										</div>
 										<div class="col-9 pr-5">
-											<form:errors path="busChildTel" cssClass="error"
-												style="color: red;" />
 											<div class="input-group mb-4">
-												<form:input type="text" path='busChildTel' name="name"
-													class="inputClass" id="inputStyle" />
-												<label for="">分店電話</label> <span>分店電話</span>
+												<input name="name" class="inputClass" id="date" type="date" />
+												<label for="" class="birthdayFocus">寵物生日</label> <span
+													class="birthdayFocusSpan">寵物生日</span>
 											</div>
 										</div>
 									</div>
-									<!-- 電話 End -->
-									<!-- 地址 Start -->
+									<!-- 生日 End -->
+									<!-- 其他資料 Start -->
 									<div
 										class="row d-flex justify-content-center align-items-center border-bottom mb-4">
 										<div
 											class="col-3 d-flex-column justify-content-center align-items-center text-center">
 											<div class="mb-0">
-												<i class="fas fa-map-marked-alt leftIcon leftIcon2"></i>
+												<i class="fas fa-paw leftIcon leftIcon2"></i>
 											</div>
 											<div class="pb-3">
-												<h5 class="leftTitle">地址</h5>
+												<h5 class="leftTitle">其他資料</h5>
 											</div>
 										</div>
 										<div class="col-9 pr-5">
-											<form:errors path="busChildAddress" cssClass="error"
-												style="color: red;" />
+											<div class="d-flex align-items-center mb-3">
+												<input type="radio" name="sex" id="male" /> <label
+													for="male"
+													class="maleLable mr-4 w-50 d-flex justify-content-center"><i
+													class="fas fa-mars fa-fw mr-1"></i>男<span class="mr-2"></span>
+												</label> <input type="radio" name="sex" id="female" /> <label
+													for="female"
+													class="femaleLable w-50 d-flex justify-content-center"><i
+													class="fas fa-venus fa-fw mr-1"></i>女<span class="mr-2"></span>
+												</label>
+											</div>
 											<div class="input-group mb-4">
-												<form:input type="text" path='busChildAddress' name="name"
-													class="inputClass" id="inputStyle" />
-												<label for="">分店地址</label> <span>分店地址</span>
+												<input type="text" name="name" class="inputClass"
+													id="inputStyle" /> <label for="">寵物品種</label> <span>寵物品種</span>
 											</div>
 										</div>
 									</div>
-									<!-- 地址 End -->
-									<!-- 商家描述 Start-->
-									<div
-										class="row d-flex justify-content-center align-items-center border-bottom mb-4">
-										<div
-											class="col-3 d-flex-column justify-content-center align-items-center text-center">
-											<div class="mb-1">
-												<i class="fas fa-store fa-fw leftIcon"></i>
-											</div>
-											<div class="pb-3">
-												<h5 class="leftTitle">商家描述</h5>
-											</div>
-										</div>
-										<div class="col-9 pr-5">
-											<form:errors path="busChildDescription" cssClass="error"
-												style="color: red;" />
-											<div class="mb-4">
-												<div class="textarea input-group">
-													<form:textarea name="message" path='busChildDescription'
-														class="inputClass" id="inputClassMessage"></form:textarea>
-													<label for="">商家描述內容</label> <span>商家描述內容</span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- 商家描述 End-->
+									<!-- 其他資料 End -->
+
 									<!-- 確認表單 Start-->
 									<div class="commitOrder row mt-0">
 										<div
@@ -199,9 +192,8 @@
 									</div>
 									<div class="buybtnP mt-3 mb-0 mr-2">
 										<div class="col-12 mr-0 d-flex justify-content-end">
-											<input type="reset" name="cancel" id="cancel"
-												class="ripple buybtnOutline" /> <input type="submit"
-												name="submit" id="submit" class="ripple buybtn" />
+											<button class="ripple buybtnOutline">重填</button>
+											<button class="ripple buybtn">確認</button>
 										</div>
 									</div>
 									<!-- 確認表單 End-->
@@ -251,7 +243,7 @@
 
 	<!-- JavaScript Plug-in End------------------------------------------------------------->
 	<script
-		src="<c:url value='/resources/javascript/MerchantRegistration.js' />"></script>
+		src="<c:url value='/resources/javascript/PetRegistration.js' />"></script>
 
 	<!-- navigation bar js ------------------------------------->
 	<jsp:include page="/fragment/navigation_determine.jsp" />
