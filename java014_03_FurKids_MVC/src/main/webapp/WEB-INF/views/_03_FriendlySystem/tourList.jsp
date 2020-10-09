@@ -55,7 +55,7 @@
 
 	<!-- Search Bar------------------------------------------------------------------------->
 
-	<div class="container search-Bar sticky-top">
+	<div class="container search-Bar sticky-top" style="z-index:2">
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="nav justify-content-start display-flex-inline">
@@ -77,7 +77,7 @@
 
 	<!-- Search Bar End--------------------------------------------------------------------->
 
-	<div class="container my-3">
+	<div class="container my-3" style="z-index:1">
 		<div class="row">
 		<c:forEach var="Convenience" items="${AllViewConvenience}">
 			<!-- cardView No.1  -->
