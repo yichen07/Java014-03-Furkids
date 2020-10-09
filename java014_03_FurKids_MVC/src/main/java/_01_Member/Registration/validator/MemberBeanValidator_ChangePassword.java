@@ -8,7 +8,7 @@ import _01_Member.Registration.model.MemberBean;
 
 
 
-public class MemberBeanValidator_Update implements Validator {
+public class MemberBeanValidator_ChangePassword implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
@@ -18,16 +18,14 @@ public class MemberBeanValidator_Update implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		MemberBean mb = (MemberBean) target;
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusAccount", "", "帳號欄不能空白");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusName", "", "姓名欄不能空白");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusAddress", "", "地址欄不能空白");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusTel", "", "電話欄不能空白");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusPassword", "", "密碼欄不能空白");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusConfirmPassword", "", "確認密碼欄不能空白");
 		
-//		if (mb.getCusPassword() != null && mb.getConfirmPassword() != null) {
-//			if (! mb.getCusPassword().equals(mb.getConfirmPassword())) {
-//				errors.rejectValue("cusPassword","", "密碼欄與確認密碼不一致");
-//			}
-//		}
+		if (mb.getCusPassword() != null && mb.getConfirmPassword() != null) {
+			if (! mb.getCusPassword().equals(mb.getConfirmPassword())) {
+				errors.rejectValue("cusPassword","", "密碼欄與確認密碼不一致");
+			}
+		}
 		
 //		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "", "電子郵件欄不能空白");
 //		ValidationUtils.rejectIfEmpty(errors, "memberMultipartFile", "", "必須挑選圖片");
