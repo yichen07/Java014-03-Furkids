@@ -102,7 +102,7 @@
 									<div class="input-group mb-4">
 										<form:input type="text" path="busName" name="name" required=""
 											class="inputClass" id="inputStyle" />
-										<label for="">姓名</label> <span>姓名</span>
+										<label for="">商家名稱</label> <span>商家名稱</span>
 									</div>
 
 									<form:errors path="merchantMultipartFile" cssClass="error"

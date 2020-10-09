@@ -43,7 +43,7 @@
 
 <%-- Navbar --%>
 <nav class="navbar navbar-light navbar-expand-lg bg-white sticky-top shadow"
-	id="navBar">
+	id="navBar" style="z-index:9999">
 	<div class="container">
 	
 	<%-- Logo --%>
@@ -66,7 +66,7 @@
 			<ul class="navbar-nav">
 				<%-- 商城 --%>
 				<li class="nav-item dropdown mx-2">
-					<a class="nav-link dropdown-toggle nav-font" href="<c:url value='#' />" 
+					<a class="nav-link nav-font" href="<c:url value='#' />" 
 						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						 <i class="fas fa-store-alt" style="color: grey"></i>&nbsp;寵物商城 
 					</a>
@@ -78,19 +78,23 @@
 				</li>
 				<%-- 寵物交流版 --%>
 				<li class="nav-item dropdown mx-2">
-					<a class="nav-link dropdown-toggle nav-font" href="<c:url value='#' />"
-						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<a class="nav-link nav-font" href="<c:url value='/BlogIndex' />"
+						id="navbarDropdownMenuLink" role="button"  aria-haspopup="true" aria-expanded="false">
 						<i class="fas fa-handshake" style="color: grey"></i>&nbsp;寵物交流版
 					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
-						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
-						<a class="dropdown-item" href="<c:url value='#' />">自己加</a>
-					</div>
+<%-- 					<a class="nav-link nav-font" href="<c:url value='/BlogIndex' />" --%>
+<!-- 						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+<!-- 						<i class="fas fa-handshake" style="color: grey"></i>&nbsp;寵物交流版 -->
+<!-- 					</a> -->
+<!-- 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> -->
+<%-- 						<a class="dropdown-item" href="<c:url value='#' />">自己加</a> --%>
+<%-- 						<a class="dropdown-item" href="<c:url value='#' />">自己加</a> --%>
+<%-- 						<a class="dropdown-item" href="<c:url value='#' />">自己加</a> --%>
+<!-- 					</div> -->
 				</li>
 				<%-- 寵物友善系統 --%>
 				<li class="nav-item dropdown mx-2">
-					<a class="nav-link dropdown-toggle nav-font" href="<c:url value='#' />"
+					<a class="nav-link nav-font" href="<c:url value='#' />"
 						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="fas fa-hand-holding-heart" style="color: grey"></i>&nbsp;寵物友善系統
 					</a>
@@ -104,7 +108,7 @@
 				</li>
 				<%-- 寵物健康管理 --%>
 				<li class="nav-item dropdown ml-2 mr-5">
-					<a class="nav-link dropdown-toggle nav-font" href="<c:url value='#' />"
+					<a class="nav-link nav-font" href="<c:url value='#' />"
 						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="fas fa-user-md" style="color: grey"></i>&nbsp;寵物健康管理 
 					</a>

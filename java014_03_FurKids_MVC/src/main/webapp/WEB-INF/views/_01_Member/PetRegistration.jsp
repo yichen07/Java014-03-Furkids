@@ -1,216 +1,236 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<link rel="icon" href="<c:url value='/resources/images/logo_08_iP6_6.ico' />" type="image/x-icon" />
-<title>會員新增寵物</title>
-<style type="text/css">
-span.error {
-	color: red;
-	display: inline-block;
-	font-size: 10pt;
-}
+<!-- Required meta tags -->
+<meta charset="utf-8" />
+<link rel="icon"
+	href="<c:url value='/resources/images/logo_08_iP6_6.ico' />"
+	type="image/x-icon" />
+<title>會員寵物新增</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-.error {
-	color: red;
-	display: inline-block;
-	font-size: 10pt;
-}
+<!-- Bootstrap CSS --------------------------------------------------------------------->
 
-input[type=text]{
-	font-size: 12pt;
-}
-	
-body {
-	background-attachment: fixed;
-	background-color: #EBFFEB;
-	background-repeat: no-repeat;
-	background-position: 20px 50px;
-}
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous" />
 
-h1 {
-	font-family: "標楷體", "新細明體", sans-serif;
-	font-size: 24px;
-}
-.formBkgnd {
-	color: #FFFFFF;
-	background-color: #666666;
-}
-label {
-	float:left;
-	width:8em;
-	font-weight:bold;
-	color:#000000;
-	margin-top:10px;
-	margin-bottom:2px;
-	margin-right:10px;
-	text-align: right;
-}
+<!-- animate.style CSS ----------------------------------------------------------------->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-br {
-	clear:both;
-}
-.fieldWidth {
-    margin-top:10px;
-	margin-bottom: 2px;
-	width: 200px;
-	background:#F6E497;
-	font-size:1.1em;
-}
-/* 設定字體大小 */
-.fontSize {
-	font-size:1.1em;
-}
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
-#main {
-    position:relative;
-	left:70px;
-	width:600px;
-	height:543px;	
-	top: 0px;
-	z-index:2;
-	font-size:0.9em; 
-}
-/* 設定傳送鈕的樣式 */
-#submit {
-	width:64px;
-	height:30px;
-	font-size:1.2em
-	color:#FFFFFF;
-	margin-right:1.5em;
-	border-width:2px;
-	border-color: #FFEDAF #B2A268 #B2A268 #FFEDAF;
-	background:#A9A9A9;
-}
-/* 設定取消鈕的樣式 */
-#cancel {
-	width:64px;
-	height:30px;
-	font-size:1.2em
-	color:#ffffff;
-	border-width:2px;
-	border-color: #FFEDAF #B2A268 #B2A268 #FFEDAF;
-	background:#a9a9a9;
-}
+<!-- Inport CSS End--------------------------------------------------------------------->
 
-/* #errorMsg { */
-/*     position:relative; */
-/*     top:0px;  */
-/*     left:0px;     */
-/* 	color:#FF0000; */
-/* 	font-size:0.8em; */
-/* } */
+<link rel="stylesheet"
+	href="<c:url value='/resources/css/_01_Member/PetRegistration.css' />" />
 
-</style>
-<script type="text/javascript">
-//由<body>的onLoad事件處理函數觸發此函數
-function setFocusToUserId(){   
-	 document.forms[0].mid.focus();   // 將游標放在mid欄位內
-}
-</script>
+<!-- Input CSS End---------------------------------------------------------------------->
+
+
 </head>
 
+<body>
 
-<body onLoad="setFocusToUserId()" >
+	<!-- 引入共同的頁首 -->
+	<jsp:include page="/fragment/navigation.jsp" />
 
-<c:set var="funcName" value="REG" scope="session"/>
+	<!-- Main Form Start------------------------------------------------------------------------->
+	<section class="imgBackground">
+		<div class="bg"></div>
+		<div class="bg bg2"></div>
+		<div class="bg bg3"></div>
 
-<!-- 引入共同的頁首 -->
-<jsp:include page="/fragment/navigation.jsp" />
+		<div class="container-fluid wrapperOut">
+			<div class="row d-flex justify-content-center">
+				<!-- Left Content Start ---------------------->
+				<div class="col-xl-10 col-lg-11 backImg my-5 p-4">
+					<div class="row d-flex justify-content-end">
+						<div
+							class="col-xl-6 col-lg-6 col-12 wrapper animate__animated animate__fadeInRight">
 
-  <div align='center' id="content"> 
-  
-   <form:form method="POST" modelAttribute="petBean" enctype='multipart/form-data'>
-  
-  <Table  style="width:900px ;background-color: #E7CDFF; cellspacing:0; border:2px solid black; " >
-	<tr height="40" >
-		<td colspan='4' style="text-align: center; vertical-align: middle;">
-			<Font color="#006600" size='6' face="標楷體">${AppName}</Font>
-		</td>
-	</tr>
-	
-	<tr height="36" >
-		<td colspan='4' style="text-align: center; vertical-align: middle;">
-        	<Font color="#006600" size='5' face="標楷體">會員寵物新增</Font>
-		</td>
-	</tr>
-	                    
-    <tr height="16" >
-    <td colspan='4'  style="text-align: center; vertical-align: middle;">
-	    	<div class="error">${errorSaveData}<br>
-	    	</div>
-    </td>
-    </tr>
-       
-     <tr height="52">
-     	<td style="width: 90px;">
-        	<label class="fontSize" >寵物暱稱：</label><br>&nbsp;
-        </td>
-        <td style="width: 290px;">
-      		<form:input path='petName' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<form:errors path="petName" cssClass="error" />
-      	</td>
-      	<td>
-      	 	<label class="fontSize" >寵物性別：</label><br>&nbsp;
-      	</td>
-      	<td>
-      		<form:radiobutton path='petGender' value="Male"/>男&nbsp;
-      		<form:radiobutton path='petGender' value="Female"/>女<br>&nbsp;
-      		<form:errors path="petGender" cssClass="error" />      
-      	</td>
-      <tr height="52">
-        <td> 
-      		<label class="fontSize" >寵物生日：</label><br>&nbsp;
-      	</td>
-      	<td>
-      		<form:input type="date" path='petBirthday'  class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<form:errors path="petBirthday" cssClass="error" /> 
-      	</td>
-        <td>
-      		<label class="fontSize" >寵物種類：</label><br>&nbsp;
-      	</td>
-      	<td>	
-      		<form:radiobutton path='petVariety' value="Dog"/>狗&nbsp;
-      		<form:radiobutton path='petVariety' value="Cat"/>貓<br>&nbsp;
- 			<form:errors path="petVariety" cssClass="error" />       		      
-      	</td>
-      
-     </tr>
-     <tr height="52">
-     	<td>
-      		<label class="fontSize" >寵物品種：</label><br>&nbsp;
-      	</td>
-      	<td>	
-      		<form:input path='petBreed' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<form:errors path="petBreed" cssClass="error" /> 
-        </td>
-      	<td>
-      		<label class="fontSize" >照片：</label><br>&nbsp;
-      	</td>
-      	<td>	
-      		<form:input type='file' path='petMultipartFile' class="fieldWidth" style="width: 200px;"/><br>&nbsp;
-      		<form:errors path="petMultipartFile" cssClass="error" /> 
-		</td>
-      </tr>
-      
-     <tr height="42">
-        <td colspan='4'>
-      		<div id="btnArea" align="center">
-        	 	<input type="submit" name="submit" id="submit" value="儲存"/>
-         		<input type="reset" name="cancel" id="cancel" value="重填">
-      		</div>
-		</td>
-	</tr>
-	
-</Table>
-</form:form>
-</div>
 
+
+							<form:form class="mt-0" method="POST" modelAttribute="petBean"
+								enctype='multipart/form-data'>
+								<div class="px-1">
+									<div class="row">
+										<div class="col-12 d-flex justify-content-center">
+											<div class="d-flex align-items-center mb-4">
+												<div class="pr-3">
+													<img
+														src="<c:url value='/resources/images/_01_Member/picture.svg' />"
+														style="height: 50px; width: 50px" class="UserIcon"
+														id="show_image" />
+												</div>
+												<div>
+													<h2 class="formTitle">會員寵物新增</h2>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- 基本資料 Start -->
+
+									<div
+										class="row d-flex justify-content-center align-items-center border-bottom mb-4">
+										<div
+											class="col-3 d-flex-column justify-content-center align-items-center text-center">
+											<div class="mb-0">
+												<i class="fas fa-file-alt leftIcon leftIcon2"></i>
+											</div>
+											<div class="pb-3">
+												<h5 class="leftTitle">基本資料</h5>
+											</div>
+										</div>
+										<div class="col-9 pr-5">
+											<form:errors path="cusAccount" cssClass="error"
+												style="color: red" />
+											<div class="input-group mb-4">
+												<form:input path='petName' type="text" name="name"
+													class="inputClass" id="inputStyle" />
+												<label for="">寵物暱稱</label> <span>寵物暱稱</span>
+											</div>
+
+											<!-- Sex Radio Button Start -->
+											<form:errors path="petVariety" cssClass="error"
+												style="color: red" />
+											<div class="d-flex align-items-center mb-3">
+												<form:radiobutton path='petVariety' name="species" id="cat"
+													value="Cat" />
+												<label for="cat"
+													class="catLable mr-4 w-50 d-flex justify-content-center"><i
+													class="fas fa-cat fa-fw mr-1"></i>貓<span class="mr-2"></span>
+												</label>
+												<form:radiobutton path='petVariety' name="species" id="dog"
+													value="Dog" />
+												<label for="dog"
+													class="dogLable w-50 d-flex justify-content-center"><i
+													class="fas fa-dog fa-fw mr-1"></i>狗<span class="mr-2"></span>
+												</label>
+											</div>
+											<!-- Sex Radio Button End -->
+											<form:errors path="petMultipartFile" cssClass="error"
+												style="color: red" />
+											<div class="buybtnP mb-4">
+												<form:input type='file' path="petMultipartFile"
+													style="display: none" id="image_file" />
+												<button type="button" class="btn-block ripple buybtn" id="upload_image">
+													<i class="fas fa-camera-retro mr-2"> <span
+														class="btnText align-self-center">上傳照片</span>
+													</i>
+												</button>
+											</div>
+										</div>
+									</div>
+
+									<!-- 基本資料 End -->
+									<!-- 生日 Start -->
+									<div
+										class="row d-flex justify-content-center align-items-center border-bottom mb-4">
+										<div
+											class="col-3 d-flex-column justify-content-center align-items-center text-center">
+											<div class="mb-0">
+												<i class="fas fa-birthday-cake leftIcon leftIcon2"></i>
+											</div>
+											<div class="pb-3">
+												<h5 class="leftTitle">生日</h5>
+											</div>
+										</div>
+										<div class="col-9 pr-5">
+											<form:errors path="petBirthday" cssClass="error"
+												style="color: red" />
+											<div class="input-group mb-4">
+												<form:input type="date" path='petBirthday' name="name"
+													class="inputClass" id="date" />
+												<label for="" class="birthdayFocus">寵物生日</label> <span
+													class="birthdayFocusSpan">寵物生日</span>
+											</div>
+										</div>
+									</div>
+									<!-- 生日 End -->
+									<!-- 其他資料 Start -->
+									<div
+										class="row d-flex justify-content-center align-items-center border-bottom mb-4">
+										<div
+											class="col-3 d-flex-column justify-content-center align-items-center text-center">
+											<div class="mb-0">
+												<i class="fas fa-paw leftIcon leftIcon2"></i>
+											</div>
+											<div class="pb-3">
+												<h5 class="leftTitle">其他資料</h5>
+											</div>
+										</div>
+										<div class="col-9 pr-5">
+											<form:errors path="petGender" cssClass="error"
+												style="color: red" />
+											<div class="d-flex align-items-center mb-3">
+												<form:radiobutton path='petGender' name="sex" id="male" value="Male" />
+												<label for="male"
+													class="maleLable mr-4 w-50 d-flex justify-content-center"><i
+													class="fas fa-mars fa-fw mr-1"></i>男<span class="mr-2"></span>
+												</label>
+												<form:radiobutton path='petGender' name="sex" id="female" value="Female" />
+												<label for="female"
+													class="femaleLable w-50 d-flex justify-content-center"><i
+													class="fas fa-venus fa-fw mr-1"></i>女<span class="mr-2"></span>
+												</label>
+											</div>
+
+											<form:errors path="petBreed" cssClass="error"
+												style="color: red" />
+											<div class="input-group mb-4">
+												<form:input type="text" path='petBreed' name="name"
+													class="inputClass" id="inputStyle" />
+												<label for="">寵物品種</label> <span>寵物品種</span>
+											</div>
+										</div>
+									</div>
+									<!-- 其他資料 End -->
+
+									<!-- 確認表單 Start-->
+									<div class="commitOrder row mt-0">
+										<div
+											class="checkbox-wrapper col-12 ml-2 d-flex justify-content-center">
+											<input type="checkbox" id="checkTerms" hidden /><label
+												for="checkTerms" class="checkStyle"></label>
+											<div class="checkboxText ml-2 mb-1 pr-4">
+												我已閱讀條款並同意FurKids有權於任何時間修改或變更本服務條款內容，修改後將公布本網站上，FurKids不再個別通知會員，建議會員隨時注意該等修改或變更。會員於任何修改或變更後繼續使用本網站服務時，視為會員已瞭解並同意接受該等修改或變更。
+											</div>
+										</div>
+									</div>
+									<div class="buybtnP mt-3 mb-0 mr-2">
+										<div class="col-12 mr-0 d-flex justify-content-end">
+											<input type="reset" name="cancel" id="cancel"
+												class="ripple buybtnOutline"> 
+											<input type="submit"
+												name="submit" id="submit" class="ripple buybtn">
+										</div>
+									</div>
+									<!-- 確認表單 End-->
+								</div>
+							</form:form>
+						</div>
+					</div>
+				</div>
+
+				<!-- Left Content End ------------------------>
+			</div>
+		</div>
+	</section>
+	<!-- Main Form End--------------------------------------------------------------------------->
+
+
+
+	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS ----------------------------------->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -224,10 +244,47 @@ function setFocusToUserId(){
 		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
 		crossorigin="anonymous"></script>
 	<!-- jQuery first, then Popper.js, then Bootstrap JS End-------------------------------->
-	
-	
+
+	<!-- JavaScript Plug-in ---------------------------------------------------------------->
+
+	<!-- icon -->
+	<script src="https://kit.fontawesome.com/8e822d04fb.js"
+		crossorigin="anonymous"></script>
+
+
+	<!-- banner effect -->
+	<script src="<c:url value='/resources/javascript/jquery.stellar.js' />"></script>
+
+	<!-- Taiwan Address -->
+		<script type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	<%--     <script src="<c:url value='/resources/javascript/jquery.twzipcode_mvc.js' />"></script> --%>
+
+	<!-- JavaScript Plug-in End------------------------------------------------------------->
+	<script
+		src="<c:url value='/resources/javascript/PetRegistration.js' />"></script>
+
 	<!-- navigation bar js ------------------------------------->
-		<jsp:include page="/fragment/navigation_determine.jsp" />
+	<jsp:include page="/fragment/navigation_determine.jsp" />
 	<!-- navigation bar js End------------------------------------->
+
+	<!-- 上傳圖片 js -->
+	<script type="text/javascript">
+		$("#upload_image").click(function(e) {
+			document.getElementById("image_file").click();
+		});
+
+		$("#image_file").on("change", function(event) {
+			const file = event.target.files[0];
+			let readFile = new FileReader();
+			readFile.readAsDataURL(file);
+			readFile.addEventListener("load", function(e) {
+				let image = document.getElementById("show_image");
+				image.src = this.result;
+			});
+		});
+	</script>
+
+
 </body>
 </html>

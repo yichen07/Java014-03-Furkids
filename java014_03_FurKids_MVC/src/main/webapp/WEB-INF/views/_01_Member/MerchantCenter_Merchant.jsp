@@ -123,7 +123,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="card rightContent outerlayer3" style="height: auto;">
-					<div class="container-fluid">
+					<div class="container-fluid bgtype_opacity">
 					
 						<!-- 會員基本資料清單 -->
 						<div class="row justify-content-start ml-5 animate__animated animate__fadeInLeft">
