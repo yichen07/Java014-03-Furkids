@@ -35,7 +35,7 @@
 							<ul class="list-group list-group-flush text-center">
 								<li class="list-group-item">${Convenience.conItem}</li>
 								<li class="list-group-item">${Convenience.conItemList}</li>
-								<li class="list-group-item">${Convenience.merchantChildBean.busChildAddress}</li>
+								<li class="list-group-item">${Convenience.shortAddress}</li>
 							</ul>
 							<div class="card-body text-center">
 								<a href="#" class="detail" data-toggle="modal"
@@ -104,7 +104,7 @@
 		<div class="modal fade mmm"
 			id="${Convenience.merchantChildBean.busChildName}" tabindex="-1"
 			role="dialog" aria-labelledby="exampleModalLongTitle"
-			aria-hidden="true">
+			aria-hidden="true" style="z-index:99991">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-body">
@@ -140,7 +140,7 @@
 		<!-- Modal -->
 		<div class="modal fade" id="delete${Convenience.busChildNo}"
 			tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-			aria-hidden="true">
+			aria-hidden="true" style="z-index:99992">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -166,7 +166,7 @@
 	<!--  	修改  -->
 	<!--  	Modal  -->
 	<div class="modal fade" id="alertCb" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+		aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="z-index:99991">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
@@ -240,7 +240,7 @@
 	<!-- 新增的Modal-->
 	<!-- 	Modal -->
 	<div class="modal fade" id="insertCb" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+		aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="z-index:99991">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-body">

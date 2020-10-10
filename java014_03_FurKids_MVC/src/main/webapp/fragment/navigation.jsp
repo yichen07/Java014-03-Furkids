@@ -101,8 +101,8 @@
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/景點' />">景點</a>
 						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/餐廳' />">餐廳</a>
-						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/美容' />">寵物美容</a>
-						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/旅館' />">寵物旅館</a>
+						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/寵物美容' />">寵物美容</a>
+						<a class="dropdown-item" href="<c:url value='/_03_FriendlySystem/Reservation/寵物旅館' />">寵物旅館</a>
 						
 					</div>
 				</li>

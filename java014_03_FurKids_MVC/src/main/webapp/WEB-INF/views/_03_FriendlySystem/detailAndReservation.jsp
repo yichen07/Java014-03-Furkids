@@ -29,6 +29,12 @@
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/_03_FriendlySystem/touristInfo_01.css' />" />
 
+<link rel="stylesheet"
+	href="<c:url value='/resources/css/_03_FriendlySystem/clockpicker.css' />" />
+	
+<link rel="stylesheet"
+	href="<c:url value='/resources/css/_03_FriendlySystem/standalone.css' />" />	
+
 <!-- Input CSS End---------------------------------------------------------------------->
 
 <title>FurKids寵物旅遊</title>
@@ -96,8 +102,8 @@
 								<img
 									src="<c:url value='/_03_FriendlySystem/getPicture/${Reservation.busChildNo}' />"
 									class="hotelImage" />
-							</div>						
-						</div>						
+							</div>
+						</div>
 					</div>
 
 					<div class="mt-4 mb-4 border-bottom">
@@ -193,6 +199,13 @@
 									<form:input path="resDate" class="dateRange form-control"
 										type="text" />
 									<div class="underlineDate"></div>
+									<label>預約日期</label>
+								</div>
+							</div>
+							<div class="d-flex mt-3 showTime">
+								<div class="input-data mt-4 clockpicker showTime">
+									<form:input type="text" path="resTime" class="form-control"/>
+									<div class="underlineDate"></div>
 									<label>預約時間</label>
 								</div>
 							</div>
@@ -262,7 +275,7 @@
 	<!-- Modal -->
 	<div class="modal fade" id="Error" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
+		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel">${Reservation.busChildName}</h5>
@@ -282,8 +295,7 @@
 		</div>
 	</div>
 
-
-
+	<a id="showDate" style="display: none">${showDate}</a>
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -316,6 +328,64 @@
 
 	<!-- JavaScript Plug-in End------------------------------------------------------------->
 	<script src="<c:url value='/resources/javascript/touristInfo_01.js' />"></script>
+	
+	<script src="<c:url value='/resources/javascript/clockpicker.js' />"></script>
+	
+	<c:if test="${showDate == 1}">
+		<script>
+		$('.clockpicker').clockpicker();
+			$("input.dateRange").daterangepicker(
+					{
+						"alwaysShowCalendars" : true,
+						opens : "left",
+						timePicker : false,
+						singleDatePicker : true,
+						timePickerIncrement : 30, // 以 30 分鐘為一個選取單位
+						locale : {
+							format : "YYYY-MM-DD",
+							separator : " ~ ",
+							applyLabel : "確定",
+							cancelLabel : "清除",
+							fromLabel : "開始日期",
+							toLabel : "結束日期",
+							customRangeLabel : "自訂日期區間",
+							daysOfWeek : [ "日", "一", "二", "三", "四", "五", "六" ],
+							monthNames : [ "1月", "2月", "3月", "4月", "5月", "6月",
+									"7月", "8月", "9月", "10月", "11月", "12月" ],
+
+							firstDay : 1
+						}
+					});
+		</script>
+	</c:if>
+
+	<c:if test="${showDate == 2}">
+		<script>
+			$('.showTime').css('display','none');
+			$("input.dateRange").daterangepicker(
+					{
+						"alwaysShowCalendars" : true,
+						opens : "left",
+						timePicker : false,
+						singleDatePicker : false,
+						timePickerIncrement : 30, // 以 30 分鐘為一個選取單位
+						locale : {
+							format : "YYYY-MM-DD",
+							separator : " ~ ",
+							applyLabel : "確定",
+							cancelLabel : "清除",
+							fromLabel : "開始日期",
+							toLabel : "結束日期",
+							customRangeLabel : "自訂日期區間",
+							daysOfWeek : [ "日", "一", "二", "三", "四", "五", "六" ],
+							monthNames : [ "1月", "2月", "3月", "4月", "5月", "6月",
+									"7月", "8月", "9月", "10月", "11月", "12月" ],
+
+							firstDay : 1
+						}
+					});
+		</script>
+	</c:if>
 
 	<c:if test="${!empty ResError}">
 		<button id="ResError" class="dropdown-item btn" type="button"
@@ -335,11 +405,18 @@
 	<c:if test="${!empty Member.cusName}">
 		<script type="text/javascript">
 			$('#read').css('display', 'block');
-			$('#memberlogin').css('display', 'none');			
+			$('#memberlogin').css('display', 'none');
 			$('.logData').html("");
 		</script>
 	</c:if>
 
+	<c:if test="${!empty errorNotLogin}">
+		<button id="NotLogin" class="dropdown-item btn" type="button"
+			data-toggle="modal" data-target="#login" style="display: none"></button>
+		<script type="text/javascript">
+			$('#NotLogin').trigger('click');
+		</script>
+	</c:if>
 
 	<!-- navigation bar js ------------------------------------->
 	<jsp:include page="/fragment/navigation_determine.jsp" />

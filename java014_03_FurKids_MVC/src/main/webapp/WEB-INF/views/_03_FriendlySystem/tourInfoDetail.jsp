@@ -34,25 +34,28 @@
 	<jsp:include page="/fragment/navigation.jsp" />
 
 	<section>
-		<div class="container-fluid d-flex justify-content-center">
+		<div class="container">
 			<div class="p-5">
 				<h3>預約資料</h3>
 				<table class="table table-striped table-responsive">
+					
+					<c:forEach var="ResInfo" varStatus="status" items="${ResInfo}">
 					<thead class="text-center">
 						<tr>
-							<th width="50">#</th>
-							<th  width="150">商家名稱</th>
-							<th>E-mail</th>
+							<th width="30">#</th>
+							<th width="100">商家名稱</th>
+							<th width="100">商家E-mail</th>
 							<th>商家電話</th>
-							<th>商家地址</th>
-							<th>預約人姓名</th>
-							<th>預約人數</th>
-							<th>預約時間</th>
-							<th>備註</th>
+							<th width="150">商家地址</th>
+							<th width="70">姓名</th>
+							<th>預約日期</th>
+							<th width="100">備註</th>
+							<c:if test="${!empty ResInfo.resQuantity}">
+								<th width="100">預約人數</th>
+							</c:if>
 
 						</tr>
 					</thead>
-					<c:forEach var="ResInfo" varStatus="status" items="${ResInfo}">
 						<tbody class="text-center">
 							<tr>
 								<th scope="row">${status.index +1}</th>
@@ -61,9 +64,11 @@
 								<td>${ResInfo.busChildTel}</td>
 								<td>${ResInfo.busChildAddress}</td>
 								<td>${ResInfo.cusName}</td>
-								<th>${ResInfo.resQuantity}</th>
-								<td>${ResInfo.resDate}</td>
+								<td>${ResInfo.resDate} ${ResInfo.resTime}</td>
 								<td>${ResInfo.resNote}</td>
+								<c:if test="${!empty ResInfo.resQuantity}">
+									<td>${ResInfo.resQuantity}</td>
+								</c:if>
 							</tr>
 						<thead class="text-center">
 							<tr>
@@ -80,7 +85,7 @@
 							items="${ResInfo.reservationChildBean}">
 							<thead class="text-center">
 								<tr>
-									<td scope="row">${status.index +1}</td>
+									<td scope="row"></td>
 									<td>${ResChildInfo.resSpecies}</td>
 									<td>${ResChildInfo.resVariety}</td>
 									<td>${ResChildInfo.resName}</td>
@@ -119,6 +124,10 @@
 	<script src="https://kit.fontawesome.com/8e822d04fb.js"
 		crossorigin="anonymous"></script>
 
+
+<script>
+	
+</script>
 
 	<!-- navigation bar js ------------------------------------->
 	<jsp:include page="/fragment/navigation_determine.jsp" />

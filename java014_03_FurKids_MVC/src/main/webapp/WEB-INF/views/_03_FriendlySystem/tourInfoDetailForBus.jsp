@@ -38,20 +38,22 @@
 			<div class="p-5">
 				<h3>預約資料</h3>
 				<table class="table table-striped table-responsive">
+					<c:forEach var="ResInfo" varStatus="status" items="${ResInfo}">
 					<thead class="text-center">
 						<tr>
 							<th width="50">#</th>
-							<th  width="150">分店名稱</th>
+							<th width="100">分店名稱</th>
 							<th>預約人E-mail</th>
-							<th>電話</th>						
-							<th>預約人姓名</th>
-							<th>預約人數</th>
-							<th>預約時間</th>
-							<th>備註</th>
+							<th width="80">電話</th>						
+							<th width="120">預約人姓名</th>
+							<th width="150">預約時間</th>
+							<th width="150">備註</th>
+							<c:if test="${!empty ResInfo.resQuantity}">
+								<th>預約人數</th>
+							</c:if>
 
 						</tr>
 					</thead>
-					<c:forEach var="ResInfo" varStatus="status" items="${ResInfo}">
 						<tbody class="text-center">
 							<tr>
 								<th scope="row">${status.index +1}</th>
@@ -59,9 +61,11 @@
 								<td>${ResInfo.cusAccount}</td>
 								<td>${ResInfo.cusTel}</td>
 								<td>${ResInfo.cusName}</td>
-								<th>${ResInfo.resQuantity}</th>
-								<td>${ResInfo.resDate}</td>
+								<td>${ResInfo.resDate}  ${ResInfo.resTime}</td>
 								<td>${ResInfo.resNote}</td>
+								<c:if test="${!empty ResInfo.resQuantity}">
+									<td>${ResInfo.resQuantity}</td>
+								</c:if>
 							</tr>
 						<thead class="text-center">
 							<tr>
@@ -78,7 +82,7 @@
 							items="${ResInfo.reservationChildBean}">
 							<thead class="text-center">
 								<tr>
-									<td scope="row">${status.index +1}</td>
+									<td scope="row"></td>
 									<td>${ResChildInfo.resSpecies}</td>
 									<td>${ResChildInfo.resVariety}</td>
 									<td>${ResChildInfo.resName}</td>
