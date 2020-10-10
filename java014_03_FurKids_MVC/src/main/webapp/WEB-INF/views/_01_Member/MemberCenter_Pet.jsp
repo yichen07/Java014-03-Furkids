@@ -158,14 +158,13 @@
 									<a href="#" class="card-link">Another link</a>
 								</div>
 							</div>
-						
-				
 					</div>
+					
 				</div>
 			</div>
 		</div>
-		<!-- Right Content End-->
 	</div>
+		<!-- Right Content End-->
 
 	<!-- MAIN End--------------------------------------------------------------------------->
 
