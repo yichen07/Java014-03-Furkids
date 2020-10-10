@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +51,7 @@
       class="container-fliid bannerImg d-flex justify-content-center align-items-center"
       id="imageStellar"
       data-stellar-background-ratio="0.5"
+      style="background-image: url(<c:url value='/resources/images/_02_ShoppingSystem/shoppingIndex_Banner_01.jpg' />)"
     >
       <div class="row">
         <div class="col-lg-12 text-center boaderOrder">

@@ -81,14 +81,14 @@ public class ShoppingCartController {
 			status.setComplete();
 			return "index";
 		}
-		Object obj = model.getAttribute("LoginOK");
+		//Object obj = model.getAttribute("LoginOK");
 		
 //        MemberBean memberBean = (MemberBean) model.getAttribute("LoginOK");
 //        MerchantBean merchantBean = (MerchantBean) model.getAttribute("LoginOK");//		memberBean = null;     // 此敘述測試用
-		if (obj == null) {
-			status.setComplete();
-            redirectAtt.addFlashAttribute("errorNotLogin", "請先註冊或登入會員帳號");
-			return "redirect:/_02_ShoppingSystem/ShowCartContent";		}
+//		if (obj == null) {
+//			status.setComplete();
+//            redirectAtt.addFlashAttribute("errorNotLogin", "請先註冊或登入會員帳號");
+//			return "redirect:/_02_ShoppingSystem/ShowCartContent";		}
 		if (cmd.equalsIgnoreCase("DEL")) {
 	        sc.deleteBook(ComId); // 刪除購物車內的某項商品
 		    return SHOW_CART_CONTENT;

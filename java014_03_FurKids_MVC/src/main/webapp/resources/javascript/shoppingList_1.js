@@ -1,6 +1,6 @@
 /*-- +-Button Start------------------------------>*/
 function isNegative() {
-    var $rooms = $("#noOfRoom");
+    var $rooms = $(".noOfRoom");
     var c = $rooms.val();
 
     if (c >= 0) {
@@ -15,20 +15,20 @@ function isNegative() {
 }
 
 $('#adds').click(function add() {
-    var $rooms = $("#noOfRoom");
+    var $rooms = $(".noOfRoom");
     var a = $rooms.val();
 
     a++;
     $("#subs").prop("disabled", !a);
     $rooms.val(a);
 
-    $("#noOfRoom").trigger(isNegative());
+    $(".noOfRoom").trigger(isNegative());
 });
 
-$("#subs").prop("disabled", !$("#noOfRoom").val());
+$("#subs").prop("disabled", !$(".noOfRoom").val());
 
-$('#subs').click(function subst() {
-    var $rooms = $("#noOfRoom");
+$('#subs').click(function sub() {
+    var $rooms = $(".noOfRoom");
     var b = $rooms.val();
     if (b >= 2) {
         b--;

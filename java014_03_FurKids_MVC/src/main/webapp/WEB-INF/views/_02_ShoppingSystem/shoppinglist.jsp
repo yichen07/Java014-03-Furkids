@@ -1,3 +1,8 @@
+
+
+
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -142,10 +147,13 @@
                     />
                     <FORM  action="<c:url value='BuyCommodity.do' />" method="POST">
                     <div class="product-btn">
-                      <a href="#">加入購物車</a>
-                       <Input type='submit' value='加入購物車'>        
-                       <Input type='hidden' name='ComId' value='${entry.value.comId}'>
+                      <a type="button">
+                      
+                      <Input type='submit' value='加入購物車' style="background-color: #ffffff00; border:none; color:white">        
                        <Input type='hidden' name='qty' value='1'>  
+                       <Input type='hidden' name='ComId' value='${entry.value.comId}'>
+                      </a>
+                       
                     </div>
                   </FORM>
                    
@@ -297,5 +305,8 @@
     <script src="../resources/javascript/jquery.stellar.js"></script>
     <!-- JavaScript Plug-in End------------------------------------------------------------->
     <script src="../resources/javascript/shoppingIndex_01.js"></script>
+    <!-- navigation bar js ------------------------------------->
+		<jsp:include page="/fragment/navigation_determine.jsp" />
+	<!-- navigation bar js End------------------------------------->    
   </body>
 </html>

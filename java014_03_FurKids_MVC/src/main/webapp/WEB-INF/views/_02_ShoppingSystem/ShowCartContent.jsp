@@ -22,11 +22,15 @@ function confirmDelete(n) {
 	
 	}
 }
-function modify(key, qty, index) {
-	var x = "newQty" + index +1;
-	var newQty = document.getElementById(x).value;
-	if  (newQty < 0 ) {
+function modifyadd(key, qty, index) {
+	var x = "noOfRoom" + index ;
+	var newQty = document.getElementById(x).value +1;
+	if  (noOfRoom < 0 ) {
 		window.alert ('數量不能小於 0');
+		return ; 
+	}
+	if  (noOfRoom == qty ) {
+// 		window.alert ("新、舊數量相同，不必修改");
 		return ; 
 	}
 		document.forms[0].action="<c:url value='UpdateItem.do?cmd=MOD&ComId=" + key + "&newQty=" + newQty +"' />" ;
@@ -34,6 +38,25 @@ function modify(key, qty, index) {
 		document.forms[0].submit();
 	
 }
+
+function modifysub(key, qty, index) {
+ 	var x = "noOfRoom" + index ;
+ 	var noOfRoom = document.getElementById(x).value;
+	window.alert (noOfRoom);
+	if  (noOfRoom < 0 ) {
+		window.alert ('數量不能小於 0');
+		return ; 
+	}
+	if  (noOfRoom == qty ) {
+// 		window.alert ("新、舊數量相同，不必修改");
+		return ; 
+	}
+		document.forms[0].action="<c:url value='UpdateItem.do?cmd=MOD&ComId=" + key + "&newQty=" + newQty +"' />" ;
+		document.forms[0].method="POST";
+		document.forms[0].submit();
+	
+}
+
 function isNumberKey(evt)
 {
    var charCode = (evt.which) ? evt.which : event.keyCode
@@ -191,7 +214,10 @@ function subCounts() {
       <div
           class="col-lg-1 col-4 d-flex justify-content-center align-items-center colImage shoppingListItem"
         >
-          
+          <img
+              src="<c:url value='/_00_Init/getBookImage?id=${anEntry.value.comID}' />"
+              class="productImg"
+          />
         </div>
         <div
           class="col-lg-5 col-8 d-flex justify-content-center align-items-center colProductName shoppingListItem"
@@ -208,16 +234,16 @@ function subCounts() {
         <div
           class="d-flex col-lg-2 col-4 justify-content-center align-items-center colQuantity shoppingListItem"
         >
-          <input type="button" id="subs" value="-" onclick="modify(${anEntry.key}, ${anEntry.value.ordQuantity}, ${vs.index})" />
-            <input type="button" id="subs" value="-" />
+          <input type="button" id="subs" value="-" onclick="modifysub(${anEntry.key}, ${anEntry.value.ordQuantity}, ${vs.index})" />
+<!--             <input type="button" id="subs" value="-" /> -->
           <input
             type="text"
             name="noOfRoom"
-            class="onlyNumber form-control text-center p-0"
-            id="noOfRoom"
+            class="noOfRoom onlyNumber form-control text-center p-0 "
+            id="noOfRoom${vs.index}"
             value="<fmt:formatNumber value="${anEntry.value.ordQuantity}" />"          />
 
-          <input type="button" id="adds" value="+" onclick="modify(${anEntry.key}, ${anEntry.value.ordQuantity}, ${vs.index})" />
+          <input type="button" id="adds" value="+" onclick="modifyadd(${anEntry.key}, ${anEntry.value.ordQuantity}, ${vs.index})" />
 <!--           <input type="button" id="adds" value="+" "/> -->
 
         </div>
@@ -225,6 +251,7 @@ function subCounts() {
         <div
           class="d-flex col-lg-2 col-4 justify-content-end align-items-center colPrice shoppingListItem pr-5"
         >
+<%--         ${anEntry.value.ordUnitPrice} ${anEntry.value.ordQuantity} --%>
           <fmt:formatNumber value="${anEntry.value.ordUnitPrice * anEntry.value.ordQuantity}" pattern="#,###,###" />
         </div>
       </div>
@@ -274,11 +301,11 @@ function subCounts() {
             <!--  <div class="discountPrice mb-2">活動現折</div>  -->
               <div class="totalPrice mb-0">總金額</div>
             </div>
-            <div class="text-right priceAll">
-              <div class="priceAll mb-2"><fmt:formatNumber value="${subtotal + VAT }" pattern="#,###,###" /></div>
+            <div class="text-right priceAll">            
+              <div class="priceAll mb-2"><fmt:formatNumber value="${ShoppingCart.subtotal}" pattern="#,###,###" /></div>
               <div class="shippingPrice mb-2">0</div>
               <!-- <div class="discountPrice discountPriceColor mb-2">-$2800</div>  -->
-              <div class="totalPrice"><fmt:formatNumber value="${subtotal + VAT }" pattern="#,###,###" /></div>
+              <div class="totalPrice"><fmt:formatNumber value="${ShoppingCart.subtotal}" pattern="#,###,###" /></div>
             </div>
           </div>
         </div>
@@ -296,7 +323,7 @@ function subCounts() {
             <a href="<c:url value='checkout' />" class="btn btnEffect02 effect02"><span>結帳</span></a>
           </div>
           <div class="shoppingBtn col-lg-2 col-md-3 col-sm-6 col-xs-6 mt-3">
-            <a href="<c:url value='abort' />" onClick="return Abort();" class="btn btnEffect02 effect02"><span>放棄購物---</span></a>
+            <a href="<c:url value='abort' />" onClick="return Abort();" class="btn btnEffect02 effect02"><span>放棄購物</span></a>
           </div>
         </div>
       </div>
@@ -410,5 +437,8 @@ function subCounts() {
     <script src="../resources/javascript/jquery.stellar.js"></script>
     <!-- JavaScript Plug-in End------------------------------------------------------------->
     <script src="../resources/javascript/shoppingList_1.js"></script>
+	<!-- navigation bar js ------------------------------------->
+		<jsp:include page="/fragment/navigation_determine.jsp" />
+	<!-- navigation bar js End------------------------------------->
   </body>
 </html>
