@@ -10,7 +10,9 @@
 
 /* Picked from bootstrap: .popover, .btn, .text-primary */
 
+
 .popover {
+	 z-index: 999999;
   position: absolute;
   top: 0;
   left: 0;
@@ -29,18 +31,23 @@
           box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
 }
 .popover.top {
+	 z-index: 999999;
   margin-top: -10px;
 }
 .popover.right {
+	 z-index: 999999;
   margin-left: 10px;
 }
 .popover.bottom {
+	 z-index: 999999;
   margin-top: 10px;
 }
 .popover.left {
+	 z-index: 999999;
   margin-left: -10px;
 }
 .popover-title {
+	 z-index: 999999;
   padding: 8px 14px;
   margin: 0;
   font-size: 14px;
@@ -51,10 +58,12 @@
   border-radius: 5px 5px 0 0;
 }
 .popover-content {
+	 z-index: 999999;
   padding: 9px 14px;
 }
 .popover > .arrow,
 .popover > .arrow:after {
+	 z-index: 999999;
   position: absolute;
   display: block;
   width: 0;
@@ -78,6 +87,7 @@
   transform:none;
 }
 .popover > .arrow {
+	 z-index: 999999;
   border-width: 11px;
 }
 .popover > .arrow:after {

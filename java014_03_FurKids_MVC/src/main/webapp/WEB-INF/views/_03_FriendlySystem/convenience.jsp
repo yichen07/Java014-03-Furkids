@@ -1,21 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+<!-- Bootstrap CSS --------------------------------------------------------------------->
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-	crossorigin="anonymous">
+	crossorigin="anonymous" />
 
-<link
-	href="${pageContext.request.contextPath}/resources/css/convenience.css"
-	rel="stylesheet" type="text/css" />
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
+<!-- animate.style CSS ----------------------------------------------------------------->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+<!-- Inport CSS End--------------------------------------------------------------------->
+
+<link rel="stylesheet"
+	href="<c:url value='/resources/css/_03_FriendlySystem/touristInfo_01.css' />" />
+
+<link rel="stylesheet"
+	href="<c:url value='/resources/css/_03_FriendlySystem/clockpicker.css' />" />
+
+<link rel="stylesheet"
+	href="<c:url value='/resources/css/_03_FriendlySystem/standalone.css' />" />
+
+<!-- Input CSS End---------------------------------------------------------------------->
 <title>預約上架</title>
 </head>
 <body style="background-color: #F5F5F5;">
@@ -79,8 +99,8 @@
 				<ul class="pagination justify-content-center">
 					<li class="page-item"><c:if test="${nowPage != 1}">
 							<a class="page-link"
-								href="<c:url value='/_03_FriendlySystem/convenience/1' />" tabindex="-1"
-								aria-disabled="true">Previous</a>
+								href="<c:url value='/_03_FriendlySystem/convenience/1' />"
+								tabindex="-1" aria-disabled="true">Previous</a>
 						</c:if></li>
 					<c:forEach var="n" begin="1" end="${TotalPages}">
 						<li class="page-item"><a class="page-link"
@@ -104,7 +124,7 @@
 		<div class="modal fade mmm"
 			id="${Convenience.merchantChildBean.busChildName}" tabindex="-1"
 			role="dialog" aria-labelledby="exampleModalLongTitle"
-			aria-hidden="true" style="z-index:99991">
+			aria-hidden="true" style="z-index: 99991">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-body">
@@ -140,7 +160,7 @@
 		<!-- Modal -->
 		<div class="modal fade" id="delete${Convenience.busChildNo}"
 			tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-			aria-hidden="true" style="z-index:99992">
+			aria-hidden="true" style="z-index: 99992">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -150,7 +170,9 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body"><h5>${Convenience.merchantChildBean.busChildName}?</h5></div>
+					<div class="modal-body">
+						<h5>${Convenience.merchantChildBean.busChildName}?</h5>
+					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Close</button>
@@ -166,64 +188,68 @@
 	<!--  	修改  -->
 	<!--  	Modal  -->
 	<div class="modal fade" id="alertCb" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="z-index:99991">
+		aria-labelledby="exampleModalLongTitle" aria-hidden="true"
+		style="z-index: 99991">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
-				<c:if test="${!empty emptyCb.busChildNo}">
-					<img
-						src="<c:url value='/_03_FriendlySystem/getPicture/${emptyCb.busChildNo}' />"
-						style="width: 100%; height: 250px;" class="card-img-top">
-				</c:if>
+					<c:if test="${!empty emptyCb.busChildNo}">
+						<img
+							src="<c:url value='/_03_FriendlySystem/getPicture/${emptyCb.busChildNo}' />"
+							style="width: 100%; height: 250px;" class="card-img-top">
+					</c:if>
 					<h5 class="card-header text-center">${emptyCb.merchantChildBean.busChildName}</h5>
 
 					<form:form method="POST" modelAttribute="emptyCb" action="alter"
 						class="ccc">
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">服務種類:</label>
-							<form:select class="form-control"
-									path="conItem" >
-									<form:option value="${emptyCb.conItem}" item="${emptyCb.conItem}" />
-									<form:options items="${cvsAlterOption}" />
-								</form:select>
+							<form:select class="form-control" path="conItem">
+								<form:option value="${emptyCb.conItem}"
+									item="${emptyCb.conItem}" />
+								<form:options items="${cvsAlterOption}" />
+							</form:select>
 						</div>
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">服務項目:</label>
 							<form:input type="text" class="form-control" path="conItemList" />
-							<form:errors path="conItemList"  class="text-danger"/>
+							<form:errors path="conItemList" class="text-danger" />
 						</div>
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">公休日:</label>
 							<form:input type="text" class="form-control" path="conCloseDay" />
-							<form:errors path="conCloseDay"  class="text-danger"/>
+							<form:errors path="conCloseDay" class="text-danger" />
 						</div>
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">開始營業時間:</label>
 							<form:input type="text" class="form-control" path="conOpenTime" />
-							<form:errors path="conOpenTime"  class="text-danger"/>
+							<form:errors path="conOpenTime" class="text-danger" />
 						</div>
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">結束營業時間:</label>
 							<form:input type="text" class="form-control" path="conCloseTime" />
-							<form:errors path="conCloseTime"  class="text-danger"/>
+							<form:errors path="conCloseTime" class="text-danger" />
 						</div>
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">分店信箱:</label>
 							<form:input type="text" class="form-control"
 								path="merchantChildBean.busChildEmail" />
-							<form:errors path="merchantChildBean.busChildEmail"  class="text-danger"/>
+							<form:errors path="merchantChildBean.busChildEmail"
+								class="text-danger" />
 						</div>
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">分店電話:</label>
 							<form:input type="text" class="form-control"
 								path="merchantChildBean.busChildTel" />
-							<form:errors path="merchantChildBean.busChildTel"  class="text-danger"/>
+							<form:errors path="merchantChildBean.busChildTel"
+								class="text-danger" />
 						</div>
 						<div class="form-group">
 							<label for="message-text" class="col-form-label">備註:</label>
 							<form:textarea class="form-control"
 								path="merchantChildBean.busChildDescription" />
-							<form:errors path="merchantChildBean.busChildDescription"  class="text-danger"/>
+							<form:errors path="merchantChildBean.busChildDescription"
+								class="text-danger" />
 						</div>
 						<div>
 							<button type="submit" class="btn btn-primary">確定修改</button>
@@ -240,67 +266,72 @@
 	<!-- 新增的Modal-->
 	<!-- 	Modal -->
 	<div class="modal fade" id="insertCb" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="z-index:99991">
+		aria-labelledby="exampleModalLongTitle" aria-hidden="true"
+		style="z-index: 999991">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
-				<c:if test="${!empty emptyMcb.busChildNo}">
-					<img
-						src="<c:url value='/_03_FriendlySystem/getPicture/${emptyMcb.busChildNo}' />"
-						style="width: 100%; height: 250px;" class="card-img-top">
-					
-					<h5 class="card-header text-center">${emptyMcb.busChildName}</h5>
+					<c:if test="${!empty emptyMcb.busChildNo}">
+						<img
+							src="<c:url value='/_03_FriendlySystem/getPicture/${emptyMcb.busChildNo}' />"
+							style="width: 100%; height: 250px;" class="card-img-top">
 
-					<form:form method="POST" modelAttribute="emptyMcb" action="insert"
-						>
-						<div class="modal-body">
-							<form:input type="text" class="form-control" path="busChildNo"
-								style="display: none;" />
-							<div class="form-group">
-								<label for="recipient-name" class="col-form-label">服務種類:</label>
-								<form:select class="form-control"
-									path="convenienceBean_H.conItem">
-									<form:options items="${cvsOption}" />
-								</form:select>
-								<form:errors path="convenienceBean_H.conItem"  class="text-danger"/>	
+						<h5 class="card-header text-center">${emptyMcb.busChildName}</h5>
+
+						<form:form method="POST" modelAttribute="emptyMcb" action="insert">
+							<div class="modal-body">
+								<form:input type="text" id="time" class="form-control"
+									path="busChildNo" style="display: none;" />
+								<div class="form-group">
+									<label for="recipient-name" class="col-form-label">服務種類:</label>
+									<form:select class="form-control"
+										path="convenienceBean_H.conItem">
+										<form:options items="${cvsOption}" />
+									</form:select>
+									<form:errors path="convenienceBean_H.conItem"
+										class="text-danger" />
+								</div>
+								<div class="form-group">
+									<label for="recipient-name" class="col-form-label">服務項目:</label>
+									<form:input type="text" class="form-control"
+										path="convenienceBean_H.conItemList" />
+									<form:errors path="convenienceBean_H.conItemList"
+										class="text-danger" />
+								</div>
+								<div class="form-group">
+									<label for="recipient-name" class="col-form-label">公休日:</label>
+									<form:input type="text" class="form-control"
+										path="convenienceBean_H.conCloseDay" />
+									<form:errors path="convenienceBean_H.conCloseDay"
+										class="text-danger" />
+								</div>
+								<div class="form-group">
+									<label for="recipient-name" class="col-form-label">開始營業時間:</label>
+									<form:input type="time" class="form-control"
+										path="convenienceBean_H.conOpenTime" />
+									<form:errors path="convenienceBean_H.conOpenTime"
+										class="text-danger" />
+								</div>
+								<div class="form-group">
+									<label for="recipient-name" class="col-form-label">結束營業時間:</label>
+									<form:input type="time" class="form-control"
+										path="convenienceBean_H.conCloseTime" />
+									<form:errors path="convenienceBean_H.conCloseTime"
+										class="text-danger" />
+								</div>
+								<div class="form-group">
+									<label for="message-text" class="col-form-label">商店介紹／備註:</label>
+									<form:textarea class="form-control" path="busChildDescription" />
+									<form:errors path="busChildDescription" class="text-danger" />
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">Close</button>
+									<button type="submit" class="btn btn-primary">上架</button>
+								</div>
 							</div>
-							<div class="form-group">
-								<label for="recipient-name" class="col-form-label">服務項目:</label>
-								<form:input type="text" class="form-control"
-									path="convenienceBean_H.conItemList" />
-								<form:errors path="convenienceBean_H.conItemList"  class="text-danger"/>
-							</div>
-							<div class="form-group">
-								<label for="recipient-name" class="col-form-label">公休日:</label>
-								<form:input type="text" class="form-control"
-									path="convenienceBean_H.conCloseDay" />
-								<form:errors path="convenienceBean_H.conCloseDay"  class="text-danger"/>
-							</div>
-							<div class="form-group">
-								<label for="recipient-name" class="col-form-label">開始營業時間:</label>
-								<form:input type="text" class="form-control"
-									path="convenienceBean_H.conOpenTime" />
-								<form:errors path="convenienceBean_H.conOpenTime"  class="text-danger"/>
-							</div>
-							<div class="form-group">
-								<label for="recipient-name" class="col-form-label">結束營業時間:</label>
-								<form:input type="text" class="form-control"
-									path="convenienceBean_H.conCloseTime" />
-								<form:errors path="convenienceBean_H.conCloseTime"  class="text-danger"/>
-							</div>
-							<div class="form-group">
-								<label for="message-text" class="col-form-label">商店介紹／備註:</label>
-								<form:textarea class="form-control" path="busChildDescription" />
-								<form:errors path="busChildDescription"  class="text-danger"/>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal">Close</button>
-								<button type="submit" class="btn btn-primary">上架</button>
-							</div>
-						</div>
-					</form:form>
-					</c:if>	
+						</form:form>
+					</c:if>
 				</div>
 			</div>
 		</div>
@@ -325,9 +356,35 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
 		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
 		crossorigin="anonymous"></script>
+	<!-- jQuery first, then Popper.js, then Bootstrap JS End-------------------------------->
+
+	<!-- JavaScript Plug-in ---------------------------------------------------------------->
+
+	<!-- icon -->
 	<script src="https://kit.fontawesome.com/8e822d04fb.js"
 		crossorigin="anonymous"></script>
 
+	<!-- banner effect -->
+	<script src="<c:url value='/resources/javascript/jquery.stellar.js' />"></script>
+
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+	<!-- JavaScript Plug-in End------------------------------------------------------------->
+	<script src="<c:url value='/resources/javascript/touristInfo_01.js' />"></script>
+
+	<script src="<c:url value='/resources/javascript/clockpicker.js' />"></script>
+	<script type="text/javascript"
+		src="<c:url value='/resources/javascript/Convenience.js' />">
+		
+	</script>
+	<script type="text/javascript">
+		$('.clockpicker').clockpicker();
+	</script>
 	<c:if test="${!empty aaalert}">
 		<button id="alterCb" class="dropdown-item btn" type="button"
 			data-toggle="modal" data-target="#alertCb" style="display: none"></button>
@@ -341,6 +398,7 @@
 			data-toggle="modal" data-target="#insertCb" style="display: none"></button>
 		<script type="text/javascript">
 			$('#insCb').trigger('click');
+			$('.clockpicker').clockpicker();
 		</script>
 	</c:if>
 	<c:if test="${!empty inputError}">
@@ -358,7 +416,6 @@
 		</script>
 	</c:if>
 	<script type="text/javascript">
-	
 		//如果已上架服務<8並且還有未上架分店 就顯示新增框	
 		if ($('.insertcon').length < 8 && $('.notInsertCon').length != 0) {
 			$('#insert').css('display', 'block');
@@ -366,7 +423,7 @@
 	</script>
 
 	<!-- navigation bar js ------------------------------------->
-		<jsp:include page="/fragment/navigation_determine.jsp" />
+	<jsp:include page="/fragment/navigation_determine.jsp" />
 	<!-- navigation bar js End------------------------------------->
 </body>
 </html>
