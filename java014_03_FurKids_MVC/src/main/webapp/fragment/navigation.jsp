@@ -40,6 +40,8 @@
 			.navbar .nav-item:hover .dropdown-menu{ transition: .3s; opacity:1; visibility:visible; top:100%; transform: rotateX(0deg); }
 		}
 	</style>
+	
+	<link rel="stylesheet" href="<c:url value='/resources/css/CardView/CardA.css' />" />
 
 <%-- Navbar --%>
 <nav class="navbar navbar-light navbar-expand-lg bg-white sticky-top shadow"
@@ -78,14 +80,14 @@
 				</li>
 				<%-- 寵物交流版 --%>
 				<li class="nav-item dropdown mx-2">
-					<a class="nav-link nav-font" href="<c:url value='/BlogIndex' />"
-						id="navbarDropdownMenuLink" role="button"  aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-handshake" style="color: grey"></i>&nbsp;寵物交流版
-					</a>
 <%-- 					<a class="nav-link nav-font" href="<c:url value='/BlogIndex' />" --%>
-<!-- 						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+<!-- 						id="navbarDropdownMenuLink" role="button"  aria-haspopup="true" aria-expanded="false"> -->
 <!-- 						<i class="fas fa-handshake" style="color: grey"></i>&nbsp;寵物交流版 -->
 <!-- 					</a> -->
+					<a class="nav-link nav-font" href="<c:url value='#' />"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-handshake" style="color: grey"></i>&nbsp;寵物交流版
+					</a>
 <!-- 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> -->
 <%-- 						<a class="dropdown-item" href="<c:url value='#' />">自己加</a> --%>
 <%-- 						<a class="dropdown-item" href="<c:url value='#' />">自己加</a> --%>
@@ -114,8 +116,8 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="<c:url value='#' />">熱量管理</a>
-						<a class="dropdown-item" href="<c:url value='#' />">寵物諮詢</a>
-						<a class="dropdown-item" href="<c:url value='#' />">疫苗資訊</a>
+						<a class="dropdown-item" href="<c:url value='/BlogIndex' />">寵物健康專欄</a>
+<%-- 						<a class="dropdown-item" href="<c:url value='#' />">疫苗資訊</a> --%>
 					</div>
 				</li>
 				
@@ -300,12 +302,78 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<div class="container-fluid">
-					<div class="row justify-content-center">
-						<div class="col-6 text-center"><a href="<c:url value='/MemberRegistration' />">會員註冊</a></div>
-						<div class="col-6 text-center"><a href="<c:url value='/MerchantRegistration' />">商家註冊</a></div>
-					</div>
-				</div>
+
+						<div class="backgroundTest ">
+							<div class="container">
+								<div class="row">
+									<!-- 會員註冊 Start -->
+									<div class="col-6">
+										<div class="memberRegistered memberCard mt-3 mb-3"
+											style="background: url(${pageContext.request.contextPath}/resources/images/CardTest/memberCard_001.jpg); background-position: center center; background-size: cover; border-radius: 15px;">
+											<div class="memberCardWrapper">
+												<div class="memberCardHeader">
+													<div class="memberCardDiscount">
+														<span class="memberCardDiscountTitle">加入享受優惠</span>
+													</div>
+													<ul class="memberCardStar">
+														<li><i class="fas fa-star"></i></li>
+														<li><i class="fas fa-star"></i></li>
+														<li><i class="fas fa-star"></i></li>
+														<li><i class="fas fa-star"></i></li>
+														<li><i class="fas fa-star"></i></li>
+													</ul>
+												</div>
+												<div class="memberCardData">
+													<div class="memberCardContent">
+														<h1
+															class="memberCardTitle d-flex justify-content-center mb-4 mt-0">
+															<a href="<c:url value='/MemberRegistration' />">會員註冊</a>
+														</h1>
+														<p class="memberCardText">加入FurKids，系統才可以做到以下的事：1.
+															查詢訂單、2. 計算優惠、3. 送購物金、4. 滿額免運、5. 生日折扣及專屬優惠 6. 寵物服務預約 。</p>
+														<a href="<c:url value='/MemberRegistration' />" class="memberCardButton pt-1">立刻加入</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- 會員註冊 End -->
+									<!-- 商家註冊 Start -->
+									<div class="col-6">
+										<div class="memberRegistered memberCard mt-3 mb-3"
+											style="background: url(${pageContext.request.contextPath}/resources/images/CardTest/memberCard_002.jpg); background-position: center center; background-size: cover; border-radius: 15px;">
+											<div class="memberCardWrapper">
+												<div class="memberCardHeader">
+													<div class="memberCardDiscount">
+														<span class="memberCardDiscountTitle">加入享受優惠</span>
+													</div>
+													<ul class="memberCardStar">
+														<li><i class="fas fa-star"></i></li>
+														<li><i class="fas fa-star"></i></li>
+														<li><i class="fas fa-star"></i></li>
+														<li><i class="fas fa-star"></i></li>
+														<li><i class="fas fa-star"></i></li>
+													</ul>
+												</div>
+												<div class="memberCardData">
+													<div class="memberCardContent">
+														<h1
+															class="memberCardTitle d-flex justify-content-center mb-4 mt-0">
+															<a href="<c:url value='/MerchantRegistration' />">商家註冊</a>
+														</h1>
+														<p class="memberCardText">FurKids
+															讓店家使用最低的人力一鍵開店快速打造網路店面，同步管理金物流及顧客訂單，立即了解。自動預約問答降低人力成本。</p>
+														<a href="<c:url value='/MerchantRegistration' />" class="memberCardButton">立刻加入</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- 商家註冊 End -->
+								</div>
+							</div>
+						</div>
+
 			</div>
 			<div class="modal-footer">
 				<div class="col-md-12">
