@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import _01_Member.Registration.model.MerchantChildBean;
 
@@ -28,7 +29,8 @@ public class ConvenienceBean_H implements Serializable{
 	private String conCloseDay;	//週休日
 	private String conOpenTime; //開始營業時間
 	private String conCloseTime; //結束營業時間
-	
+	@Transient
+	private String shortAddress;
 	//一對一商家分店
 	@OneToOne
 	@JoinColumn(name="busChildNo")
@@ -49,6 +51,16 @@ public class ConvenienceBean_H implements Serializable{
 		this.conCloseDay = conCloseDay;
 		this.conOpenTime = conOpenTime;
 		this.conCloseTime = conCloseTime;
+	}
+
+
+	public String getShortAddress() {
+		return shortAddress;
+	}
+
+
+	public void setShortAddress(String shortAddress) {
+		this.shortAddress = shortAddress;
 	}
 
 

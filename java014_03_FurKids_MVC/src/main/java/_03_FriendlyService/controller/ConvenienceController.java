@@ -76,6 +76,15 @@ public class ConvenienceController {
 		List<ConvenienceBean_H> allcb = service.getAllConvenience(userId);
 		// 限制一次只抓8筆，從頁數去選擇要從哪筆開始抓
 		List<ConvenienceBean_H> cb = service.getPageConvenience(userId, intPageNo);
+		for(ConvenienceBean_H cbh : cb) {
+			if(cbh.getMerchantChildBean().getBusChildAddress().length() >= 7) {
+				cbh.setShortAddress(cbh.getMerchantChildBean().getBusChildAddress().substring(0, 6));
+			}else {
+				cbh.setShortAddress(cbh.getMerchantChildBean().getBusChildAddress());
+			}
+						
+		}
+		
 		// 尚未上架的商家分店
 		List<MerchantChildBean> mcb = service.getNotConvenience(userId);
 
@@ -198,10 +207,9 @@ public class ConvenienceController {
 			cvsAlterOption = new ArrayList<>();
 			cvsAlterOption.add("餐廳");
 			cvsAlterOption.add("寵物美容");
-			cvsAlterOption.add("旅館");
-			cvsAlterOption.add("寵物寄放");
+			cvsAlterOption.add("寵物旅館");
 			if(emptyCb.getBusChildNo() != null) {
-				for(int i = 0; i < 4; i++) {
+				for(int i = 0; i < 3; i++) {
 					if((cvsAlterOption.get(i)).equals(emptyCb.getConItem())) {
 						cvsAlterOption.remove(i);
 						break;
