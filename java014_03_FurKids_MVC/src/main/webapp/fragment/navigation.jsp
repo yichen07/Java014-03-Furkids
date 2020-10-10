@@ -78,14 +78,14 @@
 				</li>
 				<%-- 寵物交流版 --%>
 				<li class="nav-item dropdown mx-2">
-					<a class="nav-link nav-font" href="<c:url value='/BlogIndex' />"
-						id="navbarDropdownMenuLink" role="button"  aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-handshake" style="color: grey"></i>&nbsp;寵物交流版
-					</a>
 <%-- 					<a class="nav-link nav-font" href="<c:url value='/BlogIndex' />" --%>
-<!-- 						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+<!-- 						id="navbarDropdownMenuLink" role="button"  aria-haspopup="true" aria-expanded="false"> -->
 <!-- 						<i class="fas fa-handshake" style="color: grey"></i>&nbsp;寵物交流版 -->
 <!-- 					</a> -->
+					<a class="nav-link nav-font" href="<c:url value='#' />"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-handshake" style="color: grey"></i>&nbsp;寵物交流版
+					</a>
 <!-- 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> -->
 <%-- 						<a class="dropdown-item" href="<c:url value='#' />">自己加</a> --%>
 <%-- 						<a class="dropdown-item" href="<c:url value='#' />">自己加</a> --%>
@@ -114,8 +114,8 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="<c:url value='#' />">熱量管理</a>
-						<a class="dropdown-item" href="<c:url value='#' />">寵物諮詢</a>
-						<a class="dropdown-item" href="<c:url value='#' />">疫苗資訊</a>
+						<a class="dropdown-item" href="<c:url value='/BlogIndex' />">寵物健康專欄</a>
+<%-- 						<a class="dropdown-item" href="<c:url value='#' />">疫苗資訊</a> --%>
 					</div>
 				</li>
 				

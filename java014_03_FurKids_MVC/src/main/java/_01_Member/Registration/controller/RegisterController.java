@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +21,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import _00_Init.controller.RegisterSmtp;
 import _00_Init.util.GlobalService;
 import _01_Member.Registration.model.MemberBean;
 import _01_Member.Registration.model.MerchantBean;
@@ -111,7 +111,18 @@ public class RegisterController {
 			try {
 				int n = memberService.saveMember(memberBean);
 				if (n == 1) {
-					redirectAtt.addFlashAttribute("InsertOK", "<Font color='blue'>註冊成功，請開始使用本系統</Font>");					
+					redirectAtt.addFlashAttribute("InsertOK", "<Font color='blue'>註冊成功，請開始使用本系統</Font>");
+					//	寄發註冊成功信件
+					new Thread(()->{
+						RegisterSmtp rs = new RegisterSmtp();
+						String title = "Furkids會員註冊成功!\n";
+						String messages = 
+								memberBean.getCusName() + " 會員您好，歡迎加入FurKids網站的一般會員，"
+										+ "\n您的註冊帳號為" + memberBean.getCusAccount() + "，" 
+										+ "\n如有任何問題，請來信或於上班時間與客服聯繫，感謝您!";
+						String email = memberBean.getCusAccount();
+						rs.send(title, messages, email);						  
+					  }).start();
 				}
 			} catch (Exception e) {
 				System.out.println(e.getClass().getName() + ", e.getMessage()=" + e.getMessage());
@@ -185,7 +196,18 @@ public class RegisterController {
 					try {
 						int n = merchantService.saveMerchant(merchantBean);
 						if (n == 1) {
-							redirectAtt.addFlashAttribute("InsertOK", "<Font color='blue'>註冊成功，請開始使用本系統</Font>");					
+							redirectAtt.addFlashAttribute("InsertOK", "<Font color='blue'>註冊成功，請開始使用本系統</Font>");
+							// 寄發註冊成功信件
+							new Thread(()->{								  
+								RegisterSmtp rs = new RegisterSmtp();
+								String title = "Furkids會員註冊成功!\n";
+								String messages = 
+										merchantBean.getBusName() + " 會員您好，歡迎加入FurKids網站的商家會員，"
+												+ "\n您的註冊帳號為" + merchantBean.getBusAccount() + "，" 
+												+ "\n如有任何問題，請來信或於上班時間與客服聯繫，感謝您!";
+								String email = merchantBean.getBusAccount();
+								rs.send(title, messages, email);
+							  }).start();
 						}
 					} catch (Exception e) {
 						System.out.println(e.getClass().getName() + ", e.getMessage()=" + e.getMessage());
