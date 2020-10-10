@@ -30,6 +30,7 @@ import _01_Member.Registration.model.PetBean;
 import _01_Member.Registration.service.MemberService;
 import _01_Member.Registration.service.MerchantService;
 import _01_Member.Registration.validator.MemberBeanValidator;
+import _01_Member.Registration.validator.MemberBeanValidator_ChangePassword;
 import _01_Member.Registration.validator.MemberBeanValidator_Update;
 import _01_Member.Registration.validator.MerchantBeanValidator;
 import _01_Member.Registration.validator.MerchantBeanValidator_Update;
@@ -124,6 +125,19 @@ public class ManagementController {
 			RedirectAttributes redirectAtt
 			) {
 		
+		// 修改表單驗證
+		MemberBeanValidator_ChangePassword validator = new MemberBeanValidator_ChangePassword();
+		validator.validate(memberBean, result);
+		if (result.hasErrors()) {
+			redirectAtt.addFlashAttribute("PasswordUpdateError", "密碼修改錯誤，請重新確認。");
+			return "_01_Member/MemberCenter_Member";
+		}
+		
+		MemberBean mb = (MemberBean) model.getAttribute("LoginOK");
+		
+		mb.setCusPassword(GlobalService.getMD5Endocing(GlobalService.encryptString(memberBean.getCusPassword())));
+		memberService.updateMember(mb);
+		
 		return "redirect:/PasswordUpdateSuccess_Logout";
 	}
 	
@@ -194,6 +208,29 @@ public class ManagementController {
 		
 
 // 商家密碼修改
+	@PostMapping("/MerchantManagementCenter/PasswordUpdate")
+	public String changeMerchantPassword(
+			@ModelAttribute("merchantBean") MerchantBean merchantBean,
+			BindingResult result,
+			Model model,
+			RedirectAttributes redirectAtt
+			) {
+		
+		// 修改表單驗證
+		MerchantBeanValidator_Update validator = new MerchantBeanValidator_Update();
+		validator.validate(merchantBean, result);
+		if (result.hasErrors()) {
+			redirectAtt.addFlashAttribute("PasswordUpdateError", "密碼修改錯誤，請重新確認。");
+			return "_01_Member/MemberCenter_Member";
+		}
+		
+		MerchantBean mb = (MerchantBean) model.getAttribute("LoginOK");
+		
+		mb.setBusPassword(GlobalService.getMD5Endocing(GlobalService.encryptString(merchantBean.getBusPassword())));
+		merchantService.updateMerchant(mb);
+		
+		return "redirect:/PasswordUpdateSuccess_Logout";
+	}
 		
 		
 

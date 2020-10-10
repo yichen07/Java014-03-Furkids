@@ -413,7 +413,7 @@ a:focus {
 }
 .product-btn > a {
     font-family: "Tahoma", "cwTeXYen", sans-serif;
-    color: #fff;
+    color: rgb(253, 0, 0);
     text-shadow: 3px 3px 5px #191f2b;
 
     float: left;
