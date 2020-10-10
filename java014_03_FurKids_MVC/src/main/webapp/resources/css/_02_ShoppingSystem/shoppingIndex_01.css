@@ -100,7 +100,7 @@ input:focus {
     z-index: 100;
 }
 .bannerImg {
-    background-image: url(../../images/_02_ShoppingSystem/shoppingIndex_Banner_01.jpg);
+/*     background-image: url(../../images/_02_ShoppingSystem/shoppingIndex_Banner_01.jpg); */
     height: 350px;
     width: 100%;
     background-color: rgba(41, 41, 41, 0.5);

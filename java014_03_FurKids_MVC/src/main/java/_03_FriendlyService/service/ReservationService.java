@@ -16,6 +16,8 @@ public interface ReservationService {
 	
 	void delete(ReservationBean rb);
 	
+	ReservationBean getReservation(int no);
+	
 	Boolean getReservationBeanCusAccount(String account, int no);
 	
 	List<ConvenienceBean_H> getPageViewConvenience(String item,int pageNo);
@@ -23,6 +25,8 @@ public interface ReservationService {
 	List<ConvenienceBean_H> getViewConvenience(String item);
 	
 	List<ReservationBean> getReservationInfo(String account);
+	
+	List<ReservationBean> getReservationInfoForBus(String account);
 	
 	int getTotalPages(String item);
 	

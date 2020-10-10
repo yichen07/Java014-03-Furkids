@@ -34,7 +34,7 @@
 	<jsp:include page="/fragment/navigation.jsp" />
 
 	<section>
-		<div class="container">
+		<div class="container-fluid d-flex justify-content-center">
 			<div class="p-5">
 				<h3>預約資料</h3>
 				<table class="table table-striped table-responsive">
@@ -44,9 +44,11 @@
 							<th  width="150">商家名稱</th>
 							<th>E-mail</th>
 							<th>商家電話</th>
+							<th>商家地址</th>
 							<th>預約人姓名</th>
+							<th>預約人數</th>
 							<th>預約時間</th>
-							<th width="200">備註</th>
+							<th>備註</th>
 
 						</tr>
 					</thead>
@@ -57,7 +59,9 @@
 								<td>${ResInfo.busChildName}</td>
 								<td>${ResInfo.busChildEmail}</td>
 								<td>${ResInfo.busChildTel}</td>
+								<td>${ResInfo.busChildAddress}</td>
 								<td>${ResInfo.cusName}</td>
+								<th>${ResInfo.resQuantity}</th>
 								<td>${ResInfo.resDate}</td>
 								<td>${ResInfo.resNote}</td>
 							</tr>

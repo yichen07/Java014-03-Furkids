@@ -30,7 +30,16 @@ $('#imageStellar').stellar();
 
 /* Banner End ------------------------------------------------------------------------> */
 
+/* Add Column Bar -----------------------------------------------------*/
 
+//fixed position
+$(window).scroll(function () {
+  if ($(window).scrollTop() > 364) {
+    $('.addCol').addClass('addColToTup');
+  } else {
+    $('.addCol').removeClass('addColToTup');
+  }
+});
 
-
+/* Add Column Bar End-----------------------------------------------------*/
 

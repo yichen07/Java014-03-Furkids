@@ -24,11 +24,11 @@ public class MerchantBeanValidator_Update implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "busAddress", "", "地址欄不能空白");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "busTel", "", "電話欄不能空白");
 		
-		if (mb.getBusPassword() != null && mb.getConfirmPassword() != null) {
-			if (! mb.getBusPassword().equals(mb.getConfirmPassword())) {
-				errors.rejectValue("busPassword","", "密碼欄與確認密碼不一致");
-			}			
-		}
+//		if (mb.getBusPassword() != null && mb.getConfirmPassword() != null) {
+//			if (! mb.getBusPassword().equals(mb.getConfirmPassword())) {
+//				errors.rejectValue("busPassword","", "密碼欄與確認密碼不一致");
+//			}			
+//		}
 		
 		
 //		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "", "電子郵件欄不能空白");

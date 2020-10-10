@@ -104,6 +104,7 @@ public class ReservationDaoImp implements ReservationDao{
 		return list;
 	
 	}
+	//以會員帳號撈預約資料
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ReservationBean> getReservationInfo(String account) {
@@ -131,10 +132,15 @@ public class ReservationDaoImp implements ReservationDao{
 		ReservationBean rb = (ReservationBean) session.createQuery(hql).setParameter("id", no).getSingleResult();
 		return rb;
 	}
+	//以商家帳號撈預約資料
+	@SuppressWarnings("unchecked")
 	@Override
-	public ReservationChildBean getReservationChild(int no) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ReservationBean> getReservationInfoForBus(String account) {
+		List<ReservationBean> list = new ArrayList<>();
+		String hql = "FROM ReservationBean where conAccount = :account";
+		Session session = factory.getCurrentSession();
+		list = session.createQuery(hql).setParameter("account", account).getResultList();	
+		return list;
 	}
 
 
