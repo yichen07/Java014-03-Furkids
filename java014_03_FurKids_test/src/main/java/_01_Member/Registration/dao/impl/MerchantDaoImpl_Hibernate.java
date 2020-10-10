@@ -1,5 +1,6 @@
 package _01_Member.Registration.dao.impl;
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.util.List;
 
@@ -140,8 +141,25 @@ public class MerchantDaoImpl_Hibernate implements MerchantDao {
 	}
 
 	@Override
+	public MerchantBean modifyMerchant(String account, String password, String userName, String tel, String address,
+			String description, Blob photo, String fileName) {
+		MerchantBean emp = null;
+        Session session = factory.getCurrentSession();
+        //先寫SQL
+        String hql ="UPDATE MerchantBean m SET m.busAccount = :account, m.busPassword = :password, m.busName = :userName, m.busTel = :tel, m.busAddress = :address, m.busDescription = :description, m.busPhoto = :photo, m.busFileName = :fileName WHERE m.busAccount = :account";
+        try{
+            //準備執行SQL
+            emp = (MerchantBean) session.createQuery(hql).setParameter("account", account).setParameter("password", password).setParameter("userName", userName).setParameter("tel", tel).setParameter("address", address).setParameter("description", description).setParameter("photo", photo).setParameter("fileName", fileName).getSingleResult();                
+        } catch (NoResultException e) {
+//	        e.printStackTrace();
+	        emp = null;
+		} 
+        return emp ;
+	}
+
+	@Override
 	public void setConnection(Connection con) {
 		throw new RuntimeException("MerchantDaoImpl_Hibernate類別不支援setConnection()方法");
 	}
-
+	
 }

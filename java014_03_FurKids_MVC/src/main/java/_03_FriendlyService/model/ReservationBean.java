@@ -3,9 +3,7 @@ package _03_FriendlyService.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -33,8 +31,10 @@ public class ReservationBean implements Serializable{
 	private String resTime;
 	private String resNote;
 	private String cusName;
-	private String BusChildEmail;
-	private String BusChildTel;
+	private String busChildEmail;
+	private String busChildTel;
+	private String resQuantity;
+	private String cusTel;  
 	
 	@OneToMany(mappedBy="reservationBean" ,fetch=FetchType.EAGER)
 	private List<ReservationChildBean> reservationChildBean = new ArrayList<>();
@@ -65,6 +65,18 @@ public class ReservationBean implements Serializable{
 
 	public Integer getResID() {
 		return resID;
+	}
+
+
+
+	public String getCusTel() {
+		return cusTel;
+	}
+
+
+
+	public void setCusTel(String cusTel) {
+		this.cusTel = cusTel;
 	}
 
 
@@ -158,17 +170,6 @@ public class ReservationBean implements Serializable{
 	}
 
 
-	public List<ReservationChildBean> getReservationChildBean() {
-		return reservationChildBean;
-	}
-
-
-
-	public void setReservationChildBean(List<ReservationChildBean> reservationChildBean) {
-		this.reservationChildBean = reservationChildBean;
-	}
-
-
 
 	public String getResNote() {
 		return resNote;
@@ -195,25 +196,52 @@ public class ReservationBean implements Serializable{
 
 
 	public String getBusChildEmail() {
-		return BusChildEmail;
-	}
-
-	
-
-	public String getBusChildTel() {
-		return BusChildTel;
-	}
-
-
-
-	public void setBusChildTel(String busChildTel) {
-		BusChildTel = busChildTel;
+		return busChildEmail;
 	}
 
 
 
 	public void setBusChildEmail(String busChildEmail) {
-		BusChildEmail = busChildEmail;
+		this.busChildEmail = busChildEmail;
 	}
+
+
+
+	public String getBusChildTel() {
+		return busChildTel;
+	}
+
+
+
+	public void setBusChildTel(String busChildTel) {
+		this.busChildTel = busChildTel;
+	}
+
+
+
+	public String getResQuantity() {
+		return resQuantity;
+	}
+
+
+
+	public void setResQuantity(String resQuantity) {
+		this.resQuantity = resQuantity;
+	}
+
+
+
+	public List<ReservationChildBean> getReservationChildBean() {
+		return reservationChildBean;
+	}
+
+
+
+	public void setReservationChildBean(List<ReservationChildBean> reservationChildBean) {
+		this.reservationChildBean = reservationChildBean;
+	}
+
+
+
 	
 }

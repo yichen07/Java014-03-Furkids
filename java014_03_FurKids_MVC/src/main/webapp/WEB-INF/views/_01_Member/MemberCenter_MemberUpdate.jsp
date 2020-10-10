@@ -103,7 +103,8 @@
 										<span class="icon"><i class="fas fa-user-edit"></i></span> <span
 										class="list">會員資料修改</span>
 								</a></li>
-								<li><a href="<c:url value='#' />"> <span class="icon"><i
+								<li><a href="<c:url value='#' />" data-toggle="modal"
+									data-target="#passwordUpdate"> <span class="icon"><i
 											class="fas fa-key"></i></span> <span class="list">修改密碼</span>
 								</a></li>
 								<li><a href="<c:url value='/PetManagementCenter' />"> <span
@@ -135,7 +136,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="card rightContent outerlayer2" style="height: auto;">
-					<div class="container-fluid">
+					<div class="container-fluid bgtype_opacity">
 
 						<!-- 會員基本資料清單 -->
 						<div class="row justify-content-end mr-5 animate__animated animate__fadeInRight">
@@ -236,6 +237,65 @@
 	</div>
 
 	<!-- MAIN End--------------------------------------------------------------------------->
+	
+		<!-- 修改密碼Modal_Start -->
+
+	<!-- Button trigger modal -->
+	<!-- 	<button type="button" class="btn btn-primary" data-toggle="modal" -->
+	<!-- 		data-target="#exampleModalCenter">Launch demo modal</button> -->
+
+	<!-- Modal -->
+	<div class="modal fade" id="passwordUpdate" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true" data-backdrop="static" data-keyboard="true" >
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="exampleModalCenterTitle" style="color: #0090d3"><b>修改密碼</b></h4>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				
+				<!-- 密碼修改表單_Start -->
+				<form:form class="m-3" method="POST" modelAttribute="memberBean" action="${pageContext.request.contextPath}/MemberManagementCenter/PasswordUpdate">
+				<div class="modal-body">
+					
+					<div class="form-group">
+						<label for="exampleInputPassword"><b>舊密碼</b></label>
+						<input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="請輸入舊密碼">
+						<font class="errhide" color="red">${OldPasswordError}</font>
+					</div> 
+					
+					<div class="form-group">
+					    <label for="exampleInputPassword"><b>新密碼</b></label>
+					    <form:input type="password" class="form-control" path="cusPassword" id="cusPassword" placeholder="請輸入新密碼"  />
+					    <font class="errhide" color="red"><form:errors  path="cusPassword" cssClass="errors" /></font>
+					</div> 
+					
+					<div class="form-group">
+					    <label for="exampleInputPassword"><b>新密碼確認</b></label>
+					    <form:input type="password" class="form-control" path="confirmPassword" id="confirmPassword" placeholder="新密碼確認" />
+					    <font class="errhide" color="red"><form:errors  path="confirmPassword" cssClass="errors" /></font>
+					</div> 
+				
+					</div>
+					<div class="modal-footer justify-content-center">
+						<button type="submit" class="btn btn-primary">提交</button>
+					</div>
+				</form:form>
+				<button type="reset" class="btn btn-outline-primary" id="passwordClear" hidden>重設</button>
+				
+				<!-- 密碼修改表單_End -->
+				
+			</div>
+		</div>
+	</div>
+
+	<!-- 修改密碼Modal_End -->
+
+
 
 
 	<!-- Footer Start----------------------------------------------------------------------->
@@ -292,5 +352,33 @@
 			});
 		});
 	</script>
+	
+	<!-- 修改密碼呈現Javascript -->
+	<script type="text/javascript">
+		$('#passwordClear').click(function() {
+			  document.getElementById("oldPassword").value='';
+			  document.getElementById("cusPassword").value='';
+			  document.getElementById("confirmPassword").value='';
+		});
+
+		$('#passwordUpdate').on('show.bs.modal', function () {
+			document.getElementById("passwordClear").click();
+		})
+	</script>
+	
+	<%-- 修改密碼時，如有錯誤，重新導回基本資料畫面 --%>
+		<c:if test="${!empty PasswordUpdateError || !empty OldPasswordError}">
+			<script>
+				$('#passwordUpdate').modal('show')
+			</script>
+		</c:if>
+	<%-- 關閉Modal隱藏錯誤訊息 --%>
+		<script type="text/javascript">
+			$("#passwordUpdate").on("hidden.bs.modal",function(e){
+			  $('.errhide').css('display', 'none');
+			});
+		</script>
+		
+	<!-- 修改密碼呈現Javascript_End -->
 </body>
 </html>

@@ -55,7 +55,7 @@
 
 	<!-- Search Bar------------------------------------------------------------------------->
 
-	<div class="container search-Bar sticky-top">
+	<div class="container search-Bar sticky-top" style="z-index:2">
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="nav justify-content-start display-flex-inline">
@@ -66,7 +66,7 @@
 								<i class="fa fa-search"></i>
 							</div>
 							<div class="search-input">
-								<input type="search" class="search-bar" placeholder="請輸入文字" incremental="incremental" onsearch="OnSearch (this)"/>
+								<input type="search" class="search-bar" id="sear" placeholder="請輸入文字" />
 							</div>
 						</div> <!--search box end-->
 					</li>
@@ -77,11 +77,11 @@
 
 	<!-- Search Bar End--------------------------------------------------------------------->
 
-	<div class="container my-3">
+	<div class="container my-3" style="z-index:1">
 		<div class="row">
 		<c:forEach var="Convenience" items="${AllViewConvenience}">
 			<!-- cardView No.1  -->
-			<div class="col-lg-3 col-md-6 col-sm-12 my-4">
+			<div class="col-lg-3 col-md-6 col-sm-12 my-4 searchdiv">
 				<figure class="attractions">
 					<div class="image">
 						<img
@@ -97,7 +97,7 @@
 						<br />
 						<h6>${Convenience.conItemList}</h6>
 						<div class="pb-1">
-							<i class="fas fa-map-marker-alt ml-3"><span
+							<i class="fas fa-map-marker-alt ml-3 searchba"><span
 								class="iconFontSize">${Convenience.merchantChildBean.busChildAddress}</span> </i> <i
 								class="fas fa-phone-square-alt"><span 
 								class="iconFontSize">${Convenience.merchantChildBean.busChildTel}</span> </i>
@@ -145,9 +145,37 @@
 	<script src="<c:url value='/resources/javascript/touristIndex.js' />"></script>
 	
 	<script>
+	$('#sear').keyup(function(){
+		searchword = $('#sear').val();
+		if(searchword !=='' ){
+			$('.searchdiv').css("display","none");
+			$('.searchba').find(":contains('" + searchword + "')").parent().parent().parent().parent().parent().css("display","block");
+		}else {
+			$('.searchdiv').css("display","block");
+		}
+//	      $('.searchdiv').find(":contains('" + searchword + "')").parent().parent().css("display","block");
+//	   }else{
+//	         $('.searchdiv').css("display","block");
+//	   }
+		});
+
+	
 	 function OnSearch (input) {
-		let a = input.value;
-		alert(a);
+// 		searchword = input.value;
+// 		if(input.value !=='' ){
+// 			alert(111)
+// 		      $('.searchdiv').css("display","none");
+// 		      $('.searchdiv').find(":contains('" + searchword + "')").parent().parent().css("display","block");
+// 		   }else{
+// 		         $('.searchdiv').css("display","block");
+// 		   }
+
+		
+// 		alert(a);
+		b = $('.search').eq(0).html();
+// 		alert(b);
+
+		
 //          alert ("The current value of the search field: " + input.value);
      }
 

@@ -51,7 +51,7 @@
 				<!-- Left Content Start ---------------------->
 				<div class="col-xl-10 col-lg-11 backImg my-5 p-4">
 					<div class="row d-flex justify-content-start">
-						<div class="col-xl-6 col-lg-6  col-12 wrapper">
+						<div class="col-xl-6 col-lg-6  col-12 wrapper animate__animated animate__fadeInLeft">
 							<form:form class="mt-0" method="POST"
 								modelAttribute="merchantChildBean" enctype='multipart/form-data'>
 								<div class="px-1">

@@ -92,6 +92,18 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 
+	@Override
+	public ReservationBean getReservation(int no) {
+		return resDao.getReservation(no);
+	}
+
+
+	@Override
+	public List<ReservationBean> getReservationInfoForBus(String account) {
+		return resDao.getReservationInfoForBus(account);
+	}
+
+
 	
 
 	

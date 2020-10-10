@@ -29,6 +29,12 @@
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/_03_FriendlySystem/touristInfo_01.css' />" />
 
+<link rel="stylesheet"
+	href="<c:url value='/resources/css/_03_FriendlySystem/clockpicker.css' />" />
+	
+<link rel="stylesheet"
+	href="<c:url value='/resources/css/_03_FriendlySystem/standalone.css' />" />	
+
 <!-- Input CSS End---------------------------------------------------------------------->
 
 <title>FurKids寵物旅遊</title>
@@ -97,105 +103,7 @@
 									src="<c:url value='/_03_FriendlySystem/getPicture/${Reservation.busChildNo}' />"
 									class="hotelImage" />
 							</div>
-							<!--                 <div class="carousel-item" data-slide-number="1"> -->
-							<!--                   <img -->
-							<!--                     src="../resources/images/_03_FriendlySystem/touristInfo/touristInfo_hotel_01_02.jpg" -->
-							<!--                     class="hotelImage" -->
-							<!--                   /> -->
-							<!--                 </div> -->
-
-							<!--                 <a -->
-							<!--                   class="carousel-control-prev" -->
-							<!--                   href="#myCarousel" -->
-							<!--                   role="button" -->
-							<!--                   data-slide="prev" -->
-							<!--                 > -->
-							<!--                   <span -->
-							<!--                     class="carousel-control-prev-icon" -->
-							<!--                     aria-hidden="true" -->
-							<!--                   ></span> -->
-							<!--                   <span class="sr-only">Previous</span> -->
-							<!--                 </a> -->
-							<!--                 <a -->
-							<!--                   class="carousel-control-next" -->
-							<!--                   href="#myCarousel" -->
-							<!--                   role="button" -->
-							<!--                   data-slide="next" -->
-							<!--                 > -->
-							<!--                   <span -->
-							<!--                     class="carousel-control-next-icon" -->
-							<!--                     aria-hidden="true" -->
-							<!--                   ></span> -->
-							<!--                   <span class="sr-only">Next</span> -->
-							<!--                 </a> -->
 						</div>
-						<!-- main slider carousel nav controls -->
-
-						<!--               <ul -->
-						<!--                 class="carousel-indicators list-inline justify-content-start px-2 w-100" -->
-						<!--               > -->
-						<!--                 <li class="list-inline-item active"> -->
-						<!--                   <a -->
-						<!--                     id="carousel-selector-0" -->
-						<!--                     class="selected" -->
-						<!--                     data-slide-to="0" -->
-						<!--                     data-target="#myCarousel" -->
-						<!--                   > -->
-						<!--                     <img -->
-						<!--                       src="../resources/images/_03_FriendlySystem/touristInfo/touristInfo_hotel_01_01.jpg" -->
-						<!--                       class="hotelImageIcon" -->
-						<!--                     /> -->
-						<!--                   </a> -->
-						<!--                 </li> -->
-						<!--                 <li class="list-inline-item"> -->
-						<!--                   <a -->
-						<!--                     id="carousel-selector-1" -->
-						<!--                     data-slide-to="1" -->
-						<!--                     data-target="#myCarousel" -->
-						<!--                   > -->
-						<!--                     <img -->
-						<!--                       src="../resources/images/_03_FriendlySystem/touristInfo/touristInfo_hotel_01_02.jpg" -->
-						<!--                       class="hotelImageIcon" -->
-						<!--                     /> -->
-						<!--                   </a> -->
-						<!--                 </li> -->
-						<!--                 <li class="list-inline-item"> -->
-						<!--                   <a -->
-						<!--                     id="carousel-selector-2" -->
-						<!--                     data-slide-to="2" -->
-						<!--                     data-target="#myCarousel" -->
-						<!--                   > -->
-						<!--                     <img -->
-						<!--                       src="../resources/images/_03_FriendlySystem/touristInfo/touristInfo_hotel_01_03.jpg" -->
-						<!--                       class="hotelImageIcon" -->
-						<!--                     /> -->
-						<!--                   </a> -->
-						<!--                 </li> -->
-						<!--                 <li class="list-inline-item"> -->
-						<!--                   <a -->
-						<!--                     id="carousel-selector-3" -->
-						<!--                     data-slide-to="3" -->
-						<!--                     data-target="#myCarousel" -->
-						<!--                   > -->
-						<!--                     <img -->
-						<!--                       src="../resources/images/_03_FriendlySystem/touristInfo/touristInfo_hotel_01_04.jpg" -->
-						<!--                       class="hotelImageIcon" -->
-						<!--                     /> -->
-						<!--                   </a> -->
-						<!--                 </li> -->
-						<!--                 <li class="list-inline-item"> -->
-						<!--                   <a -->
-						<!--                     id="carousel-selector-4" -->
-						<!--                     data-slide-to="4" -->
-						<!--                     data-target="#myCarousel" -->
-						<!--                   > -->
-						<!--                     <img -->
-						<!--                       src="../resources/images/_03_FriendlySystem/touristInfo/touristInfo_hotel_01_05.jpg" -->
-						<!--                       class="hotelImageIcon" -->
-						<!--                     /> -->
-						<!--                   </a> -->
-						<!--                 </li> -->
-						<!--               </ul> -->
 					</div>
 
 					<div class="mt-4 mb-4 border-bottom">
@@ -228,48 +136,90 @@
 				<!-- Left Content End ------------------------->
 				<!-- Right Content Start ---------------------->
 				<div class="col-lg-4 col-sm-12 mt-4 wrapper mb-5">
-						<div class="px-1">
-					<form class="mt-0">
+					<div class="px-1">
+						<form class="mt-0">
 							<!-- 基本資料 Start-->
 
 							<div class="d-flex align-items-center mt-0">
 								<i class="fas fa-user-alt rightTitleIcon fa-fw"></i>
 								<div class="rightTitle pl-1">基本資料</div>
 							</div>
-							<div class="input-data mt-4">
-								<input class="form-control" type="text" value="${Member.cusName}"/>
-								<div class="underline"></div>
-								<label class="labelText">姓名</label>
+							<div id="memberlogin">
+								<div class="input-data mt-4">
+									<input class="form-control logDetail" type="text"
+										value="${Member.cusName}" />
+									<div class="underline"></div>
+									<label class="labelText logData">姓名</label>
+								</div>
+								<div class="input-data mt-4">
+									<input class="form-control logDetail" type="tel"
+										value="${Member.cusTel}" />
+									<div class="underline"></div>
+									<label class="labelText logData ">電話</label>
+								</div>
+								<div class="input-data mt-4 mb-2">
+									<input class="form-control logDetail" type="tel"
+										value="${Member.cusAccount}" />
+									<div class="underline"></div>
+									<label class="labelText logData">E-mail</label>
+								</div>
 							</div>
-							<div class="input-data mt-4">
-								<input class="form-control" type="tel" value="${Member.cusTel}"/>
-								<div class="underline"></div>
-								<label class="labelText">電話</label>
-							</div>
-							<div class="input-data mt-4 mb-2">
-								<input class="form-control" type="tel" value="${Member.cusAccount}"/>
-								<div class="underline"></div>
-								<label class="labelText">E-mail</label>
-							</div>
+							<fieldset disabled id="read" style="display: none">
+								<div class="input-data mt-4">
+									<input class="form-control logDetail" type="text"
+										value="${Member.cusName}" />
+									<div class="underline"></div>
+									<label class="labelText logData">姓名</label>
+								</div>
+								<div class="input-data mt-4">
+									<input class="form-control logDetail" type="tel"
+										value="${Member.cusTel}" />
+									<div class="underline"></div>
+									<label class="labelText logData ">電話</label>
+								</div>
+								<div class="input-data mt-4 mb-2">
+									<input class="form-control logDetail" type="tel"
+										value="${Member.cusAccount}" />
+									<div class="underline"></div>
+									<label class="labelText logData">E-mail</label>
+								</div>
+							</fieldset>
 						</form>
-							<!-- 基本資料 End -->
-							
-							<!-- 入住資料 Start-->
+						<!-- 基本資料 End -->
 
-							<div class="d-flex align-items-center mt-4 pt-3">
-								<i class="fas fa-hotel rightTitleIcon fa-fw"></i>
-								<div class="rightTitle pl-1">入住資料</div>
-							</div>
+						<!-- 入住資料 Start-->
+
+						<div class="d-flex align-items-center mt-4 pt-3">
+							<i class="fas fa-hotel rightTitleIcon fa-fw"></i>
+							<div class="rightTitle pl-1">預約資料</div>
+						</div>
 						<form:form method="POST" modelAttribute="ResBean">
 							<div class="d-flex mt-3">
 								<div class="input-data mt-4">
-									<form:input path="resDate" class="dateRange form-control" type="text"  />
+									<form:input path="resDate" class="dateRange form-control"
+										type="text" />
 									<div class="underlineDate"></div>
-									<label>入住時間</label>
+									<label>預約日期</label>
+								</div>
+							</div>
+							<div class="d-flex mt-3 showTime">
+								<div class="input-data mt-4 clockpicker showTime">
+									<form:input type="text" path="resTime" class="form-control"/>
+									<div class="underlineDate"></div>
+									<label>預約時間</label>
+								</div>
+							</div>
+							<div class="d-flex mt-3">
+								<div id="restaurant" class="input-data species w-30 mt-4"
+									style="display: none">
+									<form:input path="resQuantity" class="form-control resQ"
+										type="number" id="adult" name="adult" min="1" />
+									<div class="underline"></div>
+									<label for="adult">人數</label>
 								</div>
 							</div>
 							<!-- 入住資料 End-->
-							
+
 							<!-- 寵物訊息 Start-->
 							<div
 								class="d-flex align-items-center justify-content-between mt-4 pt-2">
@@ -280,20 +230,22 @@
 							</div>
 							<br>
 							<div>
- 								<c:forEach items="${ResBean.reservationChildBean}" varStatus="status" var="function">
- 									
-								<form:checkbox path="reservationChildBean[${status.index}].resName" 
-								value="${function.resName}" /> 
-								<td>${function.resName}</td>
+								<c:forEach items="${ResBean.reservationChildBean}"
+									varStatus="status" var="function">
+
+									<form:checkbox
+										path="reservationChildBean[${status.index}].resName"
+										value="${function.resName}" />
+									<td>${function.resName}</td>
 								</c:forEach>
 							</div>
 							<!-- 寵物訊息 End-->
 							<div class="mt-4 px-3 col-12">
 								<h6 class="note">預約備註</h6>
-								<form:textarea path="resNote" class="form-control noteborder" rows="4"
-									placeholder="" />
+								<form:textarea path="resNote" class="form-control noteborder"
+									rows="4" placeholder="" />
 							</div>
-							
+
 							<!-- 確認表單 Start-->
 							<div class="commitOrder row">
 								<div class="checkbox-wrapper col-12 mt-3 d-flex">
@@ -308,9 +260,9 @@
 								</div>
 							</div>
 						</form:form>
-							<!-- 確認表單 End-->
-						</div>
-					
+						<!-- 確認表單 End-->
+					</div>
+
 				</div>
 
 				<!-- Right Content End ------------------------>
@@ -321,29 +273,29 @@
 	<!-- Main End--------------------------------------------------------------------------->
 
 	<!-- Modal -->
-		<div class="modal fade" id="Error"
-			tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-			aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">${Reservation.busChildName}</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body"><h5>該分店已預約過</h5></div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Close</button>
-					</div>
+	<div class="modal fade" id="Error" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">${Reservation.busChildName}</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<h5>該分店已預約過</h5>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
+	</div>
 
-
-
+	<a id="showDate" style="display: none">${showDate}</a>
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -376,6 +328,64 @@
 
 	<!-- JavaScript Plug-in End------------------------------------------------------------->
 	<script src="<c:url value='/resources/javascript/touristInfo_01.js' />"></script>
+	
+	<script src="<c:url value='/resources/javascript/clockpicker.js' />"></script>
+	
+	<c:if test="${showDate == 1}">
+		<script>
+		$('.clockpicker').clockpicker();
+			$("input.dateRange").daterangepicker(
+					{
+						"alwaysShowCalendars" : true,
+						opens : "left",
+						timePicker : false,
+						singleDatePicker : true,
+						timePickerIncrement : 30, // 以 30 分鐘為一個選取單位
+						locale : {
+							format : "YYYY-MM-DD",
+							separator : " ~ ",
+							applyLabel : "確定",
+							cancelLabel : "清除",
+							fromLabel : "開始日期",
+							toLabel : "結束日期",
+							customRangeLabel : "自訂日期區間",
+							daysOfWeek : [ "日", "一", "二", "三", "四", "五", "六" ],
+							monthNames : [ "1月", "2月", "3月", "4月", "5月", "6月",
+									"7月", "8月", "9月", "10月", "11月", "12月" ],
+
+							firstDay : 1
+						}
+					});
+		</script>
+	</c:if>
+
+	<c:if test="${showDate == 2}">
+		<script>
+			$('.showTime').css('display','none');
+			$("input.dateRange").daterangepicker(
+					{
+						"alwaysShowCalendars" : true,
+						opens : "left",
+						timePicker : false,
+						singleDatePicker : false,
+						timePickerIncrement : 30, // 以 30 分鐘為一個選取單位
+						locale : {
+							format : "YYYY-MM-DD",
+							separator : " ~ ",
+							applyLabel : "確定",
+							cancelLabel : "清除",
+							fromLabel : "開始日期",
+							toLabel : "結束日期",
+							customRangeLabel : "自訂日期區間",
+							daysOfWeek : [ "日", "一", "二", "三", "四", "五", "六" ],
+							monthNames : [ "1月", "2月", "3月", "4月", "5月", "6月",
+									"7月", "8月", "9月", "10月", "11月", "12月" ],
+
+							firstDay : 1
+						}
+					});
+		</script>
+	</c:if>
 
 	<c:if test="${!empty ResError}">
 		<button id="ResError" class="dropdown-item btn" type="button"
@@ -385,10 +395,33 @@
 		</script>
 	</c:if>
 
+	<c:if test="${!empty restaurant}">
+		<script type="text/javascript">
+			$('#restaurant').css('display', 'block');
+			$('.resQ').val("1");
+		</script>
+	</c:if>
+
+	<c:if test="${!empty Member.cusName}">
+		<script type="text/javascript">
+			$('#read').css('display', 'block');
+			$('#memberlogin').css('display', 'none');
+			$('.logData').html("");
+		</script>
+	</c:if>
+
+	<c:if test="${!empty errorNotLogin}">
+		<button id="NotLogin" class="dropdown-item btn" type="button"
+			data-toggle="modal" data-target="#login" style="display: none"></button>
+		<script type="text/javascript">
+			$('#NotLogin').trigger('click');
+		</script>
+	</c:if>
+
 	<!-- navigation bar js ------------------------------------->
-		<jsp:include page="/fragment/navigation_determine.jsp" />
+	<jsp:include page="/fragment/navigation_determine.jsp" />
 	<!-- navigation bar js End------------------------------------->
-	
+
 
 </body>
 </html>
