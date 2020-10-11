@@ -59,7 +59,8 @@
 <script language="javascript"> 
 	function logout(){ 
 	    if (confirm("您確定要登出嗎？")){ 
-	    	$('.logout').attr('href', '${pageContext.request.contextPath}/logout')
+// 	    	$('.logout').attr('href', '${pageContext.request.contextPath}/logout');
+	    	window.location.href='${pageContext.servletContext.contextPath}/logout';
 	    } 
 	} 
 </script>
