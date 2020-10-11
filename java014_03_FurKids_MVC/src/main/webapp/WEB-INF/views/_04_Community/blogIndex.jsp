@@ -110,7 +110,7 @@
 
 
 			<div class="col-md-8 blog_card" >
-				<!-- 新增專欄_按鈕 -->
+				<!-- 新增專欄_按鈕Start -->
 				<div class="sticky-top addCol">
 <%-- 					<c:if test="${!empty LoginOK}"> --%>
 					<c:if test="${LoginOK.CLASSIFY == 1}">
@@ -118,7 +118,7 @@
 							data-target="#exampleModalCenter">新增專欄</button>
 					</c:if>
 				</div>
-				<!-- 新增專欄_按鈕 -->
+				<!-- 新增專欄_按鈕End -->
 
 
 				<!-- no.1 article start-->
