@@ -213,6 +213,12 @@ button {
     border: none;
     outline: none;
 }
+
+.noOfRoom {
+    width: 50px;
+    border: none;
+    outline: none;
+}
 #subs {
     margin: 0;
     padding: 0;

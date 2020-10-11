@@ -3,7 +3,9 @@ package _03_FriendlyService.controller;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.sql.Blob;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -27,7 +29,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import _01_Member.Registration.model.MemberBean;
 import _01_Member.Registration.model.MerchantBean;
-import _01_Member.Registration.model.MerchantChildBean;
 import _01_Member.Registration.model.PetBean;
 import _03_FriendlyService.model.ConvenienceBean_H;
 import _03_FriendlyService.model.ReservationBean;
@@ -39,7 +40,7 @@ import _03_FriendlyService.service.ReservationService;
 @RequestMapping("/_03_FriendlySystem")
 
 @SessionAttributes({"AllViewConvenience","item","loginBean","Classify",
-	"LoginOK","ResBean","No","Member", "Reservation"})
+	"LoginOK","ResBean","No","Member", "Reservation","showDate"})
 
 public class ConvenienceViewController {
 	@Autowired
@@ -58,6 +59,11 @@ public class ConvenienceViewController {
 		List<ConvenienceBean_H> cb = resService.getViewConvenience(item);
 		model.addAttribute("AllViewConvenience",cb);
 		model.addAttribute("item",item);
+		if(item.equals("寵物旅館")) {
+			model.addAttribute("showDate",2);
+		}else {
+			model.addAttribute("showDate",1);
+		}
 		return "/_03_FriendlySystem/tourList";
 	}
 	
@@ -69,6 +75,9 @@ public class ConvenienceViewController {
 		List<PetBean> pet = null;
 		ReservationBean resBean = new ReservationBean();
 		List<ReservationChildBean> listRcb = new ArrayList<>();
+		Date date = new Date();
+		SimpleDateFormat sdFormat = new SimpleDateFormat("HH:mm");
+		String nowTime = sdFormat.format(date);
 		if(model.getAttribute("Classify") != null ) {
 			if(model.getAttribute("Classify").equals(0)) {
 				 mb = (MemberBean) model.getAttribute("LoginOK");
@@ -88,6 +97,7 @@ public class ConvenienceViewController {
 				 resBean.setBusChildAddress(service.getBusChild(no).getBusChildAddress()); //分店地址
 				 resBean.setBusChildTel(service.getBusChild(no).getBusChildTel());      //分店電話
 				 resBean.setReservationChildBean(listRcb);
+				 
 			}
 		} else {
 			 mb = new MemberBean();
@@ -95,7 +105,7 @@ public class ConvenienceViewController {
 		if(service.getConvenience(no).getConItem().equals("餐廳")) {
 			model.addAttribute("restaurant", "restaurant");
 		}
-		
+		resBean.setResTime(nowTime);
 		model.addAttribute("No", no);
 		model.addAttribute("Member", mb);
 		model.addAttribute("ResBean", resBean);
@@ -110,21 +120,28 @@ public class ConvenienceViewController {
 			BindingResult result,
 			RedirectAttributes redirectAttributes,
 			Model model) {
+		int p = (int) model.getAttribute("No");
 		if(model.getAttribute("Classify") == null ) {
-			redirectAttributes.addFlashAttribute("errorNotLogin", "請先註冊或登入會員帳號");
-			return "redirect:/";
+			redirectAttributes.addFlashAttribute("errorNotLogin", "請先註冊或登入會員帳號");		
+			return "redirect:/_03_FriendlySystem/ViewReservation/" + p ;
 		} else if(!model.getAttribute("Classify").equals(0)) {
-			redirectAttributes.addFlashAttribute("errorNotLogin", "請先註冊或登入會員帳號");
-			return "redirect:/";
+			redirectAttributes.addFlashAttribute("errorNotLogin", "請先註冊或登入會員帳號");		
+			return "redirect:/_03_FriendlySystem/ViewReservation/" + p ;
 		}
 		
 		if(resService.getReservationBeanCusAccount(resBean.getCusAccount(), resBean.getBusChildNo())) {
 			redirectAttributes.addFlashAttribute("ResError", "ResError");
-			int p = (int) model.getAttribute("No");
 			return "redirect:/_03_FriendlySystem/ViewReservation/" + p ;
 		}
 		
 		resBean.setResID(1);
+		if(resBean.getResNote().trim() == "") {
+			resBean.setResNote("無備註");
+		}
+		
+		if(service.getConvenience(resBean.getBusChildNo()).getConItem().equals("寵物旅館")) {
+			resBean.setResTime(null);
+		}
 		resService.insert(resBean);
 		for(int i = 0; i< resBean.getReservationChildBean().size(); i++) {
 			if(resBean.getReservationChildBean().get(i).getResName() != null) {

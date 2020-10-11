@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -33,6 +34,7 @@ import _01_Member.Registration.validator.MemberBeanValidator;
 import _01_Member.Registration.validator.MemberBeanValidator_ChangePassword;
 import _01_Member.Registration.validator.MemberBeanValidator_Update;
 import _01_Member.Registration.validator.MerchantBeanValidator;
+import _01_Member.Registration.validator.MerchantBeanValidator_ChangePassword;
 import _01_Member.Registration.validator.MerchantBeanValidator_Update;
 import _01_Member.Registration.validator.MerchantChildBeanValidator;
 import _01_Member.Registration.validator.PetBeanValidator;
@@ -120,21 +122,49 @@ public class ManagementController {
 	@PostMapping("/MemberManagementCenter/PasswordUpdate")
 	public String changeMemberPassword(
 			@ModelAttribute("memberBean") MemberBean memberBean,
+			HttpServletRequest request,
 			BindingResult result,
 			Model model,
 			RedirectAttributes redirectAtt
 			) {
 		
+		MemberBean mb = (MemberBean) model.getAttribute("LoginOK");
+		
 		// 修改表單驗證
 		MemberBeanValidator_ChangePassword validator = new MemberBeanValidator_ChangePassword();
 		validator.validate(memberBean, result);
-		if (result.hasErrors()) {
-			redirectAtt.addFlashAttribute("PasswordUpdateError", "密碼修改錯誤，請重新確認。");
+		
+		// 舊密碼判斷
+		String inputOldPassword = request.getParameter("oldPassword");
+		String oldPassword = mb.getCusPassword();
+				
+		if (inputOldPassword != "") {
+			inputOldPassword = GlobalService.getMD5Endocing(GlobalService.encryptString(request.getParameter("oldPassword")));
+			if (!inputOldPassword.equals(oldPassword)) {
+				model.addAttribute("OldPasswordError","舊密碼輸入不一致，請重新確認");
+				// 新密碼確認
+				if (result.hasErrors()) {
+					model.addAttribute("PasswordUpdateError", "密碼修改錯誤，請重新確認。");
+//				redirectAtt.addFlashAttribute("PasswordUpdateError", "密碼修改錯誤，請重新確認。");
+//				return "redirect:/MemberManagementCenter";
+				}
+				return "_01_Member/MemberCenter_Member";
+			} else if (result.hasErrors()) {
+				model.addAttribute("PasswordUpdateError", "密碼修改錯誤，請重新確認。");
+				return "_01_Member/MemberCenter_Member";
+			}
+		} else {
+			model.addAttribute("OldPasswordError","舊密碼欄不能空白");
+			// 新密碼確認
+			if (result.hasErrors()) {
+				model.addAttribute("PasswordUpdateError", "密碼修改錯誤，請重新確認。");
+//				redirectAtt.addFlashAttribute("PasswordUpdateError", "密碼修改錯誤，請重新確認。");
+//				return "redirect:/MemberManagementCenter";
+			}
 			return "_01_Member/MemberCenter_Member";
 		}
 		
-		MemberBean mb = (MemberBean) model.getAttribute("LoginOK");
-		
+		// 密碼變更成功
 		mb.setCusPassword(GlobalService.getMD5Endocing(GlobalService.encryptString(memberBean.getCusPassword())));
 		memberService.updateMember(mb);
 		
@@ -211,21 +241,48 @@ public class ManagementController {
 	@PostMapping("/MerchantManagementCenter/PasswordUpdate")
 	public String changeMerchantPassword(
 			@ModelAttribute("merchantBean") MerchantBean merchantBean,
+			HttpServletRequest request,
 			BindingResult result,
 			Model model,
 			RedirectAttributes redirectAtt
 			) {
-		
-		// 修改表單驗證
-		MerchantBeanValidator_Update validator = new MerchantBeanValidator_Update();
-		validator.validate(merchantBean, result);
-		if (result.hasErrors()) {
-			redirectAtt.addFlashAttribute("PasswordUpdateError", "密碼修改錯誤，請重新確認。");
-			return "_01_Member/MemberCenter_Member";
-		}
-		
 		MerchantBean mb = (MerchantBean) model.getAttribute("LoginOK");
 		
+		// 修改表單驗證
+		MerchantBeanValidator_ChangePassword validator = new MerchantBeanValidator_ChangePassword();
+		validator.validate(merchantBean, result);
+				
+		// 舊密碼判斷
+		String inputOldPassword = request.getParameter("oldPassword");
+		String oldPassword = mb.getBusPassword();
+						
+		if (inputOldPassword != "") {
+			inputOldPassword = GlobalService.getMD5Endocing(GlobalService.encryptString(request.getParameter("oldPassword")));
+			if (!inputOldPassword.equals(oldPassword)) {
+				model.addAttribute("OldPasswordError","舊密碼輸入不一致，請重新確認");
+				// 新密碼確認
+				if (result.hasErrors()) {
+					model.addAttribute("PasswordUpdateError", "密碼修改錯誤，請重新確認。");
+//				redirectAtt.addFlashAttribute("PasswordUpdateError", "密碼修改錯誤，請重新確認。");
+//				return "redirect:/MemberManagementCenter";
+				}
+				return "_01_Member/MerchantCenter_Merchant";
+			} else if (result.hasErrors()) {
+				model.addAttribute("PasswordUpdateError", "密碼修改錯誤，請重新確認。");
+				return "_01_Member/MerchantCenter_Merchant";
+			}
+		} else {
+			model.addAttribute("OldPasswordError","舊密碼欄不能空白");
+			// 新密碼確認
+			if (result.hasErrors()) {
+				model.addAttribute("PasswordUpdateError", "密碼修改錯誤，請重新確認。");
+//				redirectAtt.addFlashAttribute("PasswordUpdateError", "密碼修改錯誤，請重新確認。");
+//				return "redirect:/MemberManagementCenter";
+			}
+			return "_01_Member/MerchantCenter_Merchant";
+		}
+				
+		// 密碼變更成功
 		mb.setBusPassword(GlobalService.getMD5Endocing(GlobalService.encryptString(merchantBean.getBusPassword())));
 		merchantService.updateMerchant(mb);
 		

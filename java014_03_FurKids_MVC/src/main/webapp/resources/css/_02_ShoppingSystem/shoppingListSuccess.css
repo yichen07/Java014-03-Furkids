@@ -120,7 +120,7 @@ li {
 }
 
 .bannerImg {
-    background-image: url(../../images/_02_ShoppingSystem/shoppingList_Banner_01.jpg);
+/*     background-image: url(../../images/_02_ShoppingSystem/shoppingList_Banner_01.jpg); */
     height: 100vh;
     width: 100%;
     background-color: rgba(83, 83, 83, 0.048);

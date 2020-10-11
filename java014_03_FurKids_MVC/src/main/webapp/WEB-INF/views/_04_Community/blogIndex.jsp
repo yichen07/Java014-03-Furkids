@@ -23,7 +23,7 @@
 
 <!-- Input CSS End---------------------------------------------------------------------->
 
-<title>寵物專欄</title>
+<title>寵物健康專欄</title>
 </head>
 
 <body>
@@ -35,7 +35,7 @@
 		id="imageStellar" data-stellar-background-ratio="0.5">
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<h1 class="mt-3 bannerTitle animate__animated animate__fadeInDown">寵物專欄</h1>
+				<h1 class="mt-3 bannerTitle animate__animated animate__fadeInDown">寵物健康專欄</h1>
 				<div
 					class="align-items-center banner-text animate__animated animate__fadeInUp">
 					<h5 class="text-center">世界是平等的,請愛護動物沒有愛就沒有完美</h5>
@@ -112,7 +112,8 @@
 			<div class="col-md-8 blog_card" >
 				<!-- 新增專欄_按鈕 -->
 				<div class="sticky-top addCol">
-					<c:if test="${!empty LoginOK}">
+<%-- 					<c:if test="${!empty LoginOK}"> --%>
+					<c:if test="${LoginOK.CLASSIFY == 1}">
 						<button type="button" class="btn btn-primary" data-toggle="modal"
 							data-target="#exampleModalCenter">新增專欄</button>
 					</c:if>

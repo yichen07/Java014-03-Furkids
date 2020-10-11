@@ -19,7 +19,7 @@ public class MemberBeanValidator_ChangePassword implements Validator {
 	public void validate(Object target, Errors errors) {
 		MemberBean mb = (MemberBean) target;
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusPassword", "", "密碼欄不能空白");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cusConfirmPassword", "", "確認密碼欄不能空白");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "", "確認密碼欄不能空白");
 		
 		if (mb.getCusPassword() != null && mb.getConfirmPassword() != null) {
 			if (! mb.getCusPassword().equals(mb.getConfirmPassword())) {

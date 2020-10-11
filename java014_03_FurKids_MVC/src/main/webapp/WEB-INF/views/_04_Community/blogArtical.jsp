@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>專欄內文</title>
+<title>寵物健康專欄內文</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/blogArtical.css" />
 </head>
@@ -16,7 +16,7 @@
 		id="imageStellar" data-stellar-background-ratio="0.5">
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<h1 class="mt-3 bannerTitle animate__animated animate__fadeInDown">寵物專欄</h1>
+				<h1 class="mt-3 bannerTitle animate__animated animate__fadeInDown">寵物健康專欄</h1>
 				<div
 					class="align-items-center banner-text animate__animated animate__fadeInUp">
 					<h5 class="text-center">世界是平等的,請愛護動物沒有愛就沒有完美</h5>
@@ -144,8 +144,9 @@
 				<div class="sticky-top addCol" style="z-index: 0">
 					<div class="blogArticalHotArticle mb-5">
 						<h3 class="py-3 pl-3 border-bottom">
-							<i class="far fa-thumbs-up"></i> 你可能還想看
+							<i class="far fa-thumbs-up"></i> 你可能還想看				
 						</h3>
+						
 						<!-- no.1 hotArticle Start -->
 						<c:forEach varStatus="stVar" var="entry"
 							items="${relatedBlogArtical}">
@@ -166,7 +167,11 @@
 							</div>
 						</c:forEach>
 						<!-- no.3 hotArticle End -->
+						<div class="justify-content-end m-auto">
+						<a href="<c:url value='/BlogIndex'/>" type="button" class="btn btn-primary mt-4" >返回健康專欄清單</a>
+						</div>
 					</div>
+					
 				</div>
 			</div>
 

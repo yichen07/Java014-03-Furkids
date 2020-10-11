@@ -20,7 +20,7 @@ public class MerchantBeanValidator_ChangePassword implements Validator {
 	public void validate(Object target, Errors errors) {
 		MerchantBean mb = (MerchantBean) target;
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "busPassword", "", "密碼欄不能空白");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "busConfirmPassword", "", "密碼確認欄不能空白");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "", "密碼確認欄不能空白");
 		
 		if (mb.getBusPassword() != null && mb.getConfirmPassword() != null) {
 			if (! mb.getBusPassword().equals(mb.getConfirmPassword())) {
