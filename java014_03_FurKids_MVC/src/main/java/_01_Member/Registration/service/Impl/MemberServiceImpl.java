@@ -110,4 +110,19 @@ public class MemberServiceImpl implements MemberService {
 		return pdao.queryAllPets(account);
 	}
 
+	@Transactional
+	@Override
+	public PetBean queryPet(Integer id) {
+		return pdao.queryPet(id);
+	}
+	
+	@Transactional
+	@Override
+	public int updatePet(PetBean pet) {
+		int count = 0;
+			pdao.updatePet(pet);
+			count++;
+		return count;
+	}
+
 }

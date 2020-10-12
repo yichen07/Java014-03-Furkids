@@ -13,5 +13,9 @@ public interface MerchantChildDao {
 	
 	public boolean merchantChildExists(String account, String address);
 	
+	public int updateMerchantChild(MerchantChildBean mcb);
+	
+	public MerchantChildBean queryMerchantChild(Integer busChildNo);
+	
 	public void setConnection(Connection con); // 在Hibernate中不需要此方法。
 }

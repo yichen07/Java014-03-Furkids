@@ -118,5 +118,20 @@ public class MerchantServiceImpl implements MerchantService {
 			mb = mdao.checkAccountPassword(account, password);
 		return mb;
 	}
+	
+	@Transactional
+	@Override
+	public MerchantChildBean queryMerchantChild(Integer busChildNo) {
+		return mcdao.queryMerchantChild(busChildNo);
+	}
+	
+	@Transactional
+	@Override
+	public int updateMerchantChild(MerchantChildBean mcb) {
+		int count = 0;
+			mcdao.updateMerchantChild(mcb);
+			count++;
+		return count;
+	}
 
 }

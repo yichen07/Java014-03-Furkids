@@ -127,6 +127,7 @@
 				</div>
 			</div>
 		</div>
+		</div>
 		<!-- Slide Bar End-->
 
 		<!-- Right Content Start-->
@@ -139,23 +140,96 @@
 						<!-- 商家分店清單 -->
 
 						<!-- Card View 清單 -->
-						<div
-							class="row justify-content-center animate__animated animate__fadeInTop">
-							<div class="card m-3 col-xm-2" style="width: 18rem;">
-								<img src="..." class="card-img-top" alt="...">
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">Some quick example text to build on
-										the card title and make up the bulk of the card's content.</p>
+						<div class="row justify-content-center">
+							<c:forEach var="merchantChild" items="${merchantChildList}">
+								<div class="card m-3 col-xm-2 shadow"
+									style="width: 18rem; border-radius: 10px">
+									<div class="card-body text-center">
+										<img
+											style="width: 200px; height: 200px; border: 1px solid gray; border-radius: 50%; object-fit: cover;"
+											src="<c:url value='/_03_FriendlySystem/getPicture/${merchantChild.busChildNo}' />">
+										<h5 class="card-title mt-2">${merchantChild.busChildName}</h5>
+
+									</div>
+									<ul class="list-group list-group-flush">
+										<li class="list-group-item">分店信箱：${merchantChild.busChildEmail}</li>
+										<li class="list-group-item">分店電話：${merchantChild.busChildTel}</li>
+									</ul>
+									<div class="card-body text-center">
+										<a href="<c:url value='/MerchantChildManagementCenter/${merchantChild.busChildNo}' />"
+											class="card-link"><button class="btn btn-primary">修改</button></a>
+									</div>
 								</div>
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item">Cras justo odio</li>
-									<li class="list-group-item">Dapibus ac facilisis in</li>
-									<li class="list-group-item">Vestibulum at eros</li>
-								</ul>
-								<div class="card-body">
-									<a href="#" class="card-link">Card link</a> <a href="#"
-										class="card-link">Another link</a>
+							</c:forEach>
+						</div>
+
+
+						<!--  	修改  -->
+						<!--  	Modal  -->
+
+
+						<div class="modal fade" id="alertCb" tabindex="-1" role="dialog"
+							aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+							style="z-index: 99991">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLongTitle"
+											style="color: #0090d3">
+											<b>分店資料修改</b>
+										</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<form:form method="POST" modelAttribute="merchantChildBean"
+										enctype='multipart/form-data'>
+										<div class="modal-body">
+
+											<div class="form-group text-center">
+												<c:if test="${!empty merchantChildBean.busChildNo}">
+													<img
+														style="width: 200px; height: 200px; border: 1px solid gray; border-radius: 50%; object-fit: cover;"
+														src="<c:url value='/_03_FriendlySystem/getPicture/${merchantChildBean.busChildNo}' />"
+														id="show_image">
+													<form:input path="merchantChildMultipartFile" type="file"
+														id="image_file" style="display: none;" />
+												</c:if>
+												<div
+													style="position: relative; z-index: 1; top: -30px; left: 90px; font-size: 25px; color: darkblue">
+													<a type="button" id="upload_image"><i
+														class="fas fa-plus-square"></i></a>
+												</div>
+											</div>
+											<hr>
+
+											<div class="form-group">
+												<label class="col-form-label"><b>分店名稱:</b></label>
+												<form:input type="text" class="form-control" path="busChildName" />
+											</div>
+											<div class="form-group">
+												<label class="col-form-label"><b>分店信箱:</b></label>
+												<form:input type="text" class="form-control" path="busChildEmail" />
+											</div>
+											<div class="form-group">
+												<label class="col-form-label"><b>分店電話:</b></label>
+												<form:input type="text" class="form-control" path="busChildTel" />
+											</div>
+											<div class="form-group">
+												<label class="col-form-label"><b>分店地址:</b></label>
+												<form:input type="text" class="form-control" path="busChildAddress" />
+											</div>
+											<div class="form-group">
+												<label class="col-form-label"><b>分店描述:</b></label>
+												<form:textarea class="form-control" path="busChildDescription" />
+											</div>
+
+										</div>
+										<div class="modal-footer justify-content-center">
+											<button type="submit" class="btn btn-primary">確定修改</button>
+										</div>
+									</form:form>
 								</div>
 							</div>
 						</div>
@@ -274,7 +348,25 @@
 		<jsp:include page="/fragment/navigation_determine.jsp" />
 		<!-- navigation bar js End------------------------------------->
 
-		<!-- 修改密碼呈現Javascript -->
+		<!-- 上傳圖片 js -->
+		<script type="text/javascript">
+			$("#upload_image").click(function(e) {
+				document.getElementById("image_file").click();
+			});
+	
+			$("#image_file").on("change", function(event) {
+				const file = event.target.files[0];
+				let readFile = new FileReader();
+				readFile.readAsDataURL(file);
+				readFile.addEventListener("load", function(e) {
+					let image = document.getElementById("show_image");
+					image.src = this.result;
+				});
+			});
+		</script>
+
+
+	<!-- 修改密碼呈現Javascript -->
 		<script type="text/javascript">
 			$('#passwordClear').click(function() {
 				document.getElementById("oldPassword").value = '';
@@ -301,5 +393,15 @@
 		</script>
 
 		<!-- 修改密碼呈現Javascript_End -->
+
+		<%-- 修改分店基本資料_Start --%>
+		<c:if test="${!empty aaalert}">
+			<button id="alterCb" class="dropdown-item btn" type="button"
+				data-toggle="modal" data-target="#alertCb" style="display: none"></button>
+			<script type="text/javascript">
+				$('#alterCb').trigger('click');
+			</script>
+		</c:if>
+		<%-- 修改分店基本資料_End --%>
 </body>
 </html>

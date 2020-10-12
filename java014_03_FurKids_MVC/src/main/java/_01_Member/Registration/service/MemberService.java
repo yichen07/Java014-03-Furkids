@@ -27,6 +27,10 @@ public interface MemberService {
 // 會員寵物
 	// 新增寵物
 	int savePet(PetBean pet);
+	// 更新(修改)寵物資料
+	public int updatePet(PetBean pet);
+	// 搜尋特定會員特定寵物資料
+	public PetBean queryPet(Integer id);
 	// 搜尋特定會員所有寵物資料
 	List<PetBean> queryAllPets(String account);
 	
