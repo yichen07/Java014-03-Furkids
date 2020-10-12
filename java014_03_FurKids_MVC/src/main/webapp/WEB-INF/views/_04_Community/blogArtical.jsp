@@ -5,6 +5,9 @@
 <html>
 <head>
 <meta charset="utf-8" />
+<link rel="icon"
+	href="<c:url value='/resources/images/logo_08_iP6_6.ico' />"
+	type="image/x-icon" />
 <title>寵物健康專欄內文</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/blogArtical.css" />

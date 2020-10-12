@@ -28,7 +28,11 @@ public interface MerchantService {
 	// 新增分店
 	int saveMerchantChild(MerchantChildBean mb);
 	// 檢查(分店重複性)
-	boolean merchantChildExists(String account, String address);
+	boolean merchantChildExists(String account, String address);	
+	// 更新(修改)分店資料
+	public int updateMerchantChild(MerchantChildBean mcb);
+	// 搜尋特定商家特定分店資料
+	public MerchantChildBean queryMerchantChild(Integer busChildNo);
 	// 搜尋特定商家所有分店資料
 	List<MerchantChildBean> queryAllMerchantChilds(String account);
 }

@@ -3,9 +3,9 @@ package _01_Member.Registration.controller;
 import java.sql.Blob;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +17,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -30,14 +30,10 @@ import _01_Member.Registration.model.MerchantChildBean;
 import _01_Member.Registration.model.PetBean;
 import _01_Member.Registration.service.MemberService;
 import _01_Member.Registration.service.MerchantService;
-import _01_Member.Registration.validator.MemberBeanValidator;
 import _01_Member.Registration.validator.MemberBeanValidator_ChangePassword;
 import _01_Member.Registration.validator.MemberBeanValidator_Update;
-import _01_Member.Registration.validator.MerchantBeanValidator;
 import _01_Member.Registration.validator.MerchantBeanValidator_ChangePassword;
 import _01_Member.Registration.validator.MerchantBeanValidator_Update;
-import _01_Member.Registration.validator.MerchantChildBeanValidator;
-import _01_Member.Registration.validator.PetBeanValidator;
 
 @Controller
 @SessionAttributes({"loginBean","LoginOK","RequestPath","memberBean","merchantBean","petBean","merchantChildBean"})
@@ -296,20 +292,65 @@ public class ManagementController {
 // 會員寵物管理
 	@GetMapping("/PetManagementCenter")
 	public String PetManagementSystem(Model model) {
-		
-		
+		MemberBean mb = (MemberBean) model.getAttribute("LoginOK");
+		String account = mb.getCusAccount();
+		PetBean petBean = null;
+		if(model.getAttribute("petBean") == null) {
+			 petBean = new PetBean();
+		} else {
+			petBean = (PetBean) model.getAttribute("petBean");
+		}
+		List<PetBean> petList = memberService.queryAllPets(account);
+		model.addAttribute("petList", petList);
+		model.addAttribute("petBean", petBean);
 		return "_01_Member/MemberCenter_Pet";
 	}
 	
-	
-// 會員寵物資料
-	
-	
-
 // 會員寵物資料修改
+	@GetMapping("/PetManagementCenter/{petID}")
+	public String PetUpdateEmptyForm(
+			Model model, 
+			@PathVariable("petID") Integer petID,
+			RedirectAttributes redirectAtt
+			) {
+		PetBean pet = memberService.queryPet(petID);
+		model.addAttribute("petBean", pet);
+		redirectAtt.addFlashAttribute("aaalert", "寵物資料修改表單");
+		return "redirect:/PetManagementCenter";
+	}
+	
+	@PostMapping("/PetManagementCenter")
+	public String PetUpdateProcessForm(
+			Model model,
+			@ModelAttribute("petBean") PetBean petBean,
+			RedirectAttributes redirectAtt
+			) {
+		
+		MultipartFile petImage = petBean.getPetMultipartFile();
+		String originalFilename = petImage.getOriginalFilename();
+		if (petImage != null && !petImage.isEmpty()) {
+			try {
+				byte[] b = petImage.getBytes();
+				Blob blob = new SerialBlob(b);
+				petBean.setPetFileName(originalFilename);
+				petBean.setPetPhoto(blob);
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
+			}
+		}
+		
+		int n = memberService.updatePet(petBean);
+		if (n == 1) {
+			model.addAttribute("petBean", petBean);
+			redirectAtt.addFlashAttribute("UpdateOK", "<Font color='blue'>修改成功</Font>");
+		}
+		
+		return "redirect:/PetManagementCenter";
+	}
 			
 
-// 會員寵物刪除
+// 會員寵物刪除(未寫)
 			
 
 // -----------------------------------------------------------------------------------------	
@@ -317,17 +358,66 @@ public class ManagementController {
 // 商家分店管理
 	@GetMapping("/MerchantChildManagementCenter")
 	public String MerchantChildManagementSystem(Model model) {
+		MerchantBean mcb = (MerchantBean) model.getAttribute("LoginOK");
+		String account = mcb.getBusAccount();
+		MerchantChildBean merchantChildBean = null;
+		if(model.getAttribute("merchantChildBean") == null) {
+			 merchantChildBean = new MerchantChildBean();
+		} else {
+			merchantChildBean = (MerchantChildBean) model.getAttribute("merchantChildBean");
+		}
+		List<MerchantChildBean> merchantChildList = merchantService.queryAllMerchantChilds(account);
+		model.addAttribute("merchantChildList", merchantChildList);
+		model.addAttribute("merchantChildBean", merchantChildBean);
 		return "_01_Member/MerchantCenter_MerchantChild";
-	}
-	
-
-// 商家分店資料
-	
+	}	
 
 // 商家分店資料修改
+	@GetMapping("/MerchantChildManagementCenter/{busChildNo}")
+	public String MerchantChildUpdateEmptyForm(
+			Model model, 
+			@PathVariable("busChildNo") Integer busChildNo,
+			RedirectAttributes redirectAtt
+			) {
+		MerchantChildBean mcb = merchantService.queryMerchantChild(busChildNo);
+		
+		model.addAttribute("merchantChildBean", mcb);
+		redirectAtt.addFlashAttribute("aaalert", "分店資料修改表單");
+		return "redirect:/MerchantChildManagementCenter";
+	}
+	
+	@PostMapping("/MerchantChildManagementCenter")
+	public String MerchantChildUpdateProcessForm(
+			Model model,
+			@ModelAttribute("merchantChildBean") MerchantChildBean merchantChildBean,
+			RedirectAttributes redirectAtt
+			) {
+		
+		MultipartFile merchantChildImage = merchantChildBean.getMerchantChildMultipartFile();
+		String originalFilename = merchantChildImage.getOriginalFilename();
+		if (merchantChildImage != null && !merchantChildImage.isEmpty()) {
+			try {
+				byte[] b = merchantChildImage.getBytes();
+				Blob blob = new SerialBlob(b);
+				merchantChildBean.setBusChildFileName(originalFilename);
+				merchantChildBean.setBusChildPhoto(blob);
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
+			}
+		}
+		
+		int n = merchantService.updateMerchantChild(merchantChildBean);
+		if (n == 1) {
+			model.addAttribute("merchantChildBean", merchantChildBean);
+			redirectAtt.addFlashAttribute("UpdateOK", "<Font color='blue'>修改成功</Font>");
+		}
+		
+		return "redirect:/MerchantChildManagementCenter";
+	}
 				
 
-// 商家分店刪除
+// 商家分店刪除(未寫)
 				
 
 // -----------------------------------------------------------------------------------------

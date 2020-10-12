@@ -38,6 +38,17 @@ public class MerchantChildDaoImpl_Hibernate implements MerchantChildDao {
 		return n;
 	}
 
+	
+	// 由參數busChildNo(分店編號)到MerchantChildRegistration表格中取得某個商家的特定分店資料，
+		// 傳回值為一個MerchantChildBean的物件。
+		@Override
+		public MerchantChildBean queryMerchantChild(Integer busChildNo) {
+			Session session = factory.getCurrentSession();
+			String hql = "FROM MerchantChildBean mcb WHERE mcb.busChildNo = :busChildNo";
+			MerchantChildBean mcb = (MerchantChildBean) session.createQuery(hql).setParameter("busChildNo", busChildNo).getSingleResult();
+			return mcb;
+		}
+	
 	// 由參數BusAccount(商家帳號)到MerchantChildRegistration表格中取得某個商家的所有資料，
 	@SuppressWarnings("unchecked")
 	// 傳回值為一個MerchantChildBean的物件；如果找不到對應的商家資料，傳回值為null。
@@ -49,6 +60,20 @@ public class MerchantChildDaoImpl_Hibernate implements MerchantChildDao {
 		return mcbs;
 	}
 
+	// 更新MerchantChildBean物件，更新資料庫MerchantChildRegistration表格中的分店資料。
+		@Override
+		public int updateMerchantChild(MerchantChildBean mcb) {
+			int n = 0;
+			Session session = factory.getCurrentSession();
+			if (mcb != null && mcb.getBusChildNo() != null) {
+				session.saveOrUpdate(mcb);
+				n++;
+			}
+			return n;
+		}
+	
+	
+	
 	// 判斷參數CusAccount(會員帳號)是否已經被現有會員或商家使用，
 		// 如果是，傳回true，表示此CusAccount(會員帳號)不能使用，
 		// 否則傳回false，表示此CusAccount(會員帳號)可使用。
