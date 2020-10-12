@@ -123,7 +123,7 @@
 											<div class="dropdown nav-item">
 												<a class="nav-link" href="<c:url value='#' />"
 													id="navbarDropdown" role="button" data-toggle="dropdown"
-													aria-haspopup="true" aria-expanded="false"> <img
+													aria-haspopup="true" aria-expanded="false"><img
 													src="<c:url value='/_00_init/getHeadshot?account=${LoginOK.cusAccount}' />"
 													style="width: 30px; height: 30px; border-radius: 50%; border: 1px solid gray; object-fit: cover"
 													data-toggle="tooltip" data-placement="bottom" title="會員中心" />
@@ -176,7 +176,7 @@
 										<a href="<c:url value='#' />" class="logout"
 											onclick="logout()" data-toggle="tooltip"
 											data-placement="bottom" title="登出"> <i
-											class="fas fa-sign-out-alt fa-lg" style="color: white"></i>
+											class="fas fa-sign-out-alt fa-lg iconShadow" style="color: white"></i>
 										</a>
 									</c:if>
 
@@ -184,7 +184,7 @@
 									<a href="<c:url value='/_02_ShoppingSystem/ShowCartContent' />"
 										data-toggle="tooltip" data-placement="bottom" title="購物車 ">
 										<span style="font-size: 14px"><i
-											class="fas fa-shopping-cart navbar-cart fa-lg"></i></span>
+											class="fas fa-shopping-cart navbar-cart fa-lg iconShadow"></i></span>
 									</a> <a href="#" data-toggle="tooltip" data-placement="bottom"
 										title="Linkedin "><i class="fa fa-linkedin iconShadow"
 										aria-hidden="true"></i> </a> <a href="#" data-toggle="tooltip"

@@ -296,11 +296,14 @@ public class ManagementController {
 // 會員寵物管理
 	@GetMapping("/PetManagementCenter")
 	public String PetManagementSystem(Model model) {
+		
+		
 		return "_01_Member/MemberCenter_Pet";
 	}
 	
 	
 // 會員寵物資料
+	
 	
 
 // 會員寵物資料修改
