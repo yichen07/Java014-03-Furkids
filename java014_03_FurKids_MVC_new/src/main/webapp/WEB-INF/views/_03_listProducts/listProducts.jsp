@@ -109,7 +109,7 @@
 		<nav id="sidebar">
 			<ul class="list-unstyled components">
 			<li class=""><a class="sideBarSubTItleBg"
-							aria-expanded="false"
+						
 					>
 								<span class="sidebarText ml-1">金額小計(OK):<c:out
 							value="${ShoppingCart.subtotal}" default="0" /> 元</span>
@@ -118,7 +118,6 @@
 					<c:forEach var='category' items='${categoryList}'>
 						<!-- 商品欄位1 -->
 						<li class=""><a class="sideBarSubTItleBg"
-							aria-expanded="false"
 							href="<c:url value='/_03_listProducts/DisplayPageProducts2?pageNo=1&category=${category}'/>">
 								<span class="sidebarText ml-1">${category}</span>
 						</a></li>
