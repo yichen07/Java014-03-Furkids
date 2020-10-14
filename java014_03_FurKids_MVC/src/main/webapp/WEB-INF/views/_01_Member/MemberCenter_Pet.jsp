@@ -204,7 +204,7 @@
 
 											<div class="form-group">
 												<label class="col-form-label"><b>寵物暱稱:</b></label>
-												<form:input type="text" class="form-control" path="petName" />
+												<form:input type="text" class="form-control" path="petName" required="required" />
 											</div>
 
 											<div class="form-group">

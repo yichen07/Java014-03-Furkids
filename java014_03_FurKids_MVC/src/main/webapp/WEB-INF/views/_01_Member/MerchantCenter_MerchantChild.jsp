@@ -206,19 +206,19 @@
 
 											<div class="form-group">
 												<label class="col-form-label"><b>分店名稱:</b></label>
-												<form:input type="text" class="form-control" path="busChildName" />
+												<form:input type="text" class="form-control" path="busChildName" required="required" />
 											</div>
 											<div class="form-group">
 												<label class="col-form-label"><b>分店信箱:</b></label>
-												<form:input type="text" class="form-control" path="busChildEmail" />
+												<form:input type="text" class="form-control" path="busChildEmail" required="required" />
 											</div>
 											<div class="form-group">
 												<label class="col-form-label"><b>分店電話:</b></label>
-												<form:input type="text" class="form-control" path="busChildTel" />
+												<form:input type="text" class="form-control" path="busChildTel" required="required" />
 											</div>
 											<div class="form-group">
 												<label class="col-form-label"><b>分店地址:</b></label>
-												<form:input type="text" class="form-control" path="busChildAddress" />
+												<form:input type="text" class="form-control" path="busChildAddress" required="required" />
 											</div>
 											<div class="form-group">
 												<label class="col-form-label"><b>分店描述:</b></label>

@@ -392,7 +392,12 @@ public class ManagementController {
 			@ModelAttribute("merchantChildBean") MerchantChildBean merchantChildBean,
 			RedirectAttributes redirectAtt
 			) {
-		
+//		String account = merchantChildBean.getBusAccount();
+//		String address = merchantChildBean.getBusChildAddress();
+//		if (merchantService.merchantChildExists(account, address)) {
+//			model.addAttribute("UpdateError", "分店地址重複，請重新確認。");
+//			return "redirect:/MerchantChildManagementCenter";
+//		}
 		MultipartFile merchantChildImage = merchantChildBean.getMerchantChildMultipartFile();
 		String originalFilename = merchantChildImage.getOriginalFilename();
 		if (merchantChildImage != null && !merchantChildImage.isEmpty()) {

@@ -55,6 +55,14 @@
 	</script>
 </c:if>
 
+<c:if test="${!empty UpdateError}">
+	<script>
+		$('#messages').modal('show');
+		setTimeout(function() {
+            $('#messages').modal('hide') // 3秒後，modal消失。
+        }, 3000);
+	</script>
+</c:if>
 <%-- 登出時，跳出詢問視窗 --%>
 <script language="javascript"> 
 	function logout(){ 
