@@ -108,12 +108,20 @@
 		<!-- Sidebar Holder -->
 		<nav id="sidebar">
 			<ul class="list-unstyled components">
+<<<<<<< HEAD
+				<li class="" ><a class="sideBarSubTItleBg2">
+						<span class="sidebarText ml-1" ><b>金額小計(OK):<c:out
+								value="${ShoppingCart.subtotal}" default="0" /> 元
+					</b></span>
+				</a></li>
+=======
 			<li class=""><a class="sideBarSubTItleBg"
 						
 					>
 								<span class="sidebarText ml-1">金額小計(OK):<c:out
 							value="${ShoppingCart.subtotal}" default="0" /> 元</span>
 						</a></li>
+>>>>>>> bd287b3641d2e14c90fa906c1a9ed0e7c47741ef
 				<c:if test="${categoryList != null}">
 					<c:forEach var='category' items='${categoryList}'>
 						<!-- 商品欄位1 -->
@@ -123,7 +131,7 @@
 						</a></li>
 					</c:forEach>
 				</c:if>
-				
+
 			</ul>
 		</nav>
 
@@ -146,7 +154,7 @@
 											alt="image" class="productImg" />
 										<div class="product-btn">
 											<a data-toggle="modal"
-												data-target="#exampleModal${product.value.p_Id}">詳細內容 </a>
+												data-target="#exampleModal${product.value.p_Id}"><span style="color: white;">詳細內容</span> </a>
 										</div>
 									</div>
 									<div class="product-details">
@@ -161,7 +169,7 @@
 								tabindex="-1"
 								aria-labelledby="exampleModalLabel${product.value.p_Id}"
 								aria-hidden="true" style="z-index: 99991">
-								<div class="modal-dialog modal-xl">
+								<div class="modal-dialog modal-xl modal-dialog-centered">
 									<div class="modal-content">
 										<div class="modal-header">
 											<h5 class="modal-title"
@@ -254,14 +262,18 @@
 
 						<nav class="pagination-outer" aria-label="Page navigation">
 							<ul class="pagination">
+							
 								
+							<button class="" tabindex="-1" aria-disabled="true" style="border:0px; background-color: #fdfdfd00" disabled><b>第${pageNo}頁</b></button>&nbsp;&nbsp;&nbsp;
 								<c:forEach var="x" begin="1" end="${totalPages}">
 									<c:if
 										test="${x >= pageNo - 2 && x <= 5 || x <= pageNo + 2 && x > totalPages - 5}">
-										<li class="page-item"><a class="page-link" href="<c:url value='/_03_listProducts/DisplayPageProducts2?pageNo=${x}'/>">${x}</a></li>
+										<li class="page-item"><a class="page-link"
+											href="<c:url value='/_03_listProducts/DisplayPageProducts2?pageNo=${x}'/>">${x}</a></li>
 									</c:if>
 								</c:forEach>
-						<a tabindex="-1" aria-disabled="true"> 共${totalPages}頁</a>
+								
+								<button class="" tabindex="-1" aria-disabled="true" style="border:0px; background-color: #fdfdfd00" disabled> <b>共${totalPages}頁</b></button>
 
 							</ul>
 						</nav>

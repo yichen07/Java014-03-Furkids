@@ -157,6 +157,16 @@ a:focus {
     font-weight: 500;
     height: 55px;
 }
+.sideBarSubTItleBg2 {
+    background-image: linear-gradient(to top, #6a93cb 0%, #a4bfef 100%);
+    box-shadow: 2px 2px 5px rgb(219, 219, 219), 0px 3px 5px rgba(0, 0, 0, 0.1);
+    color: #0000a0;
+    list-style: none;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    height: 55px;
+}
 
 .sideBarSubTItleBg:hover {
     background-color: #6a93cb;
