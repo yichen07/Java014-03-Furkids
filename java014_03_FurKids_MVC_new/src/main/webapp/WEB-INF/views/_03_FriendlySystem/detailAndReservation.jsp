@@ -101,7 +101,7 @@
 							<div class="active carousel-item" data-slide-number="0">
 								<img
 									src="<c:url value='/_03_FriendlySystem/getPicture/${Reservation.busChildNo}' />"
-									class="hotelImage" />
+									 />
 							</div>
 						</div>
 					</div>
@@ -190,7 +190,7 @@
 						<!-- 入住資料 Start-->
 
 						<div class="d-flex align-items-center mt-4 pt-3">
-							<i class="fas fa-hotel rightTitleIcon fa-fw"></i>
+							<i class="fas fa-clipboard-list rightTitleIcon fa-fw"></i>
 							<div class="rightTitle pl-1">預約資料</div>
 						</div>
 						<form:form method="POST" modelAttribute="ResBean">
