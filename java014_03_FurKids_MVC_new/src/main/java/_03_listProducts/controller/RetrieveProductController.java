@@ -84,6 +84,7 @@ public class RetrieveProductController {
 		response.addCookie(pnCookie);
 
 		return "_03_listProducts/listProducts";
+		
 	}
 	
 	@GetMapping("/DisplayPageProducts2")
@@ -146,6 +147,7 @@ public class RetrieveProductController {
 		// 將Cookie加入回應物件內
 		response.addCookie(pnCookie);
 		return "_03_listProducts/listProducts";
+//		return "_03_listProducts/listProductsNew";
 	}
 	
 	@GetMapping("/queryByCategory")
