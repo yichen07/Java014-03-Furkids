@@ -1,0 +1,500 @@
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+
+body {
+    font-family: "Tahoma", "cwTeXYen", sans-serif;
+
+    background-size: cover;
+}
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+/* NavBar -------------------------------------------------------------------------> */
+
+.navbar-collapse ul li a.nav-link:before {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: transparent;
+    content: "";
+    opacity: 0;
+    -ms-transition: opacity 0.3s, -webkit-transform 0.3s;
+    -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+    transition: opacity 0.3s, transform 0.3s;
+    -ms-transform: translateY(10px);
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+}
+
+.navbar-collapse ul li:hover a.nav-link:before {
+    opacity: 1;
+    -ms-transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    bottom: 0px;
+    background: #447ee9;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #447ee9;
+}
+
+.navbar-cart {
+    color: #262626;
+    font-size: 18px;
+}
+.navbar-user {
+    color: #262626;
+    font-size: 18px;
+}
+.dropdown-toggle::after {
+    content: none;
+}
+.bg-white {
+    font-weight: 500 !important;
+    font-size: 19px !important;
+    color: #262626 !important;
+}
+.nav-font {
+    color: #262626 !important;
+}
+
+/* NavBar End-------------------------------------------------------------------------> */
+
+/* Main Form Start ----------------------------------------------------------------> */
+.imgBackground {
+    background: url(../../images/_01_Member/MemberRegistration_background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/* 瀏覽歷史紀錄顏色 Start */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: transparent !important;
+    background-image: none !important;
+    -webkit-box-shadow: 0 0 0 1000px #f7f9ff inset !important;
+    -webkit-text-fill-color: #808aa0;
+}
+/* 瀏覽歷史紀錄顏色 End */
+
+.formTitle {
+    color: #a3a3a3;
+    font-weight: 600;
+    font-size: 40px;
+}
+.leftIcon {
+    font-size: 30px;
+    color: #9abafd;
+}
+.leftTitle {
+    color: #9abafd;
+    font-weight: 500;
+    font-size: 16px;
+}
+.UserIcon {
+    width: auto;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.wrapper {
+    background: #f7f9ff;
+    padding: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    right: 50px;
+}
+.leftIcon2 {
+    font-size: 34px;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+
+    background: transparent;
+}
+.inputClass {
+    width: 100%;
+
+    background: none;
+    padding: 0.6rem 1.2rem;
+    color: #808aa0;
+
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    border-radius: 25px;
+    transition: 0.3s;
+    height: 45px;
+
+    box-sizing: border-box;
+    font-size: 24px;
+    outline: none;
+    border: 2px solid rgb(209, 215, 223);
+    border-radius: 7px;
+}
+textarea.input {
+    padding: 0.8rem 1.2rem;
+
+    border-radius: 22px;
+    resize: none;
+    overflow-y: auto;
+}
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    padding: 0 0.4rem;
+    color: #808aa0;
+    font-size: 0.9rem;
+    font-weight: 400;
+    pointer-events: none;
+    z-index: 1000;
+    transition: 0.5s;
+}
+.input-group.textarea label {
+    top: 0.9rem;
+    transform: translateY(0);
+}
+.input-group span {
+    position: absolute;
+    top: 0;
+    left: 13px;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    padding: 0 0.4rem;
+    color: transparent;
+    pointer-events: none;
+    z-index: 500;
+    font-family: "cwTeXYen", sans-serif;
+}
+
+.input-group span:before,
+.input-group span:after {
+    content: "";
+    position: absolute;
+    width: 10%;
+    opacity: 0;
+    transition: 0.3s;
+    height: 5px;
+    background-color: #f7f9ff;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.input-group span:before {
+    left: 50%;
+}
+
+.input-group span:after {
+    right: 50%;
+}
+
+.input-group.focus label {
+    top: 0;
+    transform: translateY(-50%);
+    left: 13px;
+    font-size: 0.9rem;
+    color: #808aa0;
+    font-family: "cwTeXYen", sans-serif;
+}
+
+.input-group.focus span:before,
+.input-group.focus span:after {
+    width: 50%;
+    opacity: 1;
+}
+
+.input-group:hover {
+    border-radius: 7px;
+    border: none;
+}
+#eyeInput,
+#eyeInputCheck {
+    border-radius: 7px;
+    background: transparent;
+    color: #808aa0;
+}
+
+#eyeInput:valid,
+#eyeInputCheck:valid {
+    background: none;
+}
+#inputStyle:valid {
+    background: none;
+}
+#eyeInput:focus,
+#inputStyle:focus,
+#eyeInputCheck:focus,
+#inputClassMessage:focus {
+    border-radius: 7px;
+    box-shadow: none;
+    border: none;
+    background: none;
+    border: 2px solid rgb(116, 163, 250);
+}
+
+.eyePosition {
+    position: absolute;
+    right: 70px;
+    transform: translate(0, -50%);
+    top: 23px;
+    cursor: pointer;
+    z-index: 2;
+}
+.eyePosition2 {
+    position: absolute;
+    right: 70px;
+    transform: translate(0, -50%);
+    top: 92px;
+    cursor: pointer;
+    z-index: 2;
+}
+.fa-eye {
+    font-size: 20px;
+    color: rgb(107, 107, 107);
+}
+.fa-eye-slash {
+    font-size: 20px;
+    color: rgb(107, 107, 107);
+}
+#eyeHide,
+#eyeHideCheck {
+    display: none;
+}
+#inputClassMessage {
+    height: auto;
+}
+/* birthday Start*/
+.input-group .birthdayFocus {
+    top: 0;
+    transform: translateY(-50%);
+    left: 13px;
+    font-size: 0.9rem;
+    color: #808aa0;
+    font-family: "cwTeXYen", sans-serif;
+}
+.input-group .birthdayFocusSpan {
+    top: 0;
+    transform: translateY(-50%);
+    left: 13px;
+    font-size: 0.9rem;
+    font-family: "cwTeXYen", sans-serif;
+    background-color: #f7f9ff;
+
+    transform: translateY(-50%);
+}
+#date:focus {
+    border-radius: 7px;
+    box-shadow: none;
+    border: none;
+    background: none;
+    border: 2px solid rgb(116, 163, 250);
+}
+
+#date {
+    color: #808aa0;
+    font-size: 18px;
+}
+/* birthday End*/
+/* 性別 Radio Button  Start*/
+input[type="radio"] {
+    display: none;
+}
+.maleLable,
+.femaleLable {
+    position: relative;
+    color: rgb(187, 190, 194);
+    font-family: "cwTeXYen", sans-serif;
+    font-size: 20px;
+    border: 2px dotted rgb(209, 215, 223);
+    border-radius: 7px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#female:checked + .femaleLable {
+    background: #f85656;
+    color: white;
+    -webkit-filter: drop-shadow(3px 3px 5px rgba(223, 223, 223, 0.7));
+    filter: drop-shadow(3px 3px 5px rgba(99, 59, 59, 0.452));
+    border: 2px solid #f83f3f;
+}
+#male:checked + .maleLable {
+    background: #447ee9;
+    color: white;
+    -webkit-filter: drop-shadow(3px 3px 5px rgba(223, 223, 223, 0.7));
+    filter: drop-shadow(3px 3px 5px rgba(94, 115, 148, 0.7));
+    border: 2px solid #317aee;
+}
+
+/* 性別 Radio Button  End*/
+
+
+@media (max-width: 767px) {
+    .imgBackground {
+        background: #f7f9ff;
+    }
+    .wrapper {
+        background: #f7f9ff;
+        box-shadow: none;
+        right: 0;
+    }
+}
+@media (max-width: 960px) {
+    .wrapperOut {
+        background: #f7f9ff;
+        box-shadow: none;
+    }
+    .wrapper {
+        background: #f7f9ff;
+        box-shadow: none;
+    }
+}
+
+/* Commit Terms Start -----------------------------------------------------------------> */
+
+/* Checked Box Start*/
+.checkStyle {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #ddd;
+    border-radius: 50%;
+    position: relative;
+    transition: background-color 0.4s;
+    top: 8px;
+    box-shadow: inset -2px -2px 2px rgba(255, 255, 255, 0.335), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+    border: #e0e0e0 solid 0.1px;
+    padding: 10px;
+    overflow: hidden;
+}
+#checkTerms:checked ~ .checkStyle {
+    background: #4f69d8;
+}
+
+.checkStyle::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 14px;
+    border-right: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateZ(40deg) scale(10);
+    opacity: 0;
+    transition: all 0.4s;
+}
+#checkTerms:checked ~ .checkStyle::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotateZ(40deg) scale(1);
+}
+.checkboxText {
+    padding-top: 6px;
+    word-break: break-all;
+    color: #777777;
+}
+
+/* Checked Box End*/
+
+/* Button Start-------------------------------->*/
+/* Ripple effect */
+.ripple {
+    background-position: center;
+    transition: 0.8s;
+}
+.ripple:hover {
+    background: #6a83f5 radial-gradient(circle, transparent 1%, #4775f5 1%) center/15000%;
+    -webkit-filter: drop-shadow(3px 3px 5px rgba(129, 129, 129, 0.7));
+    filter: drop-shadow(3px 3px 5px rgba(129, 129, 129, 0.7));
+}
+.ripple:active {
+    background-color: #5679d8;
+    background-size: 100%;
+    transition: 0s;
+}
+
+/* Button style */
+.buybtn {
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 55px 5px 55px;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: white;
+    background-color: #4f69d8;
+    box-shadow: 0 0 4px #999;
+    outline: none;
+}
+.buybtn:focus {
+    box-shadow: none;
+    outline: none;
+}
+.buybtnOutline {
+    margin-right: 10px;
+    border: 2px solid #4f69d8;
+    border-radius: 5px;
+    padding: 5px 50px 5px 50px;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #4f69d8;
+    background-color: #f7f9ff;
+    box-shadow: 0 0 4px #999;
+    outline: none;
+}
+.buybtnOutline:focus {
+    box-shadow: none;
+    outline: none;
+}
+.buybtnOutline:hover {
+    color: white;
+}
+
+.btnText {
+    font-family: "cwTeXYen", sans-serif;
+    font-size: 19px;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+/* Button Start-------------------------------->*/
+
+/* Commit Terms End -------------------------------------------------------------------> */
+/* Main Form End ----------------------------------------------------------------> */
