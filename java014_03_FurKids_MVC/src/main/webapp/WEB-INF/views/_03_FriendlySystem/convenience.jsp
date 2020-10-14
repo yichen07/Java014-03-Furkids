@@ -189,7 +189,7 @@
 	<!--  	Modal  -->
 	<div class="modal fade" id="alertCb" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLongTitle" aria-hidden="true"
-		style="z-index: 99991">
+		data-backdrop="static" style="z-index: 99991">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
@@ -222,12 +222,12 @@
 						</div>
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">開始營業時間:</label>
-							<form:input type="text" class="form-control" path="conOpenTime" />
+							<form:input type="time" class="form-control" path="conOpenTime" />
 							<form:errors path="conOpenTime" class="text-danger" />
 						</div>
 						<div class="form-group">
 							<label for="recipient-name" class="col-form-label">結束營業時間:</label>
-							<form:input type="text" class="form-control" path="conCloseTime" />
+							<form:input type="time" class="form-control" path="conCloseTime" />
 							<form:errors path="conCloseTime" class="text-danger" />
 						</div>
 						<div class="form-group">
@@ -251,8 +251,13 @@
 							<form:errors path="merchantChildBean.busChildDescription"
 								class="text-danger" />
 						</div>
-						<div>
-							<button type="submit" class="btn btn-primary">確定修改</button>
+						<div class="modal-footer">
+							<div>
+								<button type="submit" class="btn btn-primary">確定修改</button>
+							</div>
+
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Close</button>
 						</div>
 					</form:form>
 				</div>
@@ -267,7 +272,7 @@
 	<!-- 	Modal -->
 	<div class="modal fade" id="insertCb" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLongTitle" aria-hidden="true"
-		style="z-index: 999991">
+		data-backdrop="static" style="z-index: 999991">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
