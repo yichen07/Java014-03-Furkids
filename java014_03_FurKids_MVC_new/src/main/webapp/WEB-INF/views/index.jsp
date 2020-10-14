@@ -142,6 +142,10 @@
 														class="dropdown-item"
 														href="<c:url value='/_03_FriendlySystem/MemReservationDetail' />"
 														style="color: #002255"><b>預約管理</b></a>
+														<a
+														class="dropdown-item"
+														href="<c:url value='/_05_orderProcess/orderList' />"
+														style="color: #002255"><b>訂單查詢</b></a>
 												</div>
 											</div>
 										</c:when>

@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ public class SaleOrderBean {
 	Integer s_Status;		//訂單狀態
 	Date  s_OrderDate;		//下單日期
 	Date  shippingDate;		//發貨日期
-	@OneToMany(mappedBy="saleOrderBean", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="saleOrderBean", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	Set<SaleOrderItemsBean> items = new LinkedHashSet<>();
 	
 	public SaleOrderBean() {
