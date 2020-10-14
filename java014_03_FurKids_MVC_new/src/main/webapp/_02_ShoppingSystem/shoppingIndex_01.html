@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS --------------------------------------------------------------------->
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <!-- animate.style CSS ----------------------------------------------------------------->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <!-- Inport CSS End--------------------------------------------------------------------->
+
+    <link
+      rel="stylesheet"
+      href="../resources/css/_02_ShoppingSystem/shoppingIndex_01.css"
+    />
+
+    <!-- Input CSS End---------------------------------------------------------------------->
+
+    <title>FurKids確認訂單</title>
+  </head>
+
+  <body>
+    <!-- NavBar Srart----------------------------------------------------------------------->
+
+    <nav
+      class="navbar navbar-light navbar-expand-lg bg-white sticky-top shadow"
+      id="navBar"
+    >
+      <div class="container">
+        <a class="navbar-brand mb-1" href="#"
+          ><img src="../resources/images/Logo_07.png" alt="Logo" height="26"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-between"
+          id="navbarNavDropdown"
+        >
+          <div></div>
+          <ul class="navbar-nav ">
+            <li class="nav-item dropdown mx-2">
+              <a
+                class="nav-link dropdown-toggle nav-font"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                寵物商城
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a class="dropdown-item" href="#">自己加</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown mx-2">
+              <a
+                class="nav-link dropdown-toggle nav-font"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                寵物交流版
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a class="dropdown-item" href="/src/main/webapp/blogIndex.html"
+                  >寵物專欄</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="/src/main/webapp/discussionBoard.html"
+                  >寵物討論區</a
+                >
+              </div>
+            </li>
+            <li class="nav-item dropdown mx-2">
+              <a
+                class="nav-link dropdown-toggle nav-font"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                寵物健康管理
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a class="dropdown-item" href="#">自己加</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown ml-2 mr-5">
+              <a
+                class="nav-link dropdown-toggle nav-font"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >寵物友善系統
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a class="dropdown-item" href="#">自己加</a>
+              </div>
+            </li>
+          </ul>
+          <div>
+            <a href="#" class="mr-3 ml-4"
+              ><i class="fas fa-shopping-cart navbar-cart"></i
+            ></a>
+            <a href="#" class="mr-2"
+              ><i class="fas fa-user navbar-user"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- NavBar End------------------------------------------------------------------------->
+
+    <!-- Banner ---------------------------------------------------------------------------->
+
+    <div
+      class="container-fliid bannerImg d-flex justify-content-center align-items-center"
+      id="imageStellar"
+      data-stellar-background-ratio="0.5"
+    >
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1 class="mt-3 bannerTitle animate__animated animate__fadeInDown">
+            寵物商城
+          </h1>
+          <div
+            class="align-items-center banner-text animate__animated animate__fadeInUp"
+          >
+            <h5 class="text-center">
+              超多特惠商品，週週下殺便宜精選，讓你愛寵物愛得輕鬆又溫馨
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Banner End------------------------------------------------------------------------->
+
+    <!-- Main Start------------------------------------------------------------------------->
+    <div class="wrapper">
+      <!-- Sidebar Holder -->
+      <nav id="sidebar">
+        <ul class="list-unstyled components">
+          <!-- 商品欄位1 -->
+          <li class="">
+            <a
+              href="#Submenu_01"
+              class="sideBarSubTItleBg"
+              data-toggle="collapse"
+              aria-expanded="false"
+              ><i class="fas fa-cat mt-2 sidebarTextIcon"> </i>
+              <span class="sidebarText ml-1"> 貓咪商品</span>
+            </a>
+            <ul class="collapse list-unstyled" id="Submenu_01">
+              <li class="sideBarSubTItle">
+                <a href="#" class="sideBarSubTItleColor">貓飼料/乾糧</a>
+              </li>
+              <li class="sideBarSubTItle">
+                <a href="#" class="sideBarSubTItleColor">貓飼料/乾糧</a>
+              </li>
+            </ul>
+          </li>
+          <!-- 商品欄位2 -->
+          <li class="">
+            <a
+              href="#Submenu_02"
+              class="sideBarSubTItleBg"
+              data-toggle="collapse"
+              aria-expanded="false"
+              ><i class="fas fa-dog mt-2 sidebarTextIcon"> </i
+              ><span class="sidebarText ml-1"> 狗狗商品</span>
+            </a>
+            <ul class="collapse list-unstyled" id="Submenu_02">
+              <li class="sideBarSubTItle">
+                <a href="#" class="sideBarSubTItleColor">狗飼料/乾糧</a>
+              </li>
+              <li class="sideBarSubTItle">
+                <a href="#" class="sideBarSubTItleColor">狗飼料/乾糧</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div id="content">
+        <button
+          type="button"
+          id="sidebarCollapse"
+          class="btn navbar-btn ml-2 my-2 mb-5"
+        >
+          <span><i class="fas fa-bars"></i></span>
+        </button>
+
+        <div class="e-commerce-product">
+          <div class="container-fluid">
+            <div class="row d-flex justify-content-start ml-5 mr-4 mb-5">
+              <!-- 第1個產品 -->
+              <div class="   col-lg-3 col-md-4 col-sm-6 col-12 mb-5 ">
+                <div class="product">
+                  <div class="content">
+                    <img
+                      src="../resources/images/_02_ShoppingSystem/shoppingIndex_cat_food_01.jpg"
+                      alt="image"
+                      class="productImg"
+                    />
+                    <div class="product-btn">
+                      <a href="#">加入購物車</a>
+                      <span class="btnEffect">
+                        <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                        <a href="#"><i class="fa fa-heart-o"></i></a>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="product-details">
+                    <h4 class="title px-3">
+                      0%零穀 全齡貓 敏感配方 (鮭魚) 2.5磅 (貓飼料)
+                    </h4>
+                    <div class="price mb-0">$999<del>原價 $1580</del></div>
+                  </div>
+                </div>
+              </div>
+              <!-- 第2個產品 -->
+              <div class="   col-lg-3 col-md-4 col-sm-6 col-12 mb-5">
+                <div class="product">
+                  <div class="content">
+                    <img
+                      src="../resources/images/_02_ShoppingSystem/shoppingIndex_cat_food_01.jpg"
+                      alt="image"
+                      class="productImg"
+                    />
+                    <div class="product-btn">
+                      <a href="#">加入購物車</a>
+                      <span class="btnEffect">
+                        <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                        <a href="#"><i class="fa fa-heart-o"></i></a>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="product-details">
+                    <h4 class="title px-3">
+                      0%零穀 全齡貓 敏感配方 (鮭魚) 2.5磅 (貓飼料)
+                    </h4>
+                    <div class="price mb-0">$999<del>原價 $1580</del></div>
+                  </div>
+                </div>
+              </div>
+              <!-- 第3個產品 -->
+              <div class="   col-lg-3 col-md-4 col-sm-6 col-12 mb-5">
+                <div class="product">
+                  <div class="content">
+                    <img
+                      src="../resources/images/_02_ShoppingSystem/shoppingIndex_cat_food_01.jpg"
+                      alt="image"
+                      class="productImg"
+                    />
+                    <div class="product-btn">
+                      <a href="#">加入購物車</a>
+                      <span class="btnEffect">
+                        <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                        <a href="#"><i class="fa fa-heart-o"></i></a>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="product-details">
+                    <h4 class="title px-3">
+                      0%零穀 全齡貓 敏感配方 (鮭魚) 2.5磅 (貓飼料)
+                    </h4>
+                    <div class="price mb-0">$999<del>原價 $1580</del></div>
+                  </div>
+                </div>
+              </div>
+              <!-- 第4個產品 -->
+              <div class="   col-lg-3 col-md-4 col-sm-6 col-12 mb-5">
+                <div class="product">
+                  <div class="content">
+                    <img
+                      src="../resources/images/_02_ShoppingSystem/shoppingIndex_cat_food_01.jpg"
+                      alt="image"
+                      class="productImg"
+                    />
+                    <div class="product-btn">
+                      <a href="#">加入購物車</a>
+                      <span class="btnEffect">
+                        <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                        <a href="#"><i class="fa fa-heart-o"></i></a>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="product-details">
+                    <h4 class="title px-3">
+                      0%零穀 全齡貓 敏感配方 (鮭魚) 2.5磅 (貓飼料)
+                    </h4>
+                    <div class="price mb-0">$999<del>原價 $1580</del></div>
+                  </div>
+                </div>
+              </div>
+              <!-- 第5個產品 -->
+              <div class="   col-lg-3 col-md-4 col-sm-6 col-12 mb-5">
+                <div class="product">
+                  <div class="content">
+                    <img
+                      src="../resources/images/_02_ShoppingSystem/shoppingIndex_cat_food_01.jpg"
+                      alt="image"
+                      class="productImg"
+                    />
+                    <div class="product-btn">
+                      <a href="#">加入購物車</a>
+                      <span class="btnEffect">
+                        <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                        <a href="#"><i class="fa fa-heart-o"></i></a>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="product-details">
+                    <h4 class="title px-3">
+                      0%零穀 全齡貓 敏感配方 (鮭魚) 2.5磅 (貓飼料)
+                    </h4>
+                    <div class="price mb-0">$999<del>原價 $1580</del></div>
+                  </div>
+                </div>
+              </div>
+              <!-- 第6個產品 -->
+              <div class="   col-lg-3 col-md-4 col-sm-6 col-12 mb-5">
+                <div class="product">
+                  <div class="content">
+                    <img
+                      src="../resources/images/_02_ShoppingSystem/shoppingIndex_cat_food_01.jpg"
+                      alt="image"
+                      class="productImg"
+                    />
+                    <div class="product-btn">
+                      <a href="#">加入購物車</a>
+                      <span class="btnEffect">
+                        <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                        <a href="#"><i class="fa fa-heart-o"></i></a>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="product-details">
+                    <h4 class="title px-3">
+                      0%零穀 全齡貓 敏感配方 (鮭魚) 2.5磅 (貓飼料)
+                    </h4>
+                    <div class="price mb-0">$999<del>原價 $1580</del></div>
+                  </div>
+                </div>
+              </div>
+              <!-- 第7個產品 -->
+              <div class="   col-lg-3 col-md-4 col-sm-6 col-12 mb-5">
+                <div class="product">
+                  <div class="content">
+                    <img
+                      src="../resources/images/_02_ShoppingSystem/shoppingIndex_cat_food_01.jpg"
+                      alt="image"
+                      class="productImg"
+                    />
+                    <div class="product-btn">
+                      <a href="#">加入購物車</a>
+                      <span class="btnEffect">
+                        <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                        <a href="#"><i class="fa fa-heart-o"></i></a>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="product-details">
+                    <h4 class="title px-3">
+                      0%零穀 全齡貓 敏感配方 (鮭魚) 2.5磅 (貓飼料)
+                    </h4>
+                    <div class="price mb-0">$999<del>原價 $1580</del></div>
+                  </div>
+                </div>
+              </div>
+              <!-- 第8個產品 -->
+              <div class="   col-lg-3 col-md-4 col-sm-6 col-12 mb-5">
+                <div class="product">
+                  <div class="content">
+                    <img
+                      src="../resources/images/_02_ShoppingSystem/shoppingIndex_cat_food_01.jpg"
+                      alt="image"
+                      class="productImg"
+                    />
+                    <div class="product-btn">
+                      <a href="#">加入購物車</a>
+                      <span class="btnEffect">
+                        <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                        <a href="#"><i class="fa fa-heart-o"></i></a>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="product-details">
+                    <h4 class="title px-3">
+                      0%零穀 全齡貓 敏感配方 (鮭魚) 2.5磅 (貓飼料)
+                    </h4>
+                    <div class="price mb-0">$999<del>原價 $1580</del></div>
+                  </div>
+                </div>
+              </div>
+            
+         
+            </div>
+
+            <!-- Page Number Start -->
+            <div class="row d-flex justify-content-center mb-5">
+
+              <nav class="pagination-outer" aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a href="#" class="page-link" aria-label="Previous">
+                            <span aria-hidden="true">«</span>
+                        </a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="<c:url value='DisplayPageProducts?pageNo=1' />">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item">
+                        <a href="#" class="page-link" aria-label="Next">
+                            <span aria-hidden="true">»</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+
+
+
+            </div>
+            <!-- Page Number End -->
+          </div>
+        </div>
+      </div>
+      <!-- Page Number Start -->
+    </div>
+
+    <!-- Main End--------------------------------------------------------------------------->
+
+    <!-- Footer Start----------------------------------------------------------------------->
+    <div class="footer-dark">
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 item">
+              <h3>網站導覽</h3>
+              <ul>
+                <li><a href="#">寵物商城</a></li>
+                <li><a href="#">寵物交流區</a></li>
+                <li><a href="#">寵物友善系統</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3 item">
+              <h3>購物說明</h3>
+              <ul>
+                <li><a href="#">付款相關問題</a></li>
+                <li><a href="#">運送相關問題</a></li>
+                <li><a href="#">退換貨說明</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3 item">
+              <h3>訂閱我們</h3>
+              <ul>
+                <li><a href="#">關於FurKids</a></li>
+                <li><a href="#">隱私權政策</a></li>
+                <li><a href="#">文章</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3 item text">
+              <h3>聯絡我們</h3>
+              <ul>
+                <li>地址：106台北市大安區忠孝東路三段1號</li>
+                <li>電話：02 2771 2171</li>
+              </ul>
+            </div>
+            <div class="col item social mt-5">
+              <a href="#"><i class="fa fa-facebook"></i></a
+              ><a href="#"><i class="fa fa-twitter"></i></a
+              ><a href="#"><i class="fa fa-youtube"></i></a
+              ><a href="#"><i class="fa fa-instagram"></i></a
+              ><a href="#"><i class="fa fa-google"></i></a>
+            </div>
+          </div>
+          <p class="copyright">Copyright © 2020 FurKids Inc.</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Footer End------------------------------------------------------------------------->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS ----------------------------------->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS End-------------------------------->
+
+    <!-- JavaScript Plug-in ---------------------------------------------------------------->
+
+    <!-- icon -->
+    <script
+      src="https://kit.fontawesome.com/8e822d04fb.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- banner effect -->
+    <script src="../js/jquery.stellar.js"></script>
+    <script src="../resources/javascript/jquery.stellar.js"></script>
+    <!-- JavaScript Plug-in End------------------------------------------------------------->
+    <script src="../resources/javascript/shoppingIndex_01.js"></script>
+  </body>
+</html>

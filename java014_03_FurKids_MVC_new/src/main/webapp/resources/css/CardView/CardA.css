@@ -1,0 +1,181 @@
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+.memberCard .memberCardStar {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-shadow: rgba(143, 134, 54, 0.644) 2px 2px 5px;
+}
+
+.memberCard .memberCardStar::before,
+.memberCard .memberCardStar::after {
+  content: "";
+  display: table;
+}
+
+.memberCard .memberCardStar::after {
+  clear: both;
+}
+
+.memberCard .memberCardStar li {
+  display: inline-block;
+}
+
+.memberCard .memberCardStar a {
+  color: #fff;
+}
+
+.memberCard .memberCardStar span {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: "Open Sans";
+  transform: translate(-50%, 0);
+  font-family: "Tahoma", "cwTeXYen", sans-serif;
+}
+
+.memberCard .memberCardWrapper {
+  border-radius: 15px;
+  min-height: 540px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.2);
+}
+
+.memberCard .memberCardWrapper:hover .memberCardData {
+  transform: translateY(0);
+}
+
+.memberCard .memberCardData {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transform: translateY(calc(70px + 1em));
+  transition: transform 0.3s;
+}
+
+.memberCard .memberCardData .memberCardContent {
+  padding:  0.5em 1em 1em  1em;
+  position: relative;
+  z-index: 1;
+}
+
+.memberCard .memberCardTitle {
+  margin-top: 10px;
+  font-family: "cwTeXYen", sans-serif;
+  text-shadow: black 2px 2px 5px;
+  font-weight: 500;
+  font-size: 45px;
+}
+
+.memberCard .memberCardText {
+  height: 70px;
+  margin: 0;
+  text-decoration: none;
+  font-family: "cwTeXYen", sans-serif;
+  text-shadow: black 2px 2px 5px;
+}
+
+.memberCard input[type="checkbox"] {
+  display: none;
+}
+
+.memberCard input[type="checkbox"]:checked + .memberCardStar {
+  transform: translateY(-60px);
+}
+
+.memberRegistered .memberCardWrapper:hover .memberCardStar span {
+  transform: translate(-50%, -10px);
+  opacity: 1;
+}
+
+.memberRegistered .memberCardHeader {
+  color: #fff;
+  padding: 1em;
+}
+
+.memberRegistered .memberCardHeader::before,
+.memberRegistered .memberCardHeader::after {
+  content: "";
+  display: table;
+}
+
+.memberRegistered .memberCardHeader::after {
+  clear: both;
+}
+
+.memberRegistered .memberCardHeader .memberCardDiscount {
+  float: left;
+  font-size: 12px;
+}
+
+.memberRegistered .memberCardStar {
+  float: right;
+}
+
+.memberRegistered .memberCardStar li {
+  position: relative;
+}
+
+.memberRegistered .memberCardStar span {
+  transition: all 0.3s;
+  opacity: 0;
+}
+
+.memberRegistered .memberCardData {
+  color: #fff;
+  transform: translateY(calc(70px + 4em));
+}
+
+.memberRegistered .memberCardTitle a {
+  color: #fff;
+  text-decoration: none;
+  text-shadow: black 2px 2px 5px;
+}
+
+.memberRegistered .memberCardButton {
+  display: block;
+  width: 100px;
+  margin: 2em auto 1em;
+  text-align: center;
+  font-size: 12px;
+  color: #fff;
+  line-height: 1;
+  position: relative;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.memberRegistered .memberCardButton::after {
+  content: "\2192";
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  transition: all 0.3s;
+}
+
+.memberRegistered .memberCardButton:hover::after {
+  transform: translate(5px, -50%);
+  opacity: 1;
+}
+.memberCardContent {
+  backdrop-filter: blur(5px);
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(27, 27, 27, 0.781), rgba(46, 46, 46, 0.781));
+  mask:linear-gradient(rgba(0, 0, 0, 0), rgba(27, 27, 27, 0.781), rgba(46, 46, 46, 0.781));
+}
+.memberCardDiscountTitle {
+  text-shadow: black 2px 2px 5px;
+}
+
