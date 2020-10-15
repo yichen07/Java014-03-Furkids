@@ -98,7 +98,11 @@
 						<h6>${Convenience.conItemList}</h6>
 						<div class="pb-1">
 							<i class="fas fa-map-marker-alt ml-3 searchba"><span
-								class="iconFontSize">${Convenience.merchantChildBean.busChildAddress}</span> </i> <i
+								class="iconFontSize">${Convenience.merchantChildBean.busChildAddress}</span>
+								<span
+								class="iconFontSize" style="display:none">${Convenience.merchantChildBean.busChildName}</span>
+								<span
+								class="iconFontSize" style="display:none">${Convenience.conItemList}</span> </i> <i
 								class="fas fa-phone-square-alt"><span 
 								class="iconFontSize">${Convenience.merchantChildBean.busChildTel}</span> </i>
 						</div>
@@ -160,24 +164,10 @@
 		});
 
 	
-	 function OnSearch (input) {
+// 	 function OnSearch (input) {
 // 		searchword = input.value;
-// 		if(input.value !=='' ){
-// 			alert(111)
-// 		      $('.searchdiv').css("display","none");
-// 		      $('.searchdiv').find(":contains('" + searchword + "')").parent().parent().css("display","block");
-// 		   }else{
-// 		         $('.searchdiv').css("display","block");
-// 		   }
 
-		
-// 		alert(a);
-		b = $('.search').eq(0).html();
-// 		alert(b);
-
-		
-//          alert ("The current value of the search field: " + input.value);
-     }
+//      }
 
 	</script>
 	
