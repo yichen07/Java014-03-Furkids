@@ -119,7 +119,7 @@
 						<i class="fas fa-user-md" style="color: grey"></i>&nbsp;寵物健康管理 
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="<c:url value='#' />">熱量管理</a>
+						<a class="dropdown-item" href="<c:url value='/_05_HealthControl/CalorieCalculation' />">熱量管理</a>
 						<a class="dropdown-item" href="<c:url value='/BlogIndex' />">寵物健康專欄</a>
 <%-- 						<a class="dropdown-item" href="<c:url value='#' />">疫苗資訊</a> --%>
 					</div>

@@ -30,8 +30,7 @@
 <title>FurKids寵物旅遊</title>
 </head>
 <body>
-	<!-- 引入共同的頁首 -->
-	<jsp:include page="/fragment/navigation.jsp" />
+	
 
 	<!-- Main Start------------------------------------------------------------------------->
 
@@ -92,8 +91,6 @@
 	<!-- banner effect -->
 	<script src="<c:url value='/resources/javascript/jquery.stellar.js' />"></script>
 	
-	<!-- navigation bar js ------------------------------------->
-	<jsp:include page="/fragment/navigation_determine.jsp" />
-	<!-- navigation bar js End------------------------------------->
+	
 </body>
 </html>

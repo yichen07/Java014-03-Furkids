@@ -147,7 +147,7 @@
 											alt="image" class="productImg" />
 										<div class="product-btn">
 											<a data-toggle="modal"
-												data-target="#exampleModal${product.value.p_Id}"><span style="color: white;">詳細內容</span> </a>
+												data-target="#exampleModal${product.value.p_Id}"><span style="color: white;"><b>詳細內容</b></span> </a>
 										</div>
 									</div>
 									<div class="product-details">

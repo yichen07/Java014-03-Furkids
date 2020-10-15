@@ -151,7 +151,9 @@
 	<!-- icon -->
 	<script src="https://kit.fontawesome.com/8e822d04fb.js"
 		crossorigin="anonymous"></script>
-	
+	<!-- navigation bar js ------------------------------------->
+	<jsp:include page="/fragment/navigation_determine.jsp" />
+	<!-- navigation bar js End------------------------------------->
 	
 	
 	
