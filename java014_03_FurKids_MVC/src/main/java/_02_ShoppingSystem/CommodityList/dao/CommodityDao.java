@@ -33,6 +33,9 @@ public interface CommodityDao {
 
 	int deleteCommodity(int no);
 
+	Map<Integer, CommodityBean> getPageCommoditySort(String sort);
+	
+
 
 
 

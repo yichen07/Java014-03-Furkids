@@ -29,5 +29,6 @@ public interface CommodityService {
 	
 	int updateCommodity(CommodityBean bean, long sizeInBytes) ;
 
+	Map<Integer, CommodityBean> getPageCommoditySort(String sort);
 
 }
