@@ -97,14 +97,14 @@
 						<br />
 						<h6>${Convenience.conItemList}</h6>
 						<div class="pb-1">
-							<i class="fas fa-map-marker-alt ml-3 searchba"><span
-								class="iconFontSize">${Convenience.merchantChildBean.busChildAddress}</span>
+							<i class="fas fa-map-marker-alt searchba"><span
+								class="iconFontSize">&nbsp;${Convenience.merchantChildBean.busChildAddress}</span>
 								<span
 								class="iconFontSize" style="display:none">${Convenience.merchantChildBean.busChildName}</span>
 								<span
 								class="iconFontSize" style="display:none">${Convenience.conItemList}</span> </i> <i
 								class="fas fa-phone-square-alt"><span 
-								class="iconFontSize">${Convenience.merchantChildBean.busChildTel}</span> </i>
+								class="iconFontSize">&nbsp;${Convenience.merchantChildBean.busChildTel}</span> </i>
 						</div>
 						<div class="border-top py-1 camaraBackground"></div>
 					</figcaption>
