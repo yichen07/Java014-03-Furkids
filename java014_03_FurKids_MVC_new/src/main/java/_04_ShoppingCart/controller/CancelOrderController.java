@@ -12,7 +12,7 @@ import org.springframework.web.context.request.WebRequest;
 
 @Controller
 @RequestMapping("_04_ShoppingCart")
-@SessionAttributes({"ShoppingCart"})
+@SessionAttributes({"ShoppingCart", "loginBean"})
 public class CancelOrderController {
 	@Autowired
 	ServletContext context;

@@ -79,7 +79,7 @@
 						href="<c:url value='/_03_FriendlySystem/Reservation/寵物旅館' />">寵物旅館</a>
 					</li>
 					<li class="nav-item"><a class="nav-link"
-						href="<c:url value='#' />">寵物熱量管理</a></li>
+						href="<c:url value='/_05_HealthControl/CalorieCalculation' />">寵物熱量管理</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="<c:url value='/BlogIndex' />">寵物健康專欄</a></li>
 				</ul>

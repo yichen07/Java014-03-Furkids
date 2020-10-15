@@ -108,20 +108,13 @@
 		<!-- Sidebar Holder -->
 		<nav id="sidebar">
 			<ul class="list-unstyled components">
-<<<<<<< HEAD
+
 				<li class="" ><a class="sideBarSubTItleBg2">
 						<span class="sidebarText ml-1" ><b>金額小計(OK):<c:out
 								value="${ShoppingCart.subtotal}" default="0" /> 元
 					</b></span>
 				</a></li>
-=======
-			<li class=""><a class="sideBarSubTItleBg"
-						
-					>
-								<span class="sidebarText ml-1">金額小計(OK):<c:out
-							value="${ShoppingCart.subtotal}" default="0" /> 元</span>
-						</a></li>
->>>>>>> bd287b3641d2e14c90fa906c1a9ed0e7c47741ef
+
 				<c:if test="${categoryList != null}">
 					<c:forEach var='category' items='${categoryList}'>
 						<!-- 商品欄位1 -->
@@ -154,7 +147,7 @@
 											alt="image" class="productImg" />
 										<div class="product-btn">
 											<a data-toggle="modal"
-												data-target="#exampleModal${product.value.p_Id}"><span style="color: white;">詳細內容</span> </a>
+												data-target="#exampleModal${product.value.p_Id}"><span style="color: white;"><b>詳細內容</b></span> </a>
 										</div>
 									</div>
 									<div class="product-details">

@@ -13,8 +13,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.WebRequest;
 
 @Controller
-@RequestMapping({"_04_ShoppingCart", "loginBean"})
-@SessionAttributes({"ShoppingCart"})
+@RequestMapping({"_04_ShoppingCart"})
+@SessionAttributes({"ShoppingCart", "loginBean"})
 public class AbortController {
 	@Autowired
 	ServletContext context;
