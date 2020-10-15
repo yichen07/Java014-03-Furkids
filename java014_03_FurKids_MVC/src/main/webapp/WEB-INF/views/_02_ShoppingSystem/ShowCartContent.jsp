@@ -12,6 +12,7 @@ response.setHeader("Pragma", "no-cache"); //HTTP 1.0 backward compatibility
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script type="text/javascript">
 function confirmDelete(n) {
 	if (confirm("確定刪除此項商品 ? ") ) {
@@ -23,13 +24,13 @@ function confirmDelete(n) {
 	}
 }
 function modifyadd(key, qty, index) {
-	var x = "noOfRoom" + index ;
-	var newQty = document.getElementById(x).value +1;
-	if  (noOfRoom < 0 ) {
+	var x = "newQty" + index ;
+	var newQty = document.getElementById(x).value;
+	if  (newQty < 0 ) {
 		window.alert ('數量不能小於 0');
 		return ; 
 	}
-	if  (noOfRoom == qty ) {
+	if  (newQty == qty ) {
 // 		window.alert ("新、舊數量相同，不必修改");
 		return ; 
 	}
@@ -40,20 +41,20 @@ function modifyadd(key, qty, index) {
 }
 
 function modifysub(key, qty, index) {
- 	var x = "noOfRoom" + index ;
- 	var noOfRoom = document.getElementById(x).value;
-	window.alert (noOfRoom);
-	if  (noOfRoom < 0 ) {
+    var x = "newQty" + index ;
+ 	var newQty = document.getElementById(x).value;
+
+	if  (newQty < 0 ) {
 		window.alert ('數量不能小於 0');
 		return ; 
 	}
-	if  (noOfRoom == qty ) {
+	if  (newQty == qty ) {
 // 		window.alert ("新、舊數量相同，不必修改");
 		return ; 
 	}
-		document.forms[0].action="<c:url value='UpdateItem.do?cmd=MOD&ComId=" + key + "&newQty=" + newQty +"' />" ;
-		document.forms[0].method="POST";
-		document.forms[0].submit();
+    document.forms[0].action="<c:url value='UpdateItem.do?cmd=MOD&ComId=" + key + "&newQty=" + newQty +"' />" ;
+	document.forms[0].method="POST";
+	document.forms[0].submit();
 	
 }
 
@@ -118,7 +119,7 @@ function subCounts() {
 
     <link
       rel="stylesheet"
-      href="../resources/css/_02_ShoppingSystem/shoppingList_1.css"
+      href="<c:url value='/resources/css/_02_ShoppingSystem/shoppingList_1.css' />"
     />
 
     <!-- Input CSS End---------------------------------------------------------------------->
@@ -208,6 +209,7 @@ function subCounts() {
           價格
         </div>
       </div>
+
 	       <c:forEach varStatus="vs" var="anEntry" items="${ShoppingCart.content}">
       <!-- 商品細項欄位 no1 Start-->
       <div class="row p-3 shoppingListItemAll">
@@ -234,16 +236,18 @@ function subCounts() {
         <div
           class="d-flex col-lg-2 col-4 justify-content-center align-items-center colQuantity shoppingListItem"
         >
-          <input type="button" id="subs" value="-" onclick="modifysub(${anEntry.key}, ${anEntry.value.ordQuantity}, ${vs.index})" />
+          <input type="button" class="subs" id="subs${vs.index}" value="-"  />
 <!--             <input type="button" id="subs" value="-" /> -->
-          <input
-            type="text"
-            name="noOfRoom"
-            class="noOfRoom onlyNumber form-control text-center p-0 "
-            id="noOfRoom${vs.index}"
-            value="<fmt:formatNumber value="${anEntry.value.ordQuantity}" />"          />
-
-          <input type="button" id="adds" value="+" onclick="modifyadd(${anEntry.key}, ${anEntry.value.ordQuantity}, ${vs.index})" />
+<!--           <input -->
+<!--             type="text" -->
+<!--             name="noOfRoom" -->
+<!--             class="noOfRoom onlyNumber form-control text-center p-0 " -->
+<%--             id="noOfRoom${vs.index}" --%>
+<%--             value="<fmt:formatNumber value="${anEntry.value.ordQuantity}" />"          /> --%>
+          
+          <Input id="newQty${vs.index}" style="width:28px;text-align:center" name="newQty" type="text" value="<fmt:formatNumber value="${anEntry.value.ordQuantity}" />" onkeypress="return isNumberKey(event)"  />
+          
+          <input type="button" class="adds" id="adds${vs.index}" value="+"  />
 <!--           <input type="button" id="adds" value="+" "/> -->
 
         </div>
@@ -256,40 +260,41 @@ function subCounts() {
         </div>
       </div>
 <!--         動態JS開始 -->
-<!--         <script> -->
-<%--         $('#adds${vs.index}').click(function add() { --%>
-<%--     var $rooms = $("#noOfRoom${vs.index}"); --%>
-<!--     var a = $rooms.val(); -->
-
-<!--     a++; -->
-<%--     $("#subs${vs.index}").prop("disabled", !a); --%>
-<!--     $rooms.val(a); -->
-
-<%--     modify(${anEntry.key}, ${anEntry.value.soiQty}, ${vs.index}) --%>
-<%--     $("#newQty${vs.index}").trigger(isNegative()); --%>
+<script>
+  $('#adds${vs.index}').click(function add() {
+    var $rooms = $("#newQty${vs.index}");
+     var a = $rooms.val(); 
+     a++; 
+   $("#subs${vs.index}").prop("disabled", !a);
+     $rooms.val(a); 
+     
+    modifyadd(${anEntry.key}, ${anEntry.value.ordQuantity}, ${vs.index})
+    $("#newQty${vs.index}").trigger(isNegative());
     
-<!-- }); -->
+ }); 
         
 
-<%-- $("#subs${vs.index}").prop("disabled", !$("#newQty${vs.index}").val()); --%>
+$("#subs${vs.index}").prop("disabled", !$("#newQty${vs.index}").val());
 
-<%-- $('#subs${vs.index}').click(function subst() { --%>
-<%--     var $rooms = $("#noOfRoom${vs.index}"); --%>
-<!--     var b = $rooms.val(); -->
-<!--     if (b >= 2) { -->
-<!--         b--; -->
-<!--         $rooms.val(b); -->
-<!--     } -->
-<!--     else { -->
+$('#subs${vs.index}').click(function subst() {
+	
+    var $rooms = $("#newQty${vs.index}");
+    var b = $rooms.val();
+     if (b >= 2) { 
+         b--; 
+         $rooms.val(b); 
+     } 
+     else { 
         
-<%--         $("#subs${vs.index}").prop("disabled", true); --%>
-<!--     } -->
-<%--     modify(${anEntry.key}, ${anEntry.value.ordQuantity}, ${vs.index}) --%>
-<!-- }); -->
+        $("#subs${vs.index}").prop("disabled", true);
+     } 
+    modifysub(${anEntry.key}, ${anEntry.value.ordQuantity}, ${vs.index})
+ }); 
 
-<!--         </script> -->
+</script> 
 <!--         動態JS結束 -->
-	  </c:forEach>
+</c:forEach>
+
       <!-- 商品細項欄位 no1 End -->
       <!-- 總價格欄位 Start-->
       <div class="row p-3 priceListAll justify-content-end">

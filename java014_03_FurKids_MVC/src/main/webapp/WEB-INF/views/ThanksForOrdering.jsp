@@ -40,7 +40,7 @@
 
   <body>
     <!-- NavBar Srart----------------------------------------------------------------------->
-    <jsp:include page="/fragment/navigation.jsp" />
+<%--     <jsp:include page="/fragment/navigation.jsp" /> --%>
 
     
     <!-- NavBar End------------------------------------------------------------------------->
@@ -77,7 +77,7 @@
             </p>
           </div>
           <div class=".backHomeBtn">
-            <a href="#" class="btn btnHome"><span class="btnHomeText">回到首頁</span> </a>
+            <a href="<c:url value='/' />" class="btn btnHome"><span class="btnHomeText">回到首頁</span> </a>
           </div>
         </div>
       </div>
