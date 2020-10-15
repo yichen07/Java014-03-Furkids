@@ -89,10 +89,10 @@
 							alt="pr-sample23" />
 					</div>
 					<figcaption>
-						<div class="heart">
-							<i class="far fa-heart"></i>
+						<div>
+							
 						</div>
-						<div class="smallPhoto" style="background-image: url(<c:url value='/_03_FriendlySystem/getSmallPicture/${Convenience.busAccount}' />)"></div>
+						<div class="smallPhoto" style="background-image: url(<c:url value='/_00_init/getHeadshot?account=${Convenience.busAccount}' />)"></div>
 						<h3 class="mb-0">${Convenience.merchantChildBean.busChildName}</h3>
 						<br />
 						<h6>${Convenience.conItemList}</h6>

@@ -192,7 +192,7 @@ public class ConvenienceController {
 	
 	@ModelAttribute("cvsOption")
 	public List<String> cvsOption(){
-		String[] cvs = {"餐廳","寵物美容","旅館","寵物寄放"};
+		String[] cvs = {"餐廳","寵物美容","寵物旅館"};
 		List<String> cvsInsertOption = Arrays.asList(cvs);
 		return cvsInsertOption;
 	}
