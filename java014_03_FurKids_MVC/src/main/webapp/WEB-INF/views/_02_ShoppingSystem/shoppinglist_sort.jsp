@@ -169,48 +169,46 @@
             </div>
 
             <!-- Page Number Start -->
-            <div class="row d-flex justify-content-center mb-5">
+<!--             <div class="row d-flex justify-content-center mb-5"> -->
 
-              <nav class="pagination-outer" aria-label="Page navigation">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a href="<c:url value='DisplayPageProducts?pageNo=${pageNo-1}' />" class="page-link" aria-label="Previous">
-                            <span aria-hidden="true">«</span>
-                        </a>
-                    </li>
-              <c:if test="${Commodity}">
-                    <c:if test="${pageNo != 1}">
-                          <li class="page-item"><a class="page-link" href="<c:url value='DisplayPageProducts?pageNo=1' />">1</a></li>
-                    </c:if>
-                    <c:if test="${pageNo-2 > 1}">
-                          <li class="page-item"><a class="page-link" href="<c:url value='DisplayPageProducts?pageNo=${pageNo-2}' />">${pageNo-2}</a></li>
-                    </c:if>
-                     <c:if test="${pageNo-1 > 1}">
-                          <li class="page-item"><a class="page-link" href="<c:url value='DisplayPageProducts?pageNo=${pageNo-1}' />">${pageNo-1}</a></li>
-                    </c:if>
-                    <li class="page-item active"><a class="page-link" href="<c:url value='DisplayPageProducts?pageNo=${pageNo}' />">${pageNo}</a></li>
-                    <c:if test="${pageNo+1 < totalPages}">
-                          <li class="page-item"><a class="page-link" href="<c:url value='DisplayPageProducts?pageNo=${pageNo+1}' />">${pageNo+1}</a></li>
-                    </c:if>
-                    <c:if test="${pageNo+2 < totalPages}">
-                          <li class="page-item"><a class="page-link" href="<c:url value='DisplayPageProducts?pageNo=${pageNo+2}' />">${pageNo+2}</a></li>
-                    </c:if>
-                    <c:if test="${pageNo != totalPages}">
-                          <li class="page-item"><a class="page-link" href="<c:url value='DisplayPageProducts?pageNo=${totalPages}' />">${totalPages}</a></li>                    
-                    </c:if> 
-               </c:if>                       
-                    <li class="page-item">
-                        <a href="<c:url value='DisplayPageProducts?pageNo=${pageNo+1}' />" class="page-link" aria-label="Next">
-                            <span aria-hidden="true">»</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+<!--               <nav class="pagination-outer" aria-label="Page navigation"> -->
+<!--                 <ul class="pagination"> -->
+<!--                     <li class="page-item"> -->
+<%--                         <a href="<c:url value='DisplayPageProductsSort?pageNo=${pageNo-1}' />" class="page-link" aria-label="Previous"> --%>
+<!--                             <span aria-hidden="true">«</span> -->
+<!--                         </a> -->
+<!--                     </li> -->
+<%--                     <c:if test="${pageNo != 1}"> --%>
+<%--                           <li class="page-item"><a class="page-link" href="<c:url value='DisplayPageProductsSort?pageNo=1&sort=${param.sort}' />">1</a></li> --%>
+<%--                     </c:if> --%>
+<%--                     <c:if test="${pageNo-2 > 1}"> --%>
+<%--                           <li class="page-item"><a class="page-link" href="<c:url value='DisplayPageProductsSort?pageNo=${pageNo-2}&sort=${sort}' />">${pageNo-2}</a></li> --%>
+<%--                     </c:if> --%>
+<%--                      <c:if test="${pageNo-1 > 1}"> --%>
+<%--                           <li class="page-item"><a class="page-link" href="<c:url value='DisplayPageProductsSort?pageNo=${pageNo-1}' />">${pageNo-1}</a></li> --%>
+<%--                     </c:if> --%>
+<%--                     <li class="page-item active"><a class="page-link" href="<c:url value='DisplayPageProductsSort?pageNo=${pageNo}' />">${pageNo}</a></li> --%>
+<%--                     <c:if test="${pageNo+1 < totalPages}"> --%>
+<%--                           <li class="page-item"><a class="page-link" href="<c:url value='DisplayPageProductsSort?pageNo=${pageNo+1}' />">${pageNo+1}</a></li> --%>
+<%--                     </c:if> --%>
+<%--                     <c:if test="${pageNo+2 < totalPages}"> --%>
+<%--                           <li class="page-item"><a class="page-link" href="<c:url value='DisplayPageProductsSort?pageNo=${pageNo+2}' />">${pageNo+2}</a></li> --%>
+<%--                     </c:if> --%>
+<%--                     <c:if test="${pageNo != totalPages}"> --%>
+<%--                           <li class="page-item"><a class="page-link" href="<c:url value='DisplayPageProductsSort?pageNo=${totalPages}' />">${totalPages}</a></li>                     --%>
+<%--                     </c:if>  --%>
+<!--                     <li class="page-item"> -->
+<%--                         <a href="<c:url value='DisplayPageProducts?pageNo=${pageNo+1}' />" class="page-link" aria-label="Next"> --%>
+<!--                             <span aria-hidden="true">»</span> -->
+<!--                         </a> -->
+<!--                     </li> -->
+<!--                 </ul> -->
+<!--             </nav> -->
 
 
 
 
-            </div>
+<!--             </div> -->
             <!-- Page Number End -->
           </div>
         </div>

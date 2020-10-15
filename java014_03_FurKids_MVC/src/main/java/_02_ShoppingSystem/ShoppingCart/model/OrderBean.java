@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-// ¥»Ãþ§O¦s©ñ­q³æ¸ê®Æ
+// ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½sï¿½ï¿½qï¿½ï¿½ï¿½ï¿½
 @Entity
 @Table(name="`Order`")
 public class OrderBean { 
@@ -21,24 +21,106 @@ public class OrderBean {
     String cusAccount;
     Date ordDateTime;
 	Double ordPrice;
+	String ordBuyName;
+	Integer ordBuyPhone;
+	String ordBuyEmail;
+	String ordReciveName;
+	Integer ordRecivePhone;
 	String ordAddress;				
 	@OneToMany(mappedBy="orderBean", cascade=CascadeType.ALL)
 	Set<OrderListBean> items = new LinkedHashSet<>();
 
-    
-    
+ 
+	
 
 
-	public OrderBean(Integer ordId, String cusAccount, Date ordDateTime, Double ordPrice, String ordAddress,
+	public OrderBean(Integer ordId, String cusAccount, Date ordDateTime, Double ordPrice, String ordBuyName,
+			Integer ordBuyPhone, String ordBuyEmail, String ordReciveName, Integer ordRecivePhone, String ordAddress,
 			Set<OrderListBean> items) {
 		super();
 		this.ordId = ordId;
 		this.cusAccount = cusAccount;
 		this.ordDateTime = ordDateTime;
 		this.ordPrice = ordPrice;
+		this.ordBuyName = ordBuyName;
+		this.ordBuyPhone = ordBuyPhone;
+		this.ordBuyEmail = ordBuyEmail;
+		this.ordReciveName = ordReciveName;
+		this.ordRecivePhone = ordRecivePhone;
 		this.ordAddress = ordAddress;
 		this.items = items;
 	}
+
+
+
+
+	public String getOrdBuyName() {
+		return ordBuyName;
+	}
+
+
+
+
+	public void setOrdBuyName(String ordBuyName) {
+		this.ordBuyName = ordBuyName;
+	}
+
+
+
+
+	public Integer getOrdBuyPhone() {
+		return ordBuyPhone;
+	}
+
+
+
+
+	public void setOrdBuyPhone(Integer ordBuyPhone) {
+		this.ordBuyPhone = ordBuyPhone;
+	}
+
+
+
+
+	public String getOrdBuyEmail() {
+		return ordBuyEmail;
+	}
+
+
+
+
+	public void setOrdBuyEmail(String ordBuyEmail) {
+		this.ordBuyEmail = ordBuyEmail;
+	}
+
+
+
+
+	public String getOrdReciveName() {
+		return ordReciveName;
+	}
+
+
+
+
+	public void setOrdReciveName(String ordReciveName) {
+		this.ordReciveName = ordReciveName;
+	}
+
+
+
+
+	public Integer getOrdRecivePhone() {
+		return ordRecivePhone;
+	}
+
+
+
+
+	public void setOrdRecivePhone(Integer ordRecivePhone) {
+		this.ordRecivePhone = ordRecivePhone;
+	}
+
 
 
 

@@ -41,6 +41,11 @@ public class ProcessOrderController {
 
 	@PostMapping("ProcessOrder")
     protected String processOrder(Model model,
+            @RequestParam("OrdBuyName") String ordBuyName,
+            @RequestParam("OrdBuyPhone") Integer ordBuyPhone,
+            @RequestParam("OrdBuyEmail") String ordBuyEmail,
+            @RequestParam("OrdReciveName") String ordReciveName,
+            @RequestParam("OrdRecivePhone") Integer ordRecivePhone,
             @RequestParam("ShippingAddress") String shippingAddress,
             WebRequest webRequest, SessionStatus status,			
             RedirectAttributes redirectAtt
@@ -74,7 +79,8 @@ public class ProcessOrderController {
 		//String shippingAddress = request.getParameter("ShippingAddress");  // 出貨地址
 		Date today = new Date();   									// 新增訂單的時間
 		// 新建訂單物件。OrderBean:封裝一筆訂單資料的容器，包含訂單主檔與訂單明細檔的資料。目前只存放訂單主檔的資料。
-		OrderBean ob = new OrderBean(null, memberId , today, totalAmount, shippingAddress, null);
+
+		OrderBean ob = new OrderBean(null, memberId , today, totalAmount,ordBuyName,ordBuyPhone,ordBuyEmail,ordReciveName,ordRecivePhone, shippingAddress, null);
 		
 		// 取出存放在購物車內的商品，放入Map型態的變數cart，準備將其內的商品一個一個轉換為OrderItemBean，
 		

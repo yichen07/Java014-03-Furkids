@@ -38,6 +38,14 @@ public class CommodityServiceImpl implements CommodityService{
 		return map;
 	}
 	
+	@Transactional
+	@Override
+	public Map<Integer, CommodityBean> getPageCommoditySort(String sort) {	
+		Map<Integer, CommodityBean> map = null;
+		map = dao.getPageCommoditySort(sort);
+		return map;
+	}
+	
 	@Override
 	public int getRecordsPerPage() {
 		return dao.getRecordsPerPage();
@@ -59,6 +67,8 @@ public class CommodityServiceImpl implements CommodityService{
 		bean = dao.getCommodity(comId);
         return bean;
 	}
+	
+	
 	
 	@Transactional
 	@Override

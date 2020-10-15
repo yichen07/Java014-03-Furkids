@@ -69,6 +69,28 @@ public class CommodityDaoImpl_Hibernate implements Serializable, CommodityDao {
 		
 		return map;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Map<Integer, CommodityBean> getPageCommoditySort(String sort) {
+// 		Map<Integer, CommodityBean> map = new HashMap<>();
+ 		Map<Integer, CommodityBean> map = new LinkedHashMap<>();
+        String hql = "FROM CommodityBean WHERE ComSort = :sort ";
+        Session session = factory.getCurrentSession();
+//        int startRecordNo = (pageNo - 1) * recordsPerPage;
+        List<CommodityBean> list = session.createQuery(hql)
+        	                .setParameter("sort", sort)
+//                            .setFirstResult(startRecordNo)
+//                            .setMaxResults(recordsPerPage)
+                            .getResultList();
+
+        for(CommodityBean bean: list){
+            map.put(bean.getComId(), bean);
+        }
+		
+		return map;
+	}
+
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -77,7 +99,7 @@ public class CommodityDaoImpl_Hibernate implements Serializable, CommodityDao {
         String hql = "SELECT count(*) FROM CommodityBean";
 		Session session = factory.getCurrentSession();
 		count = (Long)session.createQuery(hql).getSingleResult();
-			return count;
+		return count;
 	}
 
 	@SuppressWarnings("unchecked")

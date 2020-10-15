@@ -1,4 +1,4 @@
-/*-- +-Button Start------------------------------>*/
+/*-- +-Button Start------------------------------>
 function isNegative() {
     var $rooms = $("#noOfRoom");
     var c = $rooms.val();
@@ -39,4 +39,4 @@ $('#subs').click(function subst() {
         $("#subs").prop("disabled", true);
     }
 });
-/*-- +-Button End--------------------------------->*/
+-- +-Button End--------------------------------->*/

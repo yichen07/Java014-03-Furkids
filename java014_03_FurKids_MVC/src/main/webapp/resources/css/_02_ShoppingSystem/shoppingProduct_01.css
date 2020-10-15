@@ -200,6 +200,7 @@ button {
     border: none;
     outline: none;
 }
+
 #subs {
     margin: 0;
     padding: 0;
@@ -282,6 +283,90 @@ button {
     box-shadow: inset -1px -1px 5px rgba(255, 255, 255, 1), inset 1px 1px 5px rgba(0, 0, 0, 0.1);
     list-style: none;
 }
+
+.sub {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    font-weight: 900;
+    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+    box-shadow: -15px -15px 15px rgba(255, 255, 255, 0), 15px 15px 15px rgba(0, 0, 0, 0),
+        inset 4px 4px 5px rgba(255, 255, 255, 0.8), inset -4px -4px 5px rgba(0, 0, 0, 0.05),
+        0 50px 40px rgba(0, 0, 0, 0.05);
+}
+.sub:active {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    font-weight: 900;
+    color: #4f69d8;
+    box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+    list-style: none;
+}
+.sub:hover {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    font-weight: 900;
+    color: #2d83c9;
+    box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+    list-style: none;
+}
+
+.add {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    font-weight: 900;
+    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+    box-shadow: -15px -15px 15px rgba(255, 255, 255, 0), 15px 15px 15px rgba(0, 0, 0, 0),
+        inset 4px 4px 5px rgba(255, 255, 255, 0.8), inset -4px -4px 5px rgba(0, 0, 0, 0.05),
+        0 50px 40px rgba(0, 0, 0, 0.05);
+}
+
+.add:active {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    font-weight: 900;
+    color: #4f69d8;
+    box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+    list-style: none;
+}
+.add:hover {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    font-weight: 900;
+    color: #889eff;
+    box-shadow: inset -1px -1px 5px rgba(255, 255, 255, 1), inset 1px 1px 5px rgba(0, 0, 0, 0.1);
+    list-style: none;
+}
+
 .onlyNumber {
     background: transparent;
 }
