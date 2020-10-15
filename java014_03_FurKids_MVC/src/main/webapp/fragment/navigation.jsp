@@ -400,7 +400,7 @@
       </div>
       <div class="modal-body">
 			<div class="text-center">
-				<font color="red">${InsertOK} ${FlashMSG_farewell} ${sessionScope.timeOut} ${UpdateOK}</font>
+				<font color="red">${InsertOK} ${FlashMSG_farewell} ${sessionScope.timeOut} ${UpdateOK} ${UpdateError}</font>
 			</div>
       </div>
       <div class="modal-footer">

@@ -1,6 +1,5 @@
 package _02_ShoppingSystem.CommodityList.controller;
 
-import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -22,7 +21,6 @@ import _01_Member.Registration.model.MemberBean;
 import _01_Member.Registration.model.MerchantBean;
 import _02_ShoppingSystem.CommodityList.model.CommodityBean;
 import _02_ShoppingSystem.CommodityList.service.CommodityService;
-import _02_ShoppingSystem.CommodityList.service.Impl.CommodityServiceImpl;
 
 @Controller
 @RequestMapping("_02_ShoppingSystem")

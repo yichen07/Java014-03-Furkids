@@ -1,0 +1,309 @@
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+
+body {
+    font-family: "cwTeXYen", sans-serif;
+
+    background: linear-gradient(-45deg, #fff8f5, #e9e6e7, #f1fbff, #f2fdfa);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+/* NavBar -------------------------------------------------------------------------> */
+
+.navbar-collapse ul li a.nav-link:before {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: transparent;
+    content: "";
+    opacity: 0;
+    -ms-transition: opacity 0.3s, -webkit-transform 0.3s;
+    -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+    transition: opacity 0.3s, transform 0.3s;
+    -ms-transform: translateY(10px);
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+}
+
+.navbar-collapse ul li:hover a.nav-link:before {
+    opacity: 1;
+    -ms-transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    bottom: 0px;
+    background: #447ee9;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #447ee9;
+}
+
+.navbar-cart {
+    color: #262626;
+    font-size: 18px;
+}
+.navbar-user {
+    color: #262626;
+    font-size: 18px;
+}
+.dropdown-toggle::after {
+    content: none;
+}
+.bg-white {
+    font-weight: 500 !important;
+    font-size: 19px !important;
+    color: #262626 !important;
+}
+.nav-font {
+    color: #262626 !important;
+}
+
+/* NavBar End-------------------------------------------------------------------------> */
+
+/* Banner ----------------------------------------------------------------------------> */
+
+.bannerImg {
+    background-image: url(../../images/_03_FriendlySystem/touristIndex/touristIndex_banner_01.jpg);
+    height: 350px;
+    width: 100%;
+    background-color: rgba(41, 41, 41, 0.5);
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: center bottom;
+    background-attachment: fixed;
+}
+.bannerTitle {
+    color: white;
+    font-size: 70px;
+    z-index: 9999999;
+    text-shadow: 5px 5px 15px rgb(155, 155, 155);
+    font-weight: 500;
+}
+.banner-text {
+    width: 50vw;
+    color: white;
+}
+/* Banner End -------------------------------------------------------------------------> */
+
+/* SearchBar Srart --------------------------------------------------------------------> */
+.search-Bar {
+    margin-top: 20px;
+}
+.searchBarToTup {
+    padding-top: 65px;
+}
+/* border-box */
+.search-container *,
+.search-container *:after,
+.search-container *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* search bar focus */
+.search-container *:focus {
+    background: #fbfbfb;
+    color: white;
+    outline: 0;
+}
+
+/* search bar container */
+.search-container {
+    display: table;
+    position: relative;
+    width: 51px;
+    border-radius: 50%;
+}
+
+/* search icon button */
+.search-icon-btn {
+    background-color: white;
+    border: 2px solid #447ee9;
+    display: table-cell;
+    height: 50px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 50px;
+    z-index: 2;
+    border-radius: 50%;
+}
+
+/* search bar input container */
+.search-input {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+}
+
+/* search bar input */
+.search-input input.search-bar {
+    border: 3px solid #447ee9;
+    background: #447ee9;
+    height: 50px;
+    padding: 0px;
+    width: 50px;
+    border-radius: 25px;
+}
+
+::placeholder,
+textarea {
+    color: white;
+    background: #447ee9;
+}
+.search-input input.search-bar:focus {
+    padding-left: 60px;
+    padding-right: 10px;
+    width: 200px;
+}
+
+/* transition effect */
+.search-input input.search-bar,
+.search-icon-btn {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+/* hover on search bar container */
+.search-container:hover > .search-input input.search-bar {
+    padding-left: 60px;
+    padding-right: 10px;
+    width: 250px;
+}
+.fa-search {
+    display: flex;
+    align-items: center;
+    color: #447ee9;
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+/* SearchBar End ----------------------------------------------------------------------> */
+
+figure.attractions {
+    font-family: "cwTeXYen", sans-serif;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    min-width: 220px;
+    max-width: 310px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: left;
+    font-size: 16px;
+    -webkit-filter: drop-shadow(3px 3px 5px rgba(116, 116, 116, 0.7));
+    filter: drop-shadow(3px 3px 5px rgba(116, 116, 116, 0.7));
+    border-radius: 10px;
+}
+figure.attractions:hover {
+    -webkit-filter: drop-shadow(6px 6px 10px rgba(116, 116, 116, 0.7));
+    filter: drop-shadow(6px 6px 10px rgba(116, 116, 116, 0.7));
+}
+figure.attractions * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+figure.attractions img {
+    width: 100%;
+    height: 200px;
+    vertical-align: top;
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+figure.attractions figcaption {
+    padding: 25px;
+    position: relative;
+}
+
+figure.attractions h3 {
+    margin: 0;
+    padding: 0;
+}
+figure.attractions h3 {
+    margin-bottom: 10px;
+    display: inline-block;
+    font-weight: 600;
+    color: #333333;
+    text-transform: uppercase;
+}
+
+figure.attractions button {
+    border: medium none;
+    padding: 3px 5px;
+    border: 2px solid #447ee9;
+    background: white;
+    font-weight: 500;
+    color: #447ee9;
+
+    text-transform: uppercase;
+    font-size: 1em;
+    border-radius: 5px;
+}
+figure.attractions a {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 1;
+}
+figure.attractions:hover img,
+figure.attractions.hover img {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+figure.attractions:hover button,
+figure.attractions.hover button {
+    background-color: #447ee9;
+    color: white;
+}
+.fa-phone-square-alt {
+    font-family: "cwTeXYen", sans-serif;
+    font-size: 12px;
+    color: #447ee9;
+}
+.fa-map-marker-alt {
+    font-family: "cwTeXYen", sans-serif;
+    font-size: 12px;
+    color: #447ee9;
+}
+.iconFontSize {
+    font-family: "cwTeXYen", sans-serif;
+    color: #686868;
+    font-size: 13px;
+    font-weight: 100;
+}
