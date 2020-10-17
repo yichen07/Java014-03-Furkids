@@ -222,133 +222,149 @@
 			<!-- Single Hero Slide -->
 			<div class="single-hero-slide bg-img slide-background-overlay"
 				style="background-image: url(<c:url value='/resources/images/_00_Home/Home_001.jpg' />)">
-				<div class="container h-100">
-					<div class="row h-100 align-items-end">
-						<div class="col-12">
-							<div class="hero-slides-content">
-								<div class="line"></div>
-								<h2>寵物商城</h2>
-								<p>
-									一個關心寵物生活為出發點的的寵物用品購物資訊商城。有許多品牌的狗飼料，狗用品，貓飼料，貓砂、貓用品等商品，滿足毛孩更多的渴望。
-								</p>
+				<a href="<c:url value='/_03_listProducts/DisplayPageProducts2' />">
+					<div class="container h-100">
+						<div class="row h-100 align-items-end">
+							<div class="col-12">
+								<div class="hero-slides-content">
+									<div class="line"></div>
+									<h2>寵物商城</h2>
+									<p>
+										一個關心寵物生活為出發點的的寵物用品購物資訊商城。有許多品牌的狗飼料，狗用品，貓飼料，貓砂、貓用品等商品，滿足毛孩更多的渴望。
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 			<!-- Single Hero Slide -->
 			<div class="single-hero-slide bg-img slide-background-overlay"
 				style="background-image: url(<c:url value='/resources/images/_00_Home/Home_002.jpg' />)">
-				<div class="container h-100">
-					<div class="row h-100 align-items-end">
-						<div class="col-12">
-							<div class="hero-slides-content">
-								<div class="line"></div>
-								<h2>寵物交流版</h2>
-								<p>寵物板無論是貓狗、毛小孩或任何養其他寵物的經驗都可以在此討論，另外像是寵物協尋或動物醫院的分享也歡迎發文！</p>
+				<a href="<c:url value='http://127.0.0.1:8081/' />">
+					<div class="container h-100">
+						<div class="row h-100 align-items-end">
+							<div class="col-12">
+								<div class="hero-slides-content">
+									<div class="line"></div>
+									<h2>寵物交流版</h2>
+									<p>寵物板無論是貓狗、毛小孩或任何養其他寵物的經驗都可以在此討論，另外像是寵物協尋或動物醫院的分享也歡迎發文！</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 			<!-- Single Hero Slide -->
 			<div class="single-hero-slide bg-img slide-background-overlay"
 				style="background-image: url(<c:url value='/resources/images/_00_Home/Home_003.jpg' />)">
-				<div class="container h-100">
-					<div class="row h-100 align-items-end">
-						<div class="col-12">
-							<div class="hero-slides-content">
-								<div class="line"></div>
-								<h2>寵物旅遊</h2>
-								<p>
-									提供全台寵物友善景點、寵物遊樂場，嚴選毛孩完善的寵物友善空間，完整收錄寵物友善程度、環境設施、適合寵物犬型、寵物游泳池、
-									...</p>
+				<a href="<c:url value='/_03_FriendlySystem/Reservation/景點' />">
+					<div class="container h-100">
+						<div class="row h-100 align-items-end">
+							<div class="col-12">
+								<div class="hero-slides-content">
+									<div class="line"></div>
+									<h2>寵物旅遊</h2>
+									<p>
+										提供全台寵物友善景點、寵物遊樂場，嚴選毛孩完善的寵物友善空間，完整收錄寵物友善程度、環境設施、適合寵物犬型、寵物游泳池、
+										...</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 			<!-- Single Hero Slide -->
 			<div class="single-hero-slide bg-img slide-background-overlay"
 				style="background-image: url(<c:url value='/resources/images/_00_Home/Home_004.jpg' />)">
-				<div class="container h-100">
-					<div class="row h-100 align-items-end">
-						<div class="col-12">
-							<div class="hero-slides-content">
-								<div class="line"></div>
-								<h2>餐廳</h2>
-								<p>
-									家有毛孩嗎？假日想出去走走的時候，毛孩要待在家還是一起出門？但最麻煩的是，寵物友善餐廳總是得先爬文先找找，在這裡你不但能找到合適的餐廳，還能夠使用線上預約的服務。
-								</p>
+				<a href="<c:url value='/_03_FriendlySystem/Reservation/餐廳' />">
+					<div class="container h-100">
+						<div class="row h-100 align-items-end">
+							<div class="col-12">
+								<div class="hero-slides-content">
+									<div class="line"></div>
+									<h2>餐廳</h2>
+									<p>
+										家有毛孩嗎？假日想出去走走的時候，毛孩要待在家還是一起出門？但最麻煩的是，寵物友善餐廳總是得先爬文先找找，在這裡你不但能找到合適的餐廳，還能夠使用線上預約的服務。
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 			<!-- Single Hero Slide -->
 			<div class="single-hero-slide bg-img slide-background-overlay"
 				style="background-image: url(<c:url value='/resources/images/_00_Home/Home_005.jpg' />)">
-				<div class="container h-100">
-					<div class="row h-100 align-items-end">
-						<div class="col-12">
-							<div class="hero-slides-content">
-								<div class="line"></div>
-								<h2>寵物美容</h2>
-								<p>
-									需要寵物美容服務嗎？在這裡我們提供各式美容店訊息與預約服務，為您的毛小孩提供專屬的理容服務，包括深層清潔、造型設計，及毛髮保養等。
-								</p>
+				<a href="<c:url value='/_03_FriendlySystem/Reservation/寵物美容' />">
+					<div class="container h-100">
+						<div class="row h-100 align-items-end">
+							<div class="col-12">
+								<div class="hero-slides-content">
+									<div class="line"></div>
+									<h2>寵物美容</h2>
+									<p>
+										需要寵物美容服務嗎？在這裡我們提供各式美容店訊息與預約服務，為您的毛小孩提供專屬的理容服務，包括深層清潔、造型設計，及毛髮保養等。
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 			<!-- Single Hero Slide -->
 			<div class="single-hero-slide bg-img slide-background-overlay"
 				style="background-image: url(<c:url value='/resources/images/_00_Home/Home_006.jpg' />)">
-				<div class="container h-100">
-					<div class="row h-100 align-items-end">
-						<div class="col-12">
-							<div class="hero-slides-content">
-								<div class="line"></div>
-								<h2>寵物旅館</h2>
-								<p>
-									提供您可攜帶寵物入住的寵物飯店、寵物旅館及寵物民宿，更幫您整理出可寵物同房的飯店訂房推薦，以及寵物不同房另有場地安置的推薦
-									...</p>
+				<a href="<c:url value='/_03_FriendlySystem/Reservation/寵物旅館' />">
+					<div class="container h-100">
+						<div class="row h-100 align-items-end">
+							<div class="col-12">
+								<div class="hero-slides-content">
+									<div class="line"></div>
+									<h2>寵物旅館</h2>
+									<p>
+										提供您可攜帶寵物入住的寵物飯店、寵物旅館及寵物民宿，更幫您整理出可寵物同房的飯店訂房推薦，以及寵物不同房另有場地安置的推薦
+										...</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 			<!-- Single Hero Slide -->
 			<div class="single-hero-slide bg-img slide-background-overlay"
 				style="background-image: url(<c:url value='/resources/images/_00_Home/Home_007.jpg' />)">
-				<div class="container h-100">
-					<div class="row h-100 align-items-end">
-						<div class="col-12">
-							<div class="hero-slides-content">
-								<div class="line"></div>
-								<h2>寵物熱量管理</h2>
-								<p>
-									管理動物的生活狀態同時也是檢視自身習慣，若能在幫助毛小孩減重的過程中重新建立親密互動，與牠們的共同生活也會變得更加美好！</p>
+				<a href="<c:url value='/_05_HealthControl/CalorieCalculation' />">
+					<div class="container h-100">
+						<div class="row h-100 align-items-end">
+							<div class="col-12">
+								<div class="hero-slides-content">
+									<div class="line"></div>
+									<h2>寵物熱量管理</h2>
+									<p>
+										管理動物的生活狀態同時也是檢視自身習慣，若能在幫助毛小孩減重的過程中重新建立親密互動，與牠們的共同生活也會變得更加美好！</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 			<!-- Single Hero Slide -->
 			<div class="single-hero-slide bg-img slide-background-overlay"
 				style="background-image: url(<c:url value='/resources/images/_00_Home/Home_008.jpg' />)">
-				<div class="container h-100">
-					<div class="row h-100 align-items-end">
-						<div class="col-12">
-							<div class="hero-slides-content">
-								<div class="line"></div>
-								<h2>寵物健康專欄</h2>
-								<p>提供寵物有關的常見日常健康知識、生活智慧等資訊，您我從每天了解更多寵物相關健康資訊開始，一起打造美好健康生活！</p>
+				<a href="<c:url value='/BlogIndex' />">
+					<div class="container h-100">
+						<div class="row h-100 align-items-end">
+							<div class="col-12">
+								<div class="hero-slides-content">
+									<div class="line"></div>
+									<h2>寵物健康專欄</h2>
+									<p>提供寵物有關的常見日常健康知識、生活智慧等資訊，您我從每天了解更多寵物相關健康資訊開始，一起打造美好健康生活！</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 
 		</div>

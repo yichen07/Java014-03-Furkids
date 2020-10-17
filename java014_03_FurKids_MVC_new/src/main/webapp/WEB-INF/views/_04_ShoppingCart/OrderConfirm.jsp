@@ -46,9 +46,10 @@
 <!-- Banner ---------------------------------------------------------------------------->
 
     <div
-      class="container-fliid bannerImg d-flex justify-content-center align-items-center"
+      class="container-fluid bannerImg d-flex justify-content-center align-items-center"
       id="imageStellar"
       data-stellar-background-ratio="0.5"
+      style="background-image: url(<c:url value='/resources/images/_02_ShoppingSystem/shoppingList_Banner_01.jpg' />)"
     >
       <div class="row ">
         <div class="col-lg-12 text-center">
