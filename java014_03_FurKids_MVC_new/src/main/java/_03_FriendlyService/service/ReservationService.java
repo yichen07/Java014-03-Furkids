@@ -2,6 +2,7 @@ package _03_FriendlyService.service;
 
 import java.util.List;
 
+import _01_Member.Registration.model.MemberBean;
 import _03_FriendlyService.model.ConvenienceBean_H;
 import _03_FriendlyService.model.ReservationBean;
 import _03_FriendlyService.model.ReservationChildBean;
@@ -30,5 +31,5 @@ public interface ReservationService {
 	
 	int getTotalPages(String item);
 	
-	int getReservationBeanPK(ReservationBean rb);
+	int getReservationBeanPK(ReservationBean rb,MemberBean mb);
 }

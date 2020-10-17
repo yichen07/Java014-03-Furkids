@@ -2,6 +2,7 @@ package _03_FriendlyService.dao;
 
 import java.util.List;
 
+import _01_Member.Registration.model.MemberBean;
 import _03_FriendlyService.model.ConvenienceBean_H;
 import _03_FriendlyService.model.ReservationBean;
 import _03_FriendlyService.model.ReservationChildBean;
@@ -32,5 +33,5 @@ public interface ReservationDao {
 	
 	List<ReservationBean> getReservationInfoForBus(String account);
 	
-	int getReservationBeanPK(ReservationBean rb);
+	int getReservationBeanPK(ReservationBean rb ,MemberBean mb);
 }

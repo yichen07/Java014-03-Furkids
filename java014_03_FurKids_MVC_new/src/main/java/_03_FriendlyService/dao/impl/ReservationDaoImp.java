@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import _01_Member.Registration.model.MemberBean;
 import _03_FriendlyService.dao.ReservationDao;
 import _03_FriendlyService.model.ConvenienceBean_H;
 import _03_FriendlyService.model.ReservationBean;
@@ -64,11 +65,12 @@ public class ReservationDaoImp implements ReservationDao{
 	}
 	//查PK
 	@Override
-	public int getReservationBeanPK(ReservationBean rb) {
+	public int getReservationBeanPK(ReservationBean rb,MemberBean mb) {
 		int n = 0;
-		String hql = "Select resID FROM ReservationBean where busChildNo = :busChildNo";
+		String hql = "Select resID FROM ReservationBean where busChildNo = :busChildNo and cusAccount = :cusAccount";
 		Session session = factory.getCurrentSession();
-		n = (int) session.createQuery(hql).setParameter("busChildNo", rb.getBusChildNo()).getSingleResult();
+		n = (int) session.createQuery(hql).setParameter("busChildNo", rb.getBusChildNo())
+										  .setParameter("cusAccount", mb.getCusAccount()).getSingleResult();
 		return n;
 	}
 	@Override

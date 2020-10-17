@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import _01_Member.Registration.model.MemberBean;
 import _03_FriendlyService.dao.ReservationDao;
 import _03_FriendlyService.model.ConvenienceBean_H;
 import _03_FriendlyService.model.ReservationBean;
@@ -46,9 +47,9 @@ public class ReservationServiceImpl implements ReservationService{
 
 
 	@Override
-	public int getReservationBeanPK(ReservationBean rb) {
+	public int getReservationBeanPK(ReservationBean rb,MemberBean mb) {
 		int n = 0;
-		n = resDao.getReservationBeanPK(rb);
+		n = resDao.getReservationBeanPK(rb,mb);
 		return n;
 	}
 

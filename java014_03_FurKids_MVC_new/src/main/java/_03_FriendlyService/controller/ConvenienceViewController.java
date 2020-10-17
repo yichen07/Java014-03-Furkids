@@ -145,7 +145,7 @@ public class ConvenienceViewController {
 		resService.insert(resBean);
 		for(int i = 0; i< resBean.getReservationChildBean().size(); i++) {
 			if(resBean.getReservationChildBean().get(i).getResName() != null) {
-				resBean.getReservationChildBean().get(i).setResID(resService.getReservationBeanPK(resBean));
+				resBean.getReservationChildBean().get(i).setResID(resService.getReservationBeanPK(resBean,(MemberBean)model.getAttribute("LoginOK")));
 				resService.insert(resBean.getReservationChildBean().get(i));
 			}
 		}
